@@ -1,0 +1,30 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: coupled_pends2.aux
+The style file: IEEEtranS.bst
+Database file #1: RFM_bibl.bib
+You're missing a field name---line 445 of file RFM_bibl.bib
+ : 
+ : %  author =       {Y. Zarai and M. Margaliot and T. Tuller},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 898 of file RFM_bibl.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1435 of file RFM_bibl.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1442 of file RFM_bibl.bib
+ : 
+ : }
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+-- IEEEtranS.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+** Sorting version - not for normal IEEE work.
+
+Done.
+(There were 4 error messages)

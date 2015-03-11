@@ -1,0 +1,179 @@
+
+
+% \documentclass[10pt,journal,onecolumn ]{IEEEtran}
+ % \documentclass[final,letter ]{IEEEtran}
+% \documentclass[10pt,twocolumn ]{IEEEtran}
+%
+ \documentclass[10pt,onecolumn,twoside,letter]{IEEEtran}
+
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[12pt,journal,compsoc]{../sty/IEEEtran}
+
+\usepackage{url}
+%\usepackage{natbib}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{theorem}
+\usepackage[dvips]{epsfig}      % ******* for figures ***************
+\usepackage{graphicx}
+\usepackage{enumerate}
+
+\usepackage{verbatim}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{setspace}
+\usepackage{url}
+
+\theoremstyle{plain}
+\newtheorem{Theorem}{Theorem}
+\newtheorem{Lemma}{Lemma}
+\newtheorem{Proposition}{Proposition}
+\newtheorem{Corollary}{Corollary}
+\newtheorem{Conjecture}{Conjecture}
+\newtheorem{Problem}{Problem}
+
+ \newcommand{\Ave}{\operatorname{Ave}}
+ \newcommand{\Int}{\operatorname{Int}}
+ \newcommand{\real}{\operatorname{Re}}
+
+{\theorembodyfont{\rmfamily} \newtheorem{Remark}{Remark}}
+{\theorembodyfont{\rmfamily} \newtheorem{Assumption}{Assumption}}
+{\theorembodyfont{\rmfamily} \newtheorem{Example}{Example}}
+{\theorembodyfont{\rmfamily} \newtheorem{Definition}{Definition}}
+{\theorembodyfont{\rmfamily} \newtheorem{Question}{Question}}
+
+\newcommand {\R}{\mathbb R}
+\newcommand {\A}{\mathbb A}
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\sgn}{\operatorname{{\mathrm sgn}}}
+%%%%%%%%\newcommand{\ve}[1]{\mbox{\boldmath${#1}$}}
+\newcommand{\V}{\mathcal V}
+\newcommand{\U}{\mathcal U}
+\newcommand{\N}{\mathbb N_0}
+\newcommand{\B}{\mathcal B \mathcal B}
+\newcommand{\W}{\mathcal W}
+
+\newcommand{\sname}{} \newcommand{\slabel}[1]{\debug{\fbox{\tiny \sname #1}}\label{\sname #1}}
+\newcommand{\debug}[1]{}              % final version
+\newcommand{\FB}{\begin{figure}[t]\centering} \newcommand{\FE}[2]{\caption{#2 \debug{\fbox{\sname #1}}} \slabel{#1} \end{figure}} \newcommand{\tB}{\begin{table}[hbtp]\centering}
+\newcommand{\tE}[2]{\caption{#2 \debug{\fbox{\sname #1}}}\slabel{#1} \end{table}} \newcommand{\FIG}[3]{\FB\finput{#1}\FE{#2}{#3}}
+\newcommand{\finput}[1]{\input{#1}}   % input figures
+%%%% Example: \FIG{fig1}{1-fig}{The Multilink environment}
+
+% counter used by the single column equation
+\newcounter{mytempeqncnt}
+
+% correct bad hyphenation here
+%\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+ \title{Synchronization of Coupled Pendulums\thanks{This research is partially supported by a   research grant
+from  the  Israeli Ministry of ....}}
+
+
+%%\begin{comment}
+%%%%%%%%
+\author{Elad Venezian  and Michael Margaliot \IEEEcompsocitemizethanks{\IEEEcompsocthanksitem
+E. Venezian is with the School of Electrical Engineering, Tel-Aviv
+University, Tel-Aviv 69978, Israel.
+E-mail: ravehalon@gmail.com \protect\\
+M. Margaliot is with the School of Electrical Engineering and the Sagol School of Neuroscience, Tel-Aviv
+University, Tel-Aviv 69978, Israel.
+E-mail: michaelm@eng.tau.ac.il \protect\\
+}}
+%\end{comment}
+
+
+\maketitle
+
+
+\begin{abstract}
+%%%%
+
+%%%%
+ %%
+\end{abstract}
+
+\begin{IEEEkeywords}
+%%
+
+%%%
+\end{IEEEkeywords}
+
+
+
+
+%% Introduction
+%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{The  model}\label{sec:model}
+%%%%%%%%%%%%%%%
+Consider a nonlinear pendulum with forcing~$u$:
+\[
+            \ddot x+\alpha \dot  x+\sin(x)=u ,
+\]
+where~$x$ is the angle,dfdf and~$\alpha>0$.
+
+Define~$\dot{y}:=\dot x+\frac{\alpha}{2}x$. Then
+\[
+            \dot y =-\sin(x)-\frac{\alpha}{2}\dot x +u.
+\]
+  Thus,
+\begin{align*}
+%%%
+                \begin{bmatrix} \dot x \\ \dot y \end{bmatrix} = \begin{bmatrix} -\frac{\alpha}{2}x+y \\  \frac{\alpha^2}{4}x-\sin(x)-\frac{\alpha}{2} y \end{bmatrix}
+                +\begin{bmatrix} 0 \\u \end{bmatrix}.
+%%%
+\end{align*}
+The Jacobian of this dynamics is
+\[
+            J=\begin{bmatrix}   -\frac{\alpha}{ 2} & 1 \\\frac{\alpha^2}{4}-\cos(x) &-\frac{\alpha}{2}       
+               \end{bmatrix},
+\]
+and its symmetric part is 
+\[
+            J_s:=\frac{J+J'}{2}= \begin{bmatrix}   -\frac{\alpha}{ 2} & \frac{  1-\cos(x)+\frac{\alpha^2}{4}}{2}\\
+           \frac{  1-\cos(x)+\frac{\alpha^2}{4}}{2} &-\frac{\alpha}{2}
+               \end{bmatrix}.
+\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The eigenvalues of~$J_s$ are
+\[
+             \frac{1}{2} \left(  -  {\alpha}  \pm   |  1-\cos(x)+\frac{\alpha^2}{4}  | \right)=\frac{1}{2} \left(  -  {\alpha}  \pm    (  1-\cos(x)+\frac{\alpha^2}{4} )   \right),
+\]
+so
+\[
+            \lambda_{\max}(J_s)=\frac{1}{2} \left(   (\frac{\alpha}{2}-1)^2 -\cos(x)     \right).
+\]
+Let~$q \in[0,\pi/2]$ satisfy~$\cos(q)=(\frac{\alpha}{2}-1)^2$.
+(THIS MEANS THAT WE NEED ABOUND ON ALPHA, NO?)
+Then~$ \lambda_{\max}(J_s)<0$ for all~$x\in(-q,q)$.
+In particular, for~$\alpha=2$, we have that~$ \lambda_{\max}(J_s)<0$ for all~$x\in(-\pi/2,\pi/2)$.
+
+ 
+Recall that for the Euclidean vector norm, the induced
+matrix norm is~$|A|=(\lambda_{\max}(A'A))^{1/2} $,
+ and the induced matrix measure is~$\mu(A)=\lambda_{\max}( \frac{A+A'}{2} )$ (see, e.g.,~\cite{vid}).
+Standard arguments from contraction theory (see, e.g.,~\cite{LOHMILLER1998683,sontag_contraction_tutorial}) imply
+that   trajectories that remain in the closed  region~$x \in [-q-\varepsilon,q+\varepsilon]$, with~$\varepsilon>0$,
+contract with respect to the Euclidean  vector  norm. 
+
+
+
+\bibliographystyle{IEEEtranS}
+\bibliography{RFM_bibl}
+
+
+
+\end{document}

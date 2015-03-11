@@ -1,0 +1,179 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>The Figure Loop</title><meta name="generator" content="DocBook XSL Stylesheets V1.75.2"><meta name="description" content="The Figure Loop produces a report which documents multiple figure windows. Each time the Figure Loop component runs, it reports on a different figure."></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div lang="en" class="book" title="The Figure Loop"><div class="titlepage"><div><div><h1 class="title"><a name="d0e1"></a>The Figure Loop</h1></div><div><h2 class="subtitle">A Tutorial</h2></div><div><div class="author"><h3 class="author"><span class="firstname">MathWorks</span></h3></div></div><div><p class="pubdate">02-Mar-2015 23:03:04</p></div><div><div class="abstract" title="Abstract"><p class="title"><b>Abstract</b></p><p>The Figure Loop produces a report which documents multiple figure windows.  Each time the Figure Loop component runs, it reports on a different figure.</p></div></div></div><hr></div><div class="chapter" title="Chapter&nbsp;1.&nbsp;Code for Creating Figures"><div class="titlepage"><div><div><h2 class="title"><a name="d0e18"></a>Chapter&nbsp;1.&nbsp;Code for Creating Figures</h2></div></div></div><pre xmlns:mwsh="http://www.mathworks.com/namespace/mcode/v1/syntaxhighlight.dtd"><span style="color:blue">function</span> hList=figloopfigures
+<span style="color:green">%FIGLOOPFIGURES creates figures for figloop-tutorial.rpt</span>
+<span style="color:green">%   FIGLOOPFIGURES creates five figures which are used by</span>
+<span style="color:green">%   the Report Generator setup file "figloop-tutorial.rpt".</span>
+<span style="color:green">%   To run this tutorial, type "setedit figloop-tutorial"</span>
+<span style="color:green">%   at the command prompt.</span>
+<span style="color:green">%</span>
+<span style="color:green">%   Figure 1: Membrane Data</span>
+<span style="color:green">%   Figure 2: Invisible Membrane Data</span>
+<span style="color:green">%   Figure 3: An Application</span>
+<span style="color:green">%   Figure 4: An Invisible Application</span>
+<span style="color:green">%   Figure 5: Peaks Data</span>
+<span style="color:green">%</span>
+<span style="color:green">%   Figures 2 and 4 are invisible.</span>
+<span style="color:green">%   Figures 3 and 4 have HandleVisibility='off'</span>
+<span style="color:green">%   Figure  5 is the current figure</span>
+<span style="color:green">%</span>
+<span style="color:green">%   FIGLOOPFIGURES deletes any existing figures which have</span>
+<span style="color:green">%   tag 'peaks' 'app' or 'membrane'</span>
+
+<span style="color:green">%   Copyright 1997-2008 MathWorks, Inc.</span>
+
+
+<span style="color:green">%delete existing figures with used tag names</span>
+allFigs = findall(0,<span style="color:#B20000">'-depth'</span>,1,<span style="color:#B20000">'type'</span>,<span style="color:#B20000">'figure'</span>);
+delete([findall(allFigs,<span style="color:#B20000">'flat'</span>,<span style="color:#B20000">'tag'</span>,<span style="color:#B20000">'membrane'</span>);<span style="color:blue">...</span>
+   findall(allFigs,<span style="color:#B20000">'flat'</span>,<span style="color:#B20000">'tag'</span>,<span style="color:#B20000">'peaks'</span>);<span style="color:blue">...</span>
+   findall(allFigs,<span style="color:#B20000">'flat'</span>,<span style="color:#B20000">'tag'</span>,<span style="color:#B20000">'app'</span>)]);
+
+figName={<span style="color:#B20000">'Membrane Data'</span>
+   <span style="color:#B20000">'Invisible Membrane Data'</span>
+   <span style="color:#B20000">'An Application'</span>
+   <span style="color:#B20000">'An Invisible Application'</span>
+   <span style="color:#B20000">'Peaks Data'</span>};
+figTag={<span style="color:#B20000">'membrane'</span>
+   <span style="color:#B20000">'membrane'</span>
+   <span style="color:#B20000">'app'</span>
+   <span style="color:#B20000">'app'</span>
+   <span style="color:#B20000">'peaks'</span>};
+figVisible={<span style="color:#B20000">'on'</span>
+   <span style="color:#B20000">'off'</span>
+   <span style="color:#B20000">'on'</span>
+   <span style="color:#B20000">'off'</span>
+   <span style="color:#B20000">'on'</span>};
+figHandleVisible={<span style="color:#B20000">'on'</span>
+   <span style="color:#B20000">'on'</span>
+   <span style="color:#B20000">'off'</span>
+   <span style="color:#B20000">'off'</span>
+   <span style="color:#B20000">'on'</span>};
+
+<span style="color:blue">for</span> i=1:length(figName)
+   hList(i)=figure(<span style="color:#B20000">'Name'</span>,figName{i},<span style="color:blue">...</span>
+      <span style="color:#B20000">'Tag'</span>,figTag{i},<span style="color:blue">...</span>
+      <span style="color:#B20000">'HandleVisibility'</span>,figHandleVisible{i},<span style="color:blue">...</span>
+      <span style="color:#B20000">'Visible'</span>,<span style="color:#B20000">'off'</span>,<span style="color:blue">...</span>
+      <span style="color:#B20000">'Units'</span>,<span style="color:#B20000">'points'</span>,<span style="color:blue">...</span>
+      <span style="color:#B20000">'Position'</span>,[90+30*i 230-30*i 200 200]);
+<span style="color:blue">end</span>
+
+
+LocalMakeMembrane(hList(1));
+LocalMakeMembrane(hList(2));
+LocalMakeApplication(hList(3),<span style="color:#B20000">'Push Me'</span>);
+LocalMakeApplication(hList(4),<span style="color:#B20000">'Invisible'</span>);
+LocalMakePeaks(hList(5));
+
+set(hList,{<span style="color:#B20000">'Visible'</span>},figVisible);
+set(0,<span style="color:#B20000">'CurrentFigure'</span>,hList(5));
+
+drawnow
+
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:blue">function</span> LocalMakeMembrane(h)
+
+ax=axes(<span style="color:#B20000">'Parent'</span>,h,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Xlim'</span>,[0 31],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Ylim'</span>,[0 31],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Xgrid'</span>,<span style="color:#B20000">'on'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Ygrid'</span>,<span style="color:#B20000">'on'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Zgrid'</span>,<span style="color:#B20000">'on'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'View'</span>,[-37.5 35]);
+surface(membrane,<span style="color:#B20000">'Parent'</span>,ax);
+
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:blue">function</span> LocalMakeApplication(h,btnString)
+
+figWd=200;
+figHt=200;
+
+btn=uicontrol(<span style="color:#B20000">'Parent'</span>,h,<span style="color:blue">...</span>
+   <span style="color:#B20000">'String'</span>,btnString,<span style="color:blue">...</span>
+   <span style="color:#B20000">'FontSize'</span>,18,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Units'</span>,<span style="color:#B20000">'points'</span>);
+
+btnExtent=get(btn,<span style="color:#B20000">'Extent'</span>);
+btnHt=btnExtent(4)+10;
+btnWd=btnExtent(3)+10;
+
+cbString=sprintf(<span style="color:#B20000">'set(gcbo,''Position'',[rand(1)*%0.2g rand(1)*%0.2g %0.2g %0.2g])'</span>,<span style="color:blue">...</span>
+   figWd-btnWd-10,figHt-btnHt-10,btnWd,btnHt);
+
+set(btn,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Position'</span>,[10 10 btnWd btnHt],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Callback'</span>,cbString);
+
+
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:green">%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%</span>
+<span style="color:blue">function</span> LocalMakePeaks(h)
+
+pSize=49;
+pData=peaks(pSize);
+
+ax=axes(<span style="color:#B20000">'Parent'</span>,h,<span style="color:blue">...</span>
+   <span style="color:#B20000">'View'</span>,[-37.5 30],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Visible'</span>,<span style="color:#B20000">'off'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Xlim'</span>,[0 pSize],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Ylim'</span>,[0 pSize],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Zlim'</span>,[min(min(pData)) max(max(pData))],<span style="color:blue">...</span>
+   <span style="color:#B20000">'Units'</span>,<span style="color:#B20000">'normalized'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Position'</span>,[0 0 1 1]);
+
+surface(pData,<span style="color:blue">...</span>
+   <span style="color:#B20000">'Parent'</span>,ax,<span style="color:blue">...</span>
+   <span style="color:#B20000">'FaceLighting'</span>,<span style="color:#B20000">'gouraud'</span>,<span style="color:blue">...</span>
+   <span style="color:#B20000">'edgecolor'</span>,<span style="color:#B20000">'none'</span>);
+light(<span style="color:#B20000">'Parent'</span>,ax);</pre><a name="d0e446"></a><div class="table"><p class="title"><b>Table&nbsp;1.1.&nbsp;Figure Properties</b></p><div class="table-contents"><table summary="Figure Properties" border="1" cellspacing="0" fastRender="1" width="100%"><col width="180*"><col width="120*"><col width="60*"><col width="60*"><thead><tr>
+            <th align="left">Name</th>
+            <th align="left">Tag</th>
+            <th align="left">Visible</th>
+            <th align="left">HandleVisibility</th>
+        </tr></thead><tbody><tr>
+            <td align="left">
+                <a class="link" href="#e30d8b12b9d0e39bbeb6d6513db92b3b" title="Membrane Data">Membrane Data</a>
+            </td>
+            <td align="left">membrane</td>
+            <td align="left">on</td>
+            <td align="left">on</td>
+        </tr><tr>
+            <td align="left">
+                <a class="link" href="#43f7951bbb35ad373e3a7ac297cd5d37" title="Invisible Membrane Data">Invisible Membrane Data</a>
+            </td>
+            <td align="left">membrane</td>
+            <td align="left">off</td>
+            <td align="left">on</td>
+        </tr><tr>
+            <td align="left">
+                <a class="link" href="#d03fe9a1d21352bf4dc5b13c6e6e3fb4" title="An Application">An Application</a>
+            </td>
+            <td align="left">app</td>
+            <td align="left">on</td>
+            <td align="left">off</td>
+        </tr><tr>
+            <td align="left">
+                <a class="link" href="#c0d677b3bdeec07542e2a912dc47fb77" title="An Invisible Application">An Invisible Application</a>
+            </td>
+            <td align="left">app</td>
+            <td align="left">off</td>
+            <td align="left">off</td>
+        </tr><tr>
+            <td align="left">
+                Peaks Data
+            </td>
+            <td align="left">peaks</td>
+            <td align="left">on</td>
+            <td align="left">on</td>
+        </tr></tbody></table></div></div></div><div class="chapter" title="Chapter&nbsp;2.&nbsp;Figures in Report"><div class="titlepage"><div><div><h2 class="title"><a name="d0e554"></a>Chapter&nbsp;2.&nbsp;Figures in Report</h2></div></div></div><div class="sect1" title="Membrane Data"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="e30d8b12b9d0e39bbeb6d6513db92b3b"></a>Membrane Data</h2></div></div></div><div class="mediaobject"><img src="./figloop-tutorial_html_files/image-003-hg.png"></div><div class="informaltable"><table width="100%" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="3960*" align="left"><col width="8040*" align="left"></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">
+                    <span class="emphasis"><em>Name</em></span>
+                </td><td style="border-bottom: 0.5pt solid ; " align="left">Membrane Data</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">HandleVisibility</td><td style="border-bottom: 0.5pt solid ; " align="left">on</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">Tag</td><td style="border-bottom: 0.5pt solid ; " align="left">membrane</td></tr><tr><td style="border-right: 0.5pt solid ; " align="right">Visible</td><td style="" align="left">on</td></tr></tbody></table></div></div><div class="sect1" title="Invisible Membrane Data"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="43f7951bbb35ad373e3a7ac297cd5d37"></a>Invisible Membrane Data</h2></div></div></div><div class="mediaobject"><img src="./figloop-tutorial_html_files/image-005-hg.png"></div><div class="informaltable"><table width="100%" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="3960*" align="left"><col width="8040*" align="left"></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">
+                    <span class="emphasis"><em>Name</em></span>
+                </td><td style="border-bottom: 0.5pt solid ; " align="left">Invisible Membrane Data</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">HandleVisibility</td><td style="border-bottom: 0.5pt solid ; " align="left">on</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">Tag</td><td style="border-bottom: 0.5pt solid ; " align="left">membrane</td></tr><tr><td style="border-right: 0.5pt solid ; " align="right">Visible</td><td style="" align="left">off</td></tr></tbody></table></div></div><div class="sect1" title="An Application"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d03fe9a1d21352bf4dc5b13c6e6e3fb4"></a>An Application</h2></div></div></div><div class="mediaobject"><img src="./figloop-tutorial_html_files/image-007-hg.png"></div><div class="informaltable"><table width="100%" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="3960*" align="left"><col width="8040*" align="left"></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">
+                    <span class="emphasis"><em>Name</em></span>
+                </td><td style="border-bottom: 0.5pt solid ; " align="left">An Application</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">HandleVisibility</td><td style="border-bottom: 0.5pt solid ; " align="left">off</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">Tag</td><td style="border-bottom: 0.5pt solid ; " align="left">app</td></tr><tr><td style="border-right: 0.5pt solid ; " align="right">Visible</td><td style="" align="left">on</td></tr></tbody></table></div></div><div class="sect1" title="An Invisible Application"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="c0d677b3bdeec07542e2a912dc47fb77"></a>An Invisible Application</h2></div></div></div><div class="mediaobject"><img src="./figloop-tutorial_html_files/image-009-hg.png"></div><div class="informaltable"><table width="100%" style="border-collapse: collapse;border-top: 0.5pt solid ; border-bottom: 0.5pt solid ; border-left: 0.5pt solid ; border-right: 0.5pt solid ; "><colgroup><col width="3960*" align="left"><col width="8040*" align="left"></colgroup><tbody><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">
+                    <span class="emphasis"><em>Name</em></span>
+                </td><td style="border-bottom: 0.5pt solid ; " align="left">An Invisible Application</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">HandleVisibility</td><td style="border-bottom: 0.5pt solid ; " align="left">off</td></tr><tr><td style="border-right: 0.5pt solid ; border-bottom: 0.5pt solid ; " align="right">Tag</td><td style="border-bottom: 0.5pt solid ; " align="left">app</td></tr><tr><td style="border-right: 0.5pt solid ; " align="right">Visible</td><td style="" align="left">off</td></tr></tbody></table></div></div></div></div></body></html>
