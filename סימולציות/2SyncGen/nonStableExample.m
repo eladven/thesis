@@ -3,17 +3,17 @@ clear all
 global Ls Lg Ltot J Rs  Dp mif Rl Rtot RT Tm
 
 
-Ls =  3.1929
-Lg =  3.1929
+Ls =  0.01
+Lg =  0
 Ltot = Ls + Lg;
-J = 19.9051
-Rs =  1.1786
-Dp = 0.2433
-mif = -4.0035
-Rl = 3.2130
+J = 1
+Rs =  0.01
+Dp = 0.2
+mif = 1
+Rl = 3
 Rtot = Rl + Rs;
 RT = Rtot + Rl;
-Tm = 1.3796
+Tm = 200
 
 w0 = roots([Dp*Ltot^2 ,-Tm*Ltot^2, Dp*RT^2+mif^2*RT, -Tm*RT^2])
 w0 = w0(3)

@@ -3,7 +3,7 @@ function h = initValues(Rl_param,w0_param,Tm_param,useW0param)
 % Eitan one generator with nominal power of 5kW V = 330 [v] (phase to
 % ground)
 global Ls Lg Ltot J Rs w0 Dp mif Rl Rtot RT Tm iq0 id0 
-Ls = 2.2*10^-3; % [H] - Eitan
+Ls = 0.4*10^-3; % 2.2*10^-3[H] - Eitan
 Lg = 0;
 Ltot = Lg+Ls;
 J = 0.2; % [kg*Sec]  - Eitan
