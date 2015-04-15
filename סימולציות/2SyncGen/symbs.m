@@ -1,4 +1,5 @@
 syms R_ L_ w1_ mif_ Dp_ w2_ d_ Rl_ J_
+initValues(18.8,2*50*pi,0,1);
 A1 = [-R_ w1_*L_ 0;-w1_*L_ -R_ -mif_;0 mif_ -Dp_]
 A2 = [-R_ w2_*L_ 0;-w2_*L_ -R_ -mif_;0 mif_ -Dp_]
 B1 = [Rl_*cos(d_) -Rl_*sin(d_) 0;Rl_*sin(d_) Rl_*cos(d_) 0;0 0 0]
