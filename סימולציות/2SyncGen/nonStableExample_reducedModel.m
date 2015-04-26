@@ -21,8 +21,8 @@ iq0 = (Dp*w0-Tm)/mif
 id0 = (-Rtot*iq0-mif*w0-Rl*iq0)/(w0*Ltot)
 
 syms R_ L_ w1_ mif_ Dp_ w2_ d_ Rl_ J_ Tm_;
-A = [-Dp_/J_ + R_*mif_^2/(J_*(R_^2-Rl_^2)),-Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2)),0;
-    -Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2)),-Dp_/J_ + R_*mif_^2/(J_*(R_^2-Rl_^2)),0;
+A = [-Dp_/J_ - R_*mif_^2/(J_*(R_^2-Rl_^2)),+Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2)),0;
+    +Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2)),-Dp_/J_ - R_*mif_^2/(J_*(R_^2-Rl_^2)),0;
       -1,1,0]
 B = [Tm_/J_;Tm_/J_;0]
 y=[w1_;w2_;d_]
