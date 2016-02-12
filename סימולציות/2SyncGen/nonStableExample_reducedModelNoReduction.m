@@ -3,7 +3,7 @@ clear all
 global Ls Lg Ltot J Rs  Dp mif Rl Rtot RT Tm
 
 
-Ls =  0%10^-4;
+Ls =  10^-4;
 Lg =  0;
 Ltot = Ls + Lg;
 J = 0.2;
@@ -26,5 +26,12 @@ B = [-mif_^2*(Rl_*w2_*(-R_^2+Rl_^2+L_^2*w1_*w2_)*cos(d_)+R_*(w1_*(R_^2-Rl_^2+L_^
      -mif_^2*(Rl_*w1_*(-R_^2+Rl_^2+L_^2*w2_*w1_)*cos(d_)+R_*(w2_*(R_^2-Rl_^2+L_^2*w1_^2)-L_*Rl_*w1_*(w2_+w1_)*sin(d_))) / (J_*(R_^4+(Rl_^2+L_^2*w1_*w2_)^2+R_^2*(-2*Rl_^2+L_^2*(w1_^2+w2_^2))))+Tm_/J_;...
      0]
 f = A+B
+y=[w1_;w2_;d_];
 f_s = subs(f,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm])
 f_s2 = double(subs(f_s,[w1_ w2_ d_],[w0 w0 0]))
+
+%%%%% Jacobian
+T = simplify(jacobian(f,y))
+T1 = subs(T,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm]);
+T2 = subs(T1 ,[w1_  w2_ d_],[w0 w0 0])
+eig_eq_d_zero = eig(double(T2))

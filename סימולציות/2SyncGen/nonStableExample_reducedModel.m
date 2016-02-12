@@ -29,3 +29,31 @@ y=[w1_;w2_;d_]
 f = A*y+B
 f_s = subs(f,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm])
 f_s2 = double(subs(f_s,[w1_ w2_ d_],[w0 w0 0]))
+
+%%%%% Jacobian
+T = jacobian(f,y)
+T1 = subs(T,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm]);
+T2 = subs(T1 ,[w1_  w2_ d_],[w0 w0 0])
+eig_eq_d_zero = eig(double(T2))
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Neglect only L^ but not L
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+A = [-Dp_/J_ - R_*mif_^2/(J_*(R_^2-Rl_^2)),+Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2))+L_*Rl_*R_*mif_^2*(w1_+w2_)*sin(d_)/(J_*(R_^2-Rl_^2)^2),0;
+    +(Rl_*mif_^2*cos(d_)/(J_*(R_^2-Rl_^2))-L_*mif_^2*Rl_*R_*(w1_+w2_)*sin(d_))/(J_*(R_^2-Rl_^2)^2),-Dp_/J_ - R_*mif_^2/(J_*(R_^2-Rl_^2)),0;
+      -1,1,0]
+B = [Tm_/J_;Tm_/J_;0]
+y=[w1_;w2_;d_]
+f = A*y+B
+f_s = subs(f,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm])
+f_s2 = double(subs(f_s,[w1_ w2_ d_],[w0 w0 0]))
+
+%%%%% Jacobian
+T = simplify(jacobian(f,y))
+T1 = subs(T,[R_ L_  mif_ Dp_  Rl_ J_ Tm_],[Rtot Ltot mif Dp Rl J Tm]);
+T2 = subs(T1 ,[w1_  w2_ d_],[w0 w0 0])
+eig_eq_d_zero = eig(double(T2))
+
+
+

@@ -1,0 +1,516 @@
+\documentclass[landscape,a0,final]{a0poster}
+%%% Option "a4resizeable" makes it possible ot resize the
+%   poster by the command: psresize -pa4 poster.ps poster-a4.ps
+%   For final printing, please remove option "a4resizeable" !!
+
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{shadow}
+\usepackage{multicol}
+
+
+%%% Size of Poster etc.
+\newlength{\textArea}
+\setlength{\textArea}{108cm}  % for a0b = A0-big !!
+\setlength{\columnsep}{3cm}
+\setlength{\columnseprule}{0.5mm}
+\setlength{\parindent}{0.0cm}
+
+
+%%% \mysection - replacement for \section
+% with colored section-title and automatic numbering
+%\newcounter{section}
+\setcounter{section}{1}
+\newcommand{\mysection}[1]{
+  \vspace{1cm}
+  \begin{center}
+    \shabox{\colorbox{mainCol}{
+      \begin{minipage}[c][50pt][c]{0.9\columnwidth}
+        \vspace{2.5mm}
+        \begin{center}
+          {\bf\textcolor{TextCol}{\arabic{section}.~#1}}
+        \end{center}
+        \vfill
+      \end{minipage}
+    }}
+  \end{center}
+  \par\vspace{0.75cm}
+  \stepcounter{section}
+}
+
+%%% \myplainsection - replacement for \section
+\newcommand{\myplainsection}[1]{
+  \vspace{2cm}
+  {\bf\textcolor{TextCol}{\arabic{section}.~#1}}
+  \par\vspace{0.75cm}
+  \stepcounter{section}
+}
+
+%%% \mysubsection - replacement for \subsection
+\newcommand{\mysubsection}[1]{
+  \vspace{1cm}
+  {\bf\textcolor{TextCol}{#1}}
+  \par\vspace{0.75cm}
+}
+
+%%% \myfig - replacement for \figure
+% necessary, since in multicol-environment \figure won't work
+\newcommand{\myfig}[3][0]{
+\begin{center}
+  \vspace{0.5cm}
+  \scalebox{0.75}{\includegraphics[width=#3\hsize,angle=#1]{#2}}
+  \nobreak\medskip
+\end{center}}
+
+%%% \mycaption - replacement for \caption
+% necessary, since in multicol-environment \figure and
+% therefore \caption won't work
+%\newcounter{figure}
+\setcounter{figure}{1}
+\newcommand{\mycaption}[1]{
+  \vspace{0.8cm}\par
+  {\renewcommand{\baselinestretch}{1}\small
+   \setbox0=\hbox{\sc Figure \arabic{figure}: \sl #1}
+   \ifdim\wd0>\hsize
+     {\sc Figure \arabic{figure}: \sl #1}
+   \else
+     \centerline{\box0}
+   \fi
+   \par
+   \stepcounter{figure}
+  }
+}
+
+
+
+
+\usepackage{array}
+\newcommand{\arraylines}[1]{{\newcolumntype{r}{c|}#1}}
+\newcommand{\arraydashlines}[1]{{\newcolumntype{l}{c:}#1}}
+\usepackage{arydshln}
+
+%#1 Size of minipage 1
+%#2 Contents of partition 1
+%#3 Size of minipage 2
+%#4 Contents of partition 2
+% \textwidth is less than 125mm
+\newcommand{\bp}[4]{%
+\begin{minipage}{16.1cm}
+  \begin{minipage}{#1}
+  #2
+  \end{minipage} \hfill \begin{minipage}{#3}
+  #4
+ \end{minipage}
+\end{minipage}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Begin of Document
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definition of Colors
+% Background- and Text-color
+\definecolor{mainCol}{rgb}{0.91,0.91,1}
+\definecolor{TextCol}{rgb}{0,0,0}
+
+\setlength{\sboxrule}{2pt}
+\setlength{\sboxsep}{0pt}
+
+\vspace*{0.5cm}
+
+%%% Topic and Posternumber
+\shabox{\colorbox{mainCol}{
+  \begin{minipage}[c][0.1\textArea][c]{0.1\textArea}
+    \begin{center}
+      {\LARGE Imperial College}\\
+      \vspace{1cm}
+      {\large\sc of Science, Technology and Medicine}
+    \end{center}
+  \end{minipage}}}\hfill
+%%% Title und Author
+\shabox{\colorbox{mainCol}{
+  \begin{minipage}[c][0.1\textArea][c]{0.78\textArea}
+\begin{center}
+{\vspace{1.5cm}\Huge Control of Grid-Connected DC-AC Power Converters}\\
+\vspace{1.2cm}
+{\Large {\sc Qing-Chang Zhong, Tim Green, Jun Liang and George Weiss}\\
+\vspace{1.2cm}
+Control and Power Group\\
+Department of Elctrical and Electronic Engineering\\
+%Imperial College of Science, Technology and Medicine\\
+\vspace{1cm}
+%\textit{g.weiss@ic.ac.uk}
+}
+\end{center}
+\end{minipage}}}\hfill
+%%% University-emblem
+\shabox{\colorbox{mainCol}{
+  \begin{minipage}[c][0.1\textArea][c]{0.1\textArea}
+    \begin{center}
+      \myfig{ICLogo.eps}{0.98}
+    \end{center}
+  \end{minipage}}}\vspace{1.5cm}
+
+
+%%% Begin of Multicols-Enviroment
+\begin{multicols}{6}
+
+%%% Abstract
+
+\begin{center}
+%\vspace{1cm}
+{\large{\bf\textcolor{TextCol}{Abstract}}}
+\end{center}
+\par
+%\vspace{1.5cm}
+
+ Electric utilities have historically satisfied customer demand by generating
+ electricity centrally and distributing it through an extensive transmission
+ and distribution network.
+ For various reasons, an alternative approach under consideration is to
+ generate part of the electricity locally in small generating units.
+ This is called distributed generation (DG).
+ Most of the DG technologies require DC-AC power converters to interface
+ with the local grid.
+ This research explores the control problems existing in such grid-connected converters.
+ These problems include voltage control, power control and neutral point control.
+ Repetitive control is used in the voltage controller to enhance the tracking
+ performance of the converter with a sinusoidal reference voltage, which
+ is generated by the power controller, so that the local consumer receives
+ a clean sinusoidal voltage.
+ The voltage controller is designed using the solution of the standard $ H^{\infty } $ control problem.
+ Decoupling the effect of the required active power and reactive power on
+ the reference voltage, a power controller is designed to generate a reference voltage in 
+ a small range around the nominal value, guaranteeing the current flowing to the grid within a given limited range.
+ The neutral point control problem is to maintain the two contacts of the
+ DC source at equal voltages (of opposite sign) with respect to the neutral,
+ even in the presence of an unbalanced load.
+ A circuit topology for the neutral point is proposed.
+ After modeling this topology, an $ H^{\infty } $ controller is designed, taking into account the rank condition and the
+ selection of weighting functions etc.
+ Simulations are given and experiements are being undertaken.
+
+\vspace{5mm}
+%%% Introduction
+\mysection{System Description}
+
+%\myfig{distrib_gen.eps}{0.8}
+
+\myfig{blockdiagram.eps}{1.0}
+%\vspace{5mm}
+
+%\myfig{controlstructure.eps}{0.8}
+
+Control problems involved in this project:
+\begin{itemize}
+\item voltage control: \( V_{c} \) as close to $V_{ref}$ as possible
+\item power control: to regulate the active power and the reactive power injected into
+the grid
+\item neutral point control: the neutral point should not be drifting with respect to the DC link
+\item phase-locked loop (PLL): to synchronize the converter with the grid
+\end{itemize}
+
+\mysection{Voltage Control}
+
+Single-phase circuit
+
+\myfig{singlephaseelec.eps}{1.2} 
+
+A robust repetitive control scheme
+\myfig{../../work/RobustRC/contstruc_v_c.eps}{0.7} 
+
+Formulation into an $H^\infty$ problem
+\myfig{../../work/RobustRC/struct_RRC_c.eps}{0.8} 
+
+\mysection{Power Control}
+\mysubsection{Decoupling and reference voltage}
+\myfig{vcphasor.eps}{0.85}
+
+Assume that \( \bar{V}_{g}=V_{g}\angle 0 \) and the current to the
+grid is \( \bar{I}_{g} \), as shown in the above phasor diagram, then the active power and the reactive power injected
+into the grid are, respectively,
+\[
+P=I_{gx}V_{g}\textrm{ and }Q=-I_{gy}V_{g}.\]
+
+The output voltage is \begin{eqnarray*}
+ & \bar{V}_{c} & =\bar{V}_{g}+\bar{I}_{g}Z_{g}\angle \theta _{zg}\\
+ &  & =\bar{V}_{g}+I_{gx}Z_{g}\angle \theta _{zg}+jI_{gy}Z_{g}\angle \theta _{zg}.
+\end{eqnarray*}
+
+Defining the following static models:
+
+\[V_{P}\doteq \frac{Z_{g}}{V_{g}}P \textrm{  and  } V_{Q}\doteq \frac{Z_{g}}{V_{g}}Q,\]
+
+then the voltage reference is given by\[
+\bar{V}_{ref}\approx \bar{V}_{c}=\bar{V}_{g}+V_{P}\angle \theta _{zg}+V_{Q}\angle (\theta _{zg}-\frac{\pi }{2}).\]
+The corresponding control structure, as if two decoupled sub-systems, is
+
+\myfig{PQcontrol.eps}{0.8} 
+
+Ways to obtain \( P_{ref} \), \( Q_{ref} \):
+\begin{itemize}
+\item using the reference values provided by the network manager;
+\item set \( Q_{ref}=0 \) (to minimize current \( I_{g} \));
+\item set \( Q_{ref} \) such that the amplitude of the voltage reference
+is in a small range 
+\end{itemize}
+
+\mysubsection{Voltage constraint}
+\myfig{PQsmalltolerence.eps}{0.8} 
+
+\[ A_{x}=V_{g}+V_{P}\cos \theta _{zg} \]
+\[ A_{y}=V_{P}\sin \theta _{zg} \]
+
+Amplitude equation (when \( A \) is not inside the band):\[
+(A_{x}+V_{Q}\cos \theta _{A})^{2}+(A_{y}+V_{Q}\sin \theta _{A})^{2}=V^{2}_{gn}(1+\delta )^{2}\]
+where \( \theta _{A}=\left\{ \begin{array}{c}
+\theta _{zg}+\frac{\pi }{2}\qquad (A\textrm{ is outer},\textrm{ }\delta >0)\\
+\theta _{zg}-\frac{\pi }{2}\qquad (A\textrm{ is inner},\textrm{ }\delta <0)
+\end{array}\right. . \)
+
+The corresponding \( V_{Q} \) (with minimal absolute
+value) is
+\[
+V_{Q}=V_{g}\sin \theta _{zg}(\sqrt{1-\frac{A^{2}_{x}+A^{2}_{y}-V^{2}_{gn}(1+\delta )^{2}}{(V_{g}\sin \theta _{zg})^{2}}}-1)\]
+and the reference reactive power is \[ Q_{ref}=\frac{V_{g}}{Z_{g}}V_{Q}. \]
+
+If \( A \) is on the outer side of the band, then \( V_{Q}<0 \)
+(\( Q_{ref}<0 \)); if \( A \) is on the inner side of the band,
+then \( V_{Q}>0 \) (\( Q_{_{ref}}>0 \)).
+
+If \( A \) is inside the band, then \( V_{Q}=0 \) (\( Q_{ref}=0 \)). 
+
+\mysubsection{Current constraint}
+
+The current flowing to the grid can be limited by the circle in the figure below.
+\myfig{PQcontrol_Imsmall.eps}{0.8} 
+
+\begin{itemize}
+\item \( \theta _{zg} \) should be as close to \( \frac{\pi }{2} \) as possible;
+\item \( V_{Qm}=\frac{Z_{g}}{V_{g}}\sqrt{V^{2}_{g}I_{gm}^{2}-P^{2}} \)
+\item the minimum \( \delta  \) can be found for a given \( P \);
+\item the relationship between \( P_{max} \) and \( V_{g} \) can be found.
+\end{itemize}
+
+%\vspace{5mm}
+\mysection{Neutral Point Control}
+%\vspace{5mm}
+
+\begin{itemize}
+\item unbalanced loads need a current path and a stable neutral point
+
+\begin{itemize}
+\item neutral point shifting
+\item unbalanced or modulated output voltage
+\item the presence of zero-sequence voltage or DC component 
+\item larger neutral current
+\item common-mode voltage
+\end{itemize}
+\item multi-level converters need a stable neutral point
+\end{itemize}
+
+%\vspace{5mm}
+\mysubsection{Existing schemes}
+
+%\vspace{5mm}
+\bp{6.5cm}{
+\myfig{../../work/NeutralLeg/splitDC_c.eps}{1.2}
+\centering Split DC link
+}{9.2cm}{
+\myfig{../../work/NeutralLeg/conventional4leg_c.eps}{1.2} 
+Conventional Neutral leg
+}
+
+%\vspace{5mm}
+\mysubsection{The proposed scheme}
+
+\myfig{../../work/NeutralLeg/circuit_2CR_c.eps}{0.9}
+
+\[
+V_{DC}=V_{+}-V_{-} \;  \textrm{and}  \; V_{ave}=\frac{V_{+}+V_{-}}{2},\]
+\[
+V_{0}=-\frac{C_{N1}-C_{N2}}{C_{N1}+C_{N2}}\frac{V_{DC}}{2},\]
+
+\[
+i_{c}=(C_{N1}+C_{N2})\frac{d(V_{ave}-V_{0})}{dt},\]
+\[
+u_{N}=\frac{p}{2}V_{DC}+V_{ave},\]
+where $p$ is the average voltage of the IGBT firing pulse (amplitude: $ \pm 1$ ).
+
+\myfig{../../work/NeutralLeg/blkd_neuL_V0.eps}{0.8} 
+
+Formulation into an $ H_{\infty }$ control problem
+
+\myfig{../../work/NeutralLeg/controlBlk_Hinf_c.eps}{1} 
+\[
+\left[ \begin{array}{c}
+z\\
+y
+\end{array}\right] =\mathbf{P}\left[ \begin{array}{c}
+w\\
+u
+\end{array}\right] ,\qquad u=\mathbf{K}\: y,\]
+where
+\arraylines{\small\arraydashlines{
+\[
+\mathbf{P}=\left[ \begin{array}{ccrlc}
+A & 0 & 0 & B_{1} & B_{2}\\
+B_{v}C_{1a} & A_{v} & 0 & B_{v}D_{11a} & B_{v}D_{12a}\\
+B_{u}C_{1b} & 0 & A_{u} & B_{u}D_{11b} & B_{u}D_{12b}\\
+\hline D_{v}C_{1a} & C_{v} & 0 & D_{v}D_{11a} & D_{v}D_{12a}\\
+D_{u}C_{1b} & 0 & C_{u} & D_{u}D_{11b} & D_{u}D_{12b}\\
+\hdashline C_{2} & 0 & 0 & D_{21} & D_{22}
+\end{array}\right] ,\]
+}with\[
+A=\left[ \begin{array}{cc}
+0 & \frac{1}{L_{N}}\\
+-\frac{1}{C_{N1}+C_{N2}} & 0
+\end{array}\right] ,\: B_{1}=\left[ \begin{array}{cc}
+0 & \frac{\rho }{L_{N}}\\
+\frac{1}{C_{N1}+C_{N2}} & 0
+\end{array}\right] ,\: B_{2}=\left[ \begin{array}{c}
+\frac{V_{DC}}{2L_{N}}\\
+0
+\end{array}\right]\]
+ \[
+C_{2}=\left[ \begin{array}{cc}
+-1 & 0\\
+0 & 1
+\end{array}\right] ,\: D_{21}=\left[ \begin{array}{cc}
+1 & 0\\
+0 & \rho 
+\end{array}\right] ,\: D_{22}=\left[ \begin{array}{c}
+0\\
+0
+\end{array}\right] ,\]
+\[
+C_{1a}=\left[ \begin{array}{cc}
+0 & 1
+\end{array}\right] ,\: D_{11a}=\left[ \begin{array}{cc}
+0 & \rho 
+\end{array}\right] ,\: D_{12a}=\left[ \begin{array}{c}
+0
+\end{array}\right] ,\]
+\[
+C_{1b}=\left[ \begin{array}{cc}
+0 & 1
+\end{array}\right] ,\: D_{11b}=\left[ \begin{array}{cc}
+0 & \rho 
+\end{array}\right] ,\: D_{12b}=\left[ \begin{array}{c}
+\frac{V_{DC}}{2}
+\end{array}\right] .\]
+
+
+\mysubsection{Weighting functions}
+\[
+W_{u}(s)=\left[ \begin{array}{rc}
+A_u & B_u\\
+\hline C_u & D_u
+\end{array}\right] =\frac{k}{\omega _{i}L_{N}}\frac{s+\omega _{i}}{s+\omega _{l}},\]
+\[
+W_{v}(s)=\left[ \begin{array}{rc}
+A_v & B_v\\
+\hline C_v & D_v
+\end{array}\right]=\frac{g\omega _{h}}{\omega _{i}}\frac{(s+\omega _{o})(s+\omega _{i})}{(s+\omega _{l})(s+\omega _{h})}.\]
+}%for arraylines
+
+
+\mysubsection{A design example}
+
+Neutral leg parameters: \( L_{N}=10 \)mH, \( C_{N1}=C_{N2}=4000\mu  \)F, \( V_{DC}=900 \)V. 
+
+Tuning parameters: \( k=0.1 \), \( g=10 \),\hfill \( \rho =0.0001 \)
+and \( \delta _{1}=\delta _{2}=10^{-6} \). 
+
+Weighting parameters: \( \omega _{l}=0.001 \)rad/sec, \( \omega _{h}=10^{8} \)rad/sec, \hfill
+\( \omega _{o}=1500 \)rad/sec \hfill and \( \omega _{i}=10000 \)rad/sec. 
+
+Using MATLAB\texttrademark \( \mu  \)-analysis toolbox, the \( H^{\infty } \)
+controller \( \mathbf{K}=\left[ \begin{array}{cc}
+\mathbf{K}_{i} & \mathbf{K}_{v}
+\end{array}\right]  \) is obtained as
+
+\scalebox{0.57}{\(
+\mathbf{K}=\left[ \begin{array}{c}
+\frac{2.2222e-009(s+1.59e012)(s+9.97e007)(s+0.001302)(s^{2}+0.0007977s+1.957e-007)}{(s+1e008)(s+2.392e004)(s+1.25)(s+0.06372)(s+0.001)}\\
+\\
+\frac{-0.0022222(s+4.906e009)(s-3.057e005)(s+1.249)(s+0.001)(s-1.585e-006)}{(s+1e008)(s+2.392e004)(s+1.25)(s+0.06372)(s+0.001)}
+\end{array}\right] ^{T}.\)}
+
+\mysubsection{Controller reduction}
+The obtained controller is not realistic due to the high-frequency modes. It has to be reduced, e.g. according to the following rules:
+\begin{itemize}
+\item The mode resulted from \( \omega _{l} \) should be changed back to
+\( s=0 \);
+\item The small zero with comparison to \( \omega _{l} \) should be changed
+back to \( s=0 \);
+\item The zeros and poles very close to each other should be canceled;
+\item Any zero or pole which corresponds to a corner frequency larger
+than \( \omega _{i} \) (here, \( 10^{4} \)rad/sec) are changed by
+omitting the corresponding \( s \) in the transfer function, i.e.,
+substituted by a proportional gain;
+\item No differentiator in the controller due to the requirement of internal
+stability.
+\end{itemize}
+The reduced controller is{\small\[
+\mathbf{K}=\left[ \begin{array}{cc}
+0.1473\frac{(s+0.001302)(s+0.0007977)}{(s+1.25)(s+0.06372)} & 1.3933\frac{s-1.585e-006}{s+0.06372}
+\end{array}\right] .\]}
+It can be further reduced to a P controller\[
+\mathbf{K}_{p}=\left[ \begin{array}{cc}
+0.1473 & 1.3933
+\end{array}\right] .\]
+
+\bp{7.8cm}{\myfig{../../work/NeutralLeg/bode_Hinf_15_c.eps}{1.2} 
+}{7.8cm}{\myfig{../../work/NeutralLeg/bode_T_Hinf_15_c.eps}{1.2}
+}
+\bp{7.8cm}{Bode plots of the controller
+}{7.8cm}{Bode plots of transfer functions from $i_N$ to $y$
+}
+
+\mysection{Simulation Results}
+
+\mysubsection{Voltage control}
+
+\bp{7.8cm}{\myfig{../../work/RobustRC/Vcerror_c.eps}{1.2} 
+}{7.8cm}{\myfig{../../work/RobustRC/Vg_c.eps}{1.2}
+}
+
+\mysubsection{Neutral point control}
+
+A single-phase buck converter is used to simulate the neutral
+current \( i_{N} \) of a three-phase converter. The fundamental frequency
+of this buck converter can be set at different frequencies to simulate
+different harmonic components in a neutral line. Here, \( f_{s}=10 \)kHz and the neutral current 
+is about \( 68 \)A peak at \( 50 \)Hz. The obtained $V_{ave}$  is less than $0.4$V.
+
+\bp{7.8cm}{
+\myfig{../../work/NeutralLeg/50eILINHinf15_c.eps}{1.2}
+}{7.8cm}{
+\myfig{../../work/NeutralLeg/50uNIcHinf15_c.eps}{1.2} 
+}
+The simulation results of power control are omitted.
+%%% Figures:
+%\begin{center}
+  % first argument: eps-file
+  % second argument: stretching-factor relative to Column-width (<1)
+  % optional argument: rotation angle (0-360), default=0
+  %\myfig[90]{}{0.5}
+  %\mycaption{Emblem of the University of Regensburg (rotated by $90^\circ$).}
+%\end{center}
+
+{\bf\large Acknowledgement}
+
+This project is supported by the EPSRC (Grant No. GR/N38190/1).
+
+%%% References
+\bibliographystyle{alpha}
+\bibliography{poster-example}
+
+
+\end{multicols}
+
+\end{document}

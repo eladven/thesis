@@ -7,7 +7,7 @@ Ls = 0.1*10^-3; % 2.2*10^-3[H] - Eitan  %% The value for getting unstability 0.1
 Lg = 0;
 Ltot = Lg+Ls;
 J = 0.2; % [kg*Sec]  - Eitan
-Rs = 0.011; % [ohm] - Eitan
+Rs = 0.011; %0.152 [ohm] - Eitan
 
 Dp = 1.7; %1.7[J*Sec] - Eitan
 mif = -1.38; %Vivek Mf 0.0052 [H]
