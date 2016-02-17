@@ -1,36 +1,31 @@
- TwoSyncGenSymbolicDynamics;
+close all
+w = warning ('off','all');
+rmpath('folderthatisnotonpath')
+warning(w)
 
-global Ls Lg Ltot J Rs w0 Dp mif Rl Rtot RT Tm iq0 id0 
-initValuesVivek(300,2*20*pi,0,1);
+global Ltot J Dp mif Rl Rtot Tm
+initValuesEitan;
+%initValuesVivek;
+%initValuesNonStableExample;
 
 T = 5;
 x0 = [19;-35;0;19;-32;0;0.5];
 
+
 [t,x] = ode15s(@modelDynamics,[0 T],x0);
+plotXGraphs(x,t);
 
+[id0, iq0, w0, d0] = calculateEquilibrium(Ltot,J,Dp,mif,Rl,Rtot,Tm);
+eig = calculateEigOfJacobianOfEqPointForOrigSys(Ltot,J,Dp,mif,Rl,Rtot,Tm,id0, iq0, w0, d0);
+display('This system is ');
+if (max(real(eig)) >0)
+    display('UNSTABLE');
+else
+    display('STABLE');
+end
 
-figure (1)
-plot(t,x(:,7))
-st = sprintf('Parameters: Ltot=%f, J=%f, Rs=%f, Dp=%f, mif=%f, Rl Rtot RT Tm', ...
-   Ltot,J,Rs,Dp,mif)
-title(st);
-xlabel('time [sec]');
-ylabel('phase [rad]');
-hold on 
-legend('delta','delta-hat')
+%calculateStabilityConditionOFGTilda
+%calculateEigOFFWithEEqZeroAtEquilibrium
 
-figure (2);
-plot(t,[x(:,3) x(:,6)] )
-xlabel('time [sec]');
-ylabel('angular velocity [rad/sec]');
-hold on 
-legend('w1','w2','w1-hat','w2-hat')
-
-figure (3);
-plot(t,x(:,1:2))
-xlabel('time [sec]');
-ylabel('Current [Amp]');
-legend('id1','iq1','id2','iq2')
-hold on 
-legend('id1','iq1','id1-hat','iq1-hat')
+searchStabilityOnTmMif(10,4000,-1,-15,20);
 

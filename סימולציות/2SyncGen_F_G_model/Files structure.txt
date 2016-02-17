@@ -2,3 +2,4 @@ simulation.m - This file contains the simulation script by itself.
 TwoSyncGenSymbolicDynamics. - This scripts builds all the symbolic variables
 	for the simulation (with the _ suffix). These variable includes:
 	x_, lambda_, h_ and F_dynamic.
+initValuesX (where x can be many names) - this script set the concrete model parameters.
