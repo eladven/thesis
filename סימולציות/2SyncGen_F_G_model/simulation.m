@@ -4,9 +4,9 @@ rmpath('folderthatisnotonpath')
 warning(w)
 
 global Ltot J Dp mif Rl Rtot Tm
-initValuesEitan;
+%initValuesEitan;
 %initValuesVivek;
-%initValuesNonStableExample;
+initValuesNonStableExample;
 displayParameters(Ltot,J,Dp,mif,Rl,Rtot,Tm);
 
 T = 5;

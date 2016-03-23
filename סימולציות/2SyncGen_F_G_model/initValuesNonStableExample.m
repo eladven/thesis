@@ -11,4 +11,4 @@ Rtot = Rl + Rs;
 RT = Rl + Rtot;
 
 w0 =  50*2*pi; % [rad/sec]
-Tm = w0*(Dp*(Ltot^2*w0^2+RT^2)+mif^2*RT)/(Ltot^2*w0^2+RT^2);
+Tm =  w0*(Dp*(Ltot^2*w0^2+RT^2)+mif^2*RT)/(Ltot^2*w0^2+RT^2);
