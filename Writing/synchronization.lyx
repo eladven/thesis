@@ -1,0 +1,405 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Synchronization
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Synchronization"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Modeling the synchronization problem:
+\end_layout
+
+\begin_layout Standard
+In order to show synchronization, it will be convenient to use the following
+ notation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+\dot{e}=F(e,x)\\
+\dot{x}=G(e,x)
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e\coloneqq\left[\begin{array}{c}
+e_{d}\\
+e_{q}\\
+e_{\omega}\\
+\delta
+\end{array}\right]\coloneqq\left[\begin{array}{c}
+i_{d1}-i_{d2}\\
+i_{q1}-i_{q2}\\
+\omega_{1}-\omega_{2}\\
+\delta
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x\coloneqq\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{\omega}
+\end{array}\right]\coloneqq\left[\begin{array}{c}
+i_{d1}+i_{d2}\\
+i_{q1}+i_{q2}\\
+\omega_{1}+\omega_{2}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets calculate the dynamics of the new notation:
+\end_layout
+
+\begin_layout Standard
+from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dynamics_whole"
+
+\end_inset
+
+ we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda\dot{e}=\varLambda(\dot{z}_{1}-\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}-\left(\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varLambda\frac{d}{dt}\left[\begin{array}{c}
+e_{d}\\
+e_{q}\\
+e_{\omega}\\
+\delta
+\end{array}\right]=\left[\begin{array}{c}
+-R_{tot}(i_{d1}-i_{d2})+L_{s}(\omega_{1}i_{q1}-\omega_{2}i_{q2})+R_{L}cos(\delta)(i_{d1}-i_{d2})+R_{L}sin(\delta)(i_{q1}+i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}-\omega_{2}i_{d2})-R_{tot}(i_{q1}-i_{q2})+R_{L}cos(\delta)(i_{q1}-i_{q2})-R_{L}sin(\delta)(i_{d1}+i_{d2})-mi_{f}(\omega_{1}-\omega_{2})\\
+mi_{f}(i_{q1}-i_{q2})-D_{p}(\omega_{1}-\omega_{2})\\
+-(\omega_{1}-\omega_{2})
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(a+b)(x-y)+(a-b)(x+y)=2(ax-by)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{1}i_{q1}-\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right]=\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}e_{d}+e_{w}x_{d}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]\dot{e}=\left[\begin{array}{cccc}
+-R_{tot}+R_{L}cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]e+\left[\begin{array}{c}
+R_{L}sin(\delta)x_{2}\\
+-R_{L}sin(\delta)x_{1}\\
+0\\
+0
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to see that 
+\begin_inset Formula $F(0,x)=0$
+\end_inset
+
+, which shows that the manifold 
+\begin_inset Formula $\epsilon=\left\{ (x,e)|e=0\right\} $
+\end_inset
+
+is invariant manifold.
+\end_layout
+
+\begin_layout Standard
+For 
+\begin_inset Formula $x$
+\end_inset
+
+ dynamics, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda\dot{x}=\varLambda(\dot{z}_{1}+\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}+\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda\frac{d}{dt}\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{\omega}
+\end{array}\right]=\left[\begin{array}{c}
+-R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})-R_{L}cos(\delta)(i_{d1}+i_{d2})-R_{L}sin(\delta)(i_{q1}-i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-R_{L}cos(\delta)(i_{q1}+i_{q2})+R_{L}sin(\delta)(i_{d1}-i_{d2})-mi_{f}(\omega_{1}+\omega_{2})\\
+mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+(a+b)(x+y)+(a-b)(x-y)=2(ax+by)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{1}i_{q1}+\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]=\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\varLambda\dot{x}=\left[\begin{array}{ccc}
+-R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]x+\left[\begin{array}{c}
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
+2T_{m}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Synchronization theorem:
+\end_layout
+
+\begin_layout Standard
+We would like to prove that if the initial state of the two generators are
+ sufficiently close to each other, i.e 
+\begin_inset Formula $||e(0)||$
+\end_inset
+
+ is small, then, under some assumptions, the two generators will synchronize,
+ meaning that 
+\begin_inset Formula $lim_{t\to\infty}e(t)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset citation
+LatexCommand citet
+key "JonesRadclifTabor1995"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\end_body
+\end_document
