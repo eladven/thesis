@@ -85,7 +85,585 @@ name "cha:equivalence_pont"
 \end_layout
 
 \begin_layout Standard
-We consider a 
+First, we will show that the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dynamics_whole"
+
+\end_inset
+
+ has equilibrium point, and those equilibrium point have the structure 
+\begin_inset Formula $z_{1}^{0}=z_{2}^{0}=z^{0}$
+\end_inset
+
+ , 
+\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}$
+\end_inset
+
+.
+ For proving that, we will start form the algebraic equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c|c|c}
+\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
+\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
+\hline -e_{3}^{T} & e_{3}^{T} & 0
+\end{array}\right]\left[\begin{array}{c}
+z_{1}\\
+z_{2}\\
+\delta
+\end{array}\right]+T_{m}\left[\begin{array}{c}
+e_{3}\\
+e_{3}\\
+0
+\end{array}\right]=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At the seventh line (
+\begin_inset Formula $\dot{\delta})$
+\end_inset
+
+ we have 
+\begin_inset Formula 
+\begin{equation}
+-\omega_{1}^{0}+\omega_{2}^{0}=0\longrightarrow\omega_{1}^{0}=\omega_{2}^{0}\coloneqq\omega^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the third line (
+\begin_inset Formula $\dot{\omega}_{1})$
+\end_inset
+
+ and the sixth line (
+\begin_inset Formula $\dot{\omega}_{2})$
+\end_inset
+
+ we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+mi_{f}i_{q1}^{0}-D_{p}\omega_{1}^{0}=0\\
+mi_{f}i_{q2}^{0}-D_{p}\omega_{2}^{0}=0
+\end{array}\right.\longrightarrow\left\{ \begin{array}{c}
+mi_{f}i_{q1}^{0}-D_{p}\omega^{0}=0\\
+mi_{f}i_{q2}^{0}-D_{p}\omega^{0}=0
+\end{array}\right.\longrightarrow i_{q1}^{0}=i_{q2}^{0}=i_{q}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From the first line (
+\begin_inset Formula $\dot{i}_{d1})$
+\end_inset
+
+, the second line (
+\begin_inset Formula $\dot{i}_{q1})$
+\end_inset
+
+, the forth line (
+\begin_inset Formula $\dot{i}_{d2})$
+\end_inset
+
+ and the fifth line (
+\begin_inset Formula $\dot{i}_{q2})$
+\end_inset
+
+ we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+-R_{tot}i_{d1}^{0}+\omega_{0}L_{s}i_{q}^{0}-R_{L}cos(\delta_{0})i_{d2}^{0}+R_{L}sin(\delta_{0})i_{q}^{0}=0\\
+-\omega_{0}L_{s}i_{d1}^{0}-R_{tot}i_{q}^{0}-mi_{f}\omega_{0}-R_{L}sin(\delta_{0})i_{d2}^{0}-R_{L}cos(\delta_{0})i_{q}^{0}=0\\
+-R_{tot}i_{d2}^{0}+\omega_{0}L_{s}i_{q}^{0}-R_{L}cos(\delta_{0})i_{d1}^{0}-R_{L}sin(\delta_{0})i_{q}^{0}=0\\
+-\omega_{0}L_{s}i_{d2}^{0}-R_{tot}i_{q}^{0}-mi_{f}\omega_{0}+R_{L}sin(\delta_{0})i_{d1}^{0}-R_{L}cos(\delta_{0})i_{q}^{0}=0
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system of equations can be represented at matrix form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+M\left[\begin{array}{c}
+i_{d1}^{0}\\
+i_{d2}^{0}
+\end{array}\right]=N\label{eq:equilibrium_system}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+M=\left[\begin{array}{cc}
+-R_{tot} & -R_{L}cos(\delta_{0})\\
+-\omega_{0}L_{s} & -R_{L}sin(\delta_{0})\\
+-R_{L}cos(\delta_{0}) & -R_{tot}\\
+R_{L}sin(\delta_{0}) & -\omega_{0}L_{s}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+N=\left[\begin{array}{c}
+i_{q}^{0}\left(\omega_{0}L_{s}+R_{L}sin(\delta_{0})\right)\\
+-mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)\\
+i_{q}^{0}\left(\omega_{0}L_{s}-R_{L}sin(\delta_{0})\right)\\
+-mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subparagraph*
+Rouche'-Capelli -Theorem: 
+\end_layout
+
+\begin_layout Standard
+The system 
+\begin_inset Formula $Mx=n$
+\end_inset
+
+ has a solution if and only if 
+\begin_inset Formula $rank\left[M|n\right]=rank\left[M\right].$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will prove by contrediction that 
+\begin_inset Formula $sin(\delta_{0})$
+\end_inset
+
+=0 is a necessary condition in order that the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equilibrium_system"
+
+\end_inset
+
+ will have solution.
+ lets supposed that 
+\begin_inset Formula $sin(\delta_{0})\ne0$
+\end_inset
+
+ (we want to prove that this is impossible).
+ 
+\end_layout
+
+\begin_layout Standard
+We will start by showing that by showing that 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We will denote 
+\begin_inset Formula $\alpha=\omega_{0}L_{s}+R_{L}sin(\delta_{0})$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=\omega_{0}L_{s}-R_{L}sin(\delta_{0})$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[M|n\right]=\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+-\omega_{0}L_{s} & -R_{L}sin(\delta_{0}) & -mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)\\
+-R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
+R_{L}sin(\delta_{0}) & -\omega_{0}L_{s} & -mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)
+\end{array}\right]\label{eq:M_n}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+ it means that 
+\begin_inset Formula $\omega_{0}L_{s}+R_{L}sin(\delta_{0})=\omega_{0}L_{s}-R_{L}sin(\delta_{0})\longrightarrow R_{L}sin(\delta_{0})=0$
+\end_inset
+
+ which contradicts our assumption.
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta\ne0$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[M|n\right]\longrightarrow\begin{array}{c}
+(a_{3})\\
+(a_{1})\\
+(a_{2})-(a_{4})
+\end{array}\left[\begin{array}{ccc}
+-R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
+-R_{tot} & -R_{L}cos(\delta_{0}) & 0\\
+0 & \beta & 0
+\end{array}\right]\label{eq:MATRIX_1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $cos(\delta^{0})=0$
+\end_inset
+
+ then 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+ If 
+\begin_inset Formula $cos(\delta^{0})\ne0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ref{eq:MATRIX_1}\longrightarrow\begin{array}{c}
+(a_{1})\\
+(a_{2})\beta-(a_{3})R_{L}cos(\delta_{0})\\
+(a_{3})
+\end{array}\left[\begin{array}{ccc}
+-R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
+-R_{tot}\beta & 0 & 0\\
+0 & \omega_{0}L_{s}-R_{L}sin(\delta_{0}) & 0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and then 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $\alpha\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[M|n\right]\longrightarrow\begin{array}{c}
+(a_{1})\\
+(a_{3})\\
+(a_{2})-(a_{4})
+\end{array}\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+-R_{L}cos(\delta_{0}) & -R_{tot} & 0\\
+-\alpha & 0 & 0
+\end{array}\right]\label{eq:MATRIX_2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and then 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $\alpha\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[M|n\right]\longrightarrow\begin{array}{c}
+(a_{1})\\
+(a_{3})\\
+(a_{2})-(a_{4})
+\end{array}\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+-R_{L}cos(\delta_{0}) & -R_{tot} & 0\\
+-\alpha & 0 & 0
+\end{array}\right]\label{eq:MATRIX_3}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and then 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $\alpha\ne0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta\ne0$
+\end_inset
+
+: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[M|n\right]\longrightarrow\begin{array}{c}
+(a_{1})\\
+(a_{1}):\alpha-(a_{3}):\beta\\
+(a_{2})-(a_{4})
+\end{array}\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+\frac{R_{L}cos(\delta_{0})}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
+-\alpha & \beta & 0
+\end{array}\right]\label{eq:MATRIX_4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+if 
+\begin_inset Formula $-\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta}=0$
+\end_inset
+
+ then 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ref{eq:MATRIX_4}\longrightarrow\begin{array}{c}
+(a_{1})\\
+(a_{3})\\
+(a_{2}):\left(-\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
+\end{array}\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+-\alpha & \beta & 0\\
+\frac{4L_{s}R_{tot}\omega^{0}sind(\delta^{0})}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos(\delta^{0})\right)+R_{L}\left(R_{tot}+R_{L}cos(\delta^{0})\right)sin(delta^{0})\right]} & 0 & 0
+\end{array}\right]\label{eq:MATRIX_4-1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+by assumption, 
+\begin_inset Formula $sin(\delta_{0})\ne0$
+\end_inset
+
+ which imply that 
+\begin_inset Formula $rank\left[M|n\right]=3$
+\end_inset
+
+.
+ Obviously, 
+\begin_inset Formula $rank\left[M\right]\le2$
+\end_inset
+
+ which implies that under the assumption that 
+\begin_inset Formula $sin(\delta_{0})\ne0$
+\end_inset
+
+ the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equilibrium_system"
+
+\end_inset
+
+ doesn't have solution.
+ That means that if there is equilibrium point for the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dynamics_whole"
+
+\end_inset
+
+, it must satisfied 
+\begin_inset Formula $sin(\delta_{0})=0$
+\end_inset
+
+ which means that 
+\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If 
+\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow sin(\delta_{0})=0,\qquad cos(\delta^{0})=1.$
+\end_inset
+
+ and now 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+M=\left[\begin{array}{cc}
+-R_{tot} & -R_{L}\\
+-\omega_{0}L_{s} & 0\\
+-R_{L} & -R_{tot}\\
+0 & -\omega_{0}L_{s}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+N=\left[\begin{array}{c}
+i_{q}^{0}\omega_{0}L_{s}\\
+-mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}\right)\\
+i_{q}^{0}\omega_{0}L_{s}\\
+-mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}\right)
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system have one solution: 
+\begin_inset Formula $i_{d1}^{0}=i_{d2}^{0}\coloneqq i_{d}^{0}$
+\end_inset
+
+
 \end_layout
 
 \end_body
