@@ -99,7 +99,7 @@ In order to show synchronization, it will be convenient to use the following
 \left\{ \begin{array}{c}
 \dot{e}=F(e,x)\\
 \dot{x}=G(e,x)
-\end{array}\right.
+\end{array}\right.\label{eq:sync_sestem}
 \end{equation}
 
 \end_inset
@@ -184,10 +184,15 @@ e_{q}\\
 e_{\omega}\\
 \delta
 \end{array}\right]=\left[\begin{array}{c}
--R_{tot}(i_{d1}-i_{d2})+L_{s}(\omega_{1}i_{q1}-\omega_{2}i_{q2})+R_{L}cos(\delta)(i_{d1}-i_{d2})+R_{L}sin(\delta)(i_{q1}+i_{q2})\\
--L_{s}(\omega_{1}i_{d1}-\omega_{2}i_{d2})-R_{tot}(i_{q1}-i_{q2})+R_{L}cos(\delta)(i_{q1}-i_{q2})-R_{L}sin(\delta)(i_{d1}+i_{d2})-mi_{f}(\omega_{1}-\omega_{2})\\
+-R_{tot}(i_{d1}-i_{d2})+L_{s}(\omega_{1}i_{q1}-\omega_{2}i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}-\omega_{2}i_{d2})-R_{tot}(i_{q1}-i_{q2})-mi_{f}(\omega_{1}-\omega_{2})\\
 mi_{f}(i_{q1}-i_{q2})-D_{p}(\omega_{1}-\omega_{2})\\
 -(\omega_{1}-\omega_{2})
+\end{array}\right]+\left[\begin{array}{c}
+R_{L}cos(\delta)(i_{d1}-i_{d2})+R_{L}sin(\delta)(i_{q1}+i_{q2})\\
+R_{L}cos(\delta)(i_{q1}-i_{q2})-R_{L}sin(\delta)(i_{d1}+i_{d2})\\
+0\\
+0
 \end{array}\right]$
 \end_inset
 
@@ -240,7 +245,9 @@ and
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\left[\begin{array}{cc}
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{cc}
 \varLambda & 0\\
 0 & 1
 \end{array}\right]\dot{e}=\left[\begin{array}{cccc}
@@ -253,7 +260,9 @@ R_{L}sin(\delta)x_{2}\\
 -R_{L}sin(\delta)x_{1}\\
 0\\
 0
-\end{array}\right]$
+\end{array}\right]
+\end{equation}
+
 \end_inset
 
 
@@ -265,10 +274,13 @@ It is easy to see that
 \end_inset
 
 , which shows that the manifold 
-\begin_inset Formula $\epsilon=\left\{ (x,e)|e=0\right\} $
+\begin_inset Formula $\epsilon=\left\{ \left[\begin{array}{c}
+x\\
+e
+\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $
 \end_inset
 
-is invariant manifold.
+ is invariant manifold.
 \end_layout
 
 \begin_layout Standard
@@ -298,9 +310,13 @@ x_{d}\\
 x_{q}\\
 x_{\omega}
 \end{array}\right]=\left[\begin{array}{c}
--R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})-R_{L}cos(\delta)(i_{d1}+i_{d2})-R_{L}sin(\delta)(i_{q1}-i_{q2})\\
--L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-R_{L}cos(\delta)(i_{q1}+i_{q2})+R_{L}sin(\delta)(i_{d1}-i_{d2})-mi_{f}(\omega_{1}+\omega_{2})\\
+-R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-mi_{f}(\omega_{1}+\omega_{2})\\
 mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
+\end{array}\right]+\left[\begin{array}{c}
+-R_{L}cos(\delta)(i_{d1}+i_{d2})-R_{L}sin(\delta)(i_{q1}-i_{q2})\\
+-R_{L}cos(\delta)(i_{q1}+i_{q2})+R_{L}sin(\delta)(i_{d1}-i_{d2})\\
+0
 \end{array}\right]
 \end{equation}
 
@@ -355,7 +371,9 @@ and
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula $\varLambda\dot{x}=\left[\begin{array}{ccc}
+\begin_inset Formula 
+\begin{equation}
+\varLambda\dot{x}=\left[\begin{array}{ccc}
 -R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
 -\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
 0 & mi_{f} & -D_{p}
@@ -363,10 +381,671 @@ and
 \frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}sin(\delta)e_{q}\\
 -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
 2T_{m}
-\end{array}\right]$
+\end{array}\right]
+\end{equation}
+
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+For summery:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{e}=F(e,x)=\left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1}\left[\begin{array}{cccc}
+-R_{tot}+R_{L}cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]e+\left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1}\left[\begin{array}{c}
+R_{L}sin(\delta)x_{2}\\
+-R_{L}sin(\delta)x_{1}\\
+0\\
+0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{x}=G(e,x)=\varLambda^{-1}\left[\begin{array}{ccc}
+-R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]x+\varLambda^{-1}\left[\begin{array}{c}
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
+2T_{m}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Globally exponentially stability of two synchronized generators:
+\end_layout
+
+\begin_layout Standard
+In this section, we provide sufficient conditions for the equilibrium point
+ which we show that exist on the manifold 
+\begin_inset Formula $\epsilon=\left\{ \left[\begin{array}{c}
+x\\
+e
+\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $
+\end_inset
+
+
+\series bold
+, 
+\series default
+to be globally exponential stable, for the dynamics of the two generators,
+ assuming that the system initial condition is located on the 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ manifold which we already showed to be invariant manifold.
+ This proof is very similar to section 3.5 at 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "CaliiskanTabuada2014"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+\dot{\tilde{x}}=\tilde{G}(\tilde{x})\coloneqq G(0,\tilde{x})=\varLambda^{-1}\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
+-\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_{tot}-R_{L} & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system describes two generators when they have equal state and no phase
+ between each other.
+\end_layout
+
+\begin_layout Standard
+We will denote 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{\omega} & 0\\
+-\frac{L_{s}}{2}\tilde{\omega} & -R_{tot}-R_{L} & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right],\tilde{\omega}\coloneqq\tilde{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we showed at ******* 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ has at list one equilibrium point 
+\begin_inset Formula $x^{0}=\left[\begin{array}{c}
+x_{d}^{0}\\
+x_{q}^{0}\\
+\tilde{\omega}^{0}
+\end{array}\right]$
+\end_inset
+
+such:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tilde{G}(x^{0})=0\rightarrow\varLambda^{-1}A(\tilde{\omega}^{0})\tilde{x}^{0}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]=0\label{eq:G_at_equilibrium}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will shift the coordinates, in order to make the origin into equilibrium
+ point.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{x}\coloneqq\tilde{x}-\tilde{x}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A natural Lyaponov function candidate is the total energy of the system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to see that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max(L_{s},J)\left|\hat{x}\right|
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we will calculate 
+\begin_inset Formula $\dot{V}(\hat{x})$
+\end_inset
+
+ and we will show that under some conditions, 
+\begin_inset Formula $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$
+\end_inset
+
+, for some 
+\begin_inset Formula $\alpha.$
+\end_inset
+
+ This will prove that 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ is globally exponentially stable 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "nonlinearSystemsSastry"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\hat{x}}=\dot{\tilde{x}}=\varLambda^{-1}A(\tilde{\omega})\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]\label{eq:x_hat_dynamic}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will 
+\begin_inset Formula $A(\tilde{\omega})$
+\end_inset
+
+ as a sum of a constant symmetric matrix, constant skew symmetric matrix
+ and a skew symmetric matrix which depends on :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+R\coloneqq\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & 0 & 0\\
+0 & -R_{tot}-R_{L} & 0\\
+0 & 0 & -D_{p}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J(\tilde{\omega}^{0})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\tilde{\omega}^{0} & 0\\
+-\frac{L_{s}}{2}\tilde{\omega}^{0} & 0 & -mif\\
+0 & mi_{f} & 0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Delta(\hat{\omega})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And now we can represent the system dynamic:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right](\hat{x}-\tilde{x}^{0})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we will combine this equation with equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:G_at_equilibrium"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:x_hat_dynamic"
+
+\end_inset
+
+ we will obtain: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will calculate the derivative of the Lyponv function over the time: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\varLambda$
+\end_inset
+
+ is diagonal matrix, then 
+\begin_inset Formula $\varLambda^{T}\varLambda^{-1}=I$
+\end_inset
+
+, so we obtain:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{0})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $J(\tilde{\omega}^{0})$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta(\hat{\omega})$
+\end_inset
+
+ are skew symmetric matrices, it implies that 
+\begin_inset Formula $\hat{x}^{T}J(\tilde{\omega}^{0})\hat{x}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{x}^{T}\Delta(\hat{\omega})\hat{x}=0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Calculating 
+\begin_inset Formula 
+\begin{equation}
+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0}=\left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]^{T}\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+x_{d}^{0}\\
+x_{q}^{0}\\
+\tilde{\omega}^{0}
+\end{array}\right]=\left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]^{T}\left[\begin{array}{ccc}
+0 & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
+0 & 0 & -\frac{L_{s}}{4}x_{d}^{0}\\
+\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & 0
+\end{array}\right]\left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]=\hat{x}^{T}P\hat{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining all this together, we obtain 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $P+R=\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
+0 & -R_{tot}-R_{L} & -\frac{L_{s}}{4}x_{d}^{0}\\
+\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & -D_{p}
+\end{array}\right]$
+\end_inset
+
+.
+ Calculating the eigenvalues of 
+\begin_inset Formula $P+R$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
+0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{0}\\
+\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & -D_{p}-\lambda
+\end{vmatrix}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{0}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{0}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{0}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+=\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first eigenvalue of 
+\begin_inset Formula $P+R$
+\end_inset
+
+ is 
+\begin_inset Formula $\lambda_{1}=-\left(R_{tot}+R_{L}\right)$
+\end_inset
+
+ which is negative.
+ 
+\begin_inset Formula $\pi(\lambda)=\lambda^{2}+\lambda\left(R_{tot}+R_{L}+D_{p}\right)+\left(R_{tot}+R_{L}\right)D_{p}-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{2,3}=\frac{-R_{tot}-R_{L}-D_{p}\pm\sqrt{\left(R_{tot}+R_{L}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+D_{p}^{2}-4\left(R_{tot}+R_{L}\right)D_{p}+\frac{L_{s}^{2}}{4}\left[\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right]}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)}}{4}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All eigenvalues are real numbers.
+ The condition which implies that all the eigenvalues will be negative is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)}}{4}<0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which leads to the following condition:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+16\left(R_{tot}+R_{L}\right)D_{p}>L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)\label{eq:condition_for_stable_G}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If this condition 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:condition_for_stable_G"
+
+\end_inset
+
+ holds, then 
+\begin_inset Formula $\dot{V}(\hat{x})<min(\lambda_{i})|\hat{x}|^{2},i\in\{1,2,3\}$
+\end_inset
+
+.
+ This proves that this system is globally exponentially stable.
+ This implies that 
+\begin_inset Formula $\tilde{x}^{0}$
+\end_inset
+
+is the only equilibrium point of 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+, hence the original system has only one equilibrium point on the subspace
+ where 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+.
+ In addition it always has an equilibrium point on the surface 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+and 
+\begin_inset Formula $\delta=\pi$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section*
@@ -376,7 +1055,7 @@ Synchronization theorem:
 \begin_layout Standard
 We would like to prove that if the initial state of the two generators are
  sufficiently close to each other, i.e 
-\begin_inset Formula $||e(0)||$
+\begin_inset Formula $|e(0)|$
 \end_inset
 
  is small, then, under some assumptions, the two generators will synchronize,
@@ -388,9 +1067,30 @@ We would like to prove that if the initial state of the two generators are
 \end_layout
 
 \begin_layout Standard
+For this, we will use the result from 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "JonesRadclifTabor1995"
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+First, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
+-\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
+-\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}{}_{2}-\frac{mif}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
+0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]\label{eq:div_of_F}
+\end{equation}
 
 \end_inset
 
@@ -398,7 +1098,496 @@ key "JonesRadclifTabor1995"
 \end_layout
 
 \begin_layout Standard
+The requirement (2) at 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VincentBayuLaurent2016"
 
+\end_inset
+
+ namely that matrix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:div_of_F"
+
+\end_inset
+
+ should by uniformly bounded (in norm on the manifold 
+\begin_inset Formula $\epsilon=\left\{ \left[\begin{array}{c}
+x\\
+e
+\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $
+\end_inset
+
+is 
+\bar under
+not satisfied
+\bar default
+, because of the presences of 
+\begin_inset Formula $x_{w},x_{q},x_{d}$
+\end_inset
+
+in the matrix.
+ However, it can be shown by energy methods that regardless of the initial
+ state, the state of this system will be eventually contained in a certain
+ bounded set (that depends on the parameters) and than 
+\begin_inset Formula $\frac{\partial F(}{\partial e}(0,x)$
+\end_inset
+
+ is clearly bounded in this bounded subset of the state space.
+\end_layout
+
+\begin_layout Standard
+The requirement (3) in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+ is satisfied as we showed.
+ Additionally we showed at the last section that 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ is globally exponentially stable with equilibrium 
+\begin_inset Formula $x^{0}$
+\end_inset
+
+.
+ We will show that our system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sync_sestem"
+
+\end_inset
+
+ is UES-TL (Uniform exponential stability for the transversally linear system),
+ as it defines at 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+We need to show that the system 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is stable, where 
+\begin_inset Formula $\tilde{x}(t)$
+\end_inset
+
+ generated by the dynamics 
+\begin_inset Formula 
+\begin{equation}
+\tilde{x}=\tilde{G}(\tilde{x})
+\end{equation}
+
+\end_inset
+
+ which we showed that it globally exponentially stable (and 
+\begin_inset Formula $lim_{t\to\infty}\tilde{x}(t)=0$
+\end_inset
+
+).
+ In order to have the UES-TL property, we will demand that 
+\begin_inset Formula $\tilde{G}(0)$
+\end_inset
+
+ is a Hurwitz matrix.
+ We need to show that there exist constants 
+\begin_inset Formula $k$
+\end_inset
+
+,
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+such for all 
+\begin_inset Formula $\left|e_{0}\right|\leq r$
+\end_inset
+
+ and for all 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left|e(t)\right|\leq k\left|e_{0}\right|exp(-\lambda t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In other words, we need to show that if LTV (linear time varying system),
+ which it matrix converges exponentially to a stable matrix, then the LTV
+ system is exponentially stable.
+ this theorem is know (
+\begin_inset CommandInset citation
+LatexCommand citet
+key "SchovanecGilliam1999"
+
+\end_inset
+
+), but for the clearance of the reading, we will repeat the proof:
+\end_layout
+
+\begin_layout Subparagraph*
+Theorem:
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a constant matrix with 
+\begin_inset Formula $Re\{\sigma(A)\}<0$
+\end_inset
+
+ and let 
+\begin_inset Formula $C$
+\end_inset
+
+ be a continuous matrix valued function on the function on the interval
+ 
+\begin_inset Formula $[0,\infty)$
+\end_inset
+
+.
+ Supposed that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\intop_{0}^{\infty}\left|C(t)\right|dt=M<\infty
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, the solution of 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{x}(t)=[A+C(t)]x(t)\label{eq:LTV_dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is globally exponentially stable.
+\end_layout
+
+\begin_layout Subparagraph*
+Proof:
+\end_layout
+
+\begin_layout Standard
+Suppose that x(t) is a solution of 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LTV_dynamics"
+
+\end_inset
+
+ with 
+\begin_inset Formula $x(0)=x^{0}$
+\end_inset
+
+.
+ We have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{x}(t)-Ax(t)=C(t)x(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we multiply this equation through by the integrating factor (matrix)
+ 
+\begin_inset Formula $e^{-At}$
+\end_inset
+
+, we get 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left(e^{-At}x(t)\right)=e^{-At}C(t)x(t)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating the last equation from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{-At}x(t)-x(0)=\intop_{0}^{t}e^{-As}C(s)x(s)ds
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This gives us the formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x(t)=e^{At}x(0)\intop_{0}^{t}e^{A(t-s)}C(s)x(s)ds\label{eq:LTV_integralForm}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $Re\{\sigma(A)\}<0$
+\end_inset
+
+, we can find constants 
+\begin_inset Formula $\sigma<0$
+\end_inset
+
+ and 
+\begin_inset Formula $K>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|e^{At}\right|\leq Ke^{\sigma t},\;t\geq0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+using this estimates and taking norms in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:LTV_integralForm"
+
+\end_inset
+
+ we get 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left|x(t)\right|\leq K\left|x^{0}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiply this through by 
+\begin_inset Formula $e^{-\sigma t}$
+\end_inset
+
+ to get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will apply Gronwall's inequality and get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K^{2}\left|x^{0}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For any 
+\begin_inset Formula $0\le s\le t$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\intop_{s}^{t}\left|C(u)\right|du\le\intop_{0}^{\infty}\left|C(t)\right|dt=M$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula $exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]\le e^{KM}$
+\end_inset
+
+.
+ Applying this we get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+e^{KM}K^{2}\left|x^{0}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{0}\right|+e^{KM}K^{2}M
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left|x(t)\right|\leq e^{\sigma t}C^{0}\left|x^{0}\right|,\quad\sigma<0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This proves that our system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sync_sestem"
+
+\end_inset
+
+is UES-TL.
+ We will apply the main result of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+, to prove that this system is TULES-NL (Transversal uniform local exponential
+ stable).
+ That means that there exist strictly positive real numbers 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+such that we have for all 
+\begin_inset Formula $(e^{0},x^{0},t)$
+\end_inset
+
+ in 
+\begin_inset Formula $B_{e}(r)\vartimes\mathbb{R}^{3}\vartimes\mathbb{R}_{\geq0}$
+\end_inset
+
+ , we have 
+\begin_inset Formula $\left|e(t)\right|\leq k\left|e^{0}\right|exp(-\lambda t)$
+\end_inset
+
+.
+ Namely the manifold 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+is exponentially stable for the system 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:sync_sestem"
+
+\end_inset
+
+, locally in 
+\begin_inset Formula $e$
+\end_inset
+
+,uniformly in 
+\begin_inset Formula $x$
+\end_inset
+
+.
 \end_layout
 
 \end_body

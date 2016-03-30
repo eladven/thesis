@@ -4,33 +4,13 @@
 \begin_header
 \textclass report
 \begin_preamble
-% basically this is a template file, you should be able to take it and
-% start running.
-
-% the philosophy behind this template is that each chapter or
-% chapterlike section goes in a separate file and you use the \include
-% command to input it into the final document.  The \includeonly
-% command can be used so you only need to work on one or two chapters at a
-% time (instead of having to either latex the entire book each time or
-% losing cross-references and page numbering)
-
-% copy this file and call it something like mythesis.tex
-
-
-% note that the documentclass can take other option such as
-% twoside - for double sided printing
-% openright - if double side  chapters always start on odd pages
-% openany - if double side chapters start on the next page even or odd
-% 12pt can be replaced by 11pt
-
 \usepackage{suthesis-2e}
 \usepackage{url}
 \usepackage{comment}
 
-%\usepackage{natbib}
-\bibpunct{(}{)}{;}{a}{,}{,}
+\usepackage{natbib}
+%\bibpunct{(}{)}{;}{a}{,}{,}
 
-%% load other packages you need
 
 %% uncomment the following and create mythesis-macros.sty for all your
 %% own macros.  This keeps this top level file looking fairly neat.
@@ -103,7 +83,7 @@
 \graphics default
 \default_output_format default
 \output_sync 0
-\bibtex_command default
+\bibtex_command bibtex
 \index_command default
 \paperfontsize 12
 \spacing single
@@ -130,7 +110,7 @@
 \use_package stmaryrd 1
 \use_package undertilde 1
 \cite_engine natbib
-\cite_engine_type authoryear
+\cite_engine_type numerical
 \biblio_style plainnat
 \use_bibtopic false
 \use_indices false
