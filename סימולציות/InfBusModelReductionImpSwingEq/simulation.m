@@ -4,54 +4,68 @@ rmpath('folderthatisnotonpath')
 warning(w)
 
 global Ls J Dp mif Rs Pm V wg
-initValuesNonStableExample;
+initValues5KWSG;
+%initValuesNonStableExample;
 
 T = 3;
-x0 = [10;10;50*2*pi;0];
+global x0;
 
 
 [t,x] = ode15s(@modelDynamics,[0 T],x0);
+[t_hat,x_hat] = ode15s(@reducedModelDynamics,[0 T],[x0(3),x0(4)]);
 figure (1)
 plot(t,x(:,1:2))
 figure (2)
+hold on
 plot(t,x(:,3))
+plot(t_hat,x_hat(:,1),'r')
+xlabel('time [sec]');
+ylabel('freq [rad/sec]');
 figure (3)
+hold on
 plot(t,x(:,4))
-
-
-[t,x] = ode15s(@reducedModelDynamics,[0 T],[x0(3),x0(4)]);
-figure (4)
-plot(t,x(:,1))
-figure (5)
-plot(t,x(:,2))
+plot(t_hat,x_hat(:,2),'r')
+xlabel('time [sec]');
+ylabel('phase [rad]');
 
 
 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% [id0, iq0, w0, d0] = calculateEquilibrium(Ltot,J,Dp,mif,Rl,Rtot,Tm);
-% eig = calculateEigOfJacobianOfEqPointForOrigSys(Ltot,J,Dp,mif,Rl,Rtot,Tm,id0, iq0, w0, d0);
-% display('This system is localy ');
-% if (max(real(eig)) >0)
-%     display('UNSTABLE');
-% else
-%     display('STABLE');
-% end
-% 
-% display('G~(x) is ');
-% if (calculateStabilityConditionOFGTilda(Rtot,Rl,Dp,Ltot,id0,iq0))
-%     display('STABLE');
-% else
-%     display('UNSTABLE');
-% end
-% 
-% eig = calculateEigOFFWithEEqZeroAtEquilibrium(2*id0,2*iq0,2*w0,Ltot,J,Dp,mif,Rl,Rtot);
-% display('The linearization of e dynamic with x = x0 and d=0 is');
-% if (max(real(eig)) >0)
-%     display('Not Hurwitz');
-% else
-%     display('Hurwitz');
-% end
-% 
-% searchStabilityOnTmMif(10,4000,-1,-15,15);
-% 
+x0 = calculateEquilibrium(Ls, J, Dp, mif, Rs, Pm, V, wg);
+eig_ = calculateEigOfJacobianOfEqPointForOrigSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0(1,1), x0(2,1), x0(3,1), x0(4,1));
+display('The detailed system (1) is localy ');
+if (max(real(eig_)) >0)
+    display('UNSTABLE');
+else
+    display('STABLE');
+end
+
+eig_ = calculateEigOfJacobianOfEqPointForOrigSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0(1,2), x0(2,2), x0(3,2), x0(4,2));
+display('The detailed system (2) is localy ');
+if (max(real(eig_)) >0)
+    display('UNSTABLE');
+else
+    display('STABLE');
+end
+
+
+
+x0_hat = calculateEquilibriumForTheReducedSystem(Ls, J, Dp, mif, Rs, Pm, V, wg);
+eig_ = calculateEigOfJacobianOfEqPointForReducedSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0_hat(1,1), x0_hat(2,1));
+display('The reduced system (1) is localy ');
+if (max(real(eig_)) >0)
+    display('UNSTABLE');
+else
+    display('STABLE');
+end
+
+eig_ = calculateEigOfJacobianOfEqPointForReducedSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0_hat(1,2), x0_hat(2,2));
+display('The reduced system (2) is localy ');
+if (max(real(eig_)) >0)
+    display('UNSTABLE');
+else
+    display('STABLE');
+end
+
+x0
+x0_hat
