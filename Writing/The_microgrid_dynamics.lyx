@@ -1,0 +1,883 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+The microgrid dynamics
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:microgrid_dynamics"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We consider a microgrid comprising two identical synchronous generators,
+ with constant rotor (field) current and non neutral connection, together
+ with a resistive load.
+ (See figure
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:microgrid_configuration"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{circuitikz}[american voltages]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scope}[shift={(-5,0)}]     
+\backslash
+draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{$v_a$}
+; 
+\backslash
+draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; 
+\backslash
+node (0,0) [align=left,text width=4cm] {SG1}; 
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\backslash
+draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=east]{};
+ 
+\backslash
+draw (0,0) to [R=$R_L$] (210 :2.5); 
+\backslash
+draw (0,0) to [R=$R_L$] (330 :2.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scope}[shift={(5,0)}]    
+\backslash
+draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west]
+ {$v_a$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; 
+\backslash
+node (0,0) [align=left,text width=4cm] {SG2}; 
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (5,2.5) to [short, i>=$i_{a2}$] (0,2.5) to [short, i<=$i_{a1}$] (-5,2.5);
+ 
+\backslash
+draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [short, i>=$i_{b2}$]
+   (-2.165 ,-1.25-1)  to [short, o-] (-2.165 ,-1.25 ); 
+\backslash
+draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [short, i>=$i_{b1}$]
+   (-2.165 ,-1.25-1); 
+\backslash
+draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2) to [short, i>=$i_{c2}$]
+  (2.165 ,-1.25-2)  to [short, o-] (2.165 ,-1.25 ); 
+\backslash
+draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [short, i>=$i_{c1}$]
+  (2.165 ,-1.25-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{circuitikz}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+The microgrid configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:microgrid_configuration"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotor angles are 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ and the torques acting on the generators are equal, denoted 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+.
+ By symmetry, we assume that the voltages at the (non-connected) midpoints
+ of the generators and the load are zero.
+\end_layout
+
+\begin_layout Standard
+The phase voltages and currents are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right],i_{1}=\left[\begin{array}{c}
+i_{1a}\\
+i_{1b}\\
+i_{1c}
+\end{array}\right],i_{2}=\left[\begin{array}{c}
+i_{2a}\\
+i_{2b}\\
+i_{2c}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The impedances 
+\begin_inset Formula 
+\begin{equation}
+Z=R_{s}+R_{g}+(L_{s}+L_{g})s
+\end{equation}
+
+\end_inset
+
+ are comprised of the equivalent stator resistance 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+ and stator inductance 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ and the line resistance 
+\begin_inset Formula $R_{g}$
+\end_inset
+
+ and inductance 
+\begin_inset Formula $L_{g}$
+\end_inset
+
+.
+ However, in most of our computations, we consider for simplicity that 
+\begin_inset Formula $R_{g}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{g}=0$
+\end_inset
+
+, since this leaves us with the same type of equations.
+ 
+\end_layout
+
+\begin_layout Standard
+(See figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:one_phase_scheme"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{circuitikz}[american voltages] 
+\backslash
+draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j
+1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0)
+ node[ground] {};   
+\backslash
+draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_
+{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   
+\backslash
+node[draw] at (-1,4) {$j 
+\backslash
+in 
+\backslash
+{a,b,c
+\backslash
+}$}; 
+\backslash
+end{circuitikz} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+One phase scheme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:one_phase_scheme"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We recall the Park transformation with respect to the angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)=\sqrt{\frac{2}{3}}\left[\begin{array}{ccc}
+cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta+\frac{2\pi}{3})\\
+sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta+\frac{2\pi}{3})\\
+\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+ (which is unitary).
+\end_layout
+
+\begin_layout Standard
+We donate
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+v_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right],\left[\begin{array}{c}
+v_{d2}\\
+v_{q2}\\
+v_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+i_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+i_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly 
+\begin_inset Formula $i_{01}=i_{02}=0$
+\end_inset
+
+ (from Kirchhoff's laws) and by symmetry argument we can show that 
+\begin_inset Formula $v_{01}=v_{02}=0$
+\end_inset
+
+ (because 
+\begin_inset Formula $v_{a}=R_{L}(i_{a1}+i_{a2})$
+\end_inset
+
+ etc).
+\end_layout
+
+\begin_layout Standard
+Thus, we only have to deal with 
+\begin_inset Formula $v_{dj},v_{qj}$
+\end_inset
+
+ (with 
+\begin_inset Formula $j\in\{1,2\}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+We denote 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta=\theta_{2}-\theta_{1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+According to formula ***** , the dynamics of synchronous machine:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d1}\\
+-v_{q1}\\
+T_{m}
+\end{array}\right]\label{eq:dynamics_of_single_generator}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia, 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+is the frequency droop constant, 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+is the mechanical torque coming from the prime mover to the generator, 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+, where 
+\begin_inset Formula $M_{f}$
+\end_inset
+
+ is the peak mutual inductance between the rotor and one of the stator windings,
+ and 
+\begin_inset Formula $i_{f}$
+\end_inset
+
+ is the rotor current.
+ Of course, a similar equation holds for the second generator.
+ To put the equations together, we use 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=R_{L}(i_{1}+i_{2})
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and after applying park transformation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})U(\theta_{2})^{-1}\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+0
+\end{array}\right]\label{eq:cur_and_volt_after_park}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A simple computation shows that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
+cos(\delta) & -sin(\delta) & 0\\
+sin(\delta) & cos(\delta) & 0\\
+0 & 0 & 1
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(recall 
+\begin_inset Formula $\delta=\theta_{2}-\theta_{1}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+new, from equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cur_and_volt_after_park"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}
+\end{array}\right]+R_{L}\left[\begin{array}{cc}
+cos(\delta) & -sin(\delta)\\
+sin(\delta) & cos(\delta)
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting this into equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:dynamics_of_single_generator"
+
+\end_inset
+
+, we obtain, denoting 
+\begin_inset Formula $R_{tot}=R_{s}+R_{L}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{tot} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+0\\
+0\\
+T_{m}
+\end{array}\right]-\left[\begin{array}{ccc}
+R_{L}cos(\delta) & -R_{L}sin(\delta) & 0\\
+R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+\omega_{2}
+\end{array}\right]\label{eq:dynamics_of_microgrid}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+or in short:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda=\left[\begin{array}{ccc}
+L_{s} & 0 & 0\\
+0 & L_{s} & 0\\
+0 & 0 & J
+\end{array}\right],e_{3}=\left[\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathcal{A}(\omega)=\left[\begin{array}{ccc}
+-R_{tot} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right],\mathcal{B}(\delta)=\left[\begin{array}{ccc}
+R_{L}cos(\delta) & -R_{L}sin(\delta) & 0\\
+R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+,z_{i}=\left[\begin{array}{c}
+i_{di}\\
+i_{qi}\\
+\omega_{i}
+\end{array}\right],i\in\{1,2\}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course a symmetric equation holds for the second generator:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a seventh state variable, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, for which the ODE is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\delta}=\omega_{2}-\omega_{1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The whole system is described by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+\varLambda z_{1}\\
+\varLambda z_{2}\\
+\delta
+\end{array}\right]=\left[\begin{array}{c|c|c}
+\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
+\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
+\hline -e_{3}^{T} & e_{3}^{T} & 0
+\end{array}\right]\left[\begin{array}{c}
+z_{1}\\
+z_{2}\\
+\delta
+\end{array}\right]+T_{m}\left[\begin{array}{c}
+e_{3}\\
+e_{3}\\
+0
+\end{array}\right]\label{eq:dynamics_whole}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

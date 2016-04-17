@@ -1,0 +1,943 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+% This is the journal version of the conference papers presented
+% at CDC 2014 and IEEEI 2014 on the stability of the constant
+% field current synchronous generator connected to an infinite
+% bus, by Vivek and George. First version started on May 3, 2015.
+% Adjusted on May 7, 2015, and May 10, and up to June 5 by Vivek.
+% Some useful estimates for \phi_1-\phi_2 have been commented out
+% to meet page restrictions in CDC 2014 paper.
+%    Vivek worked on this alone in June & July 2015, in August
+% George joined a bit too, and we added material on the virtual
+% inductor that increases the inductor in a synchronverter,
+% 42 pages. We intend to send it to SIAM J. Applied Dyn. Systems.
+% Edited by both on August 14-15, 41 pages.
+%    Edited by Vivek up to Aug. 19, the first theorem in Section 6 and
+% its proof plus remarks deleted, remaining proofs edited, notation
+% changed, example and its plots changed, 40 pages.
+%    Edited by George on Aug. 28 - Sept. 3, mainly pp. 13-17.
+%    During Sept. 6-8 George made a new Figure 2 about the damped
+% and constantly forced pendulum, and wrote a bit of comments on it.
+%    Edited by George on Sept. 13, new Figure 3 and text around it
+% (in Warwick). He continued to edit up to Oct. 8, new Figure 4,
+% Section 5 all checked, polished, 41 pages.
+%    Vivek polished mainly Section 5 up to Oct. 13, then both up to
+% Oct. 17, with extensive correspondence, OK up to Lemma 6.1.
+% Vivek polished Sections 1-4 up to Oct. 21, 2015. Both polished
+% together in Rishon up to Oct. 25, we are now polishing Section 6.
+%    Submitted to SIAM J. Appl. Dyn. Syst. on Oct. 30, 2015,
+% manuscript number: M104620, preferred editor: Steven Shaw.
+%
+\usepackage{amsthm}\usepackage{graphicx}
+\usepackage{epstopdf}\usepackage{euscript}
+\usepackage{latexsym}
+
+
+\textwidth 150mm
+\textheight 230mm
+\voffset -25mm
+\topmargin 10mm
+\oddsidemargin 4mm
+\evensidemargin 4mm
+\parindent 0.4cm
+\parskip 1.2ex plus 0.5ex minus 0.5ex
+
+\newtheorem{theorem}{}[section]
+\newtheorem{corollary}[theorem]{}\newtheorem{lemma}[theorem]{}
+
+\newtheorem{proposition}[theorem]{}\theoremstyle{definition}
+\newtheorem{definition}[theorem]{}\newtheorem{example}[theorem]{}\newtheorem{problem_statement}[theorem]{}\newtheorem{remark}[theorem]{}\newtheorem{notation}[theorem]{}
+
+\numberwithin{equation}{section}                        % OS
+
+%%% The above 7 commands are used in the following way:
+%%% The definition environment, for example, is created by
+%%% \begin{definition}\label{xxx}. . .\end{definition}
+\newcommand{\mylabel}[1]{\label{#1}
+            \ifx\undefined\stillediting
+            \else \fbox{$#1$}\fi }
+\newcommand{\BE}{\begin{equation}}
+\newcommand{\BEQ}[1]{\BE\mathlabel{#1}} % Changed by Olof
+\newcommand{\EEQ}{\end{equation}}
+\newcommand{\rfb}[1]{\mbox{\rm
+   (\ref{#1})}\ifx\undefined\stillediting\else:\fbox{$#1$}\fi}
+\newenvironment{matr}[1]{\left[ \begin{array}{#1}}{\end{array}
+                         \right]}
+%
+\newfont{\roma}{cmr10 scaled 1200}
+\font\fourteenrm = cmr10  scaled\magstep2
+%
+\renewcommand{\cline}{{\mathbb C}}
+\newcommand{\fline}{{\mathbb F}}
+\newcommand{\nline}{{\mathbb N}}
+\newcommand{\rline}{{\mathbb R}}
+\newcommand{\tline}{{\mathbb T}}
+\newcommand{\zline}{{\mathbb Z}}
+%
+\newcommand{\AAA}{{\mathbf A}}
+\newcommand{\BBB}{{\mathbf B}}
+\newcommand{\CCC}{{\mathbf C}}
+\newcommand{\HHH}{{\mathbf H}}
+\newcommand{\KKK}{{\mathbf K}}
+\newcommand{\LLL}{{\mathbf L}}
+\newcommand{\MMM}{{\mathbf M}}
+\newcommand{\NNN}{{\mathbf N}}
+%
+\newcommand{\Cscr}{{\cal C}}
+\newcommand{\Dscr}{{\cal D}}
+\newcommand{\Escr}{{\cal E}}
+\newcommand{\Lscr}{{\cal L}}
+\newcommand{\Mscr}{{\cal M}}
+\newcommand{\Nscr}{{\cal N}}
+%
+\newcommand{\mm}{{\hbox{\hskip 0.5pt}}}
+\newcommand{\m}{{\hbox{\hskip 1pt}}}
+\newcommand{\nm}{{\hbox{\hskip -3pt}}}
+\newcommand{\nmm}{{\hbox{\hskip -1pt}}}
+\newcommand{\bluff}{{\hbox{\raise 26pt \hbox{\mm}}}}
+\newcommand{\sbluff}{{\hbox{\raise  9pt \hbox{\mm}}}}
+%
+%\newcommand{\e}     {{\varepsilon}}
+\renewcommand{\L}{{\Lambda}}
+\renewcommand{\l}{{\lambda}}
+\renewcommand{\o}{{\omega}}
+\newcommand{\Om}{{\Omega}}
+\newcommand{\e}{{\varepsilon}}
+\newcommand{\vp}{{\varphi}}
+\newcommand{\half}{{\frac{1}{2}}}
+\newcommand{\vv}{{\rm v}}
+\newcommand{\xx}{{\rm\bf x}}
+\newcommand{\dd}{{\rm d\hbox{\hskip 0.5pt}}}
+\newcommand{\Ad}{{\hbox{$A_d^{\rm\hbox{\hskip -0.6pt}opt}$}}}
+\newcommand{\FORALL}{{\hbox{$\hskip 11mm \forall \;$}}}
+\newcommand{\rarrow}{\mathop{\rightarrow}}
+%
+\newcommand{\Leloc}{{L^2_{\rm loc}[0,\infty)}}
+\newcommand{\LE}[1]{{L^2([0,\infty);#1)}}
+\newcommand{\LEloc}[1]{{L^2_{\rm loc}([0,\infty);#1)}}
+%
+\renewcommand{\theequation}{{\arabic{section}.\arabic{equation}}}
+\newcommand{\secp}{{\hbox{\hskip -7mm.\hskip 4mm}}}
+\newcommand{\subsecp}{{\hbox{\hskip -6mm.\hskip 2mm}}}
+%%% The above is used to put a period after section numbers.
+%\newcommand{\propp}{{\hskip -2.2mm{\bf .}\hskip 3mm}}
+\let\propp=\relax                                            % OS
+%%% The above is used to put a period after proposition numbers etc.
+%%% At the beginning of each section: \setcounter{equation}{0}
+%
+%% Following are commands needed to make smaller titles for sections
+%%
+%\makeatletter
+%\def\section{\@startsection {section}{1}{\z@}{-3.5ex plus -1ex minus
+%    -.2ex}{2.3ex plus .2ex}{\large\bf}}
+%\makeatother
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+% OLOF'S MACROS
+
+\let\oldlabel=\label
+
+\renewcommand{\label}[1]{\leavevmode\smash{\raise 10pt\llap
+             {\fbox{\scriptsize#1}}}\oldlabel{#1}}
+\newcommand{\mathlabel}[1]{\smash{\raise 9pt\llap
+             {\scriptsize(#1)}}\label{#1}}
+
+\renewcommand{\label}[1]{\oldlabel{#1}}
+\renewcommand{\mathlabel}[1]{\label{#1}}
+
+\newcommand{\loc}{{\rm loc}}
+\renewcommand{\Re}{{\rm Re\,}}
+\renewcommand{\Im}{{\rm Im\,}}
+
+\newcommand{\bbm}[1]{\left[\begin{matrix} #1 \end{matrix}\right]}
+\newcommand{\sbm}[1]{\left[\begin{smallmatrix} #1
+            \end{smallmatrix}\right]}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 12
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine natbib
+\cite_engine_type numerical
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset FormulaMacro
+\newcommand{\thefootnote}{\fnsymbol{footnote}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\renewcommand{\thefootnote}{\fnsymbol{footnote}}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\footremember}[2]{%
+\footnote{#2} \newcounter{#1} \setcounter{#1}{\value{footnote}}%
+}
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\footrecall}[1]{%
+\footnotemark[\value{#1}]%
+}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatletter
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset FormulaMacro
+\newcommand{\blfootnote}{\gdef\@thefnmark{}\@footnotetext}
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+makeatother
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+\size larger
+Model reduction: From whole dynamics to 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[1ex]
+\end_layout
+
+\end_inset
+
+ improved swing equations
+\size default
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+
+\backslash
+[2ex]
+\end_layout
+
+\end_inset
+
+ Elad Venezian
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+blfootnote
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+E.
+ Venezian (eladven@gmail.com) is with the School of Electrical Engineering,
+ Tel Aviv University, Ramat Aviv, Israel, 69978, Ph:+97236405164.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftskip
+\end_layout
+
+\end_inset
+
+ 10mm 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rightskip
+\end_layout
+
+\end_inset
+
+ 10mm 
+\series bold
+\size small
+Abstract.
+
+\series default
+ In this paper, we develop the improved swing equations model form the known
+ model of one synchronous generator which is connected to infinite bus (and
+ assumes constant field current), and we will show by examples, that result
+ from this model can not predict the stability of the full model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+leftskip
+\end_layout
+
+\end_inset
+
+ 10mm 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+rightskip
+\end_layout
+
+\end_inset
+
+ 10mm 
+\series bold
+\size small
+Key words.
+
+\series default
+ synchronous machine, infinite bus, improved swing equations.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+secp
+\end_layout
+
+\end_inset
+
+ Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec1"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+% Section 1
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+Synchronous generators (SGs), 
+\end_layout
+
+\begin_layout Section
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+secp
+\end_layout
+
+\end_inset
+
+ Developing the improved swing equations dynamics
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "sec2"
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% Section 2
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+The dynamics of one synchronous generator connected to infinite bus, assuming
+ that the field current is constant, is the following: (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brown2015"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NatarajanWeiss2015"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)\\
+T_{m}\\
+-\omega_{g}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming that the resistance of the stator is negligible we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+0 & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & 0 & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)\\
+T_{m}\\
+-\omega_{g}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will try to separate the model in to fast variable and slow variable
+ in order to have singular perturbation analysis (see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KhalilSingularPertubations"
+
+\end_inset
+
+).
+ We like to show the dynamics in the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+\dot{x}=f(x,y,\epsilon)\\
+\epsilon\dot{y}=g(x,y,\epsilon)
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $x$
+\end_inset
+
+ is the slow varying variable, 
+\begin_inset Formula $y$
+\end_inset
+
+ is the fast varying variable and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+is small parameter.
+\end_layout
+
+\begin_layout Standard
+In our case, if we assume that 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ is much smaller than the other parameter, we will define 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ as 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+, 
+\begin_inset Formula $x=\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $y=\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and now 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g(x,y,\epsilon)=\left[\begin{array}{cc}
+0 & \omega L_{s}\\
+-\omega L_{s} & 0
+\end{array}\right]\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)-mi_{f}\omega
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because we assumed that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is very small, it means that 
+\begin_inset Formula $\epsilon\dot{y}=g(x,y,\epsilon)$
+\end_inset
+
+ is much faster than 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+, and it will reach it equilibrium (which we assume that exist and attractive)
+ almost instantly with comparing to 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The equilibrium point 
+\begin_inset Formula $y_{0}=\hat{y}(x,\epsilon)$
+\end_inset
+
+ is the root of 
+\begin_inset Formula $g(x,y,\epsilon)=0.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+We will solve this linear equation (in 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{y}=-\left[\begin{array}{cc}
+0 & \omega L_{s}\\
+-\omega L_{s} & 0
+\end{array}\right]^{-1}\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)-mi_{f}\omega
+\end{array}\right]=\left[\begin{array}{c}
+\frac{-mi_{f}\omega+Vcos(\delta)}{L_{s}\omega}\\
+\frac{-Vsin(\delta)}{L_{s}\omega}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we will substitute 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ in 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+ to have reduced model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+J\dot{\omega}=\frac{-mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\start_of_appendix
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "IEEEfull,dtyfull,jos"
+options "abbrvnat"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
