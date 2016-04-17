@@ -1,0 +1,6 @@
+function [dx] = reducedModelDynamics(t,x)
+global Ls J Dp mif Pm V wg
+
+dx = ImpSwingEq(...
+    x(1), x(2),...
+    Ls, J, Dp, mif, Pm,V,wg);

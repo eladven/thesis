@@ -1,0 +1,14 @@
+
+%% The basic values are 5 kW SG vaslues
+%  Form the thesis of Eytan Brawn
+
+Ls = 4.4*10^-3; %[H] - Eitan  %% The value for getting unstability 0.1*10^-3;
+wg =  60*2*pi; % [rad/sec]
+J = 0.2/wg; % [kg*Sec]  - Eitan
+Rs = 0.015; %0.152 [ohm] - Eitan
+
+Dp = 1.7; %1.7[J*Sec] - Eitan
+mif = 20^-5; %Vivek Mf 0.0052 [H]
+
+Pm =  1;
+V = 10;

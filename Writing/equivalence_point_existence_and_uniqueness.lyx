@@ -84,6 +84,14 @@ name "cha:equivalence_pont"
 
 \end_layout
 
+\begin_layout Section
+An equilibrium can be only on the surface 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Standard
 First, we will show that the system 
 \begin_inset CommandInset ref
@@ -159,8 +167,8 @@ From the third line (
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
-mi_{f}i_{q1}^{0}-D_{p}\omega_{1}^{0}=0\\
-mi_{f}i_{q2}^{0}-D_{p}\omega_{2}^{0}=0
+mi_{f}i_{q1}^{0}-D_{p}\omega_{1}^{0}+T_{m}=0\\
+mi_{f}i_{q2}^{0}-D_{p}\omega_{2}^{0}+T_{m}=0
 \end{array}\right.\longrightarrow\left\{ \begin{array}{c}
 mi_{f}i_{q1}^{0}-D_{p}\omega^{0}=0\\
 mi_{f}i_{q2}^{0}-D_{p}\omega^{0}=0
@@ -664,6 +672,331 @@ This system have one solution:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+The existence of equilibrium on the surface 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+, 
+\begin_inset Formula $\delta_{0}=\pi.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The algebraic equation for calculating 
+\begin_inset Formula $z^{0}=z_{1}^{0}=z_{2}^{0}$
+\end_inset
+
+ is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{ccc}
+-R_{s}-2R_{L} & \omega^{0}L_{s} & 0\\
+-\omega^{0}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}^{0}\\
+i_{q}^{0}\\
+\omega^{0}
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0\\
+-T_{m}
+\end{array}\right]\label{eq:equilbrium_algebric_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We take scalar products on both sides with 
+\begin_inset Formula $z^{0}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(R_{tot}+R_{L}\right)\left((i_{d}^{0})^{2}+(i_{q}^{0})^{2}\right)=\left(T_{m}-D_{p}\omega^{0}\right)\omega^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This equation makes perfect physical sense.
+ Indeed, assume that there is no actual friction in the machine, 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+ is created by feedback, so that 
+\begin_inset Formula $T_{m}-D_{p}\omega^{0}$
+\end_inset
+
+is the mechanical torque applied to one generator, and then 
+\begin_inset Formula $\left(T_{m}-D_{p}\omega^{0}\right)\omega^{0}$
+\end_inset
+
+is the mechanical power entering one generator.
+ On the other hand, it is easy to see that 
+\begin_inset Formula $\left(R_{tot}+R_{L}\right)\left((i_{d}^{0})^{2}+(i_{q}^{0})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
+\end_inset
+
+ which is exactly half of the power dissipated in all the resistors, hence
+ it is the electric power leaving one generator.
+\end_layout
+
+\begin_layout Standard
+From equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equilbrium_algebric_eq"
+
+\end_inset
+
+, we want to derive a scalar equation to the determine the equilibrium velocity
+ 
+\begin_inset Formula $\omega^{0}$
+\end_inset
+
+.
+ The last line of the matrix equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equilbrium_algebric_eq"
+
+\end_inset
+
+ is 
+\begin_inset Formula $mi_{f}i_{q}^{0}-D_{p}\omega^{0}=-T_{m}$
+\end_inset
+
+.
+ from where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{m}-D_{p}\omega^{0}=-mi_{f}i_{q}^{0}\label{eq:eq_0_first_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The sides of this equation are the mechanical torque acting on each generator
+ at equilibrium.
+\end_layout
+
+\begin_layout Standard
+The first line of the matrix equilibrium 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:equilbrium_algebric_eq"
+
+\end_inset
+
+ is 
+\begin_inset Formula $-\left(R_{tot}+R_{L}\right)i_{d}^{0}+\omega^{0}L_{tot}i_{q}^{0}=0$
+\end_inset
+
+, hence:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i_{d}^{0}=\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}i_{q}^{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+From 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq_0_first_eq"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\begin{equation}
+i_{q}^{0}=\frac{T_{m}-D_{p}\omega_{0}}{-mi_{f}}\label{eq:iq_0_}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining the last two formulas,
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i_{d}^{0}=-\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}\label{eq:id_0_}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The second line of the matrix equation on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq_0_first_eq"
+
+\end_inset
+
+, is 
+\begin_inset Formula $\omega^{0}L_{s}i_{d}^{0}+\left(R_{tot}+R_{L}\right)i_{q}^{0}+mi_{f}\omega^{0}=0$
+\end_inset
+
+.
+ Substituting here the expressions for ,
+\begin_inset Formula $i_{q}^{0}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{d}^{0}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:iq_0_"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:id_0_"
+
+\end_inset
+
+, we get 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+-\omega^{0}L_{s}\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}+mi_{f}\omega^{0}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+we multiply all terms with 
+\begin_inset Formula $-\left(R_{tot}+R_{L}\right)mi_{f}$
+\end_inset
+
+ to have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\omega^{0}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega_{0}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega_{0}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{0}=0
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+D_{p}L_{s}^{2}\left(\omega^{0}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{0}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{0}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This is a cubic equation in 
+\begin_inset Formula $\omega^{0}$
+\end_inset
+
+, with at list one positive solution (because the left side is 
+\begin_inset Formula $-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$
+\end_inset
+
+ for 
+\begin_inset Formula $\omega^{0}=0$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+Let us denote the polynomial of order 3 in 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cuibi_eq"
+
+\end_inset
+
+ by 
+\begin_inset Formula $p(\omega^{0}).$
+\end_inset
+
+ We have already noted that 
+\begin_inset Formula $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$
+\end_inset
+
+.
+ On the other hand, we note that 
+\begin_inset Formula $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Hence, equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:cuibi_eq"
+
+\end_inset
+
+ has at least one solution ing the interval 
+\begin_inset Formula $\omega^{0}\in\left(0,\frac{T_{m}}{D_{p}}\right)$
+\end_inset
+
+.
 \end_layout
 
 \end_body
