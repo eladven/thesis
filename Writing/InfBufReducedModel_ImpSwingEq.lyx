@@ -657,41 +657,6 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-Assuming that the resistance of the stator is negligible we have:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d}\\
-L_{s}i_{q}\\
-J\omega\\
-\delta
-\end{array}\right]=\left[\begin{array}{cccc}
-0 & \omega L_{s} & 0 & 0\\
--\omega L_{s} & 0 & -mi_{f} & 0\\
-0 & mi_{f} & -D_{p} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]\left[\begin{array}{c}
-i_{d}\\
-i_{q}\\
-\omega\\
-\delta
-\end{array}\right]+\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)\\
-T_{m}\\
--\omega_{g}
-\end{array}\right]\label{eq:InfBusDynamics}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 We will try to separate the model in to fast variable and slow variable
  in order to have singular perturbation analysis (see 
 \begin_inset CommandInset citation
@@ -772,8 +737,8 @@ and now
 \begin_inset Formula 
 \begin{equation}
 g(x,y,\epsilon)=\left[\begin{array}{cc}
-0 & \omega L_{s}\\
--\omega L_{s} & 0
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
 \end{array}\right]\left[\begin{array}{c}
 \omega\\
 \delta
@@ -811,7 +776,7 @@ Because we assumed that
 
 \begin_layout Standard
 The equilibrium point 
-\begin_inset Formula $y_{0}=\hat{y}(x,\epsilon)$
+\begin_inset Formula $y_{0}=\hat{y}(x,\epsilon=0)$
 \end_inset
 
  is the root of 
@@ -833,15 +798,56 @@ We will solve this linear equation (in
 \begin_inset Formula 
 \begin{equation}
 \hat{y}=-\left[\begin{array}{cc}
-0 & \omega L_{s}\\
--\omega L_{s} & 0
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
 \end{array}\right]^{-1}\left[\begin{array}{c}
 Vsin(\delta)\\
 Vcos(\delta)-mi_{f}\omega
 \end{array}\right]=\left[\begin{array}{c}
-\frac{-mi_{f}\omega+Vcos(\delta)}{L_{s}\omega}\\
-\frac{-Vsin(\delta)}{L_{s}\omega}
+\frac{R_{s}Vsin(\delta)-L_{s}\omega\left(mi_{f}\omega-Vcos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
+\frac{-R_{s}\left(mi_{f}\omega-Vcos(\delta)\right)-L_{s}V\omega sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
 \end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming that 
+\begin_inset Formula $R_{s}\ll L_{s}\omega_{g}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{s}mi_{f}\ll L_{s}V$
+\end_inset
+
+ , and assuming that our dynamics is close to the equilibrium, namely 
+\begin_inset Formula $\omega\thickapprox\omega_{g}$
+\end_inset
+
+ then we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{y}=\left[\begin{array}{c}
+\frac{Vcos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
+-\frac{Vsin(\delta)}{L_{s}\omega}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{i}_{q}=-\frac{Vsin(\delta)}{L_{s}\omega}
 \end{equation}
 
 \end_inset
@@ -865,7 +871,7 @@ Now, we will substitute
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
-J\dot{\omega}=\frac{-mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
+J\dot{\omega}=-\frac{mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \end{equation}
@@ -883,7 +889,7 @@ Or
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
-J\dot{\omega\omega}+D_{p}\omega\omega=\frac{-mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\omega\\
+J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\omega\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \end{equation}
@@ -939,7 +945,7 @@ and then our model will be
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
-J\dot{\omega\omega}+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta)}{L_{s}}\\
+J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta)}{L_{s}}+\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \end{equation}
@@ -950,7 +956,7 @@ J\dot{\omega\omega}+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta
 \end_layout
 
 \begin_layout Standard
-This model is know as the improved swing equation model.
+This model is known as the improved swing equation model.
 \end_layout
 
 \begin_layout Standard

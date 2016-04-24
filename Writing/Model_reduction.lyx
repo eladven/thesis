@@ -1,0 +1,490 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass report
+\begin_preamble
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Chapter
+Model Reduction
+\begin_inset CommandInset label
+LatexCommand label
+name "cha:Model_reduction"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+Develop the improved swing equation for inifinte bus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+The dynamics of one synchronous generator connected to infinite bus, assuming
+ that the field current is constant, is the following: (see 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Brown2015"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand cite
+key "NatarajanWeiss2015"
+
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)\\
+T_{m}\\
+-\omega_{g}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will try to separate the model in to fast variable and slow variable
+ in order to have singular perturbation analysis (see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KhalilSingularPertubations"
+
+\end_inset
+
+).
+ We like to show the dynamics in the form:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+\dot{x}=f(x,y,\epsilon)\\
+\epsilon\dot{y}=g(x,y,\epsilon)
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $x$
+\end_inset
+
+ is the slow varying variable, 
+\begin_inset Formula $y$
+\end_inset
+
+ is the fast varying variable and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+is small parameter.
+\end_layout
+
+\begin_layout Standard
+In our case, if we assume that 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ is much smaller than the other parameter, we will define 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ as 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+, 
+\begin_inset Formula $x=\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $y=\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and now 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g(x,y,\epsilon)=\left[\begin{array}{cc}
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
+\end{array}\right]\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)-mi_{f}\omega
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because we assumed that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is very small, it means that 
+\begin_inset Formula $\epsilon\dot{y}=g(x,y,\epsilon)$
+\end_inset
+
+ is much faster than 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+, and it will reach it equilibrium (which we assume that exist and attractive)
+ almost instantly with comparing to 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The equilibrium point 
+\begin_inset Formula $y_{0}=\hat{y}(x,\epsilon=0)$
+\end_inset
+
+ is the root of 
+\begin_inset Formula $g(x,y,\epsilon)=0.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+We will solve this linear equation (in 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{y}=-\left[\begin{array}{cc}
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
+\end{array}\right]^{-1}\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)-mi_{f}\omega
+\end{array}\right]=\left[\begin{array}{c}
+\frac{R_{s}Vsin(\delta)-L_{s}\omega\left(mi_{f}\omega-Vcos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
+\frac{-R_{s}\left(mi_{f}\omega-Vcos(\delta)\right)-L_{s}V\omega sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming that 
+\begin_inset Formula $R_{s}\ll L_{s}\omega_{g}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{s}mi_{f}\ll L_{s}V$
+\end_inset
+
+ , and assuming that our dynamics is close to the equilibrium, namely 
+\begin_inset Formula $\omega\thickapprox\omega_{g}$
+\end_inset
+
+ then we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{y}=\left[\begin{array}{c}
+\frac{Vcos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
+-\frac{Vsin(\delta)}{L_{s}\omega}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{i}_{q}=-\frac{Vsin(\delta)}{L_{s}\omega}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, we will substitute 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ in 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+ to have reduced model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+J\dot{\omega}=-\frac{mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\omega\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At our model (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:InfBusDynamics"
+
+\end_inset
+
+), we have the assumption of constant mechanical torque, but if we want
+ our model have the same form as 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhouOhsawa2009"
+
+\end_inset
+
+, we can assume that the income mechanical power is fixed and we have correction
+ factor to correct the looses of the friction :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and then our model will be 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta)}{L_{s}}+\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This model is known as the improved swing equation model.
+\end_layout
+
+\begin_layout Section*
+Similations:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Current of the full and reduced model:
+\begin_inset Graphics
+	filename Sim1GWCurrents.png
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

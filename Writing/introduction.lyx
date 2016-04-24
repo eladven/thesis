@@ -84,8 +84,118 @@ name "cha:introduction"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Standard
+The mathematical model of a round rotor synchronous generator (SG) (without
+ damper windings), when neglecting the nonlinear effects in the iron core,
+ is a system of five bilinear differential equations, see Section II for
+ the details.
+ If we add various control loops (such as power system stabilizers) then
+ the order of the model increases.
+ Many such SGs are coupled together in the electricity grid, connected via
+ transmission lines and transformers, and there are of course also loads.
+ This makes the electric grid such a complicated nonlinear and time-varying
+ system that any attempt to prove its stability analytically is hopeless.
+ Stability analysis is usually done by simulation, or analytically on simplified
+ models, in which the SGs are connected in a simple network and each SG
+ is represented by reduced order equations, see for instance Doerfler and
+ Bullo [?,?], Porco, Doerfler and Bullo [?], …….
+ The reduced model of a SG is often obtained by treating the stator currents
+ as fast variables, thus eliminating them from the state variables via the
+ singular perturbation approach (see, for instance, Khalil [?]) and keeping
+ only the rotor angle, the rotor angular velocity and the rotor current
+ as relevant state variables, see for instance Kundur ??? [?], 
+\end_layout
 
+\begin_layout Standard
+In this paper we want to give a warning about using reduced order models
+ for stability analysis.
+ We consider a very simple system consisting of two identical SGs connected
+ at the two ends of a power line represented only by its inductance and
+ resistance.
+ There is a resistive load connected at the middle of this power line, as
+ shown in Figure 1, which is similar to Figure 2 in Celiska and Tabuada
+ [?].
+ 
+\end_layout
+
+\begin_layout Standard
+For simplicity, we consider the rotor currents to be constant (this is equivalen
+t to considering permanent magnet generators).
+ Thus, the full model of each SG is of order 4 (instead of 5).
+ We also consider the representation of these SGs by their reduced order
+ models, which are of order two.
+ We show that, for reasonable choices of the parameters, the following situation
+ may occur:
+\end_layout
+
+\begin_layout Standard
+The system built with reduced order models of the SGs is locally stable
+ around one equilibrium point (and unstable around another), simulations
+ seem to indicate that it is even almost globally asymptotically stable,
+ but the system built with the full (4th order) models of the SGs is not
+ even locally stable around any equilibrium point.
+ Since this phenomenon can occur even for the very simple network shown
+ above, it is of course even more likely to occur for more complex networks.
+\end_layout
+
+\begin_layout Standard
+Along the way, we prove some minor facts about the network shown in Figure
+ 1.
+ Let us denote by 
+\begin_inset Formula $\delta$
+\end_inset
+
+ the angle difference between the rotors of the two SGs.
+ We show that for any equilibrium point, either 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+ (modulo by 
+\begin_inset Formula $2\pi$
+\end_inset
+
+) or 
+\begin_inset Formula $\delta=\pi$
+\end_inset
+
+ (modulo by 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ ) and the states of the two SGs are equal.
+ Under a certain natural assumption on the generator parameters, there is
+ a unique equilibrium point for 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+ (modulo by 
+\begin_inset Formula $2\pi$
+\end_inset
+
+) and a unique equilibrium point with 
+\begin_inset Formula $\delta=\pi$
+\end_inset
+
+ (modulo by 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ )
+\end_layout
+
+\begin_layout Standard
+II.
+ THE MODEL OF A SYNCHRONOUS MACHINE
+\end_layout
+
+\begin_layout Standard
+III.
+ THE MODEL OF TWO COUPLED SYNCHRONOUS MACHINES
+\end_layout
+
+\begin_layout Standard
+IV.
+ STABILITY ANALYSIS FOR TWO COUPLED MACHINES 
 \end_layout
 
 \end_body

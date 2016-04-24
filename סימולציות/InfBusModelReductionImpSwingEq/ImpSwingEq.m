@@ -6,4 +6,4 @@ function [F_dynamic_] = ImpSwingEq(...
 dw = (-Dp_/J_)*(w_-wg_)+Pm_/(J_*w_) -V_*mif_*sin(d_)/(Ls_*J_*w_);
 dd = w_ - wg_;
 
-F_dynamic_ = [dw;dd];
+F_dynamic_ = [dw;dd]; 

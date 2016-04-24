@@ -1,15 +1,15 @@
 
 
-Ls = 4.4*10^-5;
+Ls = 4.4*10^-3;
 wg =  60*2*pi; 
 J = 0.2; % 
-Rs = 0.15;
+Rs = 0.05;
 
 Dp = 1.7; 
 mif = 1.05; 
 
-Pm =  10000;
-V = 630;
+Pm =  80000;
+V = 330;
 
 
 x_eq = calculateEquilibrium(Ls, J, Dp, mif, Rs, Pm, V, wg);
