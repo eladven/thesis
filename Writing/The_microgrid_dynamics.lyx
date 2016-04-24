@@ -85,6 +85,726 @@ name "cha:microgrid_dynamics"
 \end_layout
 
 \begin_layout Standard
+In this chapter, we derive the equations for microgrid which composed of
+ synchronous generators.
+ We start with derive the equations for single synchronous generator with
+ no assumptions about it currents, then we will assume that the field current
+ is constant.
+ After that we derive the equations for micorgrid which composed of one
+ generator which connected to an infinite bus, and then a microgrid comprising
+ two identical synchronous generator which connected in parallel with a
+ resistive load.
+ At the end of this chapter, we will reduce these model and get the improved
+ swing equations.
+\end_layout
+
+\begin_layout Section
+Single generator dynamics
+\end_layout
+
+\begin_layout Standard
+Mathematical models for synchronous machines can be found in 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kundur1994"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citet
+key "CaliiskanTabuada2014"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sauerPai1998"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ At this section, we will follow the derivations of 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Synchronous generator consist of two parts: rotor and statror.
+ The rotor is a rotated winding that rotate inside the stator with the angle
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with related to it initial angle .
+ the rotor can be considered as a coil with self inductance 
+\begin_inset Formula $L_{f}$
+\end_inset
+
+ and resistance 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+ and the voltage 
+\begin_inset Formula $V_{f}$
+\end_inset
+
+ across its terminals.
+ The stator consist of three identical windings that connected in star.
+ We consider generator without neutral connection and without dumper windings.
+ The stator windings can be regards as connected coils with self inductance
+ 
+\begin_inset Formula $L$
+\end_inset
+
+, mutually inductance 
+\begin_inset Formula $-M$
+\end_inset
+
+, and resistance 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+.
+ The negative sign of 
+\begin_inset Formula $-M$
+\end_inset
+
+ is due to the 
+\begin_inset Formula $2\pi/3$
+\end_inset
+
+ phase angle between each phase as shown in figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:structOfSG"
+
+\end_inset
+
+.The amplitude of the mutual inductance between the rotor and each of the
+ stators windings is 
+\begin_inset Formula $M_{f}$
+\end_inset
+
+.
+ We assume no magnetic saturation effects in the iron core and no eddy currents.
+ The stator terminals are labeled with letters a,b,c and voltages across
+ the stator terminals is denoted as 
+\begin_inset Formula $v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Lets define the vectors 
+\begin_inset Formula $\tilde{cos}\theta=\left[\begin{array}{c}
+cos\left(\theta\right)\\
+cos\left(\theta-\frac{2\pi}{3}\right)\\
+cos\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\tilde{sin}\theta=\left[\begin{array}{c}
+sin\left(\theta\right)\\
+sin\left(\theta-\frac{2\pi}{3}\right)\\
+sin\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+ .
+ We denote the stator flux by 
+\begin_inset Formula $\Phi=\left[\begin{array}{c}
+\Phi_{a}\\
+\Phi_{b}\\
+\Phi_{c}
+\end{array}\right]$
+\end_inset
+
+ , the stator currents by 
+\begin_inset Formula $i=\left[\begin{array}{c}
+i_{a}\\
+i_{b}\\
+i_{c}
+\end{array}\right]$
+\end_inset
+
+ and the rotor current by 
+\begin_inset Formula $i_{f}$
+\end_inset
+
+ .
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:structOfSG"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename SGStucture.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Structure of an idealized three-phase round rotor synchronous generator
+\end_layout
+
+\end_inset
+
+Structure of an idealized three-phase round rotor synchronous generator,
+ modified from 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "graingerStevenson1994"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The mutual inductance between the rotor coil and the each of the stator
+ coil varies with the rotor angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+M_{a,f}\\
+M_{b,f}\\
+M_{c,f}
+\end{array}\right]=M_{f}\tilde{cos}\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux linkage of the stator windings are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Phi=\left[\begin{array}{ccc}
+L & -M & -M\\
+-M & L & -M\\
+-M & -M & L
+\end{array}\right]i+M_{f}\tilde{cos}\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral, then 
+\begin_inset Formula $i_{a}+i_{b}+i_{c}=0$
+\end_inset
+
+, so the previous equation can be rewritten as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Phi=L_{s}i+M_{f}\tilde{i_{f}cos}\theta
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $L_{s}=L+M$
+\end_inset
+
+.
+ We will assume that the rotor current is constant (or equivalently, the
+ rotor is composed of permanent magnet).
+ Each stator terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=-R_{s}i-\frac{d\Phi}{dt}=-R_{s}i-L_{s}\frac{di}{dt}+e\label{eq:SGTerminalVlotage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $e=\left[\begin{array}{c}
+e_{a}\\
+e_{b}\\
+e_{c}
+\end{array}\right]$
+\end_inset
+
+ is the back electromotive force (EMF) due to the rotor movement given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e=M_{f}i_{f}\dot{\theta}\tilde{sin}\theta\label{eq:emf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For synchronous generator with no load, the voltages at each terminal will
+ be sinusoidal function.
+ In order to convert the volteges (and current) into a fixed value, we will
+ apply Park's transformation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x_{dq0=}\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{0}
+\end{array}\right]=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
+sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
+\sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
+\end{array}\right]\left[\begin{array}{c}
+x_{a}\\
+x_{b}\\
+x_{c}
+\end{array}\right]=U(\theta)x_{abc}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{abc}$
+\end_inset
+
+is some vector at abc coordinates, and 
+\begin_inset Formula $x_{dq0}$
+\end_inset
+
+is the same vector at the new coordinates.
+\end_layout
+
+\begin_layout Standard
+Applying park transformation to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SGTerminalVlotage"
+
+\end_inset
+
+ leads to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)v-U(\theta)e=-R_{s}U(\theta)i-L_{s}U(\theta)\frac{di}{dt}\label{eq:SGTerminalVlotageAfetrPark}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{di_{dq0}}{d\theta}=U(\theta)\frac{di_{abc}}{d\theta}+\frac{dU(\theta)}{d\theta}i_{abc}=U(\theta)\frac{di_{abc}}{d\theta}+\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To calculate the time derivative of 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{i}_{dq0}=\frac{di_{dq0}}{d\theta}\frac{d\theta}{dt}=U(\theta)\dot{i}_{abc}+\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega=\dot{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We rewrite 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SGTerminalVlotageAfetrPark"
+
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{s}\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]-L_{s}\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]=-R_{s}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]+\left[\begin{array}{c}
+e_{d}-v_{d}\\
+e_{q}-v_{q}\\
+e_{0}-v_{0}
+\end{array}\right]\label{eq:idiqDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral connection, 
+\begin_inset Formula $i_{0}=0,$
+\end_inset
+
+hence 
+\begin_inset Formula $e_{0}=0$
+\end_inset
+
+.
+ Applying Park transformation on 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:emf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+e_{d}\\
+e_{q}
+\end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
+0\\
+\omega i_{f}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will denote 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+ to have 
+\end_layout
+
+\begin_layout Standard
+Substitute this equation to 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{s}\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=-R_{s}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]+\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-m\left[\begin{array}{c}
+0\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithExIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotational dynamics of the rotor is given by the equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia of the rotor, 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+is is the mechanical torque which applies by the prime mover, 
+\begin_inset Formula $T_{e}$
+\end_inset
+
+ is the electromagnetic torque developed by the generator, and 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+ is a damping factor, which consist of the viscous friction acting on the
+ rotor and the frequency droop from 
+\begin_inset Formula $\omega$
+\end_inset
+
+ to the mechanical torque of the prime mover, which added in order to control
+ the frequency of the generator.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{e}$
+\end_inset
+
+can be found from energy consideration.
+ The magnetic energy stored in the generator is 
+\begin_inset Formula 
+\begin{equation}
+E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\tilde{cos}\theta>
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The electromagnetic torque can be calculated as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{mag}}{\partial\theta}|_{i=const}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{e}=M_{f}i_{f}<i,\frac{\partial\tilde{cos}\theta}{\partial\theta}>=M_{f}i_{f}<i,\tilde{sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using equations 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d}\\
+-v_{q}\\
+T_{m}
+\end{array}\right]\label{eq:SGDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This third order nonlinear dynamical system represents the dynamics of single
+ synchronous generated with constant field current.
+ 
+\end_layout
+
+\begin_layout Section
+Model of a Single generator connected to an infinite bus
+\end_layout
+
+\begin_layout Section
+Model of microgrid comprising two synchronous generators in parallel
+\end_layout
+
+\begin_layout Standard
 We consider a microgrid comprising two identical synchronous generators,
  with constant rotor (field) current and non neutral connection, together
  with a resistive load.
@@ -318,10 +1038,6 @@ reference "fig:one_phase_scheme"
 wide false
 sideways false
 status open
-
-\begin_layout Plain Layout
-
-\end_layout
 
 \begin_layout Plain Layout
 \begin_inset ERT
@@ -879,12 +1595,8 @@ e_{3}\\
 
 \end_layout
 
-\begin_layout Standard
-THE SINGLE MACHINE DYNAMICS
-\end_layout
-
-\begin_layout Standard
-INFINTE BUS DYNAMICS
+\begin_layout Section
+Reduced model
 \end_layout
 
 \end_body
