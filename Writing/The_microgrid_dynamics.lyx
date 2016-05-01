@@ -30,7 +30,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize default
 \use_geometry false
 \use_package amsmath 1
@@ -88,14 +97,12 @@ name "cha:microgrid_dynamics"
 In this chapter, we derive the equations for microgrid which composed of
  synchronous generators.
  We start with derive the equations for single synchronous generator with
- no assumptions about it currents, then we will assume that the field current
- is constant.
- After that we derive the equations for micorgrid which composed of one
- generator which connected to an infinite bus, and then a microgrid comprising
+ the assumption that the field current is constant.
+ After that we derive the equations for micorgrid of one generator which
+ connected to an infinite bus.
+ At the end of this chapter we will derive model for a microgrid comprising
  two identical synchronous generator which connected in parallel with a
  resistive load.
- At the end of this chapter, we will reduce these model and get the improved
- swing equations.
 \end_layout
 
 \begin_layout Section
@@ -797,7 +804,216 @@ This third order nonlinear dynamical system represents the dynamics of single
 \end_layout
 
 \begin_layout Section
-Model of a Single generator connected to an infinite bus
+Model of a Single generator connected to an infinite bus 
+\end_layout
+
+\begin_layout Standard
+In this section we will develop a model for single synchronous generator
+ which connected to an infinite bus this section follows 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "NatarajanWeiss2015"
+
+\end_inset
+
+.
+ The infinite bus is model as tree phase AC voltage source.
+ i.e the infinite bus is not effected by the synchronous generator that connected
+ to it.
+ The reason for this model is that the influence of a single synchronous
+ generator on a grid is very small.
+ In general, the line that connect the synchronous generator to the grid
+ has its impedance that consist of resistance and inductance, but because
+ it connected to the synchronous generator in series, then the 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ parameters can take into account the impedance of both the synchronous
+ generator and the line.
+\end_layout
+
+\begin_layout Standard
+Because the infinite bus is modeled as voltage source, then the voltage
+ at the synchronous generator terminals is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
+cos(\theta_{g})\\
+cos(\theta_{g}-\frac{2\pi}{3})\\
+cos(\theta_{g}-\frac{4\pi}{3})
+\end{array}\right]\label{eq:infBusVoltageABC}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $V$
+\end_inset
+
+ is the grid voltage magnitude, and 
+\begin_inset Formula $\theta_{g}$
+\end_inset
+
+ is the grid phase.
+ Lets define the angle 
+\begin_inset Formula $\delta$
+\end_inset
+
+ which represent the difference between the grid and the synchronous generator
+ angles:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta=\theta-\theta_{g}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After applying Park transformation (which depends on 
+\begin_inset Formula $\theta$
+\end_inset
+
+ which is the synchronous generator phase) on equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:infBusVoltageABC"
+
+\end_inset
+
+ we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{dqo}=\left[\begin{array}{c}
+v_{d}\\
+v_{q}\\
+v_{0}
+\end{array}\right]=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
+sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
+\sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
+\end{array}\right]\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
+cos(\theta_{g})\\
+cos(\theta_{g}-\frac{2\pi}{3})\\
+cos(\theta_{g}-\frac{4\pi}{3})
+\end{array}\right]=-V\left[\begin{array}{c}
+sin(\delta)\\
+cos(\delta)\\
+0
+\end{array}\right]\label{eq:infBusVoltageDQO}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to see that 
+\begin_inset Formula $\delta$
+\end_inset
+
+ dynamics is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\delta}=\omega-\omega_{g}\label{eq:deltaDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega_{g}$
+\end_inset
+
+ is the grid frequency.
+ Substituting equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:infBusVoltageDQO"
+
+\end_inset
+
+ and equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:deltaDynamics"
+
+\end_inset
+
+ into equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)\\
+T_{m}\\
+\omega_{g}
+\end{array}\right]\label{eq:SGDynamicsInfBus}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This forth order nonlinear dynamical system we be consider as the model
+ for one synchronous generator which connected to an infinite bus.
 \end_layout
 
 \begin_layout Section
@@ -805,9 +1021,9 @@ Model of microgrid comprising two synchronous generators in parallel
 \end_layout
 
 \begin_layout Standard
-We consider a microgrid comprising two identical synchronous generators,
- with constant rotor (field) current and non neutral connection, together
- with a resistive load.
+In this section, we consider a microgrid comprising two identical synchronous
+ generators, with constant rotor (field) current and non neutral connection,
+ together with a resistive load.
  (See figure
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -916,7 +1132,7 @@ end{circuitikz}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-The microgrid configuration
+Microgrid comprising two synchronous generators configuration
 \end_layout
 
 \end_inset
@@ -1076,7 +1292,7 @@ end{circuitikz}
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-One phase scheme
+Microgrid comprising two synchronous generators one phase scheme
 \end_layout
 
 \end_inset
@@ -1225,7 +1441,14 @@ We denote
 \end_layout
 
 \begin_layout Standard
-According to formula ***** , the dynamics of synchronous machine:
+According to formula 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SGDynamics"
+
+\end_inset
+
+, the dynamics of synchronous machine:
 \end_layout
 
 \begin_layout Standard
@@ -1593,10 +1816,6 @@ e_{3}\\
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section
-Reduced model
 \end_layout
 
 \end_body

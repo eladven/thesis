@@ -1,3 +1,4 @@
+clear all
 close all
 clc;
 
@@ -7,11 +8,10 @@ warning(w)
 
 global Ls J Dp mif Rs Pm V wg
 %initValues5KWSG;
-initValues1MWSG;
+%initValues1MWSG;
 %initValuesReduceNonStableExample;
-%initValuesNonStableExample;
+initValuesNonStableExample;
 
-T = 3;
 global x0;
 
 
@@ -26,22 +26,28 @@ for i=1:length(iq_hat)
     id_hat(i) =    - (mif*x(i,3) - V*cos(x(i,4)))/(Ls*x(i,3));
 end
 figure (1)
+subplot(3,1,1)
 hold on;
 plot(t,x(:,1:2))
-plot(t,iq_hat,'r');
 plot(t,id_hat,'g');
-figure (2)
+plot(t,iq_hat,'r');
+xlabel('time [sec]');
+ylabel('current [A]');
+legend({'$i_d$','$i_q$','$\hat{i_d}$','$\hat{i_q}$'},'Interpreter','latex','Position', [0.93,0.78,0.01,0.1])
+subplot(3,1,2)
 hold on
 plot(t,x(:,3))
 plot(t_hat,x_hat(:,1),'r')
 xlabel('time [sec]');
 ylabel('freq [rad/sec]');
-figure (3)
+legend({'$\omega$','$\hat{\omega}$'},'Interpreter','latex','Position', [0.93,0.528,0.01,0.1])
+subplot(3,1,3)
 hold on
 plot(t,x(:,4))
 plot(t_hat,x_hat(:,2),'r')
 xlabel('time [sec]');
 ylabel('phase [rad]');
+legend({'$\delta$','$\hat{\delta}$'},'Interpreter','latex','Position', [0.93,0.225,0.01,0.1])
 
 
 %%
@@ -54,6 +60,8 @@ if (max(real(eig_)) >0)
 else
     display('STABLE');
 end
+% display('The eig of system 1 is:');
+% display(eig_);
 
 eig_ = calculateEigOfJacobianOfEqPointForOrigSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0(1,2), x0(2,2), x0(3,2), x0(4,2));
 display('The detailed system (2) is localy ');
@@ -73,6 +81,9 @@ if (max(real(eig_)) >0)
 else
     display('STABLE');
 end
+% display('The eig of system 1 is:');
+% display(eig_);
+
 
 eig_ = calculateEigOfJacobianOfEqPointForReducedSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0_hat(1,2), x0_hat(2,2));
 display('The reduced system (2) is localy ');

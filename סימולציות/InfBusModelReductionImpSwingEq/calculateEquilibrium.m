@@ -15,7 +15,7 @@ dx = InfBusTmVarDynamics(...
     Ls, J, Dp, mif, Rs, Pm,V,wg);
 
 epsilon = dx'*dx;
-assert(epsilon < 10^-6,'dx is not zero at the equilibrium point')
+assert(epsilon < 10^-6,sprintf('dx is not zero at the equilibrium point. epsilon: %f',epsilon))
 
 x0(1,1) = id0; 
 x0(2,1) = iq0;

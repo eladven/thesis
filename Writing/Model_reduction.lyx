@@ -101,17 +101,10 @@ Develop the improved swing equation for inifinte bus:
 \end_inset
 
 The dynamics of one synchronous generator connected to infinite bus, assuming
- that the field current is constant, is the following: (see 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "Brown2015"
-
-\end_inset
-
-,
-\begin_inset CommandInset citation
-LatexCommand cite
-key "NatarajanWeiss2015"
+ that the field current is constant, is the following (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
@@ -120,7 +113,7 @@ key "NatarajanWeiss2015"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \frac{d}{dt}\left[\begin{array}{c}
 L_{s}i_{d}\\
 L_{s}i_{q}\\
@@ -142,7 +135,7 @@ Vcos(\delta)\\
 T_{m}\\
 -\omega_{g}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -329,7 +322,7 @@ Assuming that
 \hat{y}=\left[\begin{array}{c}
 \frac{Vcos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
 -\frac{Vsin(\delta)}{L_{s}\omega}
-\end{array}\right]
+\end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
 \end{equation}
 
 \end_inset
@@ -453,7 +446,47 @@ This model is known as the improved swing equation model.
 \end_layout
 
 \begin_layout Section*
-Similations:
+Simulations:
+\end_layout
+
+\begin_layout Standard
+In this section, we provide simulation that shows that the improved swing
+ equations are good reduction for many cases, but there are cases where
+ there is mismatch between the behavior suggested by the improved swing
+ equations and the whole model (equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:SGDynamicsInfBus"
+
+\end_inset
+
+).
+ For each simulation, we will show the current 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{q}$
+\end_inset
+
+over time for both the whole model and for the improved swing equation model,
+ where for the improved swing equation model, we will estimate these currents
+ by equation 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:ISEInfBusEstimatedCurrents"
+
+\end_inset
+
+.
+ In addition we will show the the frequency over time for both the whole
+ model and the improved swing equation model, and the phase over time of
+ the whole model and the improved swing equation model.
+\end_layout
+
+\begin_layout Subsection*
+A.
+ 5KW SG:
 \end_layout
 
 \begin_layout Standard
@@ -463,17 +496,94 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne5KWSG"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename sim5KWInfBus.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Current of the full and reduced model:
+Simulation for infinite bus with single 5KW SG
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown at figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne5KWSG"
+
+\end_inset
+
+, Simulation shows that for 5KW SG, the behavior of the whole model and
+ the reduced model are almost the same.
+ Although the currents at the reduced don't have a ripple that the whole
+ model has, both models converges at the same rate with the same oscillations
+ to the same equilibrium point (The parameters for this simulation can be
+ found at the appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:5KWSG"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection*
+B.
+ 1MW SG:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1MWSG"
+
+\end_inset
+
+
 \begin_inset Graphics
-	filename Sim1GWCurrents.png
-	scale 70
+	filename sim1MWInfBus.eps
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation for infinite bus with single 1MW SG
 \end_layout
 
 \end_inset
@@ -484,6 +594,178 @@ Current of the full and reduced model:
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+As shown at figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1MWSG"
+
+\end_inset
+
+, Simulation shows that for 1MW SG, the behavior of the whole model and
+ the reduced model are still very similar.
+ Although the whole model currents are much rippled than the reduced model
+ currents, both models converges at the same rate with the same oscillations
+ to the same equilibrium point (The parameters for this simulation can be
+ found at the appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:1MWSG"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection*
+C.
+ Non stable behavior for the reduced model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffBehavior1"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simDiffBehavior1.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation example that shows different behavior for the reduced model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown at figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1DiffBehavior1"
+
+\end_inset
+
+, Simulation shows that for other parameters set (see appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:DifferentBehaviorParamsSetSG"
+
+\end_inset
+
+) the behavior of the whole model and the reduced model is totally different.
+ while the whole model is stable (the eigenvalues of the Jacobian around
+ the equilibrium point are: 
+\begin_inset Formula $\left[\begin{array}{cccc}
+-11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]$
+\end_inset
+
+
+\begin_inset Formula $\left[\begin{array}{cc}
+-14.6+9.4979i, & 6.1-9.4i\end{array}\right]$
+\end_inset
+
+) , the reduced model is not stable (the eigenvalues of the Jacobian around
+ the equilibrium point are: 
+\begin_inset Formula $\left[\begin{array}{cc}
+-14.6+9.4979i, & 6.1-9.4i\end{array}\right]$
+\end_inset
+
+) .
+\end_layout
+
+\begin_layout Subsection*
+D.
+ Different region of attraction example :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffRegionOfAttraction"
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename simDiffRegionOFAttraction.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation example that shows different behavior for the reduced model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown at figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1DiffRegionOfAttraction"
+
+\end_inset
+
+, Simulation shows that for certion parameters set (see appendix, table
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:DifferentBehaviorParamsSetSG"
+
+\end_inset
+
+) the initial condition of this simulation is within the region of attraction
+ of the reduced model, but outside the region of attraction of the whole
+ model.
+ That cause the whole model to diverge while the reduce model converge to
+ the equilibrium point.
+ 
 \end_layout
 
 \end_body
