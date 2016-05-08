@@ -7,10 +7,10 @@ rmpath('folderthatisnotonpath')
 warning(w)
 
 global Ls J Dp mif Rs Pm V wg
-%initValues5KWSG;
+initValues5KWSG;
 %initValues1MWSG;
 %initValuesReduceNonStableExample;
-initValuesNonStableExample;
+%initValuesNonStableExample;
 
 global x0;
 
@@ -19,18 +19,18 @@ global x0;
 [t_hat,x_hat] = ode15s(@reducedModelDynamics,[0 T],[x0(3),x0(4)]);
 
 
-iq_hat = zeros(1,length(t));
-id_hat = zeros(1,length(t));
+iq_hat = zeros(1,length(t_hat));
+id_hat = zeros(1,length(t_hat));
 for i=1:length(iq_hat)
-    iq_hat(i) =  - (V*sin(x(i,4)))/(Ls*x(i,3));
-    id_hat(i) =    - (mif*x(i,3) - V*cos(x(i,4)))/(Ls*x(i,3));
+    iq_hat(i) =  - (V*sin(x_hat(i,2)))/(Ls*x_hat(i,1));
+    id_hat(i) =    - (mif*x_hat(i,1) - V*cos(x_hat(i,2)))/(Ls*x_hat(i,1));
 end
 figure (1)
 subplot(3,1,1)
 hold on;
 plot(t,x(:,1:2))
-plot(t,id_hat,'g');
-plot(t,iq_hat,'r');
+plot(t_hat,id_hat,'g');
+plot(t_hat,iq_hat,'r');
 xlabel('time [sec]');
 ylabel('current [A]');
 legend({'$i_d$','$i_q$','$\hat{i_d}$','$\hat{i_q}$'},'Interpreter','latex','Position', [0.93,0.78,0.01,0.1])

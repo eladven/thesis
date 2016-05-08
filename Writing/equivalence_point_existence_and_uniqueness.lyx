@@ -74,7 +74,7 @@
 \begin_body
 
 \begin_layout Chapter
-Equivalence point existence and uniqueness
+Equilibrium points 
 \begin_inset CommandInset label
 LatexCommand label
 name "cha:equivalence_pont"
@@ -84,7 +84,173 @@ name "cha:equivalence_pont"
 
 \end_layout
 
+\begin_layout Standard
+In this chapter, we study the equilibrium points for both the infinite bus
+ configuration, and the two SG microgid.
+\end_layout
+
 \begin_layout Section
+Equilibrium points of SG connected to an infinite bus.
+\end_layout
+
+\begin_layout Standard
+This section follows 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "NatarajanWeiss2015"
+
+\end_inset
+
+.
+ In order to search the equilibrium point of single SG which connected to
+ an infinite bus, we will find the roots of: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+0\\
+0\\
+0\\
+0
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+Vsin(\delta)\\
+Vcos(\delta)\\
+T_{m}\\
+\omega_{g}
+\end{array}\right]\label{eq:SGDynamicsInfBusEqPoint}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By taking the forth, and the third lines, it shows that the equilibrium
+ point 
+\begin_inset Formula $z_{e}=\left[\begin{array}{c}
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}\\
+\delta^{e}
+\end{array}\right]$
+\end_inset
+
+ must satisfy:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega^{e}=\omega_{g},\qquad i_{q}^{e}=\frac{D_{p}\omega_{g}-T_{m}}{mi_{f}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the value of 
+\begin_inset Formula $i_{q}^{e}$
+\end_inset
+
+ at the first line yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{Vsind\left(\delta^{e}\right)}{R_{s}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the second line, after substituting the values of 
+\begin_inset Formula $i_{d}^{e}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{q}^{e}$
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\delta^{e}=cos^{-1}\left(\frac{mi_{f}\omega_{g}R_{s}}{|Z|V}-\frac{|z|\left(T_{m}D_{p}\omega_{g}\right)}{Vmi_{f}}\right)-\psi
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $|z|$
+\end_inset
+
+ and 
+\begin_inset Formula $\psi$
+\end_inset
+
+ define by the impedance of the generator: 
+\begin_inset Formula $z=R_{s}+j\omega_{g}L_{s}=|z|e^{j\psi}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Because the arccos function, SG which connected to an infinite bus can have
+ one, two or zero solutions (modulo 
+\begin_inset Formula $2\pi$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Equilibrium points of a microgrid comprising two SGs.
+\end_layout
+
+\begin_layout Standard
+In this section, we study the equilibrium points of a microgrid domprising
+ two SGs.
+ we start by showing that such equilibrium point must satisfy synchronization
+ between the two generators (means that the state variables are equal between
+ the two generators, and there is no phase between the two generators),
+ or anti-synchronization between the two generators (means that the state
+ variables are equal between the two generators, and there is phase of 
+\begin_inset Formula $\pi$
+\end_inset
+
+ between the two generators).
+ Later in this section, we will compute the equilibrium point which satisfy
+ synchronization between the two generators.
+ 
+\end_layout
+
+\begin_layout Subsection
 An equilibrium can be only on the surface 
 \begin_inset Formula $z_{1}=z_{2}$
 \end_inset
@@ -674,16 +840,8 @@ This system have one solution:
 
 \end_layout
 
-\begin_layout Section
-The existence of equilibrium on the surface 
-\begin_inset Formula $z_{1}=z_{2}$
-\end_inset
-
-, 
-\begin_inset Formula $\delta_{0}=\pi.$
-\end_inset
-
- 
+\begin_layout Subsection
+Equilibrium point on the synchronization surface.
 \end_layout
 
 \begin_layout Standard
@@ -997,10 +1155,6 @@ reference "eq:cuibi_eq"
 \end_inset
 
 .
-\end_layout
-
-\begin_layout Standard
-INFINITE BUS EQUILIBRUIM POINT
 \end_layout
 
 \end_body

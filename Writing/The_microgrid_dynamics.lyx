@@ -645,7 +645,7 @@ i_{q}
 \end{array}\right]=-R_{s}\left[\begin{array}{c}
 i_{d}\\
 i_{q}
-\end{array}\right]+\omega\left[\begin{array}{c}
+\end{array}\right]+\omega L_{s}\left[\begin{array}{c}
 i_{q}\\
 -i_{d}
 \end{array}\right]-m\left[\begin{array}{c}
