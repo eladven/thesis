@@ -85,30 +85,96 @@ name "cha:introduction"
 \end_layout
 
 \begin_layout Standard
-The mathematical model of a round rotor synchronous generator (SG) (without
- damper windings), when neglecting the nonlinear effects in the iron core,
- is a system of five bilinear differential equations, see Section II for
- the details.
+The stability of microgrid which comprise of synchronous generator (SG)
+ is very interesting attribute of the microgrid.
+ The mathematical model of a round rotor SG (without damper windings), when
+ neglecting the nonlinear effects in the iron core, and assuming constant
+ field current is a system of four bilinear differential equations, see
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:microgrid_dynamics"
+
+\end_inset
+
+ for the details.
  If we add various control loops (such as power system stabilizers) then
  the order of the model increases.
- Many such SGs are coupled together in the electricity grid, connected via
+\end_layout
+
+\begin_layout Standard
+Many such SGs are coupled together in the electricity grid, connected via
  transmission lines and transformers, and there are of course also loads.
  This makes the electric grid such a complicated nonlinear and time-varying
  system that any attempt to prove its stability analytically is hopeless.
  Stability analysis is usually done by simulation, or analytically on simplified
  models, in which the SGs are connected in a simple network and each SG
- is represented by reduced order equations, see for instance Doerfler and
- Bullo [?,?], Porco, Doerfler and Bullo [?], …….
+ is represented by reduced order equations, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "DorflerAndBullo2012"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "PorcoDorflerBullo2013"
+
+\end_inset
+
+.
  The reduced model of a SG is often obtained by treating the stator currents
  as fast variables, thus eliminating them from the state variables via the
- singular perturbation approach (see, for instance, Khalil [?]) and keeping
- only the rotor angle, the rotor angular velocity and the rotor current
- as relevant state variables, see for instance Kundur ??? [?], 
+ singular perturbation approach (see, for instance, 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "KhalilSingularPertubations"
+
+\end_inset
+
+
+\begin_inset CommandInset citation
+LatexCommand citet
+key "KhalilSingularPertubations"
+
+\end_inset
+
+) and keeping only the rotor angle, and the rotor angular velocity as relevant
+ state variables, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "kundur1994"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sauerPai1998"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-In this paper we want to give a warning about using reduced order models
- for stability analysis.
+In this work, we study the stability of single SG which connected to infinite
+ bus, and comparing the difference between full model of SG with reduce
+ model which is know as the improve swing equations model (see 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "monshizadehDePersisMonshizadehVanderSchaft2016,zhouOhsawa2009"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+In addition we give a warning about using reduced order models for stability
+ analysis.
  We consider a very simple system consisting of two identical SGs connected
  at the two ends of a power line represented only by its inductance and
  resistance.
@@ -181,21 +247,6 @@ Along the way, we prove some minor facts about the network shown in Figure
 \end_inset
 
  )
-\end_layout
-
-\begin_layout Standard
-II.
- THE MODEL OF A SYNCHRONOUS MACHINE
-\end_layout
-
-\begin_layout Standard
-III.
- THE MODEL OF TWO COUPLED SYNCHRONOUS MACHINES
-\end_layout
-
-\begin_layout Standard
-IV.
- STABILITY ANALYSIS FOR TWO COUPLED MACHINES 
 \end_layout
 
 \end_body
