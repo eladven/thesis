@@ -726,17 +726,24 @@ if
 \end_layout
 
 \begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\begin{array}{c}
 \ref{eq:MATRIX_4}\longrightarrow\begin{array}{c}
 (a_{1})\\
 (a_{3})\\
 (a_{2}):\left(-\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
-\end{array}\left[\begin{array}{ccc}
+\end{array}=\\
+\left[\begin{array}{ccc}
 -R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
 -\alpha & \beta & 0\\
 \frac{4L_{s}R_{tot}\omega^{0}sind(\delta^{0})}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos(\delta^{0})\right)+R_{L}\left(R_{tot}+R_{L}cos(\delta^{0})\right)sin(delta^{0})\right]} & 0 & 0
-\end{array}\right]\label{eq:MATRIX_4-1}
+\end{array}\right]
+\end{array}
 \end{equation}
 
 \end_inset
