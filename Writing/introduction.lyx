@@ -85,6 +85,75 @@ name "cha:introduction"
 \end_layout
 
 \begin_layout Standard
+The AC electricity grid was developed at the end of the XIX century, and
+ basically remained very similar till our days.
+ Many techniques and models that were developed in order to analyze and
+ design the grid and its components are based on assumptions and methods,
+ which were driven by experience and observations 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "sauerPai1998"
+
+\end_inset
+
+.
+ In recent years, there is a trend of increasing use of renewable energy,
+ which requires the conversion of the energy in order to interface with
+ the power grid.
+ When the rate of the converted energy will become a significant part, it
+ is not clear whether the traditional models and methods for controling
+ the power grid will succeed to control it 
+\begin_inset CommandInset citation
+LatexCommand citet
+key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+.
+ Therefore, there is increasing interest in the fundamental mathematical
+ models of the electrical grid.
+\end_layout
+
+\begin_layout Standard
+dddddddddddddd
+\end_layout
+
+\begin_layout Standard
+Synchronous generator (SG) are the main power source of the electricity
+ grid.
+ The mathematical model of a SG is very complex and difficult to use.
+ to 
+\end_layout
+
+\begin_layout Standard
+dddddddddddddddddddd
+\end_layout
+
+\begin_layout Standard
+sinchronization and stability
+\end_layout
+
+\begin_layout Standard
+dddddddddddddddddddddddddd
+\end_layout
+
+\begin_layout Standard
+models of generators and topologies and thir limitiation
+\end_layout
+
+\begin_layout Standard
+dddddddddddddddddddddd
+\end_layout
+
+\begin_layout Standard
+in this work
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
+\begin_layout Standard
 The stability of microgrid which comprise of synchronous generator (SG)
  is very interesting attribute of the microgrid.
  The mathematical model of a round rotor SG (without damper windings), when
