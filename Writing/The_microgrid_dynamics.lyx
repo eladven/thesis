@@ -907,11 +907,12 @@ reference "eq:infBusVoltageABC"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\begin{array}{ccc}
 v_{dqo}=\left[\begin{array}{c}
 v_{d}\\
 v_{q}\\
 v_{0}
-\end{array}\right]=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+\end{array}\right]= & \sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
 cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
 sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
 \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
@@ -919,11 +920,13 @@ sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
 cos(\theta_{g})\\
 cos(\theta_{g}-\frac{2\pi}{3})\\
 cos(\theta_{g}-\frac{4\pi}{3})
-\end{array}\right]=-V\left[\begin{array}{c}
+\end{array}\right]\\
+= & -V\left[\begin{array}{c}
 sin(\delta)\\
 cos(\delta)\\
 0
-\end{array}\right]\label{eq:infBusVoltageDQO}
+\end{array}\right]
+\end{array}\label{eq:infBusVoltageDQO}
 \end{equation}
 
 \end_inset
@@ -1649,11 +1652,12 @@ reference "eq:dynamics_of_single_generator"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\begin{array}{ccc}
 \frac{d}{dt}\left[\begin{array}{c}
 L_{s}i_{d1}\\
 L_{s}i_{q1}\\
 J\omega_{1}
-\end{array}\right]=\left[\begin{array}{ccc}
+\end{array}\right] & = & \left[\begin{array}{ccc}
 -R_{tot} & \omega_{1}L_{s} & 0\\
 -\omega_{1}L_{s} & -R_{tot} & -mi_{f}\\
 0 & mi_{f} & D_{p}
@@ -1665,7 +1669,8 @@ i_{q1}\\
 0\\
 0\\
 T_{m}
-\end{array}\right]-\left[\begin{array}{ccc}
+\end{array}\right]\\
+ &  & -\left[\begin{array}{ccc}
 R_{L}cos(\delta) & -R_{L}sin(\delta) & 0\\
 R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
 0 & 0 & 0
@@ -1673,7 +1678,8 @@ R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
 i_{d2}\\
 i_{q2}\\
 \omega_{2}
-\end{array}\right]\label{eq:dynamics_of_microgrid}
+\end{array}\right]
+\end{array}\label{dynamics_of_microgrid}
 \end{equation}
 
 \end_inset
