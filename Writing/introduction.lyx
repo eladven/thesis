@@ -165,11 +165,21 @@ key "sauerPai1998"
 \end_layout
 
 \begin_layout Standard
-dddddddddddddddddddd
-\end_layout
-
-\begin_layout Standard
-sinchronization and stability
+SGs has the important property that once they synchronizes, means that their
+ rotors spin with the same velocity, they tend to remain synchronized even
+ without any control.
+ This property is important because the electricity grid must maintain constant
+ frequency, and because SG can transfer constant power trough the the grid
+ is depend on constant difference between the SG and the grid phase.
+ That why it is desirable to know if a grid SGs are synchronize and if the
+ grid frequency remains fix.
+ In order to use the control stability analysis, and because the trajectory
+ of the state of a SG in the steady state is sinusoidal, it is common to
+ use transformation of the state that maps sinusoidal trajectory into a
+ constant point on the state plan.
+ The famous Park's transformation performs that, so after applying park
+ transformation of the SG model, The question of synchronization at fix
+ frequency became a stability question.
 \end_layout
 
 \begin_layout Standard
