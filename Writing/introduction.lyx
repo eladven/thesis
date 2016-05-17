@@ -169,45 +169,25 @@ SGs has the important property that once they synchronizes, means that their
  rotors spin with the same velocity, they tend to remain synchronized even
  without any control.
  This property is important because the electricity grid must maintain constant
- frequency, and because SG can transfer constant power trough the the grid
- is depend on constant difference between the SG and the grid phase.
- That why it is desirable to know if a grid SGs are synchronize and if the
- grid frequency remains fix.
+ frequency, and because the ability of a SG to transfer constant power trow
+ the the grid depends exists only when the phase difference between each
+ SG and the grid phase is fixed.
+ That why it is desirable to know if for a given grid which contains SGs
+ and a loads,all the SGs and tend to synchronize and if the grid frequency
+ remains fix.
  In order to use the control stability analysis, and because the trajectory
  of the state of a SG in the steady state is sinusoidal, it is common to
- use transformation of the state that maps sinusoidal trajectory into a
- constant point on the state plan.
+ use transformation of the voltages and currents that maps sinusoidal trajectory
+ into a constant point on the state plan.
  The famous Park's transformation performs that, so after applying park
- transformation of the SG model, The question of synchronization at fix
- frequency became a stability question.
+ transformation on the SG model, This question became to be a stability
+ question.
+ This property is know as frequency stability.
 \end_layout
 
 \begin_layout Standard
-dddddddddddddddddddddddddd
-\end_layout
-
-\begin_layout Standard
-models of generators and topologies and thir limitiation
-\end_layout
-
-\begin_layout Standard
-dddddddddddddddddddddd
-\end_layout
-
-\begin_layout Standard
-in this work
-\end_layout
-
-\begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
-The stability of microgrid which comprise of synchronous generator (SG)
- is very interesting attribute of the microgrid.
- The mathematical model of a round rotor SG (without damper windings), when
- neglecting the nonlinear effects in the iron core, and assuming constant
- field current is a system of four bilinear differential equations, see
+In this work, we study two simple grid configurations: Single SG that connected
+ to an infinite bus, and Two SG in parallel and load.
  chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -215,71 +195,39 @@ reference "cha:microgrid_dynamics"
 
 \end_inset
 
- for the details.
- If we add various control loops (such as power system stabilizers) then
- the order of the model increases.
-\end_layout
-
-\begin_layout Standard
-Many such SGs are coupled together in the electricity grid, connected via
- transmission lines and transformers, and there are of course also loads.
- This makes the electric grid such a complicated nonlinear and time-varying
- system that any attempt to prove its stability analytically is hopeless.
- Stability analysis is usually done by simulation, or analytically on simplified
- models, in which the SGs are connected in a simple network and each SG
- is represented by reduced order equations, see for instance 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "DorflerAndBullo2012"
+ will discuss the dynamical model for the above configurations.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:equivalence_pont"
 
 \end_inset
 
- and 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "PorcoDorflerBullo2013"
+ discuss the necessary condition to have equilibrium point at the infinite
+ bus configuration, and shows that micogrid comprised of two SGs can have
+ equilibrium point only on the synchronization manifold, and that there
+ is at list one such equilibrium point.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Model_reduction"
 
 \end_inset
 
-.
- The reduced model of a SG is often obtained by treating the stator currents
- as fast variables, thus eliminating them from the state variables via the
- singular perturbation approach (see, for instance, 
+ shows that the simplified model which known as the improved swing equation
+ can't predict behavior that 4th order model predicts.
+ 
 \begin_inset CommandInset citation
 LatexCommand citet
-key "KhalilSingularPertubations"
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
 
 \end_inset
 
-
-\begin_inset CommandInset citation
-LatexCommand citet
-key "KhalilSingularPertubations"
-
-\end_inset
-
-) and keeping only the rotor angle, and the rotor angular velocity as relevant
- state variables, see for instance 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "kundur1994"
-
-\end_inset
-
- and 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "sauerPai1998"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-In this work, we study the stability of single SG which connected to infinite
- bus, and comparing the difference between full model of SG with reduce
- model which is know as the improve swing equations model (see 
+ showed, that the improved swing equation model predicts behavior that the
+ classical model (the swing equation model) can't predict.
+ the stability of single SG which connected to infinite bus, and comparing
+ the difference between full model of SG with reduce model which is know
+ as the improve swing equations model (see 
 \begin_inset CommandInset citation
 LatexCommand citet
 key "monshizadehDePersisMonshizadehVanderSchaft2016,zhouOhsawa2009"
