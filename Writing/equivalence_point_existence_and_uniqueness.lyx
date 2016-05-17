@@ -115,15 +115,15 @@ key "NatarajanWeiss2015"
 0\\
 0
 \end{array}\right]=\left[\begin{array}{cccc}
--R_{s} & \omega L_{s} & 0 & 0\\
--\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+-R_{s} & \omega^{e}L_{s} & 0 & 0\\
+-\omega^{e}L_{s} & -R_{s} & -mi_{f} & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\left[\begin{array}{c}
-i_{d}\\
-i_{q}\\
-\omega\\
-\delta
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}\\
+\delta^{e}
 \end{array}\right]+\left[\begin{array}{c}
 Vsin(\delta)\\
 Vcos(\delta)\\
@@ -267,11 +267,11 @@ reference "eq:dynamics_whole"
 \end_inset
 
  has equilibrium point, and those equilibrium point have the structure 
-\begin_inset Formula $z_{1}^{0}=z_{2}^{0}=z^{0}$
+\begin_inset Formula $z_{1}^{e}=z_{2}^{e}=z^{e}$
 \end_inset
 
  , 
-\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$
 \end_inset
 
 .
@@ -282,13 +282,13 @@ reference "eq:dynamics_whole"
 \begin_inset Formula 
 \begin{equation}
 \left[\begin{array}{c|c|c}
-\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
-\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
+\mathcal{A}(\omega_{1}^{e}) & -\mathcal{B}(\delta^{e}) & 0\\
+\hline -\mathcal{B}(-\delta^{e}) & \mathcal{A}(\omega_{2}^{e}) & 0\\
 \hline -e_{3}^{T} & e_{3}^{T} & 0
 \end{array}\right]\left[\begin{array}{c}
-z_{1}\\
-z_{2}\\
-\delta
+z_{1}^{e}\\
+z_{2}^{e}\\
+\delta^{e}
 \end{array}\right]+T_{m}\left[\begin{array}{c}
 e_{3}\\
 e_{3}\\
@@ -309,7 +309,7 @@ At the seventh line (
  we have 
 \begin_inset Formula 
 \begin{equation}
--\omega_{1}^{0}+\omega_{2}^{0}=0\longrightarrow\omega_{1}^{0}=\omega_{2}^{0}\coloneqq\omega^{0}
+-\omega_{1}^{e}+\omega_{2}^{e}=0\longrightarrow\omega_{1}^{e}=\omega_{2}^{e}\coloneqq\omega^{e}
 \end{equation}
 
 \end_inset
@@ -333,12 +333,12 @@ From the third line (
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
-mi_{f}i_{q1}^{0}-D_{p}\omega_{1}^{0}+T_{m}=0\\
-mi_{f}i_{q2}^{0}-D_{p}\omega_{2}^{0}+T_{m}=0
+mi_{f}i_{q1}^{e}-D_{p}\omega_{1}^{e}+T_{m}=0\\
+mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
 \end{array}\right.\longrightarrow\left\{ \begin{array}{c}
-mi_{f}i_{q1}^{0}-D_{p}\omega^{0}=0\\
-mi_{f}i_{q2}^{0}-D_{p}\omega^{0}=0
-\end{array}\right.\longrightarrow i_{q1}^{0}=i_{q2}^{0}=i_{q}^{0}
+mi_{f}i_{q1}^{e}-D_{p}\omega^{e}=0\\
+mi_{f}i_{q2}^{e}-D_{p}\omega^{e}=0
+\end{array}\right.\longrightarrow i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e}
 \end{equation}
 
 \end_inset
@@ -370,10 +370,10 @@ From the first line (
 \begin_inset Formula 
 \begin{equation}
 \left\{ \begin{array}{c}
--R_{tot}i_{d1}^{0}+\omega_{0}L_{s}i_{q}^{0}-R_{L}cos(\delta_{0})i_{d2}^{0}+R_{L}sin(\delta_{0})i_{q}^{0}=0\\
--\omega_{0}L_{s}i_{d1}^{0}-R_{tot}i_{q}^{0}-mi_{f}\omega_{0}-R_{L}sin(\delta_{0})i_{d2}^{0}-R_{L}cos(\delta_{0})i_{q}^{0}=0\\
--R_{tot}i_{d2}^{0}+\omega_{0}L_{s}i_{q}^{0}-R_{L}cos(\delta_{0})i_{d1}^{0}-R_{L}sin(\delta_{0})i_{q}^{0}=0\\
--\omega_{0}L_{s}i_{d2}^{0}-R_{tot}i_{q}^{0}-mi_{f}\omega_{0}+R_{L}sin(\delta_{0})i_{d1}^{0}-R_{L}cos(\delta_{0})i_{q}^{0}=0
+-R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos(\delta^{e})i_{d2}^{e}+R_{L}sin(\delta^{e})i_{q}^{0}=0\\
+-\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}sin(\delta^{e})i_{d2}^{e}-R_{L}cos(\delta^{e})i_{q}^{e}=0\\
+-R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos(\delta^{e})i_{d1}^{e}-R_{L}sin(\delta^{e})i_{q}^{e}=0\\
+-\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}sin(\delta^{e})i_{d1}^{e}-R_{L}cos(\delta^{e})i_{q}^{e}=0
 \end{array}\right.
 \end{equation}
 
@@ -390,8 +390,8 @@ This system of equations can be represented at matrix form:
 \begin_inset Formula 
 \begin{equation}
 M\left[\begin{array}{c}
-i_{d1}^{0}\\
-i_{d2}^{0}
+i_{d1}^{e}\\
+i_{d2}^{e}
 \end{array}\right]=N\label{eq:equilibrium_system}
 \end{equation}
 
@@ -408,10 +408,10 @@ Where
 \begin_inset Formula 
 \begin{equation}
 M=\left[\begin{array}{cc}
--R_{tot} & -R_{L}cos(\delta_{0})\\
--\omega_{0}L_{s} & -R_{L}sin(\delta_{0})\\
--R_{L}cos(\delta_{0}) & -R_{tot}\\
-R_{L}sin(\delta_{0}) & -\omega_{0}L_{s}
+-R_{tot} & -R_{L}cos(\delta^{e})\\
+-\omega^{e}L_{s} & -R_{L}sin(\delta^{e})\\
+-R_{L}cos(\delta^{e}) & -R_{tot}\\
+R_{L}sin(\delta^{e}) & -\omega^{e}L_{s}
 \end{array}\right]
 \end{equation}
 
@@ -428,10 +428,10 @@ and
 \begin_inset Formula 
 \begin{equation}
 N=\left[\begin{array}{c}
-i_{q}^{0}\left(\omega_{0}L_{s}+R_{L}sin(\delta_{0})\right)\\
--mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)\\
-i_{q}^{0}\left(\omega_{0}L_{s}-R_{L}sin(\delta_{0})\right)\\
--mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)
+i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}sin(\delta^{e})\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos(\delta^{e})\right)\\
+i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}sin(\delta^{e})\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos(\delta^{e})\right)
 \end{array}\right]
 \end{equation}
 
@@ -470,7 +470,7 @@ reference "eq:equilibrium_system"
 
  will have solution.
  lets supposed that 
-\begin_inset Formula $sin(\delta_{0})\ne0$
+\begin_inset Formula $sin(\delta^{e})\ne0$
 \end_inset
 
  (we want to prove that this is impossible).
@@ -501,10 +501,10 @@ We will denote
 \begin_inset Formula 
 \begin{equation}
 \left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
--\omega_{0}L_{s} & -R_{L}sin(\delta_{0}) & -mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)\\
--R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
-R_{L}sin(\delta_{0}) & -\omega_{0}L_{s} & -mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta_{0})\right)
+-R_{tot} & -R_{L}cos(\delta^{e}) & i_{q}^{e}\alpha\\
+-\omega^{e}L_{s} & -R_{L}sin(\delta^{e}) & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta^{e})\right)\\
+-R_{L}cos(\delta^{e}) & -R_{tot} & i_{q}^{e}\beta\\
+R_{L}sin(\delta^{e}) & -\omega^{e}L_{s} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}cos(\delta^{e})\right)
 \end{array}\right]\label{eq:M_n}
 \end{equation}
 
@@ -523,7 +523,7 @@ if
 \end_inset
 
  it means that 
-\begin_inset Formula $\omega_{0}L_{s}+R_{L}sin(\delta_{0})=\omega_{0}L_{s}-R_{L}sin(\delta_{0})\longrightarrow R_{L}sin(\delta_{0})=0$
+\begin_inset Formula $\omega^{e}L_{s}+R_{L}sin(\delta^{e})=\omega^{e}L_{s}-R_{L}sin(\delta^{e})\longrightarrow R_{L}sin(\delta^{e})=0$
 \end_inset
 
  which contradicts our assumption.
@@ -549,8 +549,8 @@ if
 (a_{1})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
--R_{tot} & -R_{L}cos(\delta_{0}) & 0\\
+-R_{L}cos(\delta^{e}) & -R_{tot} & i_{q}^{e}\beta\\
+-R_{tot} & -R_{L}cos(\delta^{e}) & 0\\
 0 & \beta & 0
 \end{array}\right]\label{eq:MATRIX_1}
 \end{equation}
@@ -562,7 +562,7 @@ if
 
 \begin_layout Standard
 If 
-\begin_inset Formula $cos(\delta^{0})=0$
+\begin_inset Formula $cos(\delta^{e})=0$
 \end_inset
 
  then 
@@ -571,7 +571,7 @@ If
 
 .
  If 
-\begin_inset Formula $cos(\delta^{0})\ne0$
+\begin_inset Formula $cos(\delta^{e})\ne0$
 \end_inset
 
 
@@ -582,12 +582,12 @@ If
 \begin{equation}
 \ref{eq:MATRIX_1}\longrightarrow\begin{array}{c}
 (a_{1})\\
-(a_{2})\beta-(a_{3})R_{L}cos(\delta_{0})\\
+(a_{2})\beta-(a_{3})R_{L}cos(\delta^{e})\\
 (a_{3})
 \end{array}\left[\begin{array}{ccc}
--R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{0}\beta\\
+-R_{L}cos(\delta_{0}) & -R_{tot} & i_{q}^{e}\beta\\
 -R_{tot}\beta & 0 & 0\\
-0 & \omega_{0}L_{s}-R_{L}sin(\delta_{0}) & 0
+0 & \omega_{0}L_{s}-R_{L}sin(\delta^{e}) & 0
 \end{array}\right]
 \end{equation}
 
@@ -624,8 +624,8 @@ if
 (a_{3})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
--R_{L}cos(\delta_{0}) & -R_{tot} & 0\\
+-R_{tot} & -R_{L}cos(\delta^{e}) & i_{q}^{e}\alpha\\
+-R_{L}cos(\delta^{e}) & -R_{tot} & 0\\
 -\alpha & 0 & 0
 \end{array}\right]\label{eq:MATRIX_2}
 \end{equation}
@@ -663,8 +663,8 @@ if
 (a_{3})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
--R_{L}cos(\delta_{0}) & -R_{tot} & 0\\
+-R_{tot} & -R_{L}cos(\delta^{e}) & i_{q}^{e}\alpha\\
+-R_{L}cos(\delta^{e}) & -R_{tot} & 0\\
 -\alpha & 0 & 0
 \end{array}\right]\label{eq:MATRIX_3}
 \end{equation}
@@ -702,8 +702,8 @@ if
 (a_{1}):\alpha-(a_{3}):\beta\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
-\frac{R_{L}cos(\delta_{0})}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
+-R_{tot} & -R_{L}cos(\delta^{e}) & i_{q}^{e}\alpha\\
+\frac{R_{L}cos(\delta^{e})}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}cos(\delta^{e})}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
 -\alpha & \beta & 0
 \end{array}\right]\label{eq:MATRIX_4}
 \end{equation}
@@ -739,9 +739,9 @@ if
 (a_{2}):\left(-\frac{R_{L}cos(\delta_{0})}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
 \end{array}=\\
 \left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos(\delta_{0}) & i_{q}^{0}\alpha\\
+-R_{tot} & -R_{L}cos(\delta^{e}) & i_{q}^{e}\alpha\\
 -\alpha & \beta & 0\\
-\frac{4L_{s}R_{tot}\omega^{0}sind(\delta^{0})}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos(\delta^{0})\right)+R_{L}\left(R_{tot}+R_{L}cos(\delta^{0})\right)sin(delta^{0})\right]} & 0 & 0
+\frac{4L_{s}R_{tot}\omega^{e}sind(\delta^{e})}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos(\delta^{e})\right)+R_{L}\left(R_{tot}+R_{L}cos(\delta^{e})\right)sin(delta^{0})\right]} & 0 & 0
 \end{array}\right]
 \end{array}
 \end{equation}
@@ -753,7 +753,7 @@ if
 
 \begin_layout Standard
 by assumption, 
-\begin_inset Formula $sin(\delta_{0})\ne0$
+\begin_inset Formula $sin(\delta^{e})\ne0$
 \end_inset
 
  which imply that 
@@ -766,7 +766,7 @@ by assumption,
 \end_inset
 
  which implies that under the assumption that 
-\begin_inset Formula $sin(\delta_{0})\ne0$
+\begin_inset Formula $sin(\delta^{e})\ne0$
 \end_inset
 
  the system 
@@ -785,11 +785,11 @@ reference "eq:dynamics_whole"
 \end_inset
 
 , it must satisfied 
-\begin_inset Formula $sin(\delta_{0})=0$
+\begin_inset Formula $sin(\delta^{e})=0$
 \end_inset
 
  which means that 
-\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}.$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}.$
 \end_inset
 
 
@@ -797,7 +797,7 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 If 
-\begin_inset Formula $\delta^{0}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow sin(\delta_{0})=0,\qquad cos(\delta^{0})=1.$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow sin(\delta^{e})=0,\qquad cos(\delta^{e})=1.$
 \end_inset
 
  and now 
@@ -808,9 +808,9 @@ If
 \begin{equation}
 M=\left[\begin{array}{cc}
 -R_{tot} & -R_{L}\\
--\omega_{0}L_{s} & 0\\
+-\omega^{e}L_{s} & 0\\
 -R_{L} & -R_{tot}\\
-0 & -\omega_{0}L_{s}
+0 & -\omega^{e}L_{s}
 \end{array}\right]
 \end{equation}
 
@@ -827,10 +827,10 @@ and
 \begin_inset Formula 
 \begin{equation}
 N=\left[\begin{array}{c}
-i_{q}^{0}\omega_{0}L_{s}\\
--mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}\right)\\
-i_{q}^{0}\omega_{0}L_{s}\\
--mi_{f}\omega_{0}-i_{q}^{0}\left(R_{tot}+R_{L}\right)
+i_{q}^{e}\omega^{e}L_{s}\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
+i_{q}^{e}\omega^{e}L_{s}\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
 \end{array}\right]
 \end{equation}
 
@@ -841,7 +841,7 @@ i_{q}^{0}\omega_{0}L_{s}\\
 
 \begin_layout Standard
 This system have one solution: 
-\begin_inset Formula $i_{d1}^{0}=i_{d2}^{0}\coloneqq i_{d}^{0}$
+\begin_inset Formula $i_{d1}^{e}=i_{d2}^{e}\coloneqq i_{d}^{e}$
 \end_inset
 
 
@@ -853,7 +853,7 @@ Equilibrium point on the synchronization surface.
 
 \begin_layout Standard
 The algebraic equation for calculating 
-\begin_inset Formula $z^{0}=z_{1}^{0}=z_{2}^{0}$
+\begin_inset Formula $z^{e}=z_{1}^{e}=z_{2}^{e}$
 \end_inset
 
  is:
@@ -863,13 +863,13 @@ The algebraic equation for calculating
 \begin_inset Formula 
 \begin{equation}
 \left[\begin{array}{ccc}
--R_{s}-2R_{L} & \omega^{0}L_{s} & 0\\
--\omega^{0}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
+-R_{s}-2R_{L} & \omega^{e}L_{s} & 0\\
+-\omega^{e}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
 0 & mi_{f} & -D_{p}
 \end{array}\right]\left[\begin{array}{c}
-i_{d}^{0}\\
-i_{q}^{0}\\
-\omega^{0}
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}
 \end{array}\right]=\left[\begin{array}{c}
 0\\
 0\\
@@ -884,7 +884,7 @@ i_{q}^{0}\\
 
 \begin_layout Standard
 We take scalar products on both sides with 
-\begin_inset Formula $z^{0}$
+\begin_inset Formula $z^{e}$
 \end_inset
 
 :
@@ -893,7 +893,7 @@ We take scalar products on both sides with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left(R_{tot}+R_{L}\right)\left((i_{d}^{0})^{2}+(i_{q}^{0})^{2}\right)=\left(T_{m}-D_{p}\omega^{0}\right)\omega^{0}
+\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}
 \end{equation}
 
 \end_inset
@@ -908,16 +908,16 @@ This equation makes perfect physical sense.
 \end_inset
 
  is created by feedback, so that 
-\begin_inset Formula $T_{m}-D_{p}\omega^{0}$
+\begin_inset Formula $T_{m}-D_{p}\omega^{e}$
 \end_inset
 
-is the mechanical torque applied to one generator, and then 
-\begin_inset Formula $\left(T_{m}-D_{p}\omega^{0}\right)\omega^{0}$
+ is the mechanical torque applied to one generator, and then 
+\begin_inset Formula $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
 \end_inset
 
 is the mechanical power entering one generator.
  On the other hand, it is easy to see that 
-\begin_inset Formula $\left(R_{tot}+R_{L}\right)\left((i_{d}^{0})^{2}+(i_{q}^{0})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
+\begin_inset Formula $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
 \end_inset
 
  which is exactly half of the power dissipated in all the resistors, hence
@@ -946,7 +946,7 @@ reference "eq:equilbrium_algebric_eq"
 \end_inset
 
  is 
-\begin_inset Formula $mi_{f}i_{q}^{0}-D_{p}\omega^{0}=-T_{m}$
+\begin_inset Formula $mi_{f}i_{q}^{e}-D_{p}\omega^{e}=-T_{m}$
 \end_inset
 
 .
@@ -956,7 +956,7 @@ reference "eq:equilbrium_algebric_eq"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T_{m}-D_{p}\omega^{0}=-mi_{f}i_{q}^{0}\label{eq:eq_0_first_eq}
+T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
 \end{equation}
 
 \end_inset
@@ -978,7 +978,7 @@ reference "eq:equilbrium_algebric_eq"
 \end_inset
 
  is 
-\begin_inset Formula $-\left(R_{tot}+R_{L}\right)i_{d}^{0}+\omega^{0}L_{tot}i_{q}^{0}=0$
+\begin_inset Formula $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$
 \end_inset
 
 , hence:
@@ -987,7 +987,7 @@ reference "eq:equilbrium_algebric_eq"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i_{d}^{0}=\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}i_{q}^{0}
+i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
 \end{equation}
 
 \end_inset
@@ -1006,7 +1006,7 @@ reference "eq:eq_0_first_eq"
  
 \begin_inset Formula 
 \begin{equation}
-i_{q}^{0}=\frac{T_{m}-D_{p}\omega_{0}}{-mi_{f}}\label{eq:iq_0_}
+i_{q}^{e}=\frac{T_{m}-D_{p}\omega^{e}}{-mi_{f}}\label{eq:iq_0_}
 \end{equation}
 
 \end_inset
@@ -1021,7 +1021,7 @@ Combining the last two formulas,
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-i_{d}^{0}=-\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}\label{eq:id_0_}
+i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}\label{eq:id_0_}
 \end{equation}
 
 \end_inset
@@ -1038,16 +1038,16 @@ reference "eq:eq_0_first_eq"
 \end_inset
 
 , is 
-\begin_inset Formula $\omega^{0}L_{s}i_{d}^{0}+\left(R_{tot}+R_{L}\right)i_{q}^{0}+mi_{f}\omega^{0}=0$
+\begin_inset Formula $\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$
 \end_inset
 
 .
  Substituting here the expressions for ,
-\begin_inset Formula $i_{q}^{0}$
+\begin_inset Formula $i_{q}^{e}$
 \end_inset
 
  and 
-\begin_inset Formula $i_{d}^{0}$
+\begin_inset Formula $i_{d}^{e}$
 \end_inset
 
  from 
@@ -1070,7 +1070,7 @@ reference "eq:id_0_"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
--\omega^{0}L_{s}\frac{\omega^{0}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega_{0}}{mi_{f}}+mi_{f}\omega^{0}=0
+-\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
 \end{equation}
 
 \end_inset
@@ -1089,7 +1089,7 @@ we multiply all terms with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left(\omega^{0}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega_{0}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega_{0}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{0}=0
+\left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
 \end{equation}
 
 \end_inset
@@ -1100,7 +1100,7 @@ we multiply all terms with
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-D_{p}L_{s}^{2}\left(\omega^{0}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{0}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{0}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
+D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{e}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
 \end{equation}
 
 \end_inset
@@ -1110,18 +1110,10 @@ D_{p}L_{s}^{2}\left(\omega^{0}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{0}\right)^
 
 \begin_layout Standard
 This is a cubic equation in 
-\begin_inset Formula $\omega^{0}$
+\begin_inset Formula $\omega^{e}$
 \end_inset
 
-, with at list one positive solution (because the left side is 
-\begin_inset Formula $-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$
-\end_inset
-
- for 
-\begin_inset Formula $\omega^{0}=0$
-\end_inset
-
-).
+.
  
 \end_layout
 
@@ -1134,7 +1126,7 @@ reference "eq:cuibi_eq"
 \end_inset
 
  by 
-\begin_inset Formula $p(\omega^{0}).$
+\begin_inset Formula $p(\omega^{e}).$
 \end_inset
 
  We have already noted that 
@@ -1158,7 +1150,7 @@ reference "eq:cuibi_eq"
 \end_inset
 
  has at least one solution ing the interval 
-\begin_inset Formula $\omega^{0}\in\left(0,\frac{T_{m}}{D_{p}}\right)$
+\begin_inset Formula $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$
 \end_inset
 
 .
