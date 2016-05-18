@@ -170,9 +170,9 @@ SGs has the important property that once they synchronizes, means that their
  without any control.
  This property is important because the electricity grid must maintain constant
  frequency, and because the ability of a SG to transfer constant power trow
- the the grid depends exists only when the phase difference between each
- SG and the grid phase is fixed.
- That why it is desirable to know if for a given grid which contains SGs
+ the grid exists only when the phase difference between each SG and the
+ grid phase is fixed.
+ Thats why it is desirable to know if for a given grid which contains SGs
  and a loads,all the SGs and tend to synchronize and if the grid frequency
  remains fix.
  In order to use the control stability analysis, and because the trajectory
@@ -225,94 +225,15 @@ key "monshizadehDePersisMonshizadehVanderSchaft2016"
 
  showed, that the improved swing equation model predicts behavior that the
  classical model (the swing equation model) can't predict.
- the stability of single SG which connected to infinite bus, and comparing
- the difference between full model of SG with reduce model which is know
- as the improve swing equations model (see 
-\begin_inset CommandInset citation
-LatexCommand citet
-key "monshizadehDePersisMonshizadehVanderSchaft2016,zhouOhsawa2009"
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Synchronization"
 
 \end_inset
 
-).
- 
-\end_layout
-
-\begin_layout Standard
-In addition we give a warning about using reduced order models for stability
- analysis.
- We consider a very simple system consisting of two identical SGs connected
- at the two ends of a power line represented only by its inductance and
- resistance.
- There is a resistive load connected at the middle of this power line, as
- shown in Figure 1, which is similar to Figure 2 in Celiska and Tabuada
- [?].
- 
-\end_layout
-
-\begin_layout Standard
-For simplicity, we consider the rotor currents to be constant (this is equivalen
-t to considering permanent magnet generators).
- Thus, the full model of each SG is of order 4 (instead of 5).
- We also consider the representation of these SGs by their reduced order
- models, which are of order two.
- We show that, for reasonable choices of the parameters, the following situation
- may occur:
-\end_layout
-
-\begin_layout Standard
-The system built with reduced order models of the SGs is locally stable
- around one equilibrium point (and unstable around another), simulations
- seem to indicate that it is even almost globally asymptotically stable,
- but the system built with the full (4th order) models of the SGs is not
- even locally stable around any equilibrium point.
- Since this phenomenon can occur even for the very simple network shown
- above, it is of course even more likely to occur for more complex networks.
-\end_layout
-
-\begin_layout Standard
-Along the way, we prove some minor facts about the network shown in Figure
- 1.
- Let us denote by 
-\begin_inset Formula $\delta$
-\end_inset
-
- the angle difference between the rotors of the two SGs.
- We show that for any equilibrium point, either 
-\begin_inset Formula $\delta=0$
-\end_inset
-
- (modulo by 
-\begin_inset Formula $2\pi$
-\end_inset
-
-) or 
-\begin_inset Formula $\delta=\pi$
-\end_inset
-
- (modulo by 
-\begin_inset Formula $2\pi$
-\end_inset
-
- ) and the states of the two SGs are equal.
- Under a certain natural assumption on the generator parameters, there is
- a unique equilibrium point for 
-\begin_inset Formula $\delta=0$
-\end_inset
-
- (modulo by 
-\begin_inset Formula $2\pi$
-\end_inset
-
-) and a unique equilibrium point with 
-\begin_inset Formula $\delta=\pi$
-\end_inset
-
- (modulo by 
-\begin_inset Formula $2\pi$
-\end_inset
-
- )
+, shows that a microgrid that comprised of two SGs, is stable near the manifold
+ of synchronization.
 \end_layout
 
 \end_body
