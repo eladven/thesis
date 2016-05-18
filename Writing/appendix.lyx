@@ -71,6 +71,13 @@
 
 \begin_layout Chapter
 Synchronous generator parameters
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Appendix"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection*
@@ -78,7 +85,7 @@ Synchronous generator parameters
 \end_layout
 
 \begin_layout Standard
-The parameters of 5KW SG taken from 
+The parameters of 5KW SG are taken from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Brown2015"
@@ -90,16 +97,17 @@ key "Brown2015"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
 <lyxtabular version="3" rows="9" columns="2">
 <features rotate="0" tabularvalignment="middle">
 <column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
 <row>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
@@ -133,7 +141,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -159,7 +167,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -185,7 +193,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -211,7 +219,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -237,7 +245,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -263,7 +271,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -289,7 +297,7 @@ Value
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -361,7 +369,7 @@ Parameters for 5KW SG
 \end_layout
 
 \begin_layout Standard
-The parameters of 1MW SG taken from 
+The parameters of 1MW SG are taken from 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Brown2015"
@@ -373,9 +381,10 @@ key "Brown2015"
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -647,8 +656,8 @@ Example for SG parameters which leads to different behavior for the reduced
 \begin_layout Standard
 This set of parameters shows different behavior of the whole model and for
  the improved swing equation model.
- This set of parameters is basically 5KW SG parameters which connected to
- grid with lower voltage and fed by 
+ This set of parameters is basically the 5KW SG parameters set which connected
+ to grid with lower voltage and fed by 
 \begin_inset Formula $50$
 \end_inset
 
@@ -658,9 +667,10 @@ This set of parameters shows different behavior of the whole model and for
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -932,7 +942,8 @@ Example for SG parameters which leads to different behavior for the reduced
 \begin_layout Standard
 This set of parameters shows different region of attraction of the whole
  model and for the improved swing equation model.
- This set of parameters is basically 5KW SG parameters with stronger 
+ This set of parameters is basically the 5KW SG parameters set with stronger
+ 
 \begin_inset Formula $i_{f}$
 \end_inset
 
@@ -941,9 +952,10 @@ This set of parameters shows different region of attraction of the whole
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset Tabular
