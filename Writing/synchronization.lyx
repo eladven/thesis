@@ -84,12 +84,12 @@ name "cha:Synchronization"
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Modeling the synchronization problem:
 \end_layout
 
 \begin_layout Standard
-In order to show synchronization, it will be convenient to use the following
+In order to show synchronization, it is convenient to use the following
  notation:
 \end_layout
 
@@ -163,7 +163,7 @@ reference "eq:dynamics_whole"
 
 \end_inset
 
- I have 
+:
 \end_layout
 
 \begin_layout Standard
@@ -254,20 +254,23 @@ and
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
+\begin{array}{ccc}
 \left[\begin{array}{cc}
 \varLambda & 0\\
 0 & 1
-\end{array}\right]\dot{e}=\left[\begin{array}{cccc}
+\end{array}\right]\dot{e} & = & \left[\begin{array}{cccc}
 -R_{tot}+R_{L}cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
 -\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & -1 & 0
-\end{array}\right]e+\left[\begin{array}{c}
+\end{array}\right]e\\
+ &  & +\left[\begin{array}{c}
 R_{L}sin(\delta)x_{2}\\
 -R_{L}sin(\delta)x_{1}\\
 0\\
 0
 \end{array}\right]
+\end{array}
 \end{equation}
 
 \end_inset
@@ -287,7 +290,7 @@ e
 \end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $
 \end_inset
 
- is invariant manifold.
+ is invariant.
 \end_layout
 
 \begin_layout Standard
@@ -295,7 +298,7 @@ For the
 \begin_inset Formula $x$
 \end_inset
 
- dynamics, I have:
+ dynamics, we have:
 \end_layout
 
 \begin_layout Standard
@@ -455,13 +458,13 @@ R_{L}sin(\delta)x_{2}\\
 
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Globally exponentially stability of two synchronized generators:
 \end_layout
 
 \begin_layout Standard
 In this section, I provide sufficient conditions for the equilibrium point
- which I show that exist on the manifold 
+ which exist and located on the manifold 
 \begin_inset Formula $\epsilon=\left\{ \left[\begin{array}{c}
 x\\
 e
@@ -470,6 +473,17 @@ e
 
 
 \series bold
+ 
+\series default
+(chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:equivalence_pont"
+
+\end_inset
+
+)
+\series bold
 , 
 \series default
 to be globally exponential stable, for the dynamics of the two generators,
@@ -477,7 +491,7 @@ to be globally exponential stable, for the dynamics of the two generators,
 \begin_inset Formula $\epsilon$
 \end_inset
 
- manifold which I already showed to be invariant manifold.
+ manifold which is invariant manifold.
  This proof is very similar to section 3.5 at 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -510,7 +524,7 @@ This system describes two generators when they have equal state and no phase
 \end_layout
 
 \begin_layout Standard
-I will denote 
+Denote 
 \end_layout
 
 \begin_layout Standard
@@ -529,18 +543,17 @@ A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
 \end_layout
 
 \begin_layout Standard
-As I showed at chapter 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ has at list one equilibrium point (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "cha:equivalence_pont"
 
 \end_inset
 
- 
-\begin_inset Formula $\tilde{G}(\tilde{x})$
-\end_inset
-
- has at list one equilibrium point 
+) 
 \begin_inset Formula $x^{0}=\left[\begin{array}{c}
 x_{d}^{0}\\
 x_{q}^{0}\\
@@ -567,7 +580,7 @@ such:
 \end_layout
 
 \begin_layout Standard
-I will shift the coordinates, in order to make the origin into equilibrium
+Performing coordinations shift , in order to make the origin into equilibrium
  point.
 \end_layout
 
@@ -624,11 +637,11 @@ min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
 \end_layout
 
 \begin_layout Standard
-Now, I will calculate 
+Now, calculate 
 \begin_inset Formula $\dot{V}(\hat{x})$
 \end_inset
 
- and I will show that under some conditions, 
+ in order to show that under some conditions, 
 \begin_inset Formula $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$
 \end_inset
 
@@ -677,12 +690,16 @@ key "nonlinearSystemsSastry"
 \end_layout
 
 \begin_layout Standard
-I will 
+Representing 
 \begin_inset Formula $A(\tilde{\omega})$
 \end_inset
 
  as a sum of a constant symmetric matrix, constant skew symmetric matrix
- and a skew symmetric matrix which depends on :
+ and a skew symmetric matrix which depends on 
+\begin_inset Formula $\hat{\omega}$
+\end_inset
+
+:
 \end_layout
 
 \begin_layout Standard
@@ -731,7 +748,7 @@ J(\tilde{\omega}^{0})\coloneqq\left[\begin{array}{ccc}
 \end_layout
 
 \begin_layout Standard
-And now I can represent the system dynamic:
+And now it is possible to represent the system dynamic:
 \end_layout
 
 \begin_layout Standard
@@ -746,7 +763,7 @@ A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\ri
 \end_layout
 
 \begin_layout Standard
-If I will combine this equation with equations 
+Combining this equation with equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:G_at_equilibrium"
@@ -760,7 +777,7 @@ reference "eq:x_hat_dynamic"
 
 \end_inset
 
- I will obtain: 
+ obtains: 
 \end_layout
 
 \begin_layout Standard
@@ -775,7 +792,7 @@ reference "eq:x_hat_dynamic"
 \end_layout
 
 \begin_layout Standard
-I will calculate the derivative of the Lyponv function over the time: 
+Calculate the derivative of the Lyponv function over the time: 
 \end_layout
 
 \begin_layout Standard
@@ -798,7 +815,7 @@ Because
 \begin_inset Formula $\varLambda^{T}\varLambda^{-1}=I$
 \end_inset
 
-, so I obtain:
+:
 \end_layout
 
 \begin_layout Standard
@@ -887,7 +904,7 @@ x_{q}^{0}\\
 \end_layout
 
 \begin_layout Standard
-Combining all this together, I obtain 
+Combining all this together, obtains: 
 \end_layout
 
 \begin_layout Standard
@@ -1038,7 +1055,7 @@ reference "eq:condition_for_stable_G"
 
 .
  This proves that this system is globally exponentially stable.
- This implies that 
+ That implies that 
 \begin_inset Formula $\tilde{x}^{0}$
 \end_inset
 
@@ -1056,7 +1073,7 @@ and
 \end_inset
 
 .
- In addition it always has an equilibrium point on the surface 
+ In addition it always has another equilibrium point on the surface 
 \begin_inset Formula $z_{1}=z_{2}$
 \end_inset
 
@@ -1067,17 +1084,17 @@ and
 .
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Synchronization theorem:
 \end_layout
 
 \begin_layout Standard
-I would like to prove that if the initial state of the two generators are
- sufficiently close to each other, i.e 
+Here, I give prove that shows that if the initial state of the two generators
+ are sufficiently close to each other, i.e 
 \begin_inset Formula $|e(0)|$
 \end_inset
 
- is small, then, under some assumptions, the two generators will synchronize,
+ is small, then, under some conditions, the two generators will synchronize,
  meaning that 
 \begin_inset Formula $lim_{t\to\infty}e(t)=0$
 \end_inset
@@ -1086,7 +1103,7 @@ I would like to prove that if the initial state of the two generators are
 \end_layout
 
 \begin_layout Standard
-For this, I will use the result from 
+For this, I use the result from 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "VincentBayuLaurent2016"
@@ -1146,7 +1163,7 @@ not satisfied
 \begin_inset Formula $x_{w},x_{q},x_{d}$
 \end_inset
 
-in the matrix.
+ in the matrix.
  However, it can be shown by energy methods that regardless of the initial
  state, the state of this system will be eventually contained in a certain
  bounded set (that depends on the parameters) and than 
@@ -1164,7 +1181,7 @@ key "VincentBayuLaurent2016"
 
 \end_inset
 
- is satisfied as I showed.
+ is satisfied as showed.
  Additionally I showed at the last section that 
 \begin_inset Formula $\tilde{G}(\tilde{x})$
 \end_inset
@@ -1269,7 +1286,7 @@ such for all
 In other words, I need to show that if LTV (linear time varying system),
  which it matrix converges exponentially to a stable matrix, then the LTV
  system is exponentially stable.
- this theorem is know (
+ this theorem is known (
 \begin_inset CommandInset citation
 LatexCommand citep
 key "SchovanecGilliam1999"
@@ -1485,7 +1502,7 @@ e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K\left|C(s)
 \end_layout
 
 \begin_layout Standard
-I will apply Gronwall's inequality and get
+By applying Gronwall's inequality:
 \end_layout
 
 \begin_layout Standard
@@ -1496,10 +1513,6 @@ e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K^{2}\left|
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
 For any 
 \begin_inset Formula $0\le s\le t$
 \end_inset
@@ -1517,8 +1530,7 @@ exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]\le e^{KM}
 
 \end_inset
 
-.
- Applying this I get
+Applying this gives
 \end_layout
 
 \begin_layout Standard
@@ -1556,14 +1568,14 @@ reference "eq:sync_sestem"
 \end_inset
 
 is UES-TL.
- I will apply the main result of 
+ By applying the main result of 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset
 
-, to prove that this system is TULES-NL (Transversal uniform local exponential
+, proves that this system is TULES-NL (Transversal uniform local exponential
  stable).
  That means that there exist strictly positive real numbers 
 \begin_inset Formula $r$
@@ -1577,7 +1589,7 @@ key "VincentBayuLaurent2016"
 \begin_inset Formula $\lambda$
 \end_inset
 
-such that I have for all 
+such for all 
 \begin_inset Formula $(e^{0},x^{0},t)$
 \end_inset
 
@@ -1585,7 +1597,11 @@ such that I have for all
 \begin_inset Formula $B_{e}(r)\vartimes\mathbb{R}^{3}\vartimes\mathbb{R}_{\geq0}$
 \end_inset
 
- , I have 
+ , 
+\begin_inset Formula $e(t)$
+\end_inset
+
+ satisfies 
 \begin_inset Formula $\left|e(t)\right|\leq k\left|e^{0}\right|exp(-\lambda t)$
 \end_inset
 
@@ -1594,7 +1610,7 @@ such that I have for all
 \begin_inset Formula $\epsilon$
 \end_inset
 
-is exponentially stable for the system 
+ is exponentially stable for the system 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:sync_sestem"

@@ -84,8 +84,8 @@ name "cha:Model_reduction"
 
 \end_layout
 
-\begin_layout Section*
-Develop the improved swing equation for inifinte bus:
+\begin_layout Section
+Develop the improved swing equation for infinite bus:
 \end_layout
 
 \begin_layout Standard
@@ -445,7 +445,7 @@ J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta
 This model is known as the improved swing equation model.
 \end_layout
 
-\begin_layout Section*
+\begin_layout Section
 Simulations:
 \end_layout
 
