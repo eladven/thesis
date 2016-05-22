@@ -143,8 +143,8 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-I will try to separate the model in to fast variable and slow variable
- in order to have singular perturbation analysis (see 
+I separate the model in to fast variable and slow variable in order to have
+ singular perturbation analysis (see 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "KhalilSingularPertubations"
@@ -152,7 +152,7 @@ key "KhalilSingularPertubations"
 \end_inset
 
 ).
- I like to show the dynamics in the form:
+ The new dynamics form is:
 \end_layout
 
 \begin_layout Standard
@@ -182,15 +182,15 @@ Where
 \begin_inset Formula $\epsilon$
 \end_inset
 
-is small parameter.
+ is small parameter.
 \end_layout
 
 \begin_layout Standard
-In our case, if I assume that 
+In our case, assume that 
 \begin_inset Formula $L_{s}$
 \end_inset
 
- is much smaller than the other parameter, I will define 
+ is much smaller than the other parameter, define 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -240,7 +240,7 @@ Vcos(\delta)-mi_{f}\omega
 \end_layout
 
 \begin_layout Standard
-Because I assumed that 
+Because the assumption that 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -252,8 +252,8 @@ Because I assumed that
 \begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
 \end_inset
 
-, and it will reach it equilibrium (which I assume that exist and attractive)
- almost instantly with comparing to 
+, and it will reach it equilibrium (assuming that the equilibrium point
+ exist and attractive) almost instantly with comparing to 
 \begin_inset Formula $x$
 \end_inset
 
@@ -273,7 +273,7 @@ The equilibrium point
 \end_layout
 
 \begin_layout Standard
-I will solve this linear equation (in 
+The solution of this linear equation (in 
 \begin_inset Formula $\hat{y}$
 \end_inset
 
@@ -313,7 +313,7 @@ Assuming that
 \begin_inset Formula $\omega\thickapprox\omega_{g}$
 \end_inset
 
- then I have 
+ then:
 \end_layout
 
 \begin_layout Standard
@@ -342,7 +342,7 @@ Assuming that
 \end_layout
 
 \begin_layout Standard
-Now, I will substitute 
+Now, substitute 
 \begin_inset Formula $\hat{y}$
 \end_inset
 
@@ -386,15 +386,15 @@ J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\om
 \end_layout
 
 \begin_layout Standard
-At our model (equation 
+At the fourth order model (equation 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "eq:InfBusDynamics"
+reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
-), I have the assumption of constant mechanical torque, but if I want our
- model have the same form as 
+), there is the assumption of constant mechanical torque.
+ But in order to compare this model with 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "monshizadehDePersisMonshizadehVanderSchaft2016"
@@ -408,8 +408,8 @@ key "zhouOhsawa2009"
 
 \end_inset
 
-, I can assume that the income mechanical power is fixed and I have correction
- factor to correct the looses of the friction :
+ model, it is possible to assume that the income torque is due to fix mechanical
+ power and a correction factor for the viscose looses:
 \end_layout
 
 \begin_layout Standard
@@ -424,7 +424,7 @@ T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
 \end_layout
 
 \begin_layout Standard
-and then our model will be 
+and then the model is: 
 \end_layout
 
 \begin_layout Standard
@@ -451,7 +451,7 @@ Simulations:
 
 \begin_layout Standard
 In this section, I provide simulation that shows that the improved swing
- equations are good reduction for many cases, but there are cases where
+ equation is a good reduction for many cases, but there are cases where
  there is mismatch between the behavior suggested by the improved swing
  equations and the whole model (equation 
 \begin_inset CommandInset ref
@@ -461,7 +461,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 ).
- For each simulation, I will show the current 
+ For each simulation, I will show the currents 
 \begin_inset Formula $i_{d}$
 \end_inset
 
@@ -469,9 +469,9 @@ reference "eq:SGDynamicsInfBus"
 \begin_inset Formula $i_{q}$
 \end_inset
 
-over time for both the whole model and for the improved swing equation model,
- where for the improved swing equation model, I will estimate these currents
- by equation 
+over time for both the fourth order model and for the improved swing equation
+ model, where for the improved swing equation model, I will estimate these
+ currents by equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:ISEInfBusEstimatedCurrents"
@@ -493,7 +493,7 @@ A.
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset label
@@ -536,12 +536,12 @@ reference "fig:InfBusOne5KWSG"
 
 \end_inset
 
-, Simulation shows that for 5KW SG, the behavior of the whole model and
- the reduced model are almost the same.
- Although the currents at the reduced don't have a ripple that the whole
- model has, both models converges at the same rate with the same oscillations
- to the same equilibrium point (The parameters for this simulation can be
- found at the appendix, table 
+, Simulation shows that for 5KW SG, the behavior of the fourth order model
+ and the reduced model are almost the same.
+ Although the currents at the reduced don't have a ripple that the fourth
+ order model has, both models converges at the same rate with the same oscillati
+ons to the same equilibrium point (The parameters for this simulation can
+ be found at the appendix, table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:5KWSG"

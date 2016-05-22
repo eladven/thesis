@@ -125,8 +125,8 @@ i_{q}^{e}\\
 \omega^{e}\\
 \delta^{e}
 \end{array}\right]+\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)\\
+Vsin(\delta^{e})\\
+Vcos(\delta^{e})\\
 T_{m}\\
 \omega_{g}
 \end{array}\right]\label{eq:SGDynamicsInfBusEqPoint}
@@ -138,7 +138,7 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-By taking the forth, and the third lines, it shows that the equilibrium
+By taking the fourth, and the third lines, it shows that the equilibrium
  point 
 \begin_inset Formula $z_{e}=\left[\begin{array}{c}
 i_{d}^{e}\\
@@ -245,8 +245,8 @@ In this section, I study the equilibrium points of a microgrid domprising
 \end_inset
 
  between the two generators).
- Later in this section, I will compute the equilibrium point which satisfy
- synchronization between the two generators.
+ Later in this section, I show that there exist at list one equilibrium
+ point, which located on the manifold of synchronization of the two generators.
  
 \end_layout
 
@@ -267,11 +267,7 @@ reference "eq:dynamics_whole"
 \end_inset
 
  has equilibrium point, and those equilibrium point have the structure 
-\begin_inset Formula $z_{1}^{e}=z_{2}^{e}=z^{e}$
-\end_inset
-
- , 
-\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$
+\begin_inset Formula $z_{1}^{e}=z_{2}^{e}=z^{e},\qquad\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$
 \end_inset
 
 .
@@ -457,11 +453,11 @@ The system
 \end_layout
 
 \begin_layout Standard
-I will prove by contrediction that 
-\begin_inset Formula $sin(\delta_{0})$
+I will prove by contradiction that 
+\begin_inset Formula $sin(\delta_{0})=0$
 \end_inset
 
-=0 is a necessary condition in order that the system 
+ is a necessary condition in order that the system 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:equilibrium_system"
@@ -469,24 +465,15 @@ reference "eq:equilibrium_system"
 \end_inset
 
  will have solution.
- lets supposed that 
+ Suppose that 
 \begin_inset Formula $sin(\delta^{e})\ne0$
-\end_inset
-
- (I want to prove that this is impossible).
- 
-\end_layout
-
-\begin_layout Standard
-I will start by showing that by showing that 
-\begin_inset Formula $rank\left[M|n\right]=3$
 \end_inset
 
 .
 \end_layout
 
 \begin_layout Standard
-I will denote 
+Denote 
 \begin_inset Formula $\alpha=\omega_{0}L_{s}+R_{L}sin(\delta_{0})$
 \end_inset
 
@@ -726,10 +713,6 @@ if
 \end_layout
 
 \begin_layout Standard
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{c}
@@ -915,7 +898,7 @@ This equation makes perfect physical sense.
 \begin_inset Formula $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
 \end_inset
 
-is the mechanical power entering one generator.
+ is the mechanical power entering one generator.
  On the other hand, it is easy to see that 
 \begin_inset Formula $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
 \end_inset
@@ -1129,7 +1112,7 @@ reference "eq:cuibi_eq"
 \begin_inset Formula $p(\omega^{e}).$
 \end_inset
 
- I have already noted that 
+ 
 \begin_inset Formula $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$
 \end_inset
 
