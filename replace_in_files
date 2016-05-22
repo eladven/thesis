@@ -1,0 +1,11 @@
+#!/bin/bash
+
+files=("Writing/Abstract.lyx" "Writing/Introduction.lyx" "Writing/Thesis-main.lyx" "Writing/The_microgrid_dynamics.lyx" "Writing/equivalence_point_existence_and_uniqueness.lyx" "Writing/Model_reduction.lyx" "Writing/synchronization.lyx" "Writing/appendix.lyx")
+
+echo "replace -$1- with -$2-"
+
+for file in "${files[@]}"
+do
+	sed "s/$1/$2/g" $file >temp
+	cat temp >$file
+done
