@@ -393,8 +393,8 @@ reference "eq:InfBusDynamics"
 
 \end_inset
 
-), I have the assumption of constant mechanical torque, but if I want
- our model have the same form as 
+), I have the assumption of constant mechanical torque, but if I want our
+ model have the same form as 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "monshizadehDePersisMonshizadehVanderSchaft2016"
@@ -686,12 +686,7 @@ reference "table:DifferentBehaviorParamsSetSG"
 -11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]$
 \end_inset
 
-
-\begin_inset Formula $\left[\begin{array}{cc}
--14.6+9.4979i, & 6.1-9.4i\end{array}\right]$
-\end_inset
-
-) , the reduced model is not stable (the eigenvalues of the Jacobian around
+, the reduced model is not stable (the eigenvalues of the Jacobian around
  the equilibrium point are: 
 \begin_inset Formula $\left[\begin{array}{cc}
 -14.6+9.4979i, & 6.1-9.4i\end{array}\right]$
