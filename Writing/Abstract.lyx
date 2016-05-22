@@ -76,10 +76,26 @@ Abstract
 \begin_layout Standard
 
 \size small
-In this paper, I develop the improved swing equations model form the known
- model of one synchronous generator which is connected to infinite bus (and
- assumes constant field current), and I will show by examples, that result
- from this model can not predict the stability of the full model.
+Synchronous generators, are one of the most fundamental component of the
+ electric grid.
+ Recently, the stability of the electric grid which composed of synchronous
+ generators, is an area of high interest and intensive research.
+ One reason for that is because the electric grid that conservatively was
+ based only on synchronous generators as it power source, change and became
+ more and more composed of other sources, mostly because of the usage of
+ renewable energy sources.
+\end_layout
+
+\begin_layout Standard
+In this work I discuss the stability of grid that comprised of one synchronous
+ generator which connected to an infinite bus, and show that models that
+ are common for design and analyze grids, failed to predict fails in this
+ grid.
+\end_layout
+
+\begin_layout Standard
+The second part of this works shows sufficient conditions for grid that
+ composed of two identical synchronous generators to synchronized.
 \end_layout
 
 \end_body
