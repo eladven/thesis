@@ -95,14 +95,13 @@ name "cha:microgrid_dynamics"
 
 \begin_layout Standard
 In this chapter, I derive the equations for microgrid which composed of
- synchronous generators.
- We start with derive the equations for single synchronous generator with
- the assumption that the field current is constant.
+ SGs.
+ We start with derive the equations for single SG with the assumption that
+ the field current is constant.
  After that I derive the equations for micorgrid of one generator which
  connected to an infinite bus.
  At the end of this chapter I will derive model for a microgrid comprising
- two identical synchronous generator which connected in parallel with a
- resistive load.
+ two identical SGs which connected in parallel with a resistive load.
 \end_layout
 
 \begin_layout Section
@@ -157,8 +156,8 @@ Synchronous generator consist of two parts: rotor and statror.
 \begin_inset Formula $\theta$
 \end_inset
 
- with related to it initial angle .
- the rotor can be considered as a coil with self inductance 
+ with related to it initial angle .The rotor can be considered as a coil
+ with self inductance 
 \begin_inset Formula $L_{f}$
 \end_inset
 
@@ -463,11 +462,11 @@ where
 \begin_inset Formula $x_{abc}$
 \end_inset
 
-is some vector at abc coordinates, and 
+ is some vector at abc coordinates, and 
 \begin_inset Formula $x_{dq0}$
 \end_inset
 
-is the same vector at the new coordinates.
+ is the same vector at the new coordinates.
 \end_layout
 
 \begin_layout Standard
@@ -686,7 +685,7 @@ where
 \begin_inset Formula $T_{m}$
 \end_inset
 
-is is the mechanical torque which applies by the prime mover, 
+ is is the mechanical torque which applies by the prime mover, 
 \begin_inset Formula $T_{e}$
 \end_inset
 
@@ -707,7 +706,7 @@ is is the mechanical torque which applies by the prime mover,
 \begin_inset Formula $T_{e}$
 \end_inset
 
-can be found from energy consideration.
+ can be found from energy consideration.
  The magnetic energy stored in the generator is 
 \begin_inset Formula 
 \begin{equation}
@@ -808,8 +807,8 @@ Model of a Single generator connected to an infinite bus
 \end_layout
 
 \begin_layout Standard
-In this section I will develop a model for single synchronous generator
- which connected to an infinite bus this section follows 
+In this section I develop a model for single synchronous generator which
+ connected to an infinite bus .This section follows 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "NatarajanWeiss2015"
@@ -935,11 +934,11 @@ cos(\delta)\\
 \end_layout
 
 \begin_layout Standard
-It is easy to see that 
+It is easy to see that the dynamics of 
 \begin_inset Formula $\delta$
 \end_inset
 
- dynamics is 
+ is 
 \end_layout
 
 \begin_layout Standard
@@ -1015,8 +1014,8 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-This forth order nonlinear dynamical system I be consider as the model
- for one synchronous generator which connected to an infinite bus.
+This fourth order nonlinear dynamical system is the model for one synchronous
+ generator which connected to an infinite bus.
 \end_layout
 
 \begin_layout Section
@@ -1025,9 +1024,9 @@ Model of microgrid comprising two synchronous generators in parallel
 
 \begin_layout Standard
 In this section, I consider a microgrid comprising two identical synchronous
- generators, with constant rotor (field) current and non neutral connection,
+ generators, with constant rotor (field) current and no neutral connection,
  together with a resistive load.
- (See figure
+ (See figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:microgrid_configuration"
@@ -1183,18 +1182,22 @@ The phase voltages and currents are:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-v=\left[\begin{array}{c}
-v_{a}\\
-v_{b}\\
-v_{c}
-\end{array}\right],i_{1}=\left[\begin{array}{c}
-i_{1a}\\
-i_{1b}\\
-i_{1c}
-\end{array}\right],i_{2}=\left[\begin{array}{c}
-i_{2a}\\
-i_{2b}\\
-i_{2c}
+v_{1}=\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad v_{2}=\left[\begin{array}{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
+\end{array}\right],\quad i_{1}=\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\quad i_{2}=\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
 \end{array}\right]
 \end{equation}
 
@@ -1205,11 +1208,7 @@ i_{2c}
 
 \begin_layout Standard
 The impedances 
-\begin_inset Formula 
-\begin{equation}
-Z=R_{s}+R_{g}+(L_{s}+L_{g})s
-\end{equation}
-
+\begin_inset Formula $Z=R_{s}+R_{g}+(L_{s}+L_{g})s$
 \end_inset
 
  are comprised of the equivalent stator resistance 
@@ -1229,7 +1228,7 @@ Z=R_{s}+R_{g}+(L_{s}+L_{g})s
 \end_inset
 
 .
- However, in most of our computations, I consider for simplicity that 
+ However, I consider for simplicity that 
 \begin_inset Formula $R_{g}=0$
 \end_inset
 
@@ -1353,17 +1352,17 @@ v_{d1}\\
 v_{q1}\\
 v_{01}
 \end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
-v_{a}\\
-v_{b}\\
-v_{c}
-\end{array}\right],\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad\left[\begin{array}{c}
 v_{d2}\\
 v_{q2}\\
 v_{02}
 \end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
-v_{a}\\
-v_{b}\\
-v_{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
 \end{array}\right]
 \end{equation}
 
@@ -1383,7 +1382,7 @@ i_{01}
 i_{a1}\\
 i_{b1}\\
 i_{c1}
-\end{array}\right],\left[\begin{array}{c}
+\end{array}\right],\quad\left[\begin{array}{c}
 i_{d2}\\
 i_{q2}\\
 i_{02}
@@ -1490,11 +1489,12 @@ where
 \begin_inset Formula $D_{p}$
 \end_inset
 
-is the frequency droop constant, 
+ is the frequency droop constant, 
 \begin_inset Formula $T_{m}$
 \end_inset
 
-is the mechanical torque coming from the prime mover to the generator, 
+ is the mechanical torque coming from the prime mover to the generator,
+ 
 \begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
 \end_inset
 
@@ -1593,7 +1593,7 @@ sin(\delta) & cos(\delta) & 0\\
 \end_layout
 
 \begin_layout Standard
-(recall 
+(recall that 
 \begin_inset Formula $\delta=\theta_{2}-\theta_{1}$
 \end_inset
 
@@ -1601,7 +1601,7 @@ sin(\delta) & cos(\delta) & 0\\
 \end_layout
 
 \begin_layout Standard
-new, from equation 
+now, substitute that at equation 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:cur_and_volt_after_park"
@@ -1642,7 +1642,7 @@ reference "eq:dynamics_of_single_generator"
 
 \end_inset
 
-, I obtain, denoting 
+, denoting 
 \begin_inset Formula $R_{tot}=R_{s}+R_{L}$
 \end_inset
 

@@ -87,8 +87,8 @@ name "cha:introduction"
 \begin_layout Standard
 The AC electricity grid was developed at the end of the XIX century, and
  basically remained very similar till our days.
- Many techniques and models that were developed in order to analyze and
- design the grid and its components are based on assumptions and methods,
+ Many techniques and models that have been developed in order to analyze
+ and design the grid and its components are based on assumptions and methods,
  which were driven by experience and observations 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -115,10 +115,9 @@ key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
 \end_layout
 
 \begin_layout Standard
-Synchronous generator (SG) are the main power source of the electricity
- grid.
+Synchronous generator (SG) is the main power source of the electricity grid.
  The mathematical model of a SG is very complex and difficult to use.
- This makes the electric grid such a complicated nonlinear and time-varying
+ This makes the electric grid to such a complicated nonlinear and time-varying
  system that any attempt to prove its stability analytically is hopeless.
  Stability analysis is usually done by simulation, or analytically on simplified
  models, in which the SGs are connected in a simple network and each SG
@@ -168,26 +167,27 @@ key "sauerPai1998"
 SGs has the important property that once they synchronizes, means that their
  rotors spin with the same velocity, they tend to remain synchronized even
  without any control.
- This property is important because the electricity grid must maintain constant
- frequency, and because the ability of a SG to transfer constant power trow
- the grid exists only when the phase difference between each SG and the
- grid phase is fixed.
- Thats why it is desirable to know if for a given grid which contains SGs
- and a loads,all the SGs and tend to synchronize and if the grid frequency
- remains fix.
+ This is important attribute because the electricity grid must maintain
+ constant frequency, and because the ability of a SG to transfer constant
+ power through the grid exists only when the phase difference between each
+ SG and the grid phase is constants.
+ That is the reason why it is desirable to know if for a given grid which
+ contains SGs and a loads,all the SGs and tend to synchronize and if the
+ grid frequency remains constant.
  In order to use the control stability analysis, and because the trajectory
  of the state of a SG in the steady state is sinusoidal, it is common to
  use transformation of the voltages and currents that maps sinusoidal trajectory
  into a constant point on the state plan.
  The famous Park's transformation performs that, so after applying park
- transformation on the SG model, This question became to be a stability
- question.
- This property is know as frequency stability.
+ transformation on the SG model.
+ The question whether the system is stable (which means that all the SGs
+ are synchronized and remain at constant frequency) is know as frequency
+ stability.
 \end_layout
 
 \begin_layout Standard
 In this work, I study two simple grid configurations: Single SG that connected
- to an infinite bus, and Two SG in parallel and load.
+ to an infinite bus, and Two SG in parallel and a load.
  chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -195,7 +195,7 @@ reference "cha:microgrid_dynamics"
 
 \end_inset
 
- will discuss the dynamical model for the above configurations.
+ will discussess the dynamical model for the above configurations.
  chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -203,10 +203,10 @@ reference "cha:equivalence_pont"
 
 \end_inset
 
- discuss the necessary condition to have equilibrium point at the infinite
- bus configuration, and shows that micogrid comprised of two SGs can have
- equilibrium point only on the synchronization manifold, and that there
- is at list one such equilibrium point.
+ discusses the conditions to have equilibrium point at the infinite bus
+ configuration, and shows that micogrid comprised of two SGs can have equilibriu
+m point only on the synchronization manifold, and that there is at list
+ one such equilibrium point.
  chapter 
 \begin_inset CommandInset ref
 LatexCommand ref
