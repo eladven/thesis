@@ -493,16 +493,9 @@ A.
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:InfBusOne5KWSG"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename sim5KWInfBus.eps
 
@@ -517,6 +510,13 @@ name "fig:InfBusOne5KWSG"
 \begin_layout Plain Layout
 Simulation for infinite bus with single 5KW SG
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne5KWSG"
 
 \end_inset
 
@@ -564,13 +564,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:InfBusOne1MWSG"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename sim1MWInfBus.eps
 
@@ -585,6 +578,13 @@ name "fig:InfBusOne1MWSG"
 \begin_layout Plain Layout
 Simulation for infinite bus with single 1MW SG
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1MWSG"
 
 \end_inset
 
@@ -604,12 +604,12 @@ reference "fig:InfBusOne1MWSG"
 
 \end_inset
 
-, Simulation shows that for 1MW SG, the behavior of the whole model and
- the reduced model are still very similar.
- Although the whole model currents are much rippled than the reduced model
- currents, both models converges at the same rate with the same oscillations
- to the same equilibrium point (The parameters for this simulation can be
- found at the appendix, table 
+, Simulation shows that for 1MW SG, the behavior of the fourth order model
+ and the reduced model are still very similar.
+ Although the fourth order model currents are much rippled than the reduced
+ model currents, both models converges at the same rate with the same oscillatio
+ns to the same equilibrium point (The parameters for this simulation can
+ be found at the appendix, table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:1MWSG"
@@ -632,13 +632,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:InfBusOne1DiffBehavior1"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename simDiffBehavior1.eps
 
@@ -653,6 +646,13 @@ name "fig:InfBusOne1DiffBehavior1"
 \begin_layout Plain Layout
 Simulation example that shows different behavior for the reduced model
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffBehavior1"
 
 \end_inset
 
@@ -679,11 +679,16 @@ reference "table:DifferentBehaviorParamsSetSG"
 
 \end_inset
 
-) the behavior of the whole model and the reduced model is totally different.
- while the whole model is stable (the eigenvalues of the Jacobian around
+) the behavior of the fourth order model and the reduced model is totally
+ different.
+ while the four order model is stable (the eigenvalues of the Jacobian around
  the equilibrium point are: 
-\begin_inset Formula $\left[\begin{array}{cccc}
--11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]$
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccc}
+-11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]
+\]
+
 \end_inset
 
 , the reduced model is not stable (the eigenvalues of the Jacobian around
@@ -707,13 +712,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:InfBusOne1DiffRegionOfAttraction"
-
-\end_inset
-
-
 \begin_inset Graphics
 	filename simDiffRegionOFAttraction.eps
 
@@ -728,6 +726,13 @@ name "fig:InfBusOne1DiffRegionOfAttraction"
 \begin_layout Plain Layout
 Simulation example that shows different behavior for the reduced model
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffRegionOfAttraction"
 
 \end_inset
 
@@ -747,8 +752,7 @@ reference "fig:InfBusOne1DiffRegionOfAttraction"
 
 \end_inset
 
-, Simulation shows that for certion parameters set (see appendix, table
- 
+, Simulation shows that for some parameters set (see appendix, table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:DifferentBehaviorParamsSetSG"
@@ -756,10 +760,10 @@ reference "table:DifferentBehaviorParamsSetSG"
 \end_inset
 
 ) the initial condition of this simulation is within the region of attraction
- of the reduced model, but outside the region of attraction of the whole
+ of the reduced model, but outside the region of attraction of the fourth
  model.
- That cause the whole model to diverge while the reduce model converge to
- the equilibrium point.
+ That cause the fourth order model to diverge while the reduce model converge
+ to the equilibrium point.
  
 \end_layout
 

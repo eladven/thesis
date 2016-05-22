@@ -100,7 +100,7 @@ key "Brown2015"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -341,18 +341,18 @@ Value
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "table:5KWSG"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Parameters for 5KW SG
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "table:5KWSG"
 
 \end_inset
 
@@ -384,7 +384,7 @@ key "Brown2015"
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -625,18 +625,18 @@ Value
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "table:1MWSG"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Parameters for 1MW SG
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "table:1MWSG"
 
 \end_inset
 
@@ -670,7 +670,7 @@ This set of parameters shows different behavior of the whole model and for
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -911,18 +911,18 @@ Value
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "table:DifferentBehaviorParamsSetSG"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Parameters for SG which leads to different behavior for the reduced model
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "table:DifferentBehaviorParamsSetSG"
 
 \end_inset
 
@@ -955,7 +955,7 @@ This set of parameters shows different region of attraction of the whole
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
@@ -1196,18 +1196,18 @@ Value
 \end_inset
 
 
-\begin_inset CommandInset label
-LatexCommand label
-name "table:DifferentRegionOfAttraction"
-
-\end_inset
-
-
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
 Parameters for SG which leads to different region of attraction
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "table:DifferentRegionOfAttraction"
 
 \end_inset
 
