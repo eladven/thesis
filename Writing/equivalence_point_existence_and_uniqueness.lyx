@@ -96,7 +96,7 @@ Equilibrium points of SG connected to an infinite bus.
 \begin_layout Standard
 This section follows 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "NatarajanWeiss2015"
 
 \end_inset

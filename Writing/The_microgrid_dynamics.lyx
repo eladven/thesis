@@ -112,28 +112,28 @@ Single generator dynamics
 \begin_layout Standard
 Mathematical models for synchronous machines can be found in 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "kundur1994"
 
 \end_inset
 
 ,
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "CaliiskanTabuada2014"
 
 \end_inset
 
 ,
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "sauerPai1998"
 
 \end_inset
 
  and 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "ZhongWeiss2011"
 
 \end_inset
@@ -141,7 +141,7 @@ key "ZhongWeiss2011"
 .
  At this section, we will follow the derivations of 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "ZhongWeiss2011"
 
 \end_inset
@@ -303,7 +303,7 @@ Structure of an idealized three-phase round rotor synchronous generator
 Structure of an idealized three-phase round rotor synchronous generator,
  modified from 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "graingerStevenson1994"
 
 \end_inset
@@ -811,7 +811,7 @@ Model of a Single generator connected to an infinite bus
 In this section we will develop a model for single synchronous generator
  which connected to an infinite bus this section follows 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "NatarajanWeiss2015"
 
 \end_inset

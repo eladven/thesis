@@ -464,7 +464,7 @@ to be globally exponential stable, for the dynamics of the two generators,
  manifold which we already showed to be invariant manifold.
  This proof is very similar to section 3.5 at 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "CaliiskanTabuada2014"
 
 \end_inset
@@ -619,7 +619,7 @@ Now, we will calculate
 
  is globally exponentially stable 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "nonlinearSystemsSastry"
 
 \end_inset
@@ -1069,7 +1069,7 @@ We would like to prove that if the initial state of the two generators are
 \begin_layout Standard
 For this, we will use the result from 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset
@@ -1100,7 +1100,7 @@ First,
 \begin_layout Standard
 The requirement (2) at 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset
@@ -1140,7 +1140,7 @@ in the matrix.
 \begin_layout Standard
 The requirement (3) in 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset
@@ -1165,7 +1165,7 @@ reference "eq:sync_sestem"
  is UES-TL (Uniform exponential stability for the transversally linear system),
  as it defines at 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset
@@ -1252,7 +1252,7 @@ In other words, we need to show that if LTV (linear time varying system),
  system is exponentially stable.
  this theorem is know (
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "SchovanecGilliam1999"
 
 \end_inset
@@ -1536,7 +1536,7 @@ reference "eq:sync_sestem"
 is UES-TL.
  We will apply the main result of 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "VincentBayuLaurent2016"
 
 \end_inset

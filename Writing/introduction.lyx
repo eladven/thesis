@@ -91,7 +91,7 @@ The AC electricity grid was developed at the end of the XIX century, and
  design the grid and its components are based on assumptions and methods,
  which were driven by experience and observations 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "sauerPai1998"
 
 \end_inset
@@ -104,7 +104,7 @@ key "sauerPai1998"
  is not clear whether the traditional models and methods for controling
  the power grid will succeed to control it 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
 
 \end_inset
@@ -124,14 +124,14 @@ Synchronous generator (SG) are the main power source of the electricity
  models, in which the SGs are connected in a simple network and each SG
  is represented by reduced order equations, see for instance 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "DorflerAndBullo2012"
 
 \end_inset
 
  and 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "PorcoDorflerBullo2013"
 
 \end_inset
@@ -141,7 +141,7 @@ key "PorcoDorflerBullo2013"
  as fast variables, thus eliminating them from the state variables via the
  singular perturbation approach (see, for instance, 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "KhalilSingularPertubations"
 
 \end_inset
@@ -149,14 +149,14 @@ key "KhalilSingularPertubations"
 ) and keeping only the rotor angle, and the rotor angular velocity as relevant
  state variables, see for instance 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "kundur1994"
 
 \end_inset
 
  and 
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "sauerPai1998"
 
 \end_inset
@@ -218,7 +218,7 @@ reference "cha:Model_reduction"
  can't predict behavior that 4th order model predicts.
  
 \begin_inset CommandInset citation
-LatexCommand citet
+LatexCommand citep
 key "monshizadehDePersisMonshizadehVanderSchaft2016"
 
 \end_inset
