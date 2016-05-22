@@ -96,7 +96,7 @@ name "cha:microgrid_dynamics"
 \begin_layout Standard
 In this chapter, I derive the equations for microgrid which composed of
  SGs.
- We start with derive the equations for single SG with the assumption that
+ I start with derive the equations for single SG with the assumption that
  the field current is constant.
  After that I derive the equations for micorgrid of one generator which
  connected to an infinite bus.
@@ -171,7 +171,7 @@ Synchronous generator consist of two parts: rotor and statror.
 
  across its terminals.
  The stator consist of three identical windings that connected in star.
- We consider generator without neutral connection and without dumper windings.
+ I consider generator without neutral connection and without dumper windings.
  The stator windings can be regards as connected coils with self inductance
  
 \begin_inset Formula $L$
@@ -207,7 +207,7 @@ reference "fig:structOfSG"
 \end_inset
 
 .
- We assume no magnetic saturation effects in the iron core and no eddy currents.
+ I assume no magnetic saturation effects in the iron core and no eddy currents.
  The stator terminals are labeled with letters a,b,c and voltages across
  the stator terminals is denoted as 
 \begin_inset Formula $v=\left[\begin{array}{c}
@@ -239,7 +239,7 @@ sin\left(\theta-\frac{4\pi}{3}\right)
 \end_inset
 
  .
- We denote the stator flux by 
+ I denote the stator flux by 
 \begin_inset Formula $\Phi=\left[\begin{array}{c}
 \Phi_{a}\\
 \Phi_{b}\\
@@ -388,7 +388,7 @@ where
 \end_inset
 
 .
- We will assume that the rotor current is constant (or equivalently, the
+ I will assume that the rotor current is constant (or equivalently, the
  rotor is composed of permanent magnet).
  Each stator terminal voltage is given by 
 \end_layout
@@ -542,7 +542,7 @@ where
 \end_layout
 
 \begin_layout Standard
-We rewrite 
+I rewrite 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:SGTerminalVlotageAfetrPark"
@@ -617,7 +617,7 @@ e_{q}
 \end_layout
 
 \begin_layout Standard
-We will denote 
+I will denote 
 \begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
 \end_inset
 
@@ -1318,7 +1318,7 @@ name "fig:one_phase_scheme"
 \end_layout
 
 \begin_layout Standard
-We recall the Park transformation with respect to the angle 
+I recall the Park transformation with respect to the angle 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -1341,7 +1341,7 @@ sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta+\frac{2\pi}{3})\\
 \end_layout
 
 \begin_layout Standard
-We donate
+I donate
 \end_layout
 
 \begin_layout Standard
@@ -1428,7 +1428,7 @@ Thus, I only have to deal with
 \end_layout
 
 \begin_layout Standard
-We denote 
+I denote 
 \end_layout
 
 \begin_layout Standard

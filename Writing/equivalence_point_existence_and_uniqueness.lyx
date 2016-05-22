@@ -457,7 +457,7 @@ The system
 \end_layout
 
 \begin_layout Standard
-We will prove by contrediction that 
+I will prove by contrediction that 
 \begin_inset Formula $sin(\delta_{0})$
 \end_inset
 
@@ -478,7 +478,7 @@ reference "eq:equilibrium_system"
 \end_layout
 
 \begin_layout Standard
-We will start by showing that by showing that 
+I will start by showing that by showing that 
 \begin_inset Formula $rank\left[M|n\right]=3$
 \end_inset
 
@@ -486,7 +486,7 @@ We will start by showing that by showing that
 \end_layout
 
 \begin_layout Standard
-We will denote 
+I will denote 
 \begin_inset Formula $\alpha=\omega_{0}L_{s}+R_{L}sin(\delta_{0})$
 \end_inset
 
@@ -883,7 +883,7 @@ i_{q}^{e}\\
 \end_layout
 
 \begin_layout Standard
-We take scalar products on both sides with 
+I take scalar products on both sides with 
 \begin_inset Formula $z^{e}$
 \end_inset
 
@@ -1129,7 +1129,7 @@ reference "eq:cuibi_eq"
 \begin_inset Formula $p(\omega^{e}).$
 \end_inset
 
- We have already noted that 
+ I have already noted that 
 \begin_inset Formula $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$
 \end_inset
 

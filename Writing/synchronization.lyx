@@ -510,7 +510,7 @@ This system describes two generators when they have equal state and no phase
 \end_layout
 
 \begin_layout Standard
-We will denote 
+I will denote 
 \end_layout
 
 \begin_layout Standard
@@ -567,7 +567,7 @@ such:
 \end_layout
 
 \begin_layout Standard
-We will shift the coordinates, in order to make the origin into equilibrium
+I will shift the coordinates, in order to make the origin into equilibrium
  point.
 \end_layout
 
@@ -677,7 +677,7 @@ key "nonlinearSystemsSastry"
 \end_layout
 
 \begin_layout Standard
-We will 
+I will 
 \begin_inset Formula $A(\tilde{\omega})$
 \end_inset
 
@@ -775,7 +775,7 @@ reference "eq:x_hat_dynamic"
 \end_layout
 
 \begin_layout Standard
-We will calculate the derivative of the Lyponv function over the time: 
+I will calculate the derivative of the Lyponv function over the time: 
 \end_layout
 
 \begin_layout Standard
@@ -1072,7 +1072,7 @@ Synchronization theorem:
 \end_layout
 
 \begin_layout Standard
-We would like to prove that if the initial state of the two generators are
+I would like to prove that if the initial state of the two generators are
  sufficiently close to each other, i.e 
 \begin_inset Formula $|e(0)|$
 \end_inset
@@ -1174,7 +1174,7 @@ key "VincentBayuLaurent2016"
 \end_inset
 
 .
- We will show that our system 
+ I will show that our system 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:sync_sestem"
@@ -1194,7 +1194,7 @@ key "VincentBayuLaurent2016"
 \end_layout
 
 \begin_layout Standard
-We need to show that the system 
+I need to show that the system 
 \end_layout
 
 \begin_layout Standard
@@ -1231,7 +1231,7 @@ is stable, where
 \end_inset
 
  is a Hurwitz matrix.
- We need to show that there exist constants 
+ I need to show that there exist constants 
 \begin_inset Formula $k$
 \end_inset
 
@@ -1352,7 +1352,7 @@ reference "eq:LTV_dynamics"
 \end_inset
 
 .
- We have 
+ I have 
 \end_layout
 
 \begin_layout Standard
@@ -1485,7 +1485,7 @@ e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K\left|C(s)
 \end_layout
 
 \begin_layout Standard
-We will apply Gronwall's inequality and get
+I will apply Gronwall's inequality and get
 \end_layout
 
 \begin_layout Standard
@@ -1556,7 +1556,7 @@ reference "eq:sync_sestem"
 \end_inset
 
 is UES-TL.
- We will apply the main result of 
+ I will apply the main result of 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "VincentBayuLaurent2016"

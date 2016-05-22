@@ -143,7 +143,7 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-We will try to separate the model in to fast variable and slow variable
+I will try to separate the model in to fast variable and slow variable
  in order to have singular perturbation analysis (see 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -152,7 +152,7 @@ key "KhalilSingularPertubations"
 \end_inset
 
 ).
- We like to show the dynamics in the form:
+ I like to show the dynamics in the form:
 \end_layout
 
 \begin_layout Standard
@@ -273,7 +273,7 @@ The equilibrium point
 \end_layout
 
 \begin_layout Standard
-We will solve this linear equation (in 
+I will solve this linear equation (in 
 \begin_inset Formula $\hat{y}$
 \end_inset
 
