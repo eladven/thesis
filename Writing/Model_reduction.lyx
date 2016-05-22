@@ -186,11 +186,11 @@ is small parameter.
 \end_layout
 
 \begin_layout Standard
-In our case, if we assume that 
+In our case, if I assume that 
 \begin_inset Formula $L_{s}$
 \end_inset
 
- is much smaller than the other parameter, we will define 
+ is much smaller than the other parameter, I will define 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -240,7 +240,7 @@ Vcos(\delta)-mi_{f}\omega
 \end_layout
 
 \begin_layout Standard
-Because we assumed that 
+Because I assumed that 
 \begin_inset Formula $\epsilon$
 \end_inset
 
@@ -252,7 +252,7 @@ Because we assumed that
 \begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
 \end_inset
 
-, and it will reach it equilibrium (which we assume that exist and attractive)
+, and it will reach it equilibrium (which I assume that exist and attractive)
  almost instantly with comparing to 
 \begin_inset Formula $x$
 \end_inset
@@ -313,7 +313,7 @@ Assuming that
 \begin_inset Formula $\omega\thickapprox\omega_{g}$
 \end_inset
 
- then we have 
+ then I have 
 \end_layout
 
 \begin_layout Standard
@@ -342,7 +342,7 @@ Assuming that
 \end_layout
 
 \begin_layout Standard
-Now, we will substitute 
+Now, I will substitute 
 \begin_inset Formula $\hat{y}$
 \end_inset
 
@@ -393,7 +393,7 @@ reference "eq:InfBusDynamics"
 
 \end_inset
 
-), we have the assumption of constant mechanical torque, but if we want
+), I have the assumption of constant mechanical torque, but if I want
  our model have the same form as 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -408,7 +408,7 @@ key "zhouOhsawa2009"
 
 \end_inset
 
-, we can assume that the income mechanical power is fixed and we have correction
+, I can assume that the income mechanical power is fixed and I have correction
  factor to correct the looses of the friction :
 \end_layout
 
@@ -450,7 +450,7 @@ Simulations:
 \end_layout
 
 \begin_layout Standard
-In this section, we provide simulation that shows that the improved swing
+In this section, I provide simulation that shows that the improved swing
  equations are good reduction for many cases, but there are cases where
  there is mismatch between the behavior suggested by the improved swing
  equations and the whole model (equation 
@@ -461,7 +461,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 ).
- For each simulation, we will show the current 
+ For each simulation, I will show the current 
 \begin_inset Formula $i_{d}$
 \end_inset
 
@@ -470,7 +470,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 over time for both the whole model and for the improved swing equation model,
- where for the improved swing equation model, we will estimate these currents
+ where for the improved swing equation model, I will estimate these currents
  by equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -479,7 +479,7 @@ reference "eq:ISEInfBusEstimatedCurrents"
 \end_inset
 
 .
- In addition we will show the the frequency over time for both the whole
+ In addition I will show the the frequency over time for both the whole
  model and the improved swing equation model, and the phase over time of
  the whole model and the improved swing equation model.
 \end_layout

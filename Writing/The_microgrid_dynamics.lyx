@@ -94,13 +94,13 @@ name "cha:microgrid_dynamics"
 \end_layout
 
 \begin_layout Standard
-In this chapter, we derive the equations for microgrid which composed of
+In this chapter, I derive the equations for microgrid which composed of
  synchronous generators.
  We start with derive the equations for single synchronous generator with
  the assumption that the field current is constant.
- After that we derive the equations for micorgrid of one generator which
+ After that I derive the equations for micorgrid of one generator which
  connected to an infinite bus.
- At the end of this chapter we will derive model for a microgrid comprising
+ At the end of this chapter I will derive model for a microgrid comprising
  two identical synchronous generator which connected in parallel with a
  resistive load.
 \end_layout
@@ -139,7 +139,7 @@ key "ZhongWeiss2011"
 \end_inset
 
 .
- At this section, we will follow the derivations of 
+ At this section, I will follow the derivations of 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ZhongWeiss2011"
@@ -431,7 +431,7 @@ e=M_{f}i_{f}\dot{\theta}\tilde{sin}\theta\label{eq:emf}
 \begin_layout Standard
 For synchronous generator with no load, the voltages at each terminal will
  be sinusoidal function.
- In order to convert the volteges (and current) into a fixed value, we will
+ In order to convert the volteges (and current) into a fixed value, I will
  apply Park's transformation:
 \end_layout
 
@@ -767,7 +767,7 @@ reference "eq:electricTorque"
 
 \end_inset
 
- we obtained:
+ I obtained:
 \end_layout
 
 \begin_layout Standard
@@ -808,7 +808,7 @@ Model of a Single generator connected to an infinite bus
 \end_layout
 
 \begin_layout Standard
-In this section we will develop a model for single synchronous generator
+In this section I will develop a model for single synchronous generator
  which connected to an infinite bus this section follows 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -901,7 +901,7 @@ reference "eq:infBusVoltageABC"
 
 \end_inset
 
- we have 
+ I have 
 \end_layout
 
 \begin_layout Standard
@@ -1015,7 +1015,7 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-This forth order nonlinear dynamical system we be consider as the model
+This forth order nonlinear dynamical system I be consider as the model
  for one synchronous generator which connected to an infinite bus.
 \end_layout
 
@@ -1024,7 +1024,7 @@ Model of microgrid comprising two synchronous generators in parallel
 \end_layout
 
 \begin_layout Standard
-In this section, we consider a microgrid comprising two identical synchronous
+In this section, I consider a microgrid comprising two identical synchronous
  generators, with constant rotor (field) current and non neutral connection,
  together with a resistive load.
  (See figure
@@ -1172,7 +1172,7 @@ The rotor angles are
 \end_inset
 
 .
- By symmetry, we assume that the voltages at the (non-connected) midpoints
+ By symmetry, I assume that the voltages at the (non-connected) midpoints
  of the generators and the load are zero.
 \end_layout
 
@@ -1229,7 +1229,7 @@ Z=R_{s}+R_{g}+(L_{s}+L_{g})s
 \end_inset
 
 .
- However, in most of our computations, we consider for simplicity that 
+ However, in most of our computations, I consider for simplicity that 
 \begin_inset Formula $R_{g}=0$
 \end_inset
 
@@ -1404,7 +1404,7 @@ Clearly
 \begin_inset Formula $i_{01}=i_{02}=0$
 \end_inset
 
- (from Kirchhoff's laws) and by symmetry argument we can show that 
+ (from Kirchhoff's laws) and by symmetry argument I can show that 
 \begin_inset Formula $v_{01}=v_{02}=0$
 \end_inset
 
@@ -1416,7 +1416,7 @@ Clearly
 \end_layout
 
 \begin_layout Standard
-Thus, we only have to deal with 
+Thus, I only have to deal with 
 \begin_inset Formula $v_{dj},v_{qj}$
 \end_inset
 
@@ -1509,7 +1509,7 @@ is the mechanical torque coming from the prime mover to the generator,
 
  is the rotor current.
  Of course, a similar equation holds for the second generator.
- To put the equations together, we use 
+ To put the equations together, I use 
 \end_layout
 
 \begin_layout Standard
@@ -1642,7 +1642,7 @@ reference "eq:dynamics_of_single_generator"
 
 \end_inset
 
-, we obtain, denoting 
+, I obtain, denoting 
 \begin_inset Formula $R_{tot}=R_{s}+R_{L}$
 \end_inset
 

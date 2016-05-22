@@ -76,9 +76,9 @@ Abstract
 \begin_layout Standard
 
 \size small
-In this paper, we develop the improved swing equations model form the known
+In this paper, I develop the improved swing equations model form the known
  model of one synchronous generator which is connected to infinite bus (and
- assumes constant field current), and we will show by examples, that result
+ assumes constant field current), and I will show by examples, that result
  from this model can not predict the stability of the full model.
 \end_layout
 

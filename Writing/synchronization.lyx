@@ -163,7 +163,7 @@ reference "eq:dynamics_whole"
 
 \end_inset
 
- we have 
+ I have 
 \end_layout
 
 \begin_layout Standard
@@ -288,7 +288,7 @@ For
 \begin_inset Formula $x$
 \end_inset
 
- dynamics, we have:
+ dynamics, I have:
 \end_layout
 
 \begin_layout Standard
@@ -444,8 +444,8 @@ Globally exponentially stability of two synchronized generators:
 \end_layout
 
 \begin_layout Standard
-In this section, we provide sufficient conditions for the equilibrium point
- which we show that exist on the manifold 
+In this section, I provide sufficient conditions for the equilibrium point
+ which I show that exist on the manifold 
 \begin_inset Formula $\epsilon=\left\{ \left[\begin{array}{c}
 x\\
 e
@@ -461,7 +461,7 @@ to be globally exponential stable, for the dynamics of the two generators,
 \begin_inset Formula $\epsilon$
 \end_inset
 
- manifold which we already showed to be invariant manifold.
+ manifold which I already showed to be invariant manifold.
  This proof is very similar to section 3.5 at 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -513,7 +513,7 @@ A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
 \end_layout
 
 \begin_layout Standard
-As we showed at ******* 
+As I showed at ******* 
 \begin_inset Formula $\tilde{G}(\tilde{x})$
 \end_inset
 
@@ -601,11 +601,11 @@ min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
 \end_layout
 
 \begin_layout Standard
-Now, we will calculate 
+Now, I will calculate 
 \begin_inset Formula $\dot{V}(\hat{x})$
 \end_inset
 
- and we will show that under some conditions, 
+ and I will show that under some conditions, 
 \begin_inset Formula $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$
 \end_inset
 
@@ -708,7 +708,7 @@ J(\tilde{\omega}^{0})\coloneqq\left[\begin{array}{ccc}
 \end_layout
 
 \begin_layout Standard
-And now we can represent the system dynamic:
+And now I can represent the system dynamic:
 \end_layout
 
 \begin_layout Standard
@@ -723,7 +723,7 @@ A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\ri
 \end_layout
 
 \begin_layout Standard
-If we will combine this equation with equations 
+If I will combine this equation with equations 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:G_at_equilibrium"
@@ -737,7 +737,7 @@ reference "eq:x_hat_dynamic"
 
 \end_inset
 
- we will obtain: 
+ I will obtain: 
 \end_layout
 
 \begin_layout Standard
@@ -775,7 +775,7 @@ Because
 \begin_inset Formula $\varLambda^{T}\varLambda^{-1}=I$
 \end_inset
 
-, so we obtain:
+, so I obtain:
 \end_layout
 
 \begin_layout Standard
@@ -857,7 +857,7 @@ x_{q}^{0}\\
 \end_layout
 
 \begin_layout Standard
-Combining all this together, we obtain 
+Combining all this together, I obtain 
 \end_layout
 
 \begin_layout Standard
@@ -1067,7 +1067,7 @@ We would like to prove that if the initial state of the two generators are
 \end_layout
 
 \begin_layout Standard
-For this, we will use the result from 
+For this, I will use the result from 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "VincentBayuLaurent2016"
@@ -1145,8 +1145,8 @@ key "VincentBayuLaurent2016"
 
 \end_inset
 
- is satisfied as we showed.
- Additionally we showed at the last section that 
+ is satisfied as I showed.
+ Additionally I showed at the last section that 
 \begin_inset Formula $\tilde{G}(\tilde{x})$
 \end_inset
 
@@ -1202,12 +1202,12 @@ is stable, where
 
 \end_inset
 
- which we showed that it globally exponentially stable (and 
+ which I showed that it globally exponentially stable (and 
 \begin_inset Formula $lim_{t\to\infty}\tilde{x}(t)=0$
 \end_inset
 
 ).
- In order to have the UES-TL property, we will demand that 
+ In order to have the UES-TL property, I will demand that 
 \begin_inset Formula $\tilde{G}(0)$
 \end_inset
 
@@ -1247,7 +1247,7 @@ such for all
 \end_layout
 
 \begin_layout Standard
-In other words, we need to show that if LTV (linear time varying system),
+In other words, I need to show that if LTV (linear time varying system),
  which it matrix converges exponentially to a stable matrix, then the LTV
  system is exponentially stable.
  this theorem is know (
@@ -1257,7 +1257,7 @@ key "SchovanecGilliam1999"
 
 \end_inset
 
-), but for the clearance of the reading, we will repeat the proof:
+), but for the clearance of the reading, I will repeat the proof:
 \end_layout
 
 \begin_layout Subparagraph*
@@ -1348,12 +1348,12 @@ reference "eq:LTV_dynamics"
 \end_layout
 
 \begin_layout Standard
-If we multiply this equation through by the integrating factor (matrix)
+If I multiply this equation through by the integrating factor (matrix)
  
 \begin_inset Formula $e^{-At}$
 \end_inset
 
-, we get 
+, I get 
 \end_layout
 
 \begin_layout Standard
@@ -1410,7 +1410,7 @@ Since
 \begin_inset Formula $Re\{\sigma(A)\}<0$
 \end_inset
 
-, we can find constants 
+, I can find constants 
 \begin_inset Formula $\sigma<0$
 \end_inset
 
@@ -1433,7 +1433,7 @@ reference "eq:LTV_integralForm"
 
 \end_inset
 
- we get 
+ I get 
 \end_layout
 
 \begin_layout Standard
@@ -1486,7 +1486,7 @@ For any
 \begin_inset Formula $0\le s\le t$
 \end_inset
 
-, we must have 
+, I must have 
 \begin_inset Formula $\intop_{s}^{t}\left|C(u)\right|du\le\intop_{0}^{\infty}\left|C(t)\right|dt=M$
 \end_inset
 
@@ -1496,7 +1496,7 @@ For any
 \end_inset
 
 .
- Applying this we get
+ Applying this I get
 \end_layout
 
 \begin_layout Standard
@@ -1555,7 +1555,7 @@ key "VincentBayuLaurent2016"
 \begin_inset Formula $\lambda$
 \end_inset
 
-such that we have for all 
+such that I have for all 
 \begin_inset Formula $(e^{0},x^{0},t)$
 \end_inset
 
@@ -1563,7 +1563,7 @@ such that we have for all
 \begin_inset Formula $B_{e}(r)\vartimes\mathbb{R}^{3}\vartimes\mathbb{R}_{\geq0}$
 \end_inset
 
- , we have 
+ , I have 
 \begin_inset Formula $\left|e(t)\right|\leq k\left|e^{0}\right|exp(-\lambda t)$
 \end_inset
 

@@ -85,7 +85,7 @@ name "cha:equivalence_pont"
 \end_layout
 
 \begin_layout Standard
-In this chapter, we study the equilibrium points for both the infinite bus
+In this chapter, I study the equilibrium points for both the infinite bus
  configuration, and the two SG microgid.
 \end_layout
 
@@ -103,7 +103,7 @@ key "NatarajanWeiss2015"
 
 .
  In order to search the equilibrium point of single SG which connected to
- an infinite bus, we will find the roots of: 
+ an infinite bus, I will find the roots of: 
 \end_layout
 
 \begin_layout Standard
@@ -234,9 +234,9 @@ Equilibrium points of a microgrid comprising two SGs.
 \end_layout
 
 \begin_layout Standard
-In this section, we study the equilibrium points of a microgrid domprising
+In this section, I study the equilibrium points of a microgrid domprising
  two SGs.
- we start by showing that such equilibrium point must satisfy synchronization
+ I start by showing that such equilibrium point must satisfy synchronization
  between the two generators (means that the state variables are equal between
  the two generators, and there is no phase between the two generators),
  or anti-synchronization between the two generators (means that the state
@@ -245,7 +245,7 @@ In this section, we study the equilibrium points of a microgrid domprising
 \end_inset
 
  between the two generators).
- Later in this section, we will compute the equilibrium point which satisfy
+ Later in this section, I will compute the equilibrium point which satisfy
  synchronization between the two generators.
  
 \end_layout
@@ -259,7 +259,7 @@ An equilibrium can be only on the surface
 \end_layout
 
 \begin_layout Standard
-First, we will show that the system 
+First, I will show that the system 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:dynamics_whole"
@@ -275,7 +275,7 @@ reference "eq:dynamics_whole"
 \end_inset
 
 .
- For proving that, we will start form the algebraic equation:
+ For proving that, I will start form the algebraic equation:
 \end_layout
 
 \begin_layout Standard
@@ -306,7 +306,7 @@ At the seventh line (
 \begin_inset Formula $\dot{\delta})$
 \end_inset
 
- we have 
+ I have 
 \begin_inset Formula 
 \begin{equation}
 -\omega_{1}^{e}+\omega_{2}^{e}=0\longrightarrow\omega_{1}^{e}=\omega_{2}^{e}\coloneqq\omega^{e}
@@ -326,7 +326,7 @@ From the third line (
 \begin_inset Formula $\dot{\omega}_{2})$
 \end_inset
 
- we have 
+ I have 
 \end_layout
 
 \begin_layout Standard
@@ -363,7 +363,7 @@ From the first line (
 \begin_inset Formula $\dot{i}_{q2})$
 \end_inset
 
- we have 
+ I have 
 \end_layout
 
 \begin_layout Standard
@@ -473,7 +473,7 @@ reference "eq:equilibrium_system"
 \begin_inset Formula $sin(\delta^{e})\ne0$
 \end_inset
 
- (we want to prove that this is impossible).
+ (I want to prove that this is impossible).
  
 \end_layout
 
@@ -932,7 +932,7 @@ reference "eq:equilbrium_algebric_eq"
 
 \end_inset
 
-, we want to derive a scalar equation to the determine the equilibrium velocity
+, I want to derive a scalar equation to the determine the equilibrium velocity
  
 \begin_inset Formula $\omega^{0}$
 \end_inset
@@ -1064,7 +1064,7 @@ reference "eq:id_0_"
 
 \end_inset
 
-, we get 
+, I get 
 \end_layout
 
 \begin_layout Standard
@@ -1079,7 +1079,7 @@ reference "eq:id_0_"
 \end_layout
 
 \begin_layout Standard
-we multiply all terms with 
+I multiply all terms with 
 \begin_inset Formula $-\left(R_{tot}+R_{L}\right)mi_{f}$
 \end_inset
 
@@ -1134,7 +1134,7 @@ reference "eq:cuibi_eq"
 \end_inset
 
 .
- On the other hand, we note that 
+ On the other hand, I note that 
 \begin_inset Formula $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$
 \end_inset
 
