@@ -76,10 +76,9 @@ Abstract
 \begin_layout Standard
 
 \size small
-Synchronous generators, are one of the most fundamental component of the
- electric grid.
- Recently, the stability of the electric grid is an area of high interest
- and intensive research.
+Synchronous generators are an essential component of the electric grid.
+ Recently, the stability of the electric grid has become an area of high
+ interest and intensive research.
  One reason for that is because the electric grid that conservatively was
  based only on synchronous generators as it power source, change and became
  more and more composed of other sources, mostly because of the usage of
@@ -87,15 +86,16 @@ Synchronous generators, are one of the most fundamental component of the
 \end_layout
 
 \begin_layout Standard
-In this work I discuss the stability of grid that comprised of one synchronous
- generator which connected to an infinite bus, and show that models that
- are common for design and analyze grids, failed to predict fails in this
- grid.
+In this work I discuss the stability of a grid that is comprised of one
+ synchronous generator connected to an infinite bus, and we show that reduced
+ models that are common by used for design and analysis can fail to predict
+ the behavior of this system.
 \end_layout
 
 \begin_layout Standard
-The second part of this works shows sufficient conditions for grid that
- composed of two identical synchronous generators to synchronized.
+The second part of this thesis shows sufficient conditions for grid composed
+ of two identical synchronous generators to synchronize and converge to
+ a steady state.
 \end_layout
 
 \end_body
