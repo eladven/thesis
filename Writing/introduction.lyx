@@ -186,7 +186,7 @@ SGs has the important property that once they synchronizes, means that their
 \end_layout
 
 \begin_layout Standard
-In this work, I study two simple grid configurations: Single SG that connected
+In this work, we study two simple grid configurations: Single SG that connected
  to an infinite bus, and Two SG in parallel and a load.
  chapter 
 \begin_inset CommandInset ref

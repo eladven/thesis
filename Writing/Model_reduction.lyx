@@ -143,8 +143,8 @@ T_{m}\\
 \end_layout
 
 \begin_layout Standard
-I separate the model in to fast variable and slow variable in order to have
- singular perturbation analysis (see 
+We separate the model in to fast variable and slow variable in order to
+ have singular perturbation analysis (see 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "KhalilSingularPertubations"
@@ -450,7 +450,7 @@ Simulations:
 \end_layout
 
 \begin_layout Standard
-In this section, I provide simulation that shows that the improved swing
+In this section, we provide simulation that shows that the improved swing
  equation is a good reduction for many cases, but there are cases where
  there is mismatch between the behavior suggested by the improved swing
  equations and the whole model (equation 
@@ -461,7 +461,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 ).
- For each simulation, I will show the currents 
+ For each simulation, we will show the currents 
 \begin_inset Formula $i_{d}$
 \end_inset
 
@@ -470,7 +470,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 over time for both the fourth order model and for the improved swing equation
- model, where for the improved swing equation model, I will estimate these
+ model, where for the improved swing equation model, we will estimate these
  currents by equation 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -479,7 +479,7 @@ reference "eq:ISEInfBusEstimatedCurrents"
 \end_inset
 
 .
- In addition I will show the the frequency over time for both the whole
+ In addition we will show the the frequency over time for both the whole
  model and the improved swing equation model, and the phase over time of
  the whole model and the improved swing equation model.
 \end_layout

@@ -86,7 +86,7 @@ Synchronous generators are an essential component of the electric grid.
 \end_layout
 
 \begin_layout Standard
-In this work I discuss the stability of a grid that is comprised of one
+In this work we discuss the stability of a grid that is comprised of one
  synchronous generator connected to an infinite bus, and we show that reduced
  models that are common by used for design and analysis can fail to predict
  the behavior of this system.

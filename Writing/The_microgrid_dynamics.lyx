@@ -94,13 +94,13 @@ name "cha:microgrid_dynamics"
 \end_layout
 
 \begin_layout Standard
-In this chapter, I derive the equations for microgrid which composed of
+In this chapter, we derive the equations for microgrid which composed of
  SGs.
- I start with derive the equations for single SG with the assumption that
+ We start with derive the equations for single SG with the assumption that
  the field current is constant.
- After that I derive the equations for micorgrid of one generator which
+ After that we derive the equations for micorgrid of one generator which
  connected to an infinite bus.
- At the end of this chapter I will derive model for a microgrid comprising
+ At the end of this chapter we will derive model for a microgrid comprising
  two identical SGs which connected in parallel with a resistive load.
 \end_layout
 
@@ -138,7 +138,7 @@ key "ZhongWeiss2011"
 \end_inset
 
 .
- At this section, I will follow the derivations of 
+ At this section, we will follow the derivations of 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "ZhongWeiss2011"
@@ -171,7 +171,7 @@ Synchronous generator consist of two parts: rotor and statror.
 
  across its terminals.
  The stator consist of three identical windings that connected in star.
- I consider generator without neutral connection and without dumper windings.
+ We consider generator without neutral connection and without dumper windings.
  The stator windings can be regards as connected coils with self inductance
  
 \begin_inset Formula $L$
@@ -207,7 +207,7 @@ reference "fig:structOfSG"
 \end_inset
 
 .
- I assume no magnetic saturation effects in the iron core and no eddy currents.
+ We assume no magnetic saturation effects in the iron core and no eddy currents.
  The stator terminals are labeled with letters a,b,c and voltages across
  the stator terminals is denoted as 
 \begin_inset Formula $v=\left[\begin{array}{c}
@@ -239,7 +239,7 @@ sin\left(\theta-\frac{4\pi}{3}\right)
 \end_inset
 
  .
- I denote the stator flux by 
+ We denote the stator flux by 
 \begin_inset Formula $\Phi=\left[\begin{array}{c}
 \Phi_{a}\\
 \Phi_{b}\\
@@ -388,7 +388,7 @@ where
 \end_inset
 
 .
- I will assume that the rotor current is constant (or equivalently, the
+ We will assume that the rotor current is constant (or equivalently, the
  rotor is composed of permanent magnet).
  Each stator terminal voltage is given by 
 \end_layout
@@ -430,7 +430,7 @@ e=M_{f}i_{f}\dot{\theta}\tilde{sin}\theta\label{eq:emf}
 \begin_layout Standard
 For synchronous generator with no load, the voltages at each terminal will
  be sinusoidal function.
- In order to convert the volteges (and current) into a fixed value, I will
+ In order to convert the volteges (and current) into a fixed value, we will
  apply Park's transformation:
 \end_layout
 
@@ -542,7 +542,7 @@ where
 \end_layout
 
 \begin_layout Standard
-I rewrite 
+We rewrite 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:SGTerminalVlotageAfetrPark"
@@ -617,7 +617,7 @@ e_{q}
 \end_layout
 
 \begin_layout Standard
-I will denote 
+We  denote 
 \begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
 \end_inset
 
@@ -766,7 +766,7 @@ reference "eq:electricTorque"
 
 \end_inset
 
- I obtained:
+ we obtained:
 \end_layout
 
 \begin_layout Standard
@@ -807,7 +807,7 @@ Model of a Single generator connected to an infinite bus
 \end_layout
 
 \begin_layout Standard
-In this section I develop a model for single synchronous generator which
+In this section we develop a model for single synchronous generator which
  connected to an infinite bus .This section follows 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -900,7 +900,7 @@ reference "eq:infBusVoltageABC"
 
 \end_inset
 
- I have 
+ we have 
 \end_layout
 
 \begin_layout Standard
@@ -1023,7 +1023,7 @@ Model of microgrid comprising two synchronous generators in parallel
 \end_layout
 
 \begin_layout Standard
-In this section, I consider a microgrid comprising two identical synchronous
+In this section, we consider a microgrid comprising two identical synchronous
  generators, with constant rotor (field) current and no neutral connection,
  together with a resistive load.
  (See figure 
@@ -1171,7 +1171,7 @@ The rotor angles are
 \end_inset
 
 .
- By symmetry, I assume that the voltages at the (non-connected) midpoints
+ By symmetry, we assume that the voltages at the (non-connected) midpoints
  of the generators and the load are zero.
 \end_layout
 
@@ -1228,7 +1228,7 @@ The impedances
 \end_inset
 
 .
- However, I consider for simplicity that 
+ However, we consider for simplicity that 
 \begin_inset Formula $R_{g}=0$
 \end_inset
 
@@ -1318,7 +1318,7 @@ name "fig:one_phase_scheme"
 \end_layout
 
 \begin_layout Standard
-I recall the Park transformation with respect to the angle 
+We recall the Park transformation with respect to the angle 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -1341,7 +1341,7 @@ sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta+\frac{2\pi}{3})\\
 \end_layout
 
 \begin_layout Standard
-I donate
+We donate
 \end_layout
 
 \begin_layout Standard
@@ -1403,7 +1403,7 @@ Clearly
 \begin_inset Formula $i_{01}=i_{02}=0$
 \end_inset
 
- (from Kirchhoff's laws) and by symmetry argument I can show that 
+ (from Kirchhoff's laws) and by symmetry argument we can show that 
 \begin_inset Formula $v_{01}=v_{02}=0$
 \end_inset
 
@@ -1415,7 +1415,7 @@ Clearly
 \end_layout
 
 \begin_layout Standard
-Thus, I only have to deal with 
+Thus, we only have to deal with 
 \begin_inset Formula $v_{dj},v_{qj}$
 \end_inset
 
@@ -1428,7 +1428,7 @@ Thus, I only have to deal with
 \end_layout
 
 \begin_layout Standard
-I denote 
+We denote 
 \end_layout
 
 \begin_layout Standard
@@ -1509,7 +1509,7 @@ where
 
  is the rotor current.
  Of course, a similar equation holds for the second generator.
- To put the equations together, I use 
+ To put the equations together, we use 
 \end_layout
 
 \begin_layout Standard
