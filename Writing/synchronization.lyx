@@ -84,6 +84,23 @@ name "cha:Synchronization"
 
 \end_layout
 
+\begin_layout Standard
+In this chapter, I show that microgid comprising of two identical SGs, the
+ synchronization manifold is locally exponentially stable.
+ First, I will rewrite the grid dynamics as synchronization error dynamic,
+ and equivalence SG dynamics.
+ Then, I will prove that under some conditions, the equivalence SG dynamics
+ is globally exponentially stable.
+ Finally, I will use the main result from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+, to show the stability of the system near the synchronization manifold.
+\end_layout
+
 \begin_layout Section
 Modeling the synchronization problem:
 \end_layout
@@ -555,9 +572,9 @@ reference "cha:equivalence_pont"
 
 ) 
 \begin_inset Formula $x^{0}=\left[\begin{array}{c}
-x_{d}^{0}\\
-x_{q}^{0}\\
-\tilde{\omega}^{0}
+x_{d}^{e}\\
+x_{q}^{e}\\
+\tilde{\omega}^{e}
 \end{array}\right]$
 \end_inset
 
@@ -567,7 +584,7 @@ such:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\tilde{G}(x^{0})=0\rightarrow\varLambda^{-1}A(\tilde{\omega}^{0})\tilde{x}^{0}+\varLambda^{-1}\left[\begin{array}{c}
+\tilde{G}(x^{0})=0\rightarrow\varLambda^{-1}A(\tilde{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
 0\\
 0\\
 2T_{m}
@@ -587,7 +604,7 @@ Performing coordinations shift , in order to make the origin into equilibrium
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\hat{x}\coloneqq\tilde{x}-\tilde{x}^{0}
+\hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
 \end{equation}
 
 \end_inset
@@ -720,9 +737,9 @@ R\coloneqq\left[\begin{array}{ccc}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-J(\tilde{\omega}^{0})\coloneqq\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\tilde{\omega}^{0} & 0\\
--\frac{L_{s}}{2}\tilde{\omega}^{0} & 0 & -mif\\
+J(\tilde{\omega}^{e})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
+-\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mif\\
 0 & mi_{f} & 0
 \end{array}\right]
 \end{equation}
@@ -783,7 +800,7 @@ reference "eq:x_hat_dynamic"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
+\dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right\} 
 \end{equation}
 
 \end_inset
@@ -798,7 +815,7 @@ Calculate the derivative of the Lyponv function over the time:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
+\dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
 \end{equation}
 
 \end_inset
@@ -821,7 +838,7 @@ Because
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0}
+\dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
 \end{equation}
 
 \end_inset
@@ -832,7 +849,7 @@ Because
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{0})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0}
+\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
 \end{equation}
 
 \end_inset
@@ -842,7 +859,7 @@ Because
 
 \begin_layout Standard
 Because 
-\begin_inset Formula $J(\tilde{\omega}^{0})$
+\begin_inset Formula $J(\tilde{\omega}^{e})$
 \end_inset
 
  and 
@@ -850,7 +867,7 @@ Because
 \end_inset
 
  are skew symmetric matrices, it implies that 
-\begin_inset Formula $\hat{x}^{T}J(\tilde{\omega}^{0})\hat{x}=0$
+\begin_inset Formula $\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}=0$
 \end_inset
 
  and 
@@ -877,8 +894,8 @@ Calculating
 -\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
 0 & 0 & 0
 \end{array}\right]\left[\begin{array}{c}
-x_{d}^{0}\\
-x_{q}^{0}\\
+x_{d}^{e}\\
+x_{q}^{e}\\
 \tilde{\omega}^{0}
 \end{array}\right]\\
  & = & \left[\begin{array}{c}
@@ -886,9 +903,9 @@ x_{q}^{0}\\
 \hat{x}_{q}\\
 \hat{\omega}
 \end{array}\right]^{T}\left[\begin{array}{ccc}
-0 & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
-0 & 0 & -\frac{L_{s}}{4}x_{d}^{0}\\
-\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & 0
+0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & 0
 \end{array}\right]\left[\begin{array}{c}
 \hat{x}_{d}\\
 \hat{x}_{q}\\
@@ -921,9 +938,9 @@ Combining all this together, obtains:
 \begin_layout Standard
 Where 
 \begin_inset Formula $P+R=\left[\begin{array}{ccc}
--R_{tot}-R_{L} & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
-0 & -R_{tot}-R_{L} & -\frac{L_{s}}{4}x_{d}^{0}\\
-\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & -D_{p}
+-R_{tot}-R_{L} & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & -R_{tot}-R_{L} & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}
 \end{array}\right]$
 \end_inset
 
@@ -938,9 +955,9 @@ Where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{0}\\
-0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{0}\\
-\frac{L_{s}}{4}x_{q}^{0} & -\frac{L_{s}}{4}x_{d}^{0} & -D_{p}-\lambda
+det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}-\lambda
 \end{vmatrix}
 \end{equation}
 
@@ -952,7 +969,7 @@ det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-=\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{0}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{0}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{0}\right]
+=\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{e}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{e}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{e}\right]
 \end{equation}
 
 \end_inset
@@ -963,7 +980,7 @@ det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-=\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
+=\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
 \end{equation}
 
 \end_inset
@@ -982,7 +999,7 @@ The first eigenvalue of
 
  which is negative.
  
-\begin_inset Formula $\pi(\lambda)=\lambda^{2}+\lambda\left(R_{tot}+R_{L}+D_{p}\right)+\left(R_{tot}+R_{L}\right)D_{p}-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right]$
+\begin_inset Formula $\pi(\lambda)=\lambda^{2}+\lambda\left(R_{tot}+R_{L}+D_{p}\right)+\left(R_{tot}+R_{L}\right)D_{p}-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]$
 \end_inset
 
 
@@ -991,7 +1008,7 @@ The first eigenvalue of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)}}{4}
+\lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
 \end{equation}
 
 \end_inset
@@ -1007,7 +1024,7 @@ All eigenvalues are real numbers.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
--\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)}}{4}<0
+-\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}<0
 \end{equation}
 
 \end_inset
@@ -1018,7 +1035,7 @@ All eigenvalues are real numbers.
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)
+4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)
 \end{equation}
 
 \end_inset
@@ -1033,7 +1050,7 @@ Which leads to the following condition:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-16\left(R_{tot}+R_{L}\right)D_{p}>L_{s}^{2}\left(\left(x_{q}^{0}\right)^{2}+\left(x_{d}^{0}\right)^{2}\right)\label{eq:condition_for_stable_G}
+16\left(R_{tot}+R_{L}\right)D_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
 \end{equation}
 
 \end_inset
@@ -1056,10 +1073,10 @@ reference "eq:condition_for_stable_G"
 .
  This proves that this system is globally exponentially stable.
  That implies that 
-\begin_inset Formula $\tilde{x}^{0}$
+\begin_inset Formula $\tilde{x}^{e}$
 \end_inset
 
-is the only equilibrium point of 
+ is the only equilibrium point of 
 \begin_inset Formula $\tilde{G}(\tilde{x})$
 \end_inset
 
@@ -1068,7 +1085,7 @@ is the only equilibrium point of
 \begin_inset Formula $z_{1}=z_{2}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $\delta=0$
 \end_inset
 
@@ -1077,7 +1094,7 @@ and
 \begin_inset Formula $z_{1}=z_{2}$
 \end_inset
 
-and 
+ and 
 \begin_inset Formula $\delta=\pi$
 \end_inset
 
@@ -1089,7 +1106,7 @@ Synchronization theorem:
 \end_layout
 
 \begin_layout Standard
-Here, I give prove that shows that if the initial state of the two generators
+In this section, I prove that if the initial state of the two generators
  are sufficiently close to each other, i.e 
 \begin_inset Formula $|e(0)|$
 \end_inset
@@ -1187,7 +1204,7 @@ key "VincentBayuLaurent2016"
 \end_inset
 
  is globally exponentially stable with equilibrium 
-\begin_inset Formula $x^{0}$
+\begin_inset Formula $x^{e}$
 \end_inset
 
 .
@@ -1260,15 +1277,15 @@ is stable, where
 \begin_inset Formula $\lambda$
 \end_inset
 
-such for all 
-\begin_inset Formula $\left|e_{0}\right|\leq r$
+ such for all 
+\begin_inset Formula $\left|e^{e}\right|\leq r$
 \end_inset
 
  and for all 
-\begin_inset Formula $x_{0}$
+\begin_inset Formula $x^{e}$
 \end_inset
 
-
+.
 \end_layout
 
 \begin_layout Standard
@@ -1365,7 +1382,7 @@ reference "eq:LTV_dynamics"
 \end_inset
 
  with 
-\begin_inset Formula $x(0)=x^{0}$
+\begin_inset Formula $x(0)=x^{e}$
 \end_inset
 
 .
@@ -1474,7 +1491,7 @@ reference "eq:LTV_integralForm"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left|x(t)\right|\leq K\left|x^{0}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
+\left|x(t)\right|\leq K\left|x^{e}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
 \end{equation}
 
 \end_inset
@@ -1493,7 +1510,7 @@ Multiply this through by
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
 \end{equation}
 
 \end_inset
@@ -1508,7 +1525,7 @@ By applying Gronwall's inequality:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+\intop_{0}^{t}K^{2}\left|x^{0}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K^{2}\left|x^{e}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
 \end{equation}
 
 \end_inset
@@ -1536,7 +1553,7 @@ Applying this gives
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{0}\right|+e^{KM}K^{2}\left|x^{0}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{0}\right|+e^{KM}K^{2}M
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+e^{KM}K^{2}\left|x^{e}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{e}\right|+e^{KM}K^{2}M
 \end{equation}
 
 \end_inset
@@ -1551,7 +1568,7 @@ So
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left|x(t)\right|\leq e^{\sigma t}C^{0}\left|x^{0}\right|,\quad\sigma<0
+\left|x(t)\right|\leq e^{\sigma t}C^{e}\left|x^{e}\right|,\quad\sigma<0
 \end{equation}
 
 \end_inset
@@ -1590,7 +1607,7 @@ key "VincentBayuLaurent2016"
 \end_inset
 
 such for all 
-\begin_inset Formula $(e^{0},x^{0},t)$
+\begin_inset Formula $(e^{e},x^{e},t)$
 \end_inset
 
  in 
@@ -1602,7 +1619,7 @@ such for all
 \end_inset
 
  satisfies 
-\begin_inset Formula $\left|e(t)\right|\leq k\left|e^{0}\right|exp(-\lambda t)$
+\begin_inset Formula $\left|e(t)\right|\leq k\left|e^{e}\right|exp(-\lambda t)$
 \end_inset
 
 .
