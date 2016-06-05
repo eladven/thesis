@@ -153,9 +153,9 @@ i_{q}^{e}\\
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \omega^{e}=\omega_{g},\qquad i_{q}^{e}=\frac{D_{p}\omega_{g}-T_{m}}{mi_{f}}
-\end{equation}
+\]
 
 \end_inset
 
@@ -172,9 +172,9 @@ Using the value of
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{Vsind\left(\delta^{e}\right)}{R_{s}}
-\end{equation}
+\]
 
 \end_inset
 
@@ -195,9 +195,9 @@ Using the second line, after substituting the values of
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \delta^{e}=cos^{-1}\left(\frac{mi_{f}\omega_{g}R_{s}}{|Z|V}-\frac{|z|\left(T_{m}D_{p}\omega_{g}\right)}{Vmi_{f}}\right)-\psi
-\end{equation}
+\]
 
 \end_inset
 
@@ -276,7 +276,7 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left[\begin{array}{c|c|c}
 \mathcal{A}(\omega_{1}^{e}) & -\mathcal{B}(\delta^{e}) & 0\\
 \hline -\mathcal{B}(-\delta^{e}) & \mathcal{A}(\omega_{2}^{e}) & 0\\
@@ -290,7 +290,7 @@ e_{3}\\
 e_{3}\\
 0
 \end{array}\right]=0
-\end{equation}
+\]
 
 \end_inset
 
@@ -304,9 +304,9 @@ At the seventh line (
 
  we have 
 \begin_inset Formula 
-\begin{equation}
+\[
 -\omega_{1}^{e}+\omega_{2}^{e}=0\longrightarrow\omega_{1}^{e}=\omega_{2}^{e}\coloneqq\omega^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -327,7 +327,7 @@ From the third line (
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left\{ \begin{array}{c}
 mi_{f}i_{q1}^{e}-D_{p}\omega_{1}^{e}+T_{m}=0\\
 mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
@@ -335,7 +335,7 @@ mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
 mi_{f}i_{q1}^{e}-D_{p}\omega^{e}=0\\
 mi_{f}i_{q2}^{e}-D_{p}\omega^{e}=0
 \end{array}\right.\longrightarrow i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -364,14 +364,14 @@ From the first line (
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left\{ \begin{array}{c}
 -R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos(\delta^{e})i_{d2}^{e}+R_{L}sin(\delta^{e})i_{q}^{0}=0\\
 -\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}sin(\delta^{e})i_{d2}^{e}-R_{L}cos(\delta^{e})i_{q}^{e}=0\\
 -R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos(\delta^{e})i_{d1}^{e}-R_{L}sin(\delta^{e})i_{q}^{e}=0\\
 -\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}sin(\delta^{e})i_{d1}^{e}-R_{L}cos(\delta^{e})i_{q}^{e}=0
 \end{array}\right.
-\end{equation}
+\]
 
 \end_inset
 
@@ -402,14 +402,14 @@ Where
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 M=\left[\begin{array}{cc}
 -R_{tot} & -R_{L}cos(\delta^{e})\\
 -\omega^{e}L_{s} & -R_{L}sin(\delta^{e})\\
 -R_{L}cos(\delta^{e}) & -R_{tot}\\
 R_{L}sin(\delta^{e}) & -\omega^{e}L_{s}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -422,14 +422,14 @@ and
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 N=\left[\begin{array}{c}
 i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}sin(\delta^{e})\right)\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos(\delta^{e})\right)\\
 i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}sin(\delta^{e})\right)\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos(\delta^{e})\right)
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -566,7 +566,7 @@ If
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \ref{eq:MATRIX_1}\longrightarrow\begin{array}{c}
 (a_{1})\\
 (a_{2})\beta-(a_{3})R_{L}cos(\delta^{e})\\
@@ -576,7 +576,7 @@ If
 -R_{tot}\beta & 0 & 0\\
 0 & \omega_{0}L_{s}-R_{L}sin(\delta^{e}) & 0
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -714,7 +714,7 @@ if
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{c}
 \ref{eq:MATRIX_4}\longrightarrow\begin{array}{c}
 (a_{1})\\
@@ -727,7 +727,7 @@ if
 \frac{4L_{s}R_{tot}\omega^{e}sind(\delta^{e})}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos(\delta^{e})\right)+R_{L}\left(R_{tot}+R_{L}cos(\delta^{e})\right)sin(delta^{0})\right]} & 0 & 0
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -788,14 +788,14 @@ If
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 M=\left[\begin{array}{cc}
 -R_{tot} & -R_{L}\\
 -\omega^{e}L_{s} & 0\\
 -R_{L} & -R_{tot}\\
 0 & -\omega^{e}L_{s}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -808,14 +808,14 @@ and
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 N=\left[\begin{array}{c}
 i_{q}^{e}\omega^{e}L_{s}\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
 i_{q}^{e}\omega^{e}L_{s}\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -875,9 +875,9 @@ We take scalar products on both sides with
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -969,9 +969,9 @@ reference "eq:equilbrium_algebric_eq"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -1052,9 +1052,9 @@ reference "eq:id_0_"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 -\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
-\end{equation}
+\]
 
 \end_inset
 
@@ -1071,9 +1071,9 @@ We multiply all terms with
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
-\end{equation}
+\]
 
 \end_inset
 

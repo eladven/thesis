@@ -221,7 +221,7 @@ and now
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 g(x,y,\epsilon)=\left[\begin{array}{cc}
 -R_{s} & \omega L_{s}\\
 -\omega L_{s} & -R_{s}
@@ -232,7 +232,7 @@ g(x,y,\epsilon)=\left[\begin{array}{cc}
 Vsin(\delta)\\
 Vcos(\delta)-mi_{f}\omega
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -282,7 +282,7 @@ The solution of this linear equation (in
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \hat{y}=-\left[\begin{array}{cc}
 -R_{s} & \omega L_{s}\\
 -\omega L_{s} & -R_{s}
@@ -293,7 +293,7 @@ Vcos(\delta)-mi_{f}\omega
 \frac{R_{s}Vsin(\delta)-L_{s}\omega\left(mi_{f}\omega-Vcos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
 \frac{-R_{s}\left(mi_{f}\omega-Vcos(\delta)\right)-L_{s}V\omega sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -332,9 +332,9 @@ Assuming that
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \hat{i}_{q}=-\frac{Vsin(\delta)}{L_{s}\omega}
-\end{equation}
+\]
 
 \end_inset
 
@@ -355,12 +355,12 @@ Now, substitute
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left\{ \begin{array}{c}
 J\dot{\omega}=-\frac{mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
-\end{equation}
+\]
 
 \end_inset
 
@@ -373,12 +373,12 @@ Or
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left\{ \begin{array}{c}
 J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\omega\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
-\end{equation}
+\]
 
 \end_inset
 
@@ -414,9 +414,9 @@ key "zhouOhsawa2009"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
-\end{equation}
+\]
 
 \end_inset
 
@@ -429,12 +429,12 @@ and then the model is:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left\{ \begin{array}{c}
 J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta)}{L_{s}}+\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
-\end{equation}
+\]
 
 \end_inset
 
@@ -529,7 +529,7 @@ name "fig:InfBusOne5KWSG"
 \end_layout
 
 \begin_layout Standard
-As shown at figure 
+As shown at Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne5KWSG"
@@ -597,7 +597,7 @@ name "fig:InfBusOne1MWSG"
 \end_layout
 
 \begin_layout Standard
-As shown at figure 
+As shown at Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1MWSG"
@@ -665,7 +665,7 @@ name "fig:InfBusOne1DiffBehavior1"
 \end_layout
 
 \begin_layout Standard
-As shown at figure 
+As shown at Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1DiffBehavior1"
@@ -745,7 +745,7 @@ name "fig:InfBusOne1DiffRegionOfAttraction"
 \end_layout
 
 \begin_layout Standard
-As shown at figure 
+As shown at Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1DiffRegionOfAttraction"

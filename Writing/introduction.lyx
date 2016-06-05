@@ -115,7 +115,11 @@ key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
 \end_layout
 
 \begin_layout Standard
-Synchronous generator (SG) is the main power source of the electricity grid.
+
+\shape italic
+Synchronous generator
+\shape default
+ (SG) is the main power source of the electricity grid.
  The mathematical model of a SG is very complex and difficult to use.
  This makes the electric grid to such a complicated nonlinear and time-varying
  system that any attempt to prove its stability analytically is hopeless.

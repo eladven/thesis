@@ -130,7 +130,7 @@ Where
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 e\coloneqq\left[\begin{array}{c}
 e_{d}\\
 e_{q}\\
@@ -142,7 +142,7 @@ i_{q1}-i_{q2}\\
 \omega_{1}-\omega_{2}\\
 \delta
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -151,7 +151,7 @@ i_{q1}-i_{q2}\\
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 x\coloneqq\left[\begin{array}{c}
 x_{d}\\
 x_{q}\\
@@ -161,7 +161,7 @@ i_{d1}+i_{d2}\\
 i_{q1}+i_{q2}\\
 \omega_{1}+\omega_{2}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -185,9 +185,9 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \varLambda\dot{e}=\varLambda(\dot{z}_{1}-\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}-\left(\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\right)
-\end{equation}
+\]
 
 \end_inset
 
@@ -196,7 +196,7 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \varLambda\frac{d}{dt}\left[\begin{array}{c}
 e_{d}\\
@@ -216,7 +216,7 @@ R_{L}cos(\delta)(i_{q1}-i_{q2})-R_{L}sin(\delta)(i_{d1}+i_{d2})\\
 0
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -229,9 +229,9 @@ Now,
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 (a+b)(x-y)+(a-b)(x+y)=2(ax-by)
-\end{equation}
+\]
 
 \end_inset
 
@@ -244,9 +244,9 @@ So
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \omega_{1}i_{q1}-\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right]=\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
-\end{equation}
+\]
 
 \end_inset
 
@@ -270,7 +270,7 @@ and
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \left[\begin{array}{cc}
 \varLambda & 0\\
@@ -288,7 +288,7 @@ R_{L}sin(\delta)x_{2}\\
 0
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -320,9 +320,9 @@ For the
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \varLambda\dot{x}=\varLambda(\dot{z}_{1}+\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}+\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
-\end{equation}
+\]
 
 \end_inset
 
@@ -331,7 +331,7 @@ For the
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \varLambda\frac{d}{dt}\left[\begin{array}{c}
 x_{d}\\
@@ -348,7 +348,7 @@ mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
 0
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -361,9 +361,9 @@ Now,
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 (a+b)(x+y)+(a-b)(x-y)=2(ax+by)
-\end{equation}
+\]
 
 \end_inset
 
@@ -376,9 +376,9 @@ So
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \omega_{1}i_{q1}+\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]=\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
-\end{equation}
+\]
 
 \end_inset
 
@@ -391,9 +391,9 @@ and
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
-\end{equation}
+\]
 
 \end_inset
 
@@ -402,7 +402,7 @@ and
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \varLambda\dot{x}=\left[\begin{array}{ccc}
 -R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
 -\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
@@ -412,7 +412,7 @@ and
 -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
 2T_{m}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -425,7 +425,7 @@ For summery:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \dot{e}=F(e,x) & = & \left[\begin{array}{cc}
 \varLambda & 0\\
@@ -446,7 +446,7 @@ R_{L}sin(\delta)x_{2}\\
 0
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -455,7 +455,7 @@ R_{L}sin(\delta)x_{2}\\
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \dot{x}=G(e,x) & = & \varLambda^{-1}\left[\begin{array}{ccc}
 -R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
@@ -468,7 +468,7 @@ R_{L}sin(\delta)x_{2}\\
 2T_{m}
 \end{array}\right]
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -518,7 +518,7 @@ key "CaliiskanTabuada2014"
 
  
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{\tilde{x}}=\tilde{G}(\tilde{x})\coloneqq G(0,\tilde{x})=\varLambda^{-1}\left[\begin{array}{ccc}
 -R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
 -\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_{tot}-R_{L} & -mif\\
@@ -528,7 +528,7 @@ key "CaliiskanTabuada2014"
 0\\
 2T_{m}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -546,13 +546,13 @@ Denote
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
 -R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{\omega} & 0\\
 -\frac{L_{s}}{2}\tilde{\omega} & -R_{tot}-R_{L} & -mif\\
 0 & mi_{f} & -D_{p}
 \end{array}\right],\tilde{\omega}\coloneqq\tilde{x}
-\end{equation}
+\]
 
 \end_inset
 
@@ -603,9 +603,9 @@ Performing coordinations shift , in order to make the origin into equilibrium
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -618,9 +618,9 @@ A natural Lyaponov function candidate is the total energy of the system:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}
-\end{equation}
+\]
 
 \end_inset
 
@@ -633,9 +633,9 @@ It is easy to see that:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
-\end{equation}
+\]
 
 \end_inset
 
@@ -644,9 +644,9 @@ min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max(L_{s},J)\left|\hat{x}\right|
-\end{equation}
+\]
 
 \end_inset
 
@@ -682,9 +682,9 @@ key "nonlinearSystemsSastry"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
-\end{equation}
+\]
 
 \end_inset
 
@@ -721,13 +721,13 @@ Representing
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 R\coloneqq\left[\begin{array}{ccc}
 -R_{tot}-R_{L} & 0 & 0\\
 0 & -R_{tot}-R_{L} & 0\\
 0 & 0 & -D_{p}
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -736,13 +736,13 @@ R\coloneqq\left[\begin{array}{ccc}
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 J(\tilde{\omega}^{e})\coloneqq\left[\begin{array}{ccc}
 0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
 -\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mif\\
 0 & mi_{f} & 0
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -751,13 +751,13 @@ J(\tilde{\omega}^{e})\coloneqq\left[\begin{array}{ccc}
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \Delta(\hat{\omega})\coloneqq\left[\begin{array}{ccc}
 0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
 -\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
 0 & 0 & 0
 \end{array}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -770,9 +770,9 @@ And now it is possible to represent the system dynamic:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right](\hat{x}-\tilde{x}^{0})
-\end{equation}
+\]
 
 \end_inset
 
@@ -799,9 +799,9 @@ reference "eq:x_hat_dynamic"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right\} 
-\end{equation}
+\]
 
 \end_inset
 
@@ -814,9 +814,9 @@ Calculate the derivative of the Lyponv function over the time:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
-\end{equation}
+\]
 
 \end_inset
 
@@ -837,9 +837,9 @@ Because
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -848,9 +848,9 @@ Because
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -883,7 +883,7 @@ Calculating
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \begin{array}{ccc}
 \hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0} & = & \left[\begin{array}{c}
 \hat{x}_{d}\\
@@ -913,7 +913,7 @@ x_{q}^{e}\\
 \end{array}\right]\\
  & = & \hat{x}^{T}P\hat{x}
 \end{array}
-\end{equation}
+\]
 
 \end_inset
 
@@ -926,9 +926,9 @@ Combining all this together, obtains:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
-\end{equation}
+\]
 
 \end_inset
 
@@ -954,12 +954,12 @@ Where
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
 0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{e}\\
 \frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}-\lambda
 \end{vmatrix}
-\end{equation}
+\]
 
 \end_inset
 
@@ -968,9 +968,9 @@ det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 =\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{e}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{e}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{e}\right]
-\end{equation}
+\]
 
 \end_inset
 
@@ -979,9 +979,9 @@ det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 =\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
-\end{equation}
+\]
 
 \end_inset
 
@@ -1007,9 +1007,9 @@ The first eigenvalue of
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
-\end{equation}
+\]
 
 \end_inset
 
@@ -1023,9 +1023,9 @@ All eigenvalues are real numbers.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 -\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}<0
-\end{equation}
+\]
 
 \end_inset
 
@@ -1034,9 +1034,9 @@ All eigenvalues are real numbers.
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)
-\end{equation}
+\]
 
 \end_inset
 
@@ -1233,9 +1233,9 @@ we need to show that the system
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
-\end{equation}
+\]
 
 \end_inset
 
@@ -1249,9 +1249,9 @@ is stable, where
 
  generated by the dynamics 
 \begin_inset Formula 
-\begin{equation}
+\[
 \tilde{x}=\tilde{G}(\tilde{x})
-\end{equation}
+\]
 
 \end_inset
 
@@ -1290,9 +1290,9 @@ is stable, where
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left|e(t)\right|\leq k\left|e_{0}\right|exp(-\lambda t)
-\end{equation}
+\]
 
 \end_inset
 
@@ -1341,9 +1341,9 @@ Let
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \intop_{0}^{\infty}\left|C(t)\right|dt=M<\infty
-\end{equation}
+\]
 
 \end_inset
 
@@ -1391,9 +1391,9 @@ reference "eq:LTV_dynamics"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \dot{x}(t)-Ax(t)=C(t)x(t)
-\end{equation}
+\]
 
 \end_inset
 
@@ -1411,9 +1411,9 @@ If we multiply this equation through by the integrating factor (matrix)
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \frac{d}{dt}\left(e^{-At}x(t)\right)=e^{-At}C(t)x(t)
-\end{equation}
+\]
 
 \end_inset
 
@@ -1434,9 +1434,9 @@ Integrating the last equation from
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 e^{-At}x(t)-x(0)=\intop_{0}^{t}e^{-As}C(s)x(s)ds
-\end{equation}
+\]
 
 \end_inset
 
@@ -1491,9 +1491,9 @@ reference "eq:LTV_integralForm"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left|x(t)\right|\leq K\left|x^{e}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
-\end{equation}
+\]
 
 \end_inset
 
@@ -1510,9 +1510,9 @@ Multiply this through by
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
-\end{equation}
+\]
 
 \end_inset
 
@@ -1525,9 +1525,9 @@ By applying Gronwall's inequality:
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K^{2}\left|x^{e}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
-\end{equation}
+\]
 
 \end_inset
 
@@ -1553,9 +1553,9 @@ Applying this gives
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+e^{KM}K^{2}\left|x^{e}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{e}\right|+e^{KM}K^{2}M
-\end{equation}
+\]
 
 \end_inset
 
@@ -1568,9 +1568,9 @@ So
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left|x(t)\right|\leq e^{\sigma t}C^{e}\left|x^{e}\right|,\quad\sigma<0
-\end{equation}
+\]
 
 \end_inset
 
