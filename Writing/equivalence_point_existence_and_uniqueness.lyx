@@ -457,14 +457,14 @@ We will prove by contradiction that
 \begin_inset Formula $\sin\delta_{0}=0$
 \end_inset
 
- is a necessary condition that the system 
+ is a necessary condition for the system 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:equilibrium_system"
 
 \end_inset
 
- will have solution.
+ to have solution.
  Negated to assume that 
 \begin_inset Formula $\sin\delta^{e}\ne0$
 \end_inset
@@ -824,10 +824,18 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 If 
-\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow\sin\delta^{e}=0,\qquad\cos\delta^{e}=1.$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$
 \end_inset
 
- and now 
+ then 
+\begin_inset Formula $\sin\delta^{e}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\cos\delta^{e}=1$
+\end_inset
+
+.Now: 
 \end_layout
 
 \begin_layout Standard
