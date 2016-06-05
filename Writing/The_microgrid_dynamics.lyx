@@ -261,11 +261,15 @@ i_{c}
 \end{array}\right]$
 \end_inset
 
+, the rotor flux 
+\begin_inset Formula $\Phi_{f}$
+\end_inset
+
  and the rotor current by 
 \begin_inset Formula $i_{f}$
 \end_inset
 
- .
+.
  
 \end_layout
 
@@ -371,6 +375,21 @@ L & -M & -M\\
 \end_layout
 
 \begin_layout Standard
+The flux of the rotot is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{cos}\theta>\label{eq:fieldFlux}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Because there is no neutral, then 
 \begin_inset Formula $i_{a}+i_{b}+i_{c}=0$
 \end_inset
@@ -395,8 +414,6 @@ where
 \end_inset
 
 .
- We will assume that the rotor current is constant (or equivalently, the
- rotor is composed of permanent magnet).
  Each stator terminal voltage is given by 
 \end_layout
 
@@ -426,7 +443,22 @@ e_{c}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e=M_{f}i_{f}\dot{\theta}\widetilde{sin}\theta\label{eq:emf}
+e=M_{f}i_{f}\dot{\theta}\widetilde{sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{cos}\theta\label{eq:emf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the rotor terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{f}=-R_{f}i_{f}-\frac{d\Phi_{f}}{dt}\label{eq:fieldVoltage}
 \end{equation}
 
 \end_inset
@@ -470,13 +502,13 @@ where
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
 cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
 sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
 \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
-\end{array}\right]
-\]
+\end{array}\right]\label{eq:ParkTransformation}
+\end{equation}
 
 \end_inset
 
@@ -610,7 +642,7 @@ Because there is no neutral connection,
 \begin_inset Formula $i_{0}=0,$
 \end_inset
 
-hence 
+ hence 
 \begin_inset Formula $e_{0}=0$
 \end_inset
 
@@ -627,14 +659,43 @@ reference "eq:emf"
 
 \begin_layout Standard
 \begin_inset Formula 
-\[
+\begin{equation}
 \left[\begin{array}{c}
 e_{d}\\
 e_{q}
 \end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
-0\\
+\frac{di_{f}}{dt}\\
 \omega i_{f}
-\end{array}\right]
+\end{array}\right]\label{eq:ed_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substitute 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldFlux"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldVoltage"
+
+\end_inset
+
+, and applying Park's transformation yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}
 \]
 
 \end_inset
@@ -643,18 +704,92 @@ e_{q}
 \end_layout
 
 \begin_layout Standard
-We  denote 
-\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
-\end_inset
-
- to have 
-\end_layout
-
-\begin_layout Standard
-Substitute this equation to 
+Using 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+ for 
+\begin_inset Formula $\frac{di_{d}}{dt}$
+\end_inset
+
+ dynamics, and substituting it to the previous equation, gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote 
+\begin_inset Formula $\alpha=\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)^{-1}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+, we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\label{eq:if_dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculate 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+and 
+\begin_inset Formula $i_{q}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+, and substituting 
+\begin_inset Formula $\frac{di_{f}}{dt}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
 
 \end_inset
 
@@ -664,17 +799,17 @@ reference "eq:idiqDynamics"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-L_{s}\frac{d}{dt}\left[\begin{array}{c}
+\frac{d}{dt}\left[\begin{array}{c}
 i_{d}\\
 i_{q}
-\end{array}\right]=-R_{s}\left[\begin{array}{c}
-i_{d}\\
-i_{q}
-\end{array}\right]+\omega L_{s}\left[\begin{array}{c}
+\end{array}\right]=\omega\left[\begin{array}{c}
 i_{q}\\
 -i_{d}
-\end{array}\right]-m\left[\begin{array}{c}
-0\\
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\\
 \omega i_{f}
 \end{array}\right]-\left[\begin{array}{c}
 v_{d}\\
@@ -771,10 +906,135 @@ T_{e}=M_{f}i_{f}<i,\frac{d\tilde{cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{sin}\
 \end_layout
 
 \begin_layout Standard
-Using  
+Using 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+L_{f}i_{f}\\
+J\omega
+\end{array}\right] & = & \left[\begin{array}{cccc}
+-\alpha R_{s} & \alpha\omega L_{s} & \alpha mR_{f} & 0\\
+-\omega L_{s} & -R_{s} & 0 & -mi_{f}\\
+\frac{\alpha mR_{s}}{L_{s}} & -\alpha m\omega & -\alpha R_{f} & 0\\
+0 & mi_{f} & 0 & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{f}\\
+\omega
+\end{array}\right]\\
+ & + & \left[\begin{array}{cccc}
+-\alpha & 0 & \frac{\alpha m}{L_{f}} & 0\\
+0 & -1 & 0 & 0\\
+\frac{\alpha m}{L_{s}} & 0 & -\alpha & 0\\
+0 & 0 & 0 & 1
+\end{array}\right]\left[\begin{array}{c}
+v_{d}\\
+v_{q}\\
+v_{f}\\
+T_{m}
+\end{array}\right]
+\end{array}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This fourth order nonlinear dynamical system represents the dynamics of
+ single SG.
+ 
+\end_layout
+
+\begin_layout Section
+Single generator with constant field current dynamics
+\end_layout
+
+\begin_layout Standard
+At this sections, we assume that the rotor current is constant (which means
+ that the field dynamics is very fast, or equivalently, the rotor is composed
+ of permanent magnet).
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\frac{di_{f}}{dt}=0$
+\end_inset
+
+, and substituting it at 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+0\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithFixxIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithFixxIf"
 
 \end_inset
 
@@ -823,8 +1083,8 @@ T_{m}
 \end_layout
 
 \begin_layout Standard
-This third order nonlinear dynamical system represents the dynamics of single
- synchronous generated with constant field current.
+This Third order nonlinear dynamical system represents the dynamics of single
+ SG with constant field current.
  
 \end_layout
 
@@ -995,7 +1255,7 @@ reference "eq:deltaDynamics"
  into 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:idiqDynamics"
+reference "eq:SGDynamics"
 
 \end_inset
 
@@ -1045,15 +1305,14 @@ Model of microgrid comprising two synchronous generators in parallel
 \begin_layout Standard
 In this section, we consider a microgrid comprising two identical synchronous
  generators, with constant rotor (field) current and no neutral connection,
- together with a resistive load.
- (See Figure 
+ together with a resistive load (see Figure 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "fig:microgrid_configuration"
 
 \end_inset
 
-)
+).
 \end_layout
 
 \begin_layout Standard
@@ -1256,19 +1515,14 @@ The impedances
 \begin_inset Formula $L_{g}=0$
 \end_inset
 
-, since this leaves us with the same type of equations.
- 
-\end_layout
-
-\begin_layout Standard
-(See Figure 
+, since this leaves us with the same type of equations, see Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:one_phase_scheme"
 
 \end_inset
 
-)
+.
 \end_layout
 
 \begin_layout Standard
@@ -1338,30 +1592,14 @@ name "fig:one_phase_scheme"
 \end_layout
 
 \begin_layout Standard
-We recall the Park transformation with respect to the angle 
-\begin_inset Formula $\theta$
-\end_inset
-
-:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-U(\theta)=\sqrt{\frac{2}{3}}\left[\begin{array}{ccc}
-cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta+\frac{2\pi}{3})\\
-sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta+\frac{2\pi}{3})\\
-\frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}} & \frac{1}{\sqrt{2}}
-\end{array}\right]
-\]
+Recall Park transformation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ParkTransformation"
 
 \end_inset
 
- (which is unitary).
-\end_layout
-
-\begin_layout Standard
-We donate
+, and apply it on the currents and voltages we have:
 \end_layout
 
 \begin_layout Standard
