@@ -1612,7 +1612,7 @@ such for all
 \end_inset
 
  in 
-\begin_inset Formula $B_{e}(r)\vartimes\mathbb{R}^{3}\vartimes\mathbb{R}_{\geq0}$
+\begin_inset Formula $B_{e}(r)\times R^{3}\times\mathbb{R}_{\geq0}$
 \end_inset
 
  , 

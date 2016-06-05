@@ -108,6 +108,7 @@ reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
+
 \end_layout
 
 \begin_layout Standard
@@ -290,7 +291,7 @@ V\sin(\delta)\\
 V\cos(\delta)-mi_{f}\omega
 \end{array}\right]=\left[\begin{array}{c}
 \frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
-\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega \sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
+\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega\sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
 \end{array}\right]
 \]
 
@@ -393,7 +394,7 @@ reference "eq:SGDynamicsInfBus"
 \end_inset
 
 , there is the assumption of constant mechanical torque.
- But in order to compare this model with 
+ But in order to compare this model with the one in 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "monshizadehDePersisMonshizadehVanderSchaft2016"
@@ -407,7 +408,7 @@ key "zhouOhsawa2009"
 
 \end_inset
 
- model, it is possible to assume that the income torque is due to fix mechanical
+, it is possible to assume that the income torque is due to fix mechanical
  power and a correction factor for the viscose looses:
 \end_layout
 
@@ -441,7 +442,25 @@ J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delt
 \end_layout
 
 \begin_layout Standard
-This model is known as the improved swing equation model.
+This model is known as the 
+\shape italic
+improved swing equation
+\shape default
+ model, see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhouOhsawa2009"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -528,15 +547,15 @@ name "fig:InfBusOne5KWSG"
 \end_layout
 
 \begin_layout Standard
-As shown at Figure 
+As shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne5KWSG"
 
 \end_inset
 
-, Simulation shows that for 5KW SG, the behavior of the fourth order model
- and the reduced model are almost the same.
+, simulations show that for the 5KW SG, the behavior of the fourth order
+ model and the reduced model are almost the same.
  Although the currents at the reduced don't have a ripple that the fourth
  order model has, both models converges at the same rate with the same oscillati
 ons to the same equilibrium point (The parameters for this simulation can
@@ -596,15 +615,15 @@ name "fig:InfBusOne1MWSG"
 \end_layout
 
 \begin_layout Standard
-As shown at Figure 
+As shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1MWSG"
 
 \end_inset
 
-, Simulation shows that for 1MW SG, the behavior of the fourth order model
- and the reduced model are still very similar.
+, simulations show that for the 1MW SG, the behavior of the fourth order
+ model and the reduced model are still very similar.
  Although the fourth order model currents are much rippled than the reduced
  model currents, both models converges at the same rate with the same oscillatio
 ns to the same equilibrium point (The parameters for this simulation can
@@ -664,14 +683,14 @@ name "fig:InfBusOne1DiffBehavior1"
 \end_layout
 
 \begin_layout Standard
-As shown at Figure 
+As shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1DiffBehavior1"
 
 \end_inset
 
-, Simulation shows that for other parameters set (see appendix, table 
+, simulations show that for other parameters set (see appendix, table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:DifferentBehaviorParamsSetSG"
@@ -744,14 +763,14 @@ name "fig:InfBusOne1DiffRegionOfAttraction"
 \end_layout
 
 \begin_layout Standard
-As shown at Figure 
+As shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:InfBusOne1DiffRegionOfAttraction"
 
 \end_inset
 
-, Simulation shows that for some parameters set (see appendix, table 
+, simulations show that for some parameters set (see appendix, table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "table:DifferentBehaviorParamsSetSG"
