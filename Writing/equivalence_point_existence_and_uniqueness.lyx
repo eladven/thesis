@@ -125,8 +125,8 @@ i_{q}^{e}\\
 \omega^{e}\\
 \delta^{e}
 \end{array}\right]+\left[\begin{array}{c}
-Vsin\delta^{e}\\
-Vcos\delta^{e}\\
+V\sin\delta^{e}\\
+V\cos\delta^{e}\\
 T_{m}\\
 \omega_{g}
 \end{array}\right]\label{eq:SGDynamicsInfBusEqPoint}
@@ -173,7 +173,7 @@ Using the value of
 \begin_layout Standard
 \begin_inset Formula 
 \[
-i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{Vsin\delta^{e}}{R_{s}}
+i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{V\sin\delta^{e}}{R_{s}}
 \]
 
 \end_inset
@@ -196,7 +196,7 @@ Using the second line, after substituting the values of
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\delta^{e}=cos^{-1}\left(\frac{mi_{f}\omega_{g}R_{s}}{|Z|V}-\frac{|z|\left(T_{m}D_{p}\omega_{g}\right)}{Vmi_{f}}\right)-\psi
+\delta^{e}=\cos^{-1}\left(\frac{mi_{f}\omega_{g}R_{s}}{|Z|V}-\frac{|z|\left(T_{m}D_{p}\omega_{g}\right)}{Vmi_{f}}\right)-\psi
 \]
 
 \end_inset
@@ -366,10 +366,10 @@ From the first line (
 \begin_inset Formula 
 \[
 \left\{ \begin{array}{c}
--R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos\delta^{e}i_{d2}^{e}+R_{L}sin\delta^{e}i_{q}^{e}=0\\
--\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}sin\delta^{e}i_{d2}^{e}-R_{L}cos\delta^{e}i_{q}^{e}=0\\
--R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}cos\delta^{e}i_{d1}^{e}-R_{L}sin\delta^{e}i_{q}^{e}=0\\
--\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}sin\delta^{e}i_{d1}^{e}-R_{L}cos\delta^{e}i_{q}^{e}=0
+-R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d2}^{e}+R_{L}\sin\delta^{e}i_{q}^{e}=0\\
+-\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}\sin\delta^{e}i_{d2}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0\\
+-R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d1}^{e}-R_{L}\sin\delta^{e}i_{q}^{e}=0\\
+-\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}\sin\delta^{e}i_{d1}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0
 \end{array}\right.
 \]
 
@@ -404,10 +404,10 @@ Where
 \begin_inset Formula 
 \[
 M=\left[\begin{array}{cc}
--R_{tot} & -R_{L}cos\delta^{e}\\
--\omega^{e}L_{s} & -R_{L}sin\delta^{e}\\
--R_{L}cos\delta^{e} & -R_{tot}\\
-R_{L}sin\delta^{e} & -\omega^{e}L_{s}
+-R_{tot} & -R_{L}\cos\delta^{e}\\
+-\omega^{e}L_{s} & -R_{L}\sin\delta^{e}\\
+-R_{L}\cos\delta^{e} & -R_{tot}\\
+R_{L}\sin\delta^{e} & -\omega^{e}L_{s}
 \end{array}\right]
 \]
 
@@ -424,10 +424,10 @@ and
 \begin_inset Formula 
 \[
 n=\left[\begin{array}{c}
-i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}sin\delta^{e}\right)\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos\delta^{e}\right)\\
-i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}sin\delta^{e}\right)\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}cos\delta^{e}\right)
+i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
 \end{array}\right]
 \]
 
@@ -454,7 +454,7 @@ The system
 
 \begin_layout Standard
 We will prove by contradiction that 
-\begin_inset Formula $sin\delta_{0}=0$
+\begin_inset Formula $\sin\delta_{0}=0$
 \end_inset
 
  is a necessary condition in order that the system 
@@ -466,7 +466,7 @@ reference "eq:equilibrium_system"
 
  will have solution.
  Suppose that 
-\begin_inset Formula $sin\delta^{e}\ne0$
+\begin_inset Formula $\sin\delta^{e}\ne0$
 \end_inset
 
 .
@@ -474,11 +474,11 @@ reference "eq:equilibrium_system"
 
 \begin_layout Standard
 Denote 
-\begin_inset Formula $\alpha=\omega_{0}L_{s}+R_{L}sin\delta_{0}$
+\begin_inset Formula $\alpha=\omega_{0}L_{s}+R_{L}\sin\delta_{0}$
 \end_inset
 
  and 
-\begin_inset Formula $\beta=\omega_{0}L_{s}-R_{L}sin\delta_{0}$
+\begin_inset Formula $\beta=\omega_{0}L_{s}-R_{L}\sin\delta_{0}$
 \end_inset
 
 
@@ -488,10 +488,10 @@ Denote
 \begin_inset Formula 
 \begin{equation}
 \left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos\delta^{e} & i_{q}^{e}\alpha\\
--\omega^{e}L_{s} & -R_{L}sin\delta^{e} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}cos\delta^{e}\right)\\
--R_{L}cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
-R_{L}sin\delta^{e} & -\omega^{e}L_{s} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}cos\delta^{e}\right)
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+-\omega^{e}L_{s} & -R_{L}\sin\delta^{e} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+-R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
+R_{L}\sin\delta^{e} & -\omega^{e}L_{s} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
 \end{array}\right]\label{eq:M_n}
 \end{equation}
 
@@ -510,7 +510,7 @@ if
 \end_inset
 
  it means that 
-\begin_inset Formula $\omega^{e}L_{s}+R_{L}sin\delta^{e}=\omega^{e}L_{s}-R_{L}sin\delta^{e}\longrightarrow R_{L}sin\delta^{e}=0$
+\begin_inset Formula $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}\longrightarrow R_{L}\sin\delta^{e}=0$
 \end_inset
 
  which contradicts our assumption.
@@ -536,8 +536,8 @@ if
 (a_{1})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{L}cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
--R_{tot} & -R_{L}cos\delta^{e} & 0\\
+-R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
+-R_{tot} & -R_{L}\cos\delta^{e} & 0\\
 0 & \beta & 0
 \end{array}\right]\label{eq:MATRIX_1}
 \end{equation}
@@ -549,7 +549,7 @@ if
 
 \begin_layout Standard
 If 
-\begin_inset Formula $cos\delta^{e}=0$
+\begin_inset Formula $\cos\delta^{e}=0$
 \end_inset
 
  then 
@@ -558,7 +558,7 @@ If
 
 .
  If 
-\begin_inset Formula $cos\delta^{e}\ne0$
+\begin_inset Formula $\cos\delta^{e}\ne0$
 \end_inset
 
 
@@ -569,12 +569,12 @@ If
 \[
 \ref{eq:MATRIX_1}\longrightarrow\begin{array}{c}
 (a_{1})\\
-(a_{2})\beta-(a_{3})R_{L}cos\delta^{e}\\
+(a_{2})\beta-(a_{3})R_{L}\cos\delta^{e}\\
 (a_{3})
 \end{array}\left[\begin{array}{ccc}
--R_{L}cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
+-R_{L}\cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
 -R_{tot}\beta & 0 & 0\\
-0 & \omega_{0}L_{s}-R_{L}sin\delta^{e} & 0
+0 & \omega_{0}L_{s}-R_{L}\sin\delta^{e} & 0
 \end{array}\right]
 \]
 
@@ -611,8 +611,8 @@ if
 (a_{3})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos\delta^{e} & i_{q}^{e}\alpha\\
--R_{L}cos\delta^{e} & -R_{tot} & 0\\
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+-R_{L}\cos\delta^{e} & -R_{tot} & 0\\
 -\alpha & 0 & 0
 \end{array}\right]\label{eq:MATRIX_2}
 \end{equation}
@@ -650,8 +650,8 @@ if
 (a_{3})\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos\delta^{e} & i_{q}^{e}\alpha\\
--R_{L}cos\delta^{e} & -R_{tot} & 0\\
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+-R_{L}\cos\delta^{e} & -R_{tot} & 0\\
 -\alpha & 0 & 0
 \end{array}\right]\label{eq:MATRIX_3}
 \end{equation}
@@ -689,8 +689,8 @@ if
 (a_{1}):\alpha-(a_{3}):\beta\\
 (a_{2})-(a_{4})
 \end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos\delta^{e} & i_{q}^{e}\alpha\\
-\frac{R_{L}cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
 -\alpha & \beta & 0
 \end{array}\right]\label{eq:MATRIX_4}
 \end{equation}
@@ -702,7 +702,7 @@ if
 
 \begin_layout Standard
 if 
-\begin_inset Formula $-\frac{R_{L}cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$
+\begin_inset Formula $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$
 \end_inset
 
  then 
@@ -719,12 +719,12 @@ if
 \ref{eq:MATRIX_4}\longrightarrow\begin{array}{c}
 (a_{1})\\
 (a_{3})\\
-(a_{2}):\left(-\frac{R_{L}cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
+(a_{2}):\left(-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
 \end{array}=\\
 \left[\begin{array}{ccc}
--R_{tot} & -R_{L}cos\delta^{e} & i_{q}^{e}\alpha\\
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
 -\alpha & \beta & 0\\
-\frac{4L_{s}R_{tot}\omega^{e}sin\delta^{e}}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}cos\delta^{e}\right)+R_{L}\left(R_{tot}+R_{L}cos\delta^{e}\right)sindelta^{0}\right]} & 0 & 0
+\frac{4L_{s}R_{tot}\omega^{e}\sin\delta^{e}}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}\cos\delta^{e}\right)+R_{L}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\sin\delta^{0}\right]} & 0 & 0
 \end{array}\right]
 \end{array}
 \]
@@ -736,7 +736,7 @@ if
 
 \begin_layout Standard
 by assumption, 
-\begin_inset Formula $sin\delta^{e}\ne0$
+\begin_inset Formula $\sin\delta^{e}\ne0$
 \end_inset
 
  which imply that 
@@ -749,7 +749,7 @@ by assumption,
 \end_inset
 
  which implies that under the assumption that 
-\begin_inset Formula $sin\delta^{e}\ne0$
+\begin_inset Formula $\sin\delta^{e}\ne0$
 \end_inset
 
  the system 
@@ -768,7 +768,7 @@ reference "eq:dynamics_whole"
 \end_inset
 
 , it must satisfied 
-\begin_inset Formula $sin\delta^{e}=0$
+\begin_inset Formula $\sin\delta^{e}=0$
 \end_inset
 
  which means that 
@@ -780,7 +780,7 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 If 
-\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow sin\delta^{e}=0,\qquad cos\delta^{e}=1.$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow \sin\delta^{e}=0,\qquad \cos\delta^{e}=1.$
 \end_inset
 
  and now 

@@ -129,8 +129,8 @@ i_{q}\\
 \omega\\
 \delta
 \end{array}\right]+\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)\\
+V\sin(\delta)\\
+V\cos(\delta)\\
 T_{m}\\
 -\omega_{g}
 \end{array}\right]
@@ -228,8 +228,8 @@ g(x,y,\epsilon)=\left[\begin{array}{cc}
 \omega\\
 \delta
 \end{array}\right]+\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)-mi_{f}\omega
+V\sin(\delta)\\
+V\cos(\delta)-mi_{f}\omega
 \end{array}\right]
 \]
 
@@ -286,11 +286,11 @@ The solution of this linear equation (in
 -R_{s} & \omega L_{s}\\
 -\omega L_{s} & -R_{s}
 \end{array}\right]^{-1}\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)-mi_{f}\omega
+V\sin(\delta)\\
+V\cos(\delta)-mi_{f}\omega
 \end{array}\right]=\left[\begin{array}{c}
-\frac{R_{s}Vsin(\delta)-L_{s}\omega\left(mi_{f}\omega-Vcos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
-\frac{-R_{s}\left(mi_{f}\omega-Vcos(\delta)\right)-L_{s}V\omega sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
+\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
+\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega \sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
 \end{array}\right]
 \]
 
@@ -319,8 +319,8 @@ Assuming that
 \begin_inset Formula 
 \begin{equation}
 \hat{y}=\left[\begin{array}{c}
-\frac{Vcos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
--\frac{Vsin(\delta)}{L_{s}\omega}
+\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
+-\frac{V\sin(\delta)}{L_{s}\omega}
 \end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
 \end{equation}
 
@@ -332,7 +332,7 @@ Assuming that
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\hat{i}_{q}=-\frac{Vsin(\delta)}{L_{s}\omega}
+\hat{i}_{q}=-\frac{V\sin(\delta)}{L_{s}\omega}
 \]
 
 \end_inset
@@ -356,7 +356,7 @@ Now, substitute
 \begin_inset Formula 
 \[
 \left\{ \begin{array}{c}
-J\dot{\omega}=-\frac{mi_{f}Vsin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
+J\dot{\omega}=-\frac{mi_{f}V\sin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \]
@@ -374,7 +374,7 @@ Or
 \begin_inset Formula 
 \[
 \left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\omega\\
+J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}V\sin(\delta)}{L_{s}}+T_{m}\omega\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \]
@@ -430,7 +430,7 @@ and then the model is:
 \begin_inset Formula 
 \[
 \left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}Vsin(\delta)}{L_{s}}+\\
+J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}+\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \]

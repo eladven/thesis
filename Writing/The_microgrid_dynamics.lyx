@@ -229,18 +229,18 @@ v_{c}
 
 \begin_layout Standard
 Lets define the vectors 
-\begin_inset Formula $\widetilde{cos}\theta=\left[\begin{array}{c}
-cos\left(\theta\right)\\
-cos\left(\theta-\frac{2\pi}{3}\right)\\
-cos\left(\theta-\frac{4\pi}{3}\right)
+\begin_inset Formula $\widetilde{\cos}\theta=\left[\begin{array}{c}
+\cos\left(\theta\right)\\
+\cos\left(\theta-\frac{2\pi}{3}\right)\\
+\cos\left(\theta-\frac{4\pi}{3}\right)
 \end{array}\right]$
 \end_inset
 
  and 
-\begin_inset Formula $\widetilde{sin}\theta=\left[\begin{array}{c}
-sin\left(\theta\right)\\
-sin\left(\theta-\frac{2\pi}{3}\right)\\
-sin\left(\theta-\frac{4\pi}{3}\right)
+\begin_inset Formula $\widetilde{\sin}\theta=\left[\begin{array}{c}
+\sin\left(\theta\right)\\
+\sin\left(\theta-\frac{2\pi}{3}\right)\\
+\sin\left(\theta-\frac{4\pi}{3}\right)
 \end{array}\right]$
 \end_inset
 
@@ -347,7 +347,7 @@ The mutual inductance between the rotor coil and the each of the stator
 M_{a,f}\\
 M_{b,f}\\
 M_{c,f}
-\end{array}\right]=M_{f}\widetilde{cos}\theta
+\end{array}\right]=M_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -366,7 +366,7 @@ The flux linkage of the stator windings are
 L & -M & -M\\
 -M & L & -M\\
 -M & -M & L
-\end{array}\right]i+M_{f}\widetilde{cos}\theta
+\end{array}\right]i+M_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -381,7 +381,7 @@ The flux of the rotot is:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{cos}\theta>\label{eq:fieldFlux}
+\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{\cos}\theta>\label{eq:fieldFlux}
 \end{equation}
 
 \end_inset
@@ -400,7 +400,7 @@ Because there is no neutral, then
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\Phi=L_{s}i+M_{f}i_{f}\widetilde{cos}\theta
+\Phi=L_{s}i+M_{f}i_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -443,7 +443,7 @@ e_{c}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e=M_{f}i_{f}\dot{\theta}\widetilde{sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{cos}\theta\label{eq:emf}
+e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta\label{eq:emf}
 \end{equation}
 
 \end_inset
@@ -504,8 +504,8 @@ where
 \begin_inset Formula 
 \begin{equation}
 U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
-cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
-sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
+\cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-\frac{4\pi}{3})\\
+\sin(\theta) & \sin(\theta-\frac{2\pi}{3}) & \sin(\theta-\frac{4\pi}{3})\\
 \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
 \end{array}\right]\label{eq:ParkTransformation}
 \end{equation}
@@ -871,7 +871,7 @@ where
  The magnetic energy stored in the generator is 
 \begin_inset Formula 
 \[
-E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{cos}\theta>
+E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{\cos}\theta>
 \]
 
 \end_inset
@@ -897,7 +897,7 @@ T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{ma
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T_{e}=M_{f}i_{f}<i,\frac{d\tilde{cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
+T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
 \end{equation}
 
 \end_inset
@@ -1135,9 +1135,9 @@ v_{a}\\
 v_{b}\\
 v_{c}
 \end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-cos(\theta_{g})\\
-cos(\theta_{g}-\frac{2\pi}{3})\\
-cos(\theta_{g}-\frac{4\pi}{3})
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
 \end{array}\right]\label{eq:infBusVoltageABC}
 \end{equation}
 
@@ -1198,12 +1198,12 @@ v_{d}\\
 v_{q}\\
 v_{0}
 \end{array}\right]=U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-cos(\theta_{g})\\
-cos(\theta_{g}-\frac{2\pi}{3})\\
-cos(\theta_{g}-\frac{4\pi}{3})
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
 \end{array}\right]=-V\left[\begin{array}{c}
-sin(\delta)\\
-cos(\delta)\\
+\sin(\delta)\\
+\cos(\delta)\\
 0
 \end{array}\right]\label{eq:infBusVoltageDQO}
 \end{equation}
@@ -1281,8 +1281,8 @@ i_{q}\\
 \omega\\
 \delta
 \end{array}\right]+\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)\\
+V\sin(\delta)\\
+V\cos(\delta)\\
 T_{m}\\
 \omega_{g}
 \end{array}\right]\label{eq:SGDynamicsInfBus}
@@ -1839,8 +1839,8 @@ A simple computation shows that
 \begin_inset Formula 
 \[
 U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
-cos(\delta) & -sin(\delta) & 0\\
-sin(\delta) & cos(\delta) & 0\\
+\cos(\delta) & -\sin(\delta) & 0\\
+\sin(\delta) & \cos(\delta) & 0\\
 0 & 0 & 1
 \end{array}\right]
 \]
@@ -1879,8 +1879,8 @@ v_{q1}
 i_{d1}\\
 i_{q1}
 \end{array}\right]+R_{L}\left[\begin{array}{cc}
-cos(\delta) & -sin(\delta)\\
-sin(\delta) & cos(\delta)
+\cos(\delta) & -\sin(\delta)\\
+\sin(\delta) & \cos(\delta)
 \end{array}\right]\left[\begin{array}{c}
 i_{d2}\\
 i_{q2}
@@ -1929,8 +1929,8 @@ i_{q1}\\
 T_{m}
 \end{array}\right]\\
  &  & -\left[\begin{array}{ccc}
-R_{L}cos(\delta) & -R_{L}sin(\delta) & 0\\
-R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
 0 & 0 & 0
 \end{array}\right]\left[\begin{array}{c}
 i_{d2}\\
@@ -1991,8 +1991,8 @@ L_{s} & 0 & 0\\
 -\omega L_{s} & -R_{tot} & -mi_{f}\\
 0 & mi_{f} & D_{p}
 \end{array}\right],\mathcal{B}(\delta)=\left[\begin{array}{ccc}
-R_{L}cos(\delta) & -R_{L}sin(\delta) & 0\\
-R_{L}sin(\delta) & R_{L}cos(\delta) & 0\\
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
 0 & 0 & 0
 \end{array}\right]
 \]

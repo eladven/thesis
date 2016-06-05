@@ -210,8 +210,8 @@ mi_{f}(i_{q1}-i_{q2})-D_{p}(\omega_{1}-\omega_{2})\\
 -(\omega_{1}-\omega_{2})
 \end{array}\right]\\
  &  & +\left[\begin{array}{c}
-R_{L}cos(\delta)(i_{d1}-i_{d2})+R_{L}sin(\delta)(i_{q1}+i_{q2})\\
-R_{L}cos(\delta)(i_{q1}-i_{q2})-R_{L}sin(\delta)(i_{d1}+i_{d2})\\
+R_{L}\cos(\delta)(i_{d1}-i_{d2})+R_{L}\sin(\delta)(i_{q1}+i_{q2})\\
+R_{L}\cos(\delta)(i_{q1}-i_{q2})-R_{L}\sin(\delta)(i_{d1}+i_{d2})\\
 0\\
 0
 \end{array}\right]
@@ -276,14 +276,14 @@ and
 \varLambda & 0\\
 0 & 1
 \end{array}\right]\dot{e} & = & \left[\begin{array}{cccc}
--R_{tot}+R_{L}cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
--\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+-R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & -1 & 0
 \end{array}\right]e\\
  &  & +\left[\begin{array}{c}
-R_{L}sin(\delta)x_{2}\\
--R_{L}sin(\delta)x_{1}\\
+R_{L}\sin(\delta)x_{2}\\
+-R_{L}\sin(\delta)x_{1}\\
 0\\
 0
 \end{array}\right]
@@ -343,8 +343,8 @@ x_{\omega}
 mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
 \end{array}\right]\\
  &  & +\left[\begin{array}{c}
--R_{L}cos(\delta)(i_{d1}+i_{d2})-R_{L}sin(\delta)(i_{q1}-i_{q2})\\
--R_{L}cos(\delta)(i_{q1}+i_{q2})+R_{L}sin(\delta)(i_{d1}-i_{d2})\\
+-R_{L}\cos(\delta)(i_{d1}+i_{d2})-R_{L}\sin(\delta)(i_{q1}-i_{q2})\\
+-R_{L}\cos(\delta)(i_{q1}+i_{q2})+R_{L}\sin(\delta)(i_{d1}-i_{d2})\\
 0
 \end{array}\right]
 \end{array}
@@ -404,12 +404,12 @@ and
 \begin_inset Formula 
 \[
 \varLambda\dot{x}=\left[\begin{array}{ccc}
--R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
+-R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
 0 & mi_{f} & -D_{p}
 \end{array}\right]x+\left[\begin{array}{c}
-\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}sin(\delta)e_{q}\\
--\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
 2T_{m}
 \end{array}\right]
 \]
@@ -431,8 +431,8 @@ For summery:
 \varLambda & 0\\
 0 & 1
 \end{array}\right]^{-1}\left[\begin{array}{cccc}
--R_{tot}+R_{L}cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
--\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+-R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & -1 & 0
 \end{array}\right]e\\
@@ -440,8 +440,8 @@ For summery:
 \varLambda & 0\\
 0 & 1
 \end{array}\right]^{-1}\left[\begin{array}{c}
-R_{L}sin(\delta)x_{2}\\
--R_{L}sin(\delta)x_{1}\\
+R_{L}\sin(\delta)x_{2}\\
+-R_{L}\sin(\delta)x_{1}\\
 0\\
 0
 \end{array}\right]
@@ -458,13 +458,13 @@ R_{L}sin(\delta)x_{2}\\
 \[
 \begin{array}{ccc}
 \dot{x}=G(e,x) & = & \varLambda^{-1}\left[\begin{array}{ccc}
--R_{tot}-R_{L}cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}cos(\delta) & -mif\\
+-R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
 0 & mi_{f} & -D_{p}
 \end{array}\right]x\\
  &  & +\varLambda^{-1}\left[\begin{array}{c}
-\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}sin(\delta)e_{q}\\
--\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}sin(\delta)e_{d}\\
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
 2T_{m}
 \end{array}\right]
 \end{array}
