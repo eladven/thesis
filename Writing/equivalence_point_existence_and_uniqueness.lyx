@@ -437,7 +437,7 @@ i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
 \end_layout
 
 \begin_layout Subparagraph*
-Rouche'-Capelli -Theorem: 
+Rouché–Capelli Theorem: 
 \end_layout
 
 \begin_layout Standard
@@ -457,7 +457,7 @@ We will prove by contradiction that
 \begin_inset Formula $\sin\delta_{0}=0$
 \end_inset
 
- is a necessary condition in order that the system 
+ is a necessary condition that the system 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:equilibrium_system"
@@ -465,11 +465,16 @@ reference "eq:equilibrium_system"
 \end_inset
 
  will have solution.
- Suppose that 
+ Negated to assume that 
 \begin_inset Formula $\sin\delta^{e}\ne0$
 \end_inset
 
 .
+ We will show that 
+\begin_inset Formula $rank\left[M|n\right]=3.$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -481,17 +486,17 @@ Denote
 \begin_inset Formula $\beta=\omega_{0}L_{s}-R_{L}\sin\delta_{0}$
 \end_inset
 
-
+, then:
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
 \left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
--\omega^{e}L_{s} & -R_{L}\sin\delta^{e} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
--R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
-R_{L}\sin\delta^{e} & -\omega^{e}L_{s} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
+-R_{tot} & \quad-R_{L}\cos\delta^{e}\quad & i_{q}^{e}\alpha\\
+-\omega^{e}L_{s} & \quad-R_{L}\sin\delta^{e}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+-R_{L}\cos\delta^{e} & \quad-R_{tot}\quad & i_{q}^{e}\beta\\
+R_{L}\sin\delta^{e} & \quad-\omega^{e}L_{s}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
 \end{array}\right]\label{eq:M_n}
 \end{equation}
 
@@ -500,8 +505,20 @@ R_{L}\sin\delta^{e} & -\omega^{e}L_{s} & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot
 
 \end_layout
 
+\begin_layout Subsubsection*
+Case A: 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\beta=0$
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
-if 
+Because 
 \begin_inset Formula $\alpha=0$
 \end_inset
 
@@ -510,32 +527,40 @@ if
 \end_inset
 
  it means that 
-\begin_inset Formula $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}\longrightarrow R_{L}\sin\delta^{e}=0$
+\begin_inset Formula $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}$
+\end_inset
+
+ hance 
+\begin_inset Formula $R_{L}\sin\delta^{e}=0$
 \end_inset
 
  which contradicts our assumption.
 \end_layout
 
-\begin_layout Standard
-if 
-\begin_inset Formula $\alpha$
+\begin_layout Subsubsection*
+Case B: 
+\begin_inset Formula $\alpha=0$
 \end_inset
 
  and 
 \begin_inset Formula $\beta\ne0$
 \end_inset
 
-: 
+
+\end_layout
+
+\begin_layout Standard
+Lets define 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left[M|n\right]\longrightarrow\begin{array}{c}
-(a_{3})\\
-(a_{1})\\
-(a_{2})-(a_{4})
-\end{array}\left[\begin{array}{ccc}
+T=\left[\begin{array}{cccc}
+0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
 -R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
 -R_{tot} & -R_{L}\cos\delta^{e} & 0\\
 0 & \beta & 0
@@ -548,12 +573,12 @@ if
 \end_layout
 
 \begin_layout Standard
-If 
+Now, if 
 \begin_inset Formula $\cos\delta^{e}=0$
 \end_inset
 
  then 
-\begin_inset Formula $rank\left[M|n\right]=3$
+\begin_inset Formula $rank(T)=3$
 \end_inset
 
 .
@@ -561,20 +586,20 @@ If
 \begin_inset Formula $\cos\delta^{e}\ne0$
 \end_inset
 
-
+ we define 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\ref{eq:MATRIX_1}\longrightarrow\begin{array}{c}
-(a_{1})\\
-(a_{2})\beta-(a_{3})R_{L}\cos\delta^{e}\\
-(a_{3})
-\end{array}\left[\begin{array}{ccc}
+T_{2}=\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \beta & -R_{L}\cos\delta^{e}\\
+0 & 0 & 1
+\end{array}\right]T=\left[\begin{array}{ccc}
 -R_{L}\cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
 -R_{tot}\beta & 0 & 0\\
-0 & \omega_{0}L_{s}-R_{L}\sin\delta^{e} & 0
+0 & \beta & 0
 \end{array}\right]
 \]
 
@@ -584,15 +609,15 @@ If
 \end_layout
 
 \begin_layout Standard
-and then 
-\begin_inset Formula $rank\left[M|n\right]=3$
+it is easy to see that 
+\begin_inset Formula $rank(T_{2})=3$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
-if 
+\begin_layout Subsubsection*
+Case C: 
 \begin_inset Formula $\alpha\ne0$
 \end_inset
 
@@ -600,17 +625,21 @@ if
 \begin_inset Formula $\beta=0$
 \end_inset
 
-: 
+
+\end_layout
+
+\begin_layout Standard
+Lets define
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left[M|n\right]\longrightarrow\begin{array}{c}
-(a_{1})\\
-(a_{3})\\
-(a_{2})-(a_{4})
-\end{array}\left[\begin{array}{ccc}
+T_{3}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
 -R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
 -R_{L}\cos\delta^{e} & -R_{tot} & 0\\
 -\alpha & 0 & 0
@@ -623,54 +652,15 @@ if
 \end_layout
 
 \begin_layout Standard
-and then 
-\begin_inset Formula $rank\left[M|n\right]=3$
+it is easy to see that 
+\begin_inset Formula $rank(T_{3})=3$
 \end_inset
 
 .
 \end_layout
 
-\begin_layout Standard
-if 
-\begin_inset Formula $\alpha\ne0$
-\end_inset
-
- and 
-\begin_inset Formula $\beta=0$
-\end_inset
-
-: 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\left[M|n\right]\longrightarrow\begin{array}{c}
-(a_{1})\\
-(a_{3})\\
-(a_{2})-(a_{4})
-\end{array}\left[\begin{array}{ccc}
--R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
--R_{L}\cos\delta^{e} & -R_{tot} & 0\\
--\alpha & 0 & 0
-\end{array}\right]\label{eq:MATRIX_3}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-and then 
-\begin_inset Formula $rank\left[M|n\right]=3$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-if 
+\begin_layout Subsubsection*
+Case D: 
 \begin_inset Formula $\alpha\ne0$
 \end_inset
 
@@ -678,17 +668,21 @@ if
 \begin_inset Formula $\beta\ne0$
 \end_inset
 
-: 
+
+\end_layout
+
+\begin_layout Standard
+Lets define
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left[M|n\right]\longrightarrow\begin{array}{c}
-(a_{1})\\
-(a_{1}):\alpha-(a_{3}):\beta\\
-(a_{2})-(a_{4})
-\end{array}\left[\begin{array}{ccc}
+T_{4}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+\alpha & 0 & \beta & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
 -R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
 \frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
 -\alpha & \beta & 0
@@ -701,26 +695,59 @@ if
 \end_layout
 
 \begin_layout Standard
-if 
+Now, if 
 \begin_inset Formula $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$
 \end_inset
 
- then 
-\begin_inset Formula $rank\left[M|n\right]=3$
+, because 
+\begin_inset Formula $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}$
+\end_inset
+
+ must be different than zero, it is easy to see that 
+\begin_inset Formula $rank(T_{4})=3$
 \end_inset
 
 .
+ (It is impossible that both 
+\begin_inset Formula $-\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}=0$
+\end_inset
+
+ because that implies that 
+\begin_inset Formula $(\alpha+\beta)R_{L}\cos\delta^{e}=(\alpha+\beta)R_{tot}$
+\end_inset
+
+, and 
+\begin_inset Formula $\alpha+\beta=2\omega^{e}L_{s}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{tot}>R_{L}\cos\delta^{e}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Assuming that 
+\begin_inset Formula $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\ne0$
+\end_inset
+
+ we define
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \[
 \begin{array}{c}
-\ref{eq:MATRIX_4}\longrightarrow\begin{array}{c}
-(a_{1})\\
-(a_{3})\\
-(a_{2}):\left(-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\right)-(a_{3}):\beta
-\end{array}=\\
+T_{5}=\left[\begin{array}{ccc}
+1 & 0\quad & 0\\
+0 & 0\quad & 1\\
+0 & -\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\quad & -\beta
+\end{array}\right]T_{4}=\\
 \left[\begin{array}{ccc}
 -R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
 -\alpha & \beta & 0\\
@@ -740,11 +767,28 @@ by assumption,
 \end_inset
 
  which imply that 
-\begin_inset Formula $rank\left[M|n\right]=3$
+\begin_inset Formula $rank(T_{5})=3$
 \end_inset
 
 .
- Obviously, 
+ 
+\end_layout
+
+\begin_layout Standard
+Because we showed that for any possible case, after applying linear transformati
+on on 
+\begin_inset Formula $\left[M|n\right]$
+\end_inset
+
+ the resulting rank is 3, it implies that 
+\begin_inset Formula $rank\left[M|n\right]=3.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Obviously, 
 \begin_inset Formula $rank\left[M\right]\le2$
 \end_inset
 
@@ -780,7 +824,7 @@ reference "eq:dynamics_whole"
 
 \begin_layout Standard
 If 
-\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow \sin\delta^{e}=0,\qquad \cos\delta^{e}=1.$
+\begin_inset Formula $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}\longrightarrow\sin\delta^{e}=0,\qquad\cos\delta^{e}=1.$
 \end_inset
 
  and now 
