@@ -496,9 +496,9 @@ where
 \end_layout
 
 \begin_layout Standard
-Applying park transformation to 
+Applying Park transformation to 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGTerminalVlotage"
 
 \end_inset
@@ -570,7 +570,7 @@ where
 \begin_layout Standard
 We rewrite 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGTerminalVlotageAfetrPark"
 
 \end_inset
@@ -617,7 +617,7 @@ hence
 .
  Applying Park transformation on 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:emf"
 
 \end_inset
@@ -653,7 +653,7 @@ We  denote
 \begin_layout Standard
 Substitute this equation to 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:idiqDynamics"
 
 \end_inset
@@ -771,23 +771,23 @@ T_{e}=M_{f}i_{f}<i,\frac{d\tilde{cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{sin}\
 \end_layout
 
 \begin_layout Standard
-Using equations 
+Using  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:idiqDynamicsWithExIf"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:mechanicalPart"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:electricTorque"
 
 \end_inset
@@ -920,7 +920,7 @@ After applying Park transformation (which depends on
 \begin_inset Formula $\theta$
 \end_inset
 
- which is the synchronous generator phase) on equation 
+ which is the synchronous generator phase) on 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:infBusVoltageABC"
@@ -978,23 +978,23 @@ where
 \end_inset
 
  is the grid frequency.
- Substituting equation 
+ Substituting 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:infBusVoltageDQO"
 
 \end_inset
 
- and equation 
+ and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:deltaDynamics"
 
 \end_inset
 
- into equation 
+ into 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:idiqDynamics"
 
 \end_inset
@@ -1048,7 +1048,7 @@ In this section, we consider a microgrid comprising two identical synchronous
  together with a resistive load.
  (See Figure 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "fig:microgrid_configuration"
 
 \end_inset
@@ -1465,7 +1465,7 @@ We denote
 \begin_layout Standard
 According to formula 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGDynamics"
 
 \end_inset
@@ -1544,7 +1544,7 @@ v=R_{L}(i_{1}+i_{2})
 \end_layout
 
 \begin_layout Standard
-and after applying park transformation:
+and after applying Park transformation:
 \end_layout
 
 \begin_layout Standard
@@ -1621,9 +1621,9 @@ sin(\delta) & cos(\delta) & 0\\
 \end_layout
 
 \begin_layout Standard
-now, substitute that at equation 
+now, substitute that at 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:cur_and_volt_after_park"
 
 \end_inset
@@ -1655,9 +1655,9 @@ i_{q2}
 \end_layout
 
 \begin_layout Standard
-Substituting this into equation 
+Substituting this into 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:dynamics_of_single_generator"
 
 \end_inset

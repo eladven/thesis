@@ -261,7 +261,7 @@ An equilibrium can be only on the surface
 \begin_layout Standard
 First, we will show that the system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:dynamics_whole"
 
 \end_inset
@@ -459,7 +459,7 @@ We will prove by contradiction that
 
  is a necessary condition in order that the system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:equilibrium_system"
 
 \end_inset
@@ -754,7 +754,7 @@ by assumption,
 
  the system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:equilibrium_system"
 
 \end_inset
@@ -762,7 +762,7 @@ reference "eq:equilibrium_system"
  doesn't have solution.
  That means that if there is equilibrium point for the system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:dynamics_whole"
 
 \end_inset
@@ -908,9 +908,9 @@ This equation makes perfect physical sense.
 \end_layout
 
 \begin_layout Standard
-From equation 
+From 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:equilbrium_algebric_eq"
 
 \end_inset
@@ -923,7 +923,7 @@ reference "eq:equilbrium_algebric_eq"
 .
  The last line of the matrix equation 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:equilbrium_algebric_eq"
 
 \end_inset
@@ -955,7 +955,7 @@ The sides of this equation are the mechanical torque acting on each generator
 \begin_layout Standard
 The first line of the matrix equilibrium 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:equilbrium_algebric_eq"
 
 \end_inset
@@ -981,7 +981,7 @@ i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
 \begin_layout Standard
 From 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:eq_0_first_eq"
 
 \end_inset
@@ -1015,7 +1015,7 @@ i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_
 \begin_layout Standard
 The second line of the matrix equation on 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:eq_0_first_eq"
 
 \end_inset
@@ -1035,14 +1035,14 @@ reference "eq:eq_0_first_eq"
 
  from 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:iq_0_"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:id_0_"
 
 \end_inset
@@ -1103,7 +1103,7 @@ This is a cubic equation in
 \begin_layout Standard
 Let us denote the polynomial of order 3 in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:cuibi_eq"
 
 \end_inset
@@ -1125,9 +1125,9 @@ reference "eq:cuibi_eq"
 \end_layout
 
 \begin_layout Standard
-Hence, equation 
+Hence, 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:cuibi_eq"
 
 \end_inset

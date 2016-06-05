@@ -182,7 +182,7 @@ SGs has the important property that once they synchronizes, means that their
  of the state of a SG in the steady state is sinusoidal, it is common to
  use transformation of the voltages and currents that maps sinusoidal trajectory
  into a constant point on the state plan.
- The famous Park's transformation performs that, so after applying park
+ The famous Park's transformation performs that, so after applying Park's
  transformation on the SG model.
  The question whether the system is stable (which means that all the SGs
  are synchronized and remain at constant frequency) is know as frequency

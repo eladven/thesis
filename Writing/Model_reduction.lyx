@@ -101,14 +101,13 @@ Develop the improved swing equation for infinite bus:
 \end_inset
 
 The dynamics of one synchronous generator connected to infinite bus, assuming
- that the field current is constant, is the following (equation 
+ that the field current is constant, is the following 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
-)
 \end_layout
 
 \begin_layout Standard
@@ -386,14 +385,14 @@ J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}Vsin(\delta)}{L_{s}}+T_{m}\om
 \end_layout
 
 \begin_layout Standard
-At the fourth order model (equation 
+At the fourth order model  
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
-), there is the assumption of constant mechanical torque.
+, there is the assumption of constant mechanical torque.
  But in order to compare this model with 
 \begin_inset CommandInset citation
 LatexCommand citep
@@ -453,14 +452,14 @@ Simulations:
 In this section, we provide simulation that shows that the improved swing
  equation is a good reduction for many cases, but there are cases where
  there is mismatch between the behavior suggested by the improved swing
- equations and the whole model (equation 
+ equations and the whole model 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:SGDynamicsInfBus"
 
 \end_inset
 
-).
+.
  For each simulation, we will show the currents 
 \begin_inset Formula $i_{d}$
 \end_inset
@@ -471,9 +470,9 @@ reference "eq:SGDynamicsInfBus"
 
 over time for both the fourth order model and for the improved swing equation
  model, where for the improved swing equation model, we will estimate these
- currents by equation 
+ currents by 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:ISEInfBusEstimatedCurrents"
 
 \end_inset

@@ -175,7 +175,7 @@ Lets calculate the dynamics of the new notation:
 \begin_layout Standard
 from 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:dynamics_whole"
 
 \end_inset
@@ -780,16 +780,16 @@ A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\ri
 \end_layout
 
 \begin_layout Standard
-Combining this equation with equations 
+Combining this equation with 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:G_at_equilibrium"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:x_hat_dynamic"
 
 \end_inset
@@ -1061,7 +1061,7 @@ Which leads to the following condition:
 \begin_layout Standard
 If this condition 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:condition_for_stable_G"
 
 \end_inset
@@ -1160,7 +1160,7 @@ key "VincentBayuLaurent2016"
 
  namely that matrix 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:div_of_F"
 
 \end_inset
@@ -1210,7 +1210,7 @@ key "VincentBayuLaurent2016"
 .
  We will show that our system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:sync_sestem"
 
 \end_inset
@@ -1376,7 +1376,7 @@ Proof:
 \begin_layout Standard
 Suppose that x(t) is a solution of 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:LTV_dynamics"
 
 \end_inset
@@ -1481,7 +1481,7 @@ Since
 \begin_layout Standard
 using this estimates and taking norms in 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:LTV_integralForm"
 
 \end_inset
@@ -1580,7 +1580,7 @@ So
 \begin_layout Standard
 This proves that our system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:sync_sestem"
 
 \end_inset
@@ -1630,7 +1630,7 @@ such for all
 
  is exponentially stable for the system 
 \begin_inset CommandInset ref
-LatexCommand ref
+LatexCommand eqref
 reference "eq:sync_sestem"
 
 \end_inset
