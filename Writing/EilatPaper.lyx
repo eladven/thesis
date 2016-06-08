@@ -1,0 +1,2394 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\begin_preamble
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\MYfooter}{\smash{
+\hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
+
+\def\ps@IEEEtitlepagestyle{%
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }%
+\def\@oddfoot{\MYfooter}%
+\def\@evenfoot{\MYfooter}}
+
+
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+\end_preamble
+\options conference
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A warning about the use of reduced models of synchronous generators 
+\end_layout
+
+\begin_layout Author
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+Elad Venezian
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+School of EE, Tel Aviv University
+\begin_inset Newline newline
+\end_inset
+
+Ramat Aviv 69978, Israel
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+George Weiss
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+School of EE, Tel Aviv University
+\begin_inset Newline newline
+\end_inset
+
+Ramat Aviv 69978, Israel
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+boldmath
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The abstract goes here.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% no 
+\backslash
+IEEEPARstart
+\end_layout
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The AC electricity grid was developed at the end of the XIX century, and
+ basically remained very similar till our days.
+ Many techniques and models that have been developed in order to analyze
+ and design the grid and its components are based on assumptions and methods,
+ which were driven by experience and observations 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+.
+ In recent years, there is a trend of increasing use of renewable energy,
+ which requires the conversion of the energy in order to interface with
+ the power grid.
+ When the rate of the converted energy will become a significant part, it
+ is not clear whether the traditional models and methods for controling
+ the power grid will succeed to control it 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+.
+ Therefore, there is increasing interest in the fundamental mathematical
+ models of the electrical grid.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Synchronous generator
+\shape default
+ (SG) is the main power source of the electricity grid.
+ The mathematical model of a SG is very complex and difficult to use.
+ This makes the electric grid to such a complicated nonlinear and time-varying
+ system that any attempt to prove its stability analytically is hopeless.
+ Stability analysis is usually done by simulation, or analytically on simplified
+ models, in which the SGs are connected in a simple network and each SG
+ is represented by reduced order equations, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DorflerAndBullo2012"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "PorcoDorflerBullo2013"
+
+\end_inset
+
+.
+ The reduced model of a SG is often obtained by treating the stator currents
+ as fast variables, thus eliminating them from the state variables via the
+ singular perturbation approach (see, for instance, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KhalilSingularPertubations"
+
+\end_inset
+
+) and keeping only the rotor angle, and the rotor angular velocity as relevant
+ state variables, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kundur1994"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+SGs has the important property that once they synchronizes, means that their
+ rotors spin with the same velocity, they tend to remain synchronized even
+ without any control.
+ This is important attribute because the electricity grid must maintain
+ constant frequency, and because the ability of a SG to transfer constant
+ power through the grid exists only when the phase difference between each
+ SG and the grid phase is constants.
+ That is the reason why it is desirable to know if for a given grid which
+ contains SGs and a loads,all the SGs and tend to synchronize and if the
+ grid frequency remains constant.
+ In order to use the control stability analysis, and because the trajectory
+ of the state of a SG in the steady state is sinusoidal, it is common to
+ use transformation of the voltages and currents that maps sinusoidal trajectory
+ into a constant point on the state plan.
+ The famous Park's transformation performs that, so after applying Park's
+ transformation on the SG model.
+ The question whether the system is stable (which means that all the SGs
+ are synchronized and remain at constant frequency) is know as frequency
+ stability.
+\end_layout
+
+\begin_layout Standard
+In this work, we study two simple grid configurations: Single SG that connected
+ to an infinite bus, and Two SG in parallel and a load.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:microgrid_dynamics"
+
+\end_inset
+
+ will discussess the dynamical model for the above configurations.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:equivalence_pont"
+
+\end_inset
+
+ discusses the conditions to have equilibrium point at the infinite bus
+ configuration, and shows that micogrid comprised of two SGs can have equilibriu
+m point only on the synchronization manifold, and that there is at list
+ one such equilibrium point.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Model_reduction"
+
+\end_inset
+
+ shows that the simplified model which known as the improved swing equation
+ can't predict behavior that 4th order model predicts.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+ showed, that the improved swing equation model predicts behavior that the
+ classical model (the swing equation model) can't predict.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Synchronization"
+
+\end_inset
+
+, shows that a microgrid that comprised of two SGs, is stable near the manifold
+ of synchronization.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% You must have at least 2 lines in the paragraph with the drop letter
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% (should never be an issue)
+\end_layout
+
+\end_inset
+
+I wish you the best of success.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsection text here.
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsubsection text here.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+In this chapter we derive the equations for microgrid a SG.
+ We start with derive the equations for single SG.
+ Later we obtain a simpler model that corresponds to constant field current.
+ After that we derive the equations for one SG connected to an infinite
+ bus.
+ At the end of this chapter we derive the model for a microgrid comprising
+ two identical SGs connected in parallel with a resistive load, with constant
+ field current.
+\end_layout
+
+\begin_layout Section
+Single generator dynamics
+\end_layout
+
+\begin_layout Standard
+Mathematical models for synchronous machines can be found for instance in
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kundur1994"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CaliiskanTabuada2014"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ At this section, we follow the derivations of 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Synchronous generator consist of two parts: rotor and stator.
+ The rotor is a rotated winding that spins inside the stator with the angle
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with related to it initial angle.
+ The rotor can be considered as a coil with self inductance 
+\begin_inset Formula $L_{f}$
+\end_inset
+
+ and resistance 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+ and the voltage 
+\begin_inset Formula $V_{f}$
+\end_inset
+
+ across its terminals.
+ The stator consist of three identical windings that are connected in star.
+ We consider a generator without neutral connection and without damper windings.
+ The stator windings can be regarded as connected coils with self inductance
+ 
+\begin_inset Formula $L$
+\end_inset
+
+, mutual inductance 
+\begin_inset Formula $-M$
+\end_inset
+
+, and resistance 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+.
+ The negative sign of 
+\begin_inset Formula $-M$
+\end_inset
+
+ is due to the 
+\begin_inset Formula $2\pi/3$
+\end_inset
+
+ phase angle between the phases as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:structOfSG"
+
+\end_inset
+
+.
+ The amplitude of the mutual inductance between the rotor and each of the
+ stators windings is 
+\begin_inset Formula $M_{f}$
+\end_inset
+
+ (which is a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ We assume no magnetic saturation effects in the iron core and no Eddy currents.
+ The stator terminals are labeled with the letters a,b,c and the voltages
+ across the stator terminals are denoted by 
+\begin_inset Formula $v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Lets define the vectors 
+\begin_inset Formula $\widetilde{\cos}\theta=\left[\begin{array}{c}
+\cos\left(\theta\right)\\
+\cos\left(\theta-\frac{2\pi}{3}\right)\\
+\cos\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{\sin}\theta=\left[\begin{array}{c}
+\sin\left(\theta\right)\\
+\sin\left(\theta-\frac{2\pi}{3}\right)\\
+\sin\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+.
+ We denote the stator flux by 
+\begin_inset Formula $\Phi=\left[\begin{array}{c}
+\Phi_{a}\\
+\Phi_{b}\\
+\Phi_{c}
+\end{array}\right]$
+\end_inset
+
+, the stator currents by 
+\begin_inset Formula $i=\left[\begin{array}{c}
+i_{a}\\
+i_{b}\\
+i_{c}
+\end{array}\right]$
+\end_inset
+
+, the rotor flux 
+\begin_inset Formula $\Phi_{f}$
+\end_inset
+
+ and the rotor current by 
+\begin_inset Formula $i_{f}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:structOfSG"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SGStucture.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Structure of an idealized three-phase round rotor synchronous generator
+\end_layout
+
+\end_inset
+
+Structure of an idealized three-phase round rotor synchronous generator,
+ modified from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "graingerStevenson1994"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The mutual inductance between the rotor coil and the each of the stator
+ coils varies with the rotor angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+M_{a,f}\\
+M_{b,f}\\
+M_{c,f}
+\end{array}\right]=M_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux linkage of the stator windings are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Phi=\left[\begin{array}{ccc}
+L & -M & -M\\
+-M & L & -M\\
+-M & -M & L
+\end{array}\right]i+M_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux of the rotot is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{\cos}\theta>\label{eq:fieldFlux}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral, then 
+\begin_inset Formula $i_{a}+i_{b}+i_{c}=0$
+\end_inset
+
+, so the previous equation can be rewritten as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Phi=L_{s}i+M_{f}i_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $L_{s}=L+M$
+\end_inset
+
+.
+ Each stator terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=-R_{s}i-\frac{d\Phi}{dt}=-R_{s}i-L_{s}\frac{di}{dt}+e\label{eq:SGTerminalVlotage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $e=\left[\begin{array}{c}
+e_{a}\\
+e_{b}\\
+e_{c}
+\end{array}\right]$
+\end_inset
+
+ is the back electromotive force (EMF) due to the rotor movement given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta\label{eq:emf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the rotor terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{f}=-R_{f}i_{f}-\frac{d\Phi_{f}}{dt}\label{eq:fieldVoltage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For synchronous generator with no load, the voltages at each terminal will
+ be sinusoidal function.
+ In order to convert the volteges (and current) into a fixed value, we will
+ apply Park's transformation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{dq0=}\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{0}
+\end{array}\right]=U(\theta)\left[\begin{array}{c}
+x_{a}\\
+x_{b}\\
+x_{c}
+\end{array}\right]=U(\theta)x_{abc}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $U(\theta)$
+\end_inset
+
+ is the unitary matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+\cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-\frac{4\pi}{3})\\
+\sin(\theta) & \sin(\theta-\frac{2\pi}{3}) & \sin(\theta-\frac{4\pi}{3})\\
+\sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
+\end{array}\right]\label{eq:ParkTransformation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{abc}$
+\end_inset
+
+ is some vector at abc coordinates, and 
+\begin_inset Formula $x_{dq0}$
+\end_inset
+
+ is the same vector at the new coordinates.
+\end_layout
+
+\begin_layout Standard
+Applying Park transformation to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGTerminalVlotage"
+
+\end_inset
+
+ leads to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)v-U(\theta)e=-R_{s}U(\theta)i-L_{s}U(\theta)\frac{di}{dt}\label{eq:SGTerminalVlotageAfetrPark}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{dq0}}{d\theta}=U(\theta)\frac{di_{abc}}{d\theta}+\frac{dU(\theta)}{d\theta}i_{abc}=U(\theta)\frac{di_{abc}}{d\theta}+\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To calculate the time derivative of 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{i}_{dq0}=\frac{di_{dq0}}{d\theta}\frac{d\theta}{dt}=U(\theta)\dot{i}_{abc}+\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega=\dot{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We rewrite 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGTerminalVlotageAfetrPark"
+
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{s}\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]-L_{s}\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]=-R_{s}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]+\left[\begin{array}{c}
+e_{d}-v_{d}\\
+e_{q}-v_{q}\\
+e_{0}-v_{0}
+\end{array}\right]\label{eq:idiqDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral connection, 
+\begin_inset Formula $i_{0}=0,$
+\end_inset
+
+ hence 
+\begin_inset Formula $e_{0}=0$
+\end_inset
+
+.
+ Applying Park transformation on 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:emf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+e_{d}\\
+e_{q}
+\end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
+\frac{di_{f}}{dt}\\
+\omega i_{f}
+\end{array}\right]\label{eq:ed_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substitute 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldFlux"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldVoltage"
+
+\end_inset
+
+, and applying Park's transformation yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+ for 
+\begin_inset Formula $\frac{di_{d}}{dt}$
+\end_inset
+
+ dynamics, and substituting it to the previous equation, gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote 
+\begin_inset Formula $\alpha=\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)^{-1}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+, we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\label{eq:if_dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculate 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+and 
+\begin_inset Formula $i_{q}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+, and substituting 
+\begin_inset Formula $\frac{di_{f}}{dt}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithExIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotational dynamics of the rotor is given by the equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia of the rotor, 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+ is is the mechanical torque which applies by the prime mover, 
+\begin_inset Formula $T_{e}$
+\end_inset
+
+ is the electromagnetic torque developed by the generator, and 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+ is a damping factor, which consist of the viscous friction acting on the
+ rotor and the frequency droop from 
+\begin_inset Formula $\omega$
+\end_inset
+
+ to the mechanical torque of the prime mover, which added in order to control
+ the frequency of the generator.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{e}$
+\end_inset
+
+ can be found from energy consideration.
+ The magnetic energy stored in the generator is 
+\begin_inset Formula 
+\[
+E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{\cos}\theta>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The electromagnetic torque can be calculated as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{mag}}{\partial\theta}|_{i=const}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+L_{f}i_{f}\\
+J\omega
+\end{array}\right] & = & \left[\begin{array}{cccc}
+-\alpha R_{s} & \alpha\omega L_{s} & \alpha mR_{f} & 0\\
+-\omega L_{s} & -R_{s} & 0 & -mi_{f}\\
+\frac{\alpha mR_{s}}{L_{s}} & -\alpha m\omega & -\alpha R_{f} & 0\\
+0 & mi_{f} & 0 & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{f}\\
+\omega
+\end{array}\right]\\
+ & + & \left[\begin{array}{cccc}
+-\alpha & 0 & \frac{\alpha m}{L_{f}} & 0\\
+0 & -1 & 0 & 0\\
+\frac{\alpha m}{L_{s}} & 0 & -\alpha & 0\\
+0 & 0 & 0 & 1
+\end{array}\right]\left[\begin{array}{c}
+v_{d}\\
+v_{q}\\
+v_{f}\\
+T_{m}
+\end{array}\right]
+\end{array}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This fourth order nonlinear dynamical system represents the dynamics of
+ single SG.
+ 
+\end_layout
+
+\begin_layout Section
+Single generator with constant field current dynamics
+\end_layout
+
+\begin_layout Standard
+At this sections, we assume that the rotor current is constant (which means
+ that the field dynamics is very fast, or equivalently, the rotor is composed
+ of permanent magnet).
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\frac{di_{f}}{dt}=0$
+\end_inset
+
+, and substituting it at 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+0\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithFixxIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithFixxIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d}\\
+-v_{q}\\
+T_{m}
+\end{array}\right]\label{eq:SGDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This Third order nonlinear dynamical system represents the dynamics of single
+ SG with constant field current.
+ 
+\end_layout
+
+\begin_layout Section
+Model of a single generator connected to an infinite bus 
+\end_layout
+
+\begin_layout Standard
+In this section we develop a model for single synchronous generator which
+ connected to an infinite bus.
+ This section follows 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "NatarajanWeiss2015"
+
+\end_inset
+
+.
+ The infinite bus is model as tree phase AC voltage source.
+ i.e the infinite bus is not effected by the synchronous generator that connected
+ to it.
+ The reason for this model is that the influence of a single synchronous
+ generator on a grid is very small.
+ In general, the line that connect the synchronous generator to the grid
+ has its impedance that consist of resistance and inductance, but because
+ it connected to the synchronous generator in series, then the 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ parameters can take into account the impedance of both the synchronous
+ generator and the line.
+\end_layout
+
+\begin_layout Standard
+Because the infinite bus is modeled as voltage source, then the voltage
+ at the synchronous generator terminals is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
+\end{array}\right]\label{eq:infBusVoltageABC}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $V$
+\end_inset
+
+ is the grid voltage magnitude, and 
+\begin_inset Formula $\theta_{g}$
+\end_inset
+
+ is the grid phase.
+ Lets define the angle 
+\begin_inset Formula $\delta$
+\end_inset
+
+ which represent the difference between the grid and the synchronous generator
+ angles:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta=\theta-\theta_{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+After applying Park transformation (which depends on 
+\begin_inset Formula $\theta$
+\end_inset
+
+ which is the synchronous generator phase) on 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:infBusVoltageABC"
+
+\end_inset
+
+ we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{dqo}=\left[\begin{array}{c}
+v_{d}\\
+v_{q}\\
+v_{0}
+\end{array}\right]=U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
+\end{array}\right]=-V\left[\begin{array}{c}
+\sin(\delta)\\
+\cos(\delta)\\
+0
+\end{array}\right]\label{eq:infBusVoltageDQO}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to see that the dynamics of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\delta}=\omega-\omega_{g}\label{eq:deltaDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega_{g}$
+\end_inset
+
+ is the grid frequency.
+ Substituting 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:infBusVoltageDQO"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:deltaDynamics"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGDynamics"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+V\sin(\delta)\\
+V\cos(\delta)\\
+T_{m}\\
+\omega_{g}
+\end{array}\right]\label{eq:SGDynamicsInfBus}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This fourth order nonlinear dynamical system is the model for one synchronous
+ generator which connected to an infinite bus.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The conclusion goes here.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The conclusion goes here.
+\end_layout
+
+\begin_layout Section
+Develop the improved swing equation for infinite bus:
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+
+\begin_inset space \space{}
+\end_inset
+
+The dynamics of one synchronous generator connected to infinite bus, assuming
+ that the field current is constant, is the following 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGDynamicsInfBus"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega\\
+\delta
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega L_{s} & 0 & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+V\sin(\delta)\\
+V\cos(\delta)\\
+T_{m}\\
+-\omega_{g}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We separate the model in to fast variable and slow variable in order to
+ have singular perturbation analysis (see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KhalilSingularPertubations"
+
+\end_inset
+
+).
+ The new dynamics form is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+\dot{x}=f(x,y,\epsilon)\\
+\epsilon\dot{y}=g(x,y,\epsilon)
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $x$
+\end_inset
+
+ is the slow varying variable, 
+\begin_inset Formula $y$
+\end_inset
+
+ is the fast varying variable and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is small parameter.
+\end_layout
+
+\begin_layout Standard
+In our case, assume that 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ is much smaller than the other parameter, define 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ as 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+, 
+\begin_inset Formula $x=\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]$
+\end_inset
+
+, and 
+\begin_inset Formula $y=\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and now 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+g(x,y,\epsilon)=\left[\begin{array}{cc}
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
+\end{array}\right]\left[\begin{array}{c}
+\omega\\
+\delta
+\end{array}\right]+\left[\begin{array}{c}
+V\sin(\delta)\\
+V\cos(\delta)-mi_{f}\omega
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because the assumption that 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is very small, it means that 
+\begin_inset Formula $\epsilon\dot{y}=g(x,y,\epsilon)$
+\end_inset
+
+ is much faster than 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+, and it will reach it equilibrium (assuming that the equilibrium point
+ exist and attractive) almost instantly with comparing to 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+The equilibrium point 
+\begin_inset Formula $y_{0}=\hat{y}(x,\epsilon=0)$
+\end_inset
+
+ is the root of 
+\begin_inset Formula $g(x,y,\epsilon)=0.$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+The solution of this linear equation (in 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{y}=-\left[\begin{array}{cc}
+-R_{s} & \omega L_{s}\\
+-\omega L_{s} & -R_{s}
+\end{array}\right]^{-1}\left[\begin{array}{c}
+V\sin(\delta)\\
+V\cos(\delta)-mi_{f}\omega
+\end{array}\right]=\left[\begin{array}{c}
+\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
+\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega\sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Assuming that 
+\begin_inset Formula $R_{s}\ll L_{s}\omega_{g}$
+\end_inset
+
+ and 
+\begin_inset Formula $R_{s}mi_{f}\ll L_{s}V$
+\end_inset
+
+ , and assuming that our dynamics is close to the equilibrium, namely omega
+ neer omega_g
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{y}=\left[\begin{array}{c}
+\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
+-\frac{V\sin(\delta)}{L_{s}\omega}
+\end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{i}_{q}=-\frac{V\sin(\delta)}{L_{s}\omega}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, substitute 
+\begin_inset Formula $\hat{y}$
+\end_inset
+
+ in 
+\begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
+\end_inset
+
+ to have reduced model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+J\dot{\omega}=-\frac{mi_{f}V\sin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Or 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}V\sin(\delta)}{L_{s}}+T_{m}\omega\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At the fourth order model  
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGDynamicsInfBus"
+
+\end_inset
+
+, there is the assumption of constant mechanical torque.
+ But in order to compare this model with the one in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhouOhsawa2009"
+
+\end_inset
+
+, it is possible to assume that the income torque is due to fix mechanical
+ power and a correction factor for the viscose looses:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and then the model is: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left\{ \begin{array}{c}
+J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}+\\
+\dot{\delta}=\omega-\omega_{g}
+\end{array}\right.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This model is known as the 
+\shape italic
+improved swing equation
+\shape default
+ model, see 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "zhouOhsawa2009"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Simulations:
+\end_layout
+
+\begin_layout Standard
+In this section, we provide simulation that shows that the improved swing
+ equation is a good reduction for many cases, but there are cases where
+ there is mismatch between the behavior suggested by the improved swing
+ equations and the whole model 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGDynamicsInfBus"
+
+\end_inset
+
+.
+ For each simulation, we will show the currents 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+ and 
+\begin_inset Formula $i_{q}$
+\end_inset
+
+over time for both the fourth order model and for the improved swing equation
+ model, where for the improved swing equation model, we will estimate these
+ currents by 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ISEInfBusEstimatedCurrents"
+
+\end_inset
+
+.
+ In addition we will show the the frequency over time for both the whole
+ model and the improved swing equation model, and the phase over time of
+ the whole model and the improved swing equation model.
+\end_layout
+
+\begin_layout Subsection*
+A.
+ 5KW SG:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sim5KWInfBus.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation for infinite bus with single 5KW SG
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne5KWSG"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne5KWSG"
+
+\end_inset
+
+, simulations show that for the 5KW SG, the behavior of the fourth order
+ model and the reduced model are almost the same.
+ Although the currents at the reduced don't have a ripple that the fourth
+ order model has, both models converges at the same rate with the same oscillati
+ons to the same equilibrium point (The parameters for this simulation can
+ be found at the appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:5KWSG"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection*
+B.
+ 1MW SG:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename sim1MWInfBus.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation for infinite bus with single 1MW SG
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1MWSG"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1MWSG"
+
+\end_inset
+
+, simulations show that for the 1MW SG, the behavior of the fourth order
+ model and the reduced model are still very similar.
+ Although the fourth order model currents are much rippled than the reduced
+ model currents, both models converges at the same rate with the same oscillatio
+ns to the same equilibrium point (The parameters for this simulation can
+ be found at the appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:1MWSG"
+
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Subsection*
+C.
+ Non stable behavior for the reduced model:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simDiffBehavior1.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation example that shows different behavior for the reduced model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffBehavior1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1DiffBehavior1"
+
+\end_inset
+
+, simulations show that for other parameters set (see appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:DifferentBehaviorParamsSetSG"
+
+\end_inset
+
+) the behavior of the fourth order model and the reduced model is totally
+ different.
+ while the four order model is stable (the eigenvalues of the Jacobian around
+ the equilibrium point are: 
+\begin_inset Formula 
+\[
+\left[\begin{array}{cccc}
+-11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]
+\]
+
+\end_inset
+
+, the reduced model is not stable (the eigenvalues of the Jacobian around
+ the equilibrium point are: 
+\begin_inset Formula $\left[\begin{array}{cc}
+-14.6+9.4979i, & 6.1-9.4i\end{array}\right]$
+\end_inset
+
+) .
+\end_layout
+
+\begin_layout Subsection*
+D.
+ Different region of attraction example :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename simDiffRegionOFAttraction.eps
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation example that shows different behavior for the reduced model
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:InfBusOne1DiffRegionOfAttraction"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:InfBusOne1DiffRegionOfAttraction"
+
+\end_inset
+
+, simulations show that for some parameters set (see appendix, table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "table:DifferentBehaviorParamsSetSG"
+
+\end_inset
+
+) the initial condition of this simulation is within the region of attraction
+ of the reduced model, but outside the region of attraction of the fourth
+ model.
+ That cause the fourth order model to diverge while the reduce model converge
+ to the equilibrium point.
+ 
+\end_layout
+
+\begin_layout Section*
+Acknowledgment
+\end_layout
+
+\begin_layout Standard
+The authors would like to thank...
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "IEEEhowto:kopka"
+
+\end_inset
+
+ H.
+\begin_inset space ~
+\end_inset
+
+Kopka and P.
+\begin_inset space ~
+\end_inset
+
+W.
+ Daly, 
+\emph on
+A Guide to LaTeX
+\emph default
+, 3rd
+\begin_inset space ~
+\end_inset
+
+ed.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Harlow, England: Addison-Wesley, 1999.
+\end_layout
+
+\end_body
+\end_document
