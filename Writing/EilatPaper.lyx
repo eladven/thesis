@@ -1,0 +1,3786 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\begin_preamble
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\MYfooter}{\smash{
+\hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
+
+\def\ps@IEEEtitlepagestyle{%
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }%
+\def\@oddfoot{\MYfooter}%
+\def\@evenfoot{\MYfooter}}
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+
+
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+\end_preamble
+\options conference
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Synchronization of a Microgrid Comprising of Two Identical Synchronous Generator
+s
+\end_layout
+
+\begin_layout Author
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+Elad Venezian
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+School of EE, Tel Aviv University
+\begin_inset Newline newline
+\end_inset
+
+Ramat Aviv 69978, Israel
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+George Weiss
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+School of EE, Tel Aviv University
+\begin_inset Newline newline
+\end_inset
+
+Ramat Aviv 69978, Israel
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+boldmath
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The abstract goes here.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% no 
+\backslash
+IEEEPARstart
+\end_layout
+
+\end_inset
+
+The AC electricity grid was developed at the end of the XIX century, and
+ basically remained very similar till our days.
+ Many techniques and models that have been developed in order to analyze
+ and design the grid and its components are based on assumptions and methods,
+ which were driven by experience and observations 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+.
+ In recent years, there is a trend of increasing use of renewable energy,
+ which requires the conversion of the energy in order to interface with
+ the power grid.
+ When the rate of the converted energy will become a significant part, it
+ is not clear whether the traditional models and methods for controling
+ the power grid will succeed to control it 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+.
+ Therefore, there is increasing interest in the fundamental mathematical
+ models of the electrical grid.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Synchronous generator
+\shape default
+ (SG) is the main power source of the electricity grid.
+ The mathematical model of a SG is very complex and difficult to use.
+ This makes the electric grid to such a complicated nonlinear and time-varying
+ system that any attempt to prove its stability analytically is hopeless.
+ Stability analysis is usually done by simulation, or analytically on simplified
+ models, in which the SGs are connected in a simple network and each SG
+ is represented by reduced order equations, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "DorflerAndBullo2012"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "PorcoDorflerBullo2013"
+
+\end_inset
+
+.
+ The reduced model of a SG is often obtained by treating the stator currents
+ as fast variables, thus eliminating them from the state variables via the
+ singular perturbation approach (see, for instance, 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "KhalilSingularPertubations"
+
+\end_inset
+
+) and keeping only the rotor angle, and the rotor angular velocity as relevant
+ state variables, see for instance 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kundur1994"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+SGs has the important property that once they synchronizes, means that their
+ rotors spin with the same velocity, they tend to remain synchronized even
+ without any control.
+ This is important attribute because the electricity grid must maintain
+ constant frequency, and because the ability of a SG to transfer constant
+ power through the grid exists only when the phase difference between each
+ SG and the grid phase is constants.
+ That is the reason why it is desirable to know if for a given grid which
+ contains SGs and a loads,all the SGs and tend to synchronize and if the
+ grid frequency remains constant.
+ In order to use the control stability analysis, and because the trajectory
+ of the state of a SG in the steady state is sinusoidal, it is common to
+ use transformation of the voltages and currents that maps sinusoidal trajectory
+ into a constant point on the state plan.
+ The famous Park's transformation performs that, so after applying Park's
+ transformation on the SG model.
+ The question whether the system is stable (which means that all the SGs
+ are synchronized and remain at constant frequency) is know as frequency
+ stability.
+\end_layout
+
+\begin_layout Standard
+In this work, we study two simple grid configurations: Single SG that connected
+ to an infinite bus, and Two SG in parallel and a load.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:microgrid_dynamics"
+
+\end_inset
+
+ will discussess the dynamical model for the above configurations.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:equivalence_pont"
+
+\end_inset
+
+ discusses the conditions to have equilibrium point at the infinite bus
+ configuration, and shows that micogrid comprised of two SGs can have equilibriu
+m point only on the synchronization manifold, and that there is at list
+ one such equilibrium point.
+ chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Model_reduction"
+
+\end_inset
+
+ shows that the simplified model which known as the improved swing equation
+ can't predict behavior that 4th order model predicts.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "monshizadehDePersisMonshizadehVanderSchaft2016"
+
+\end_inset
+
+ showed, that the improved swing equation model predicts behavior that the
+ classical model (the swing equation model) can't predict.
+ Chapter 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:Synchronization"
+
+\end_inset
+
+, shows that a microgrid that comprised of two SGs, is stable near the manifold
+ of synchronization.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% You must have at least 2 lines in the paragraph with the drop letter
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% (should never be an issue)
+\end_layout
+
+\end_inset
+
+I wish you the best of success.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Model of a microgrid comprising of two SGs
+\end_layout
+
+\begin_layout Standard
+In this chapter we derive the equations for microgrid a SG.
+ We start with derive the equations for single SG.
+ Later we obtain a simpler model that corresponds to constant field current.
+ After that we derive the equations for one SG connected to an infinite
+ bus.
+ At the end of this chapter we derive the model for a microgrid comprising
+ two identical SGs connected in parallel with a resistive load, with constant
+ field current.
+\end_layout
+
+\begin_layout Section
+Single generator dynamics
+\end_layout
+
+\begin_layout Standard
+Mathematical models for synchronous machines can be found for instance in
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "kundur1994"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CaliiskanTabuada2014"
+
+\end_inset
+
+,
+\begin_inset CommandInset citation
+LatexCommand citep
+key "sauerPai1998"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ At this section, we follow the derivations of 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "ZhongWeiss2011"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Synchronous generator consist of two parts: rotor and stator.
+ The rotor is a rotated winding that spins inside the stator with the angle
+ 
+\begin_inset Formula $\theta$
+\end_inset
+
+ with related to it initial angle.
+ The rotor can be considered as a coil with self inductance 
+\begin_inset Formula $L_{f}$
+\end_inset
+
+ and resistance 
+\begin_inset Formula $R_{f}$
+\end_inset
+
+ and the voltage 
+\begin_inset Formula $V_{f}$
+\end_inset
+
+ across its terminals.
+ The stator consist of three identical windings that are connected in star.
+ We consider a generator without neutral connection and without damper windings.
+ The stator windings can be regarded as connected coils with self inductance
+ 
+\begin_inset Formula $L$
+\end_inset
+
+, mutual inductance 
+\begin_inset Formula $-M$
+\end_inset
+
+, and resistance 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+.
+ The negative sign of 
+\begin_inset Formula $-M$
+\end_inset
+
+ is due to the 
+\begin_inset Formula $2\pi/3$
+\end_inset
+
+ phase angle between the phases as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:structOfSG"
+
+\end_inset
+
+.
+ The amplitude of the mutual inductance between the rotor and each of the
+ stators windings is 
+\begin_inset Formula $M_{f}$
+\end_inset
+
+ (which is a function of 
+\begin_inset Formula $\theta$
+\end_inset
+
+).
+ We assume no magnetic saturation effects in the iron core and no Eddy currents.
+ The stator terminals are labeled with the letters a,b,c and the voltages
+ across the stator terminals are denoted by 
+\begin_inset Formula $v=\left[\begin{array}{c}
+v_{a}\\
+v_{b}\\
+v_{c}
+\end{array}\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Lets define the vectors 
+\begin_inset Formula $\widetilde{\cos}\theta=\left[\begin{array}{c}
+\cos\left(\theta\right)\\
+\cos\left(\theta-\frac{2\pi}{3}\right)\\
+\cos\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+ and 
+\begin_inset Formula $\widetilde{\sin}\theta=\left[\begin{array}{c}
+\sin\left(\theta\right)\\
+\sin\left(\theta-\frac{2\pi}{3}\right)\\
+\sin\left(\theta-\frac{4\pi}{3}\right)
+\end{array}\right]$
+\end_inset
+
+.
+ We denote the stator flux by 
+\begin_inset Formula $\Phi=\left[\begin{array}{c}
+\Phi_{a}\\
+\Phi_{b}\\
+\Phi_{c}
+\end{array}\right]$
+\end_inset
+
+, the stator currents by 
+\begin_inset Formula $i=\left[\begin{array}{c}
+i_{a}\\
+i_{b}\\
+i_{c}
+\end{array}\right]$
+\end_inset
+
+, the rotor flux 
+\begin_inset Formula $\Phi_{f}$
+\end_inset
+
+ and the rotor current by 
+\begin_inset Formula $i_{f}$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:structOfSG"
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename SGStucture.jpg
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+Structure of an idealized three-phase round rotor synchronous generator
+\end_layout
+
+\end_inset
+
+Structure of an idealized three-phase round rotor synchronous generator,
+ modified from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "graingerStevenson1994"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The mutual inductance between the rotor coil and the each of the stator
+ coils varies with the rotor angle 
+\begin_inset Formula $\theta$
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+M_{a,f}\\
+M_{b,f}\\
+M_{c,f}
+\end{array}\right]=M_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux linkage of the stator windings are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Phi=\left[\begin{array}{ccc}
+L & -M & -M\\
+-M & L & -M\\
+-M & -M & L
+\end{array}\right]i+M_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The flux of the rotot is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{\cos}\theta>\label{eq:fieldFlux}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral, then 
+\begin_inset Formula $i_{a}+i_{b}+i_{c}=0$
+\end_inset
+
+, so the previous equation can be rewritten as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Phi=L_{s}i+M_{f}i_{f}\widetilde{\cos}\theta
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $L_{s}=L+M$
+\end_inset
+
+.
+ Each stator terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v=-R_{s}i-\frac{d\Phi}{dt}=-R_{s}i-L_{s}\frac{di}{dt}+e\label{eq:SGTerminalVlotage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $e=\left[\begin{array}{c}
+e_{a}\\
+e_{b}\\
+e_{c}
+\end{array}\right]$
+\end_inset
+
+ is the back electromotive force (EMF) due to the rotor movement given by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta\label{eq:emf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And the rotor terminal voltage is given by 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+v_{f}=-R_{f}i_{f}-\frac{d\Phi_{f}}{dt}\label{eq:fieldVoltage}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For synchronous generator with no load, the voltages at each terminal will
+ be sinusoidal function.
+ In order to convert the volteges (and current) into a fixed value, we will
+ apply Park's transformation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x_{dq0=}\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{0}
+\end{array}\right]=U(\theta)\left[\begin{array}{c}
+x_{a}\\
+x_{b}\\
+x_{c}
+\end{array}\right]=U(\theta)x_{abc}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $U(\theta)$
+\end_inset
+
+ is the unitary matrix:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+\cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-\frac{4\pi}{3})\\
+\sin(\theta) & \sin(\theta-\frac{2\pi}{3}) & \sin(\theta-\frac{4\pi}{3})\\
+\sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
+\end{array}\right]\label{eq:ParkTransformation}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $x_{abc}$
+\end_inset
+
+ is some vector at abc coordinates, and 
+\begin_inset Formula $x_{dq0}$
+\end_inset
+
+ is the same vector at the new coordinates.
+\end_layout
+
+\begin_layout Standard
+Applying Park transformation to 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGTerminalVlotage"
+
+\end_inset
+
+ leads to
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U(\theta)v-U(\theta)e=-R_{s}U(\theta)i-L_{s}U(\theta)\frac{di}{dt}\label{eq:SGTerminalVlotageAfetrPark}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{di_{dq0}}{d\theta}=U(\theta)\frac{di_{abc}}{d\theta}+\frac{dU(\theta)}{d\theta}i_{abc}=U(\theta)\frac{di_{abc}}{d\theta}+\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To calculate the time derivative of 
+\begin_inset Formula $i$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{i}_{dq0}=\frac{di_{dq0}}{d\theta}\frac{d\theta}{dt}=U(\theta)\dot{i}_{abc}+\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $\omega=\dot{\theta}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+We rewrite 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGTerminalVlotageAfetrPark"
+
+\end_inset
+
+ as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+L_{s}\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]-L_{s}\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}\\
+0
+\end{array}\right]=-R_{s}\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{0}
+\end{array}\right]+\left[\begin{array}{c}
+e_{d}-v_{d}\\
+e_{q}-v_{q}\\
+e_{0}-v_{0}
+\end{array}\right]\label{eq:idiqDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because there is no neutral connection, 
+\begin_inset Formula $i_{0}=0,$
+\end_inset
+
+ hence 
+\begin_inset Formula $e_{0}=0$
+\end_inset
+
+.
+ Applying Park transformation on 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:emf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+e_{d}\\
+e_{q}
+\end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
+\frac{di_{f}}{dt}\\
+\omega i_{f}
+\end{array}\right]\label{eq:ed_eq}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substitute 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldFlux"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:fieldVoltage"
+
+\end_inset
+
+, and applying Park's transformation yields:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+ for 
+\begin_inset Formula $\frac{di_{d}}{dt}$
+\end_inset
+
+ dynamics, and substituting it to the previous equation, gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Denote 
+\begin_inset Formula $\alpha=\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)^{-1}>0$
+\end_inset
+
+ and 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+, we have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\label{eq:if_dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculate 
+\begin_inset Formula $i_{d}$
+\end_inset
+
+and 
+\begin_inset Formula $i_{q}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamics"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ed_eq"
+
+\end_inset
+
+, and substituting 
+\begin_inset Formula $\frac{di_{f}}{dt}$
+\end_inset
+
+ from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithExIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotational dynamics of the rotor is given by the equation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia of the rotor, 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+ is is the mechanical torque which applies by the prime mover, 
+\begin_inset Formula $T_{e}$
+\end_inset
+
+ is the electromagnetic torque developed by the generator, and 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+ is a damping factor, which consist of the viscous friction acting on the
+ rotor and the frequency droop from 
+\begin_inset Formula $\omega$
+\end_inset
+
+ to the mechanical torque of the prime mover, which added in order to control
+ the frequency of the generator.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $T_{e}$
+\end_inset
+
+ can be found from energy consideration.
+ The magnetic energy stored in the generator is 
+\begin_inset Formula 
+\[
+E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{\cos}\theta>
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The electromagnetic torque can be calculated as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{mag}}{\partial\theta}|_{i=const}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:if_dynamics"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+L_{f}i_{f}\\
+J\omega
+\end{array}\right] & = & \left[\begin{array}{cccc}
+-\alpha R_{s} & \alpha\omega L_{s} & \alpha mR_{f} & 0\\
+-\omega L_{s} & -R_{s} & 0 & -mi_{f}\\
+\frac{\alpha mR_{s}}{L_{s}} & -\alpha m\omega & -\alpha R_{f} & 0\\
+0 & mi_{f} & 0 & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+i_{f}\\
+\omega
+\end{array}\right]\\
+ & + & \left[\begin{array}{cccc}
+-\alpha & 0 & \frac{\alpha m}{L_{f}} & 0\\
+0 & -1 & 0 & 0\\
+\frac{\alpha m}{L_{s}} & 0 & -\alpha & 0\\
+0 & 0 & 0 & 1
+\end{array}\right]\left[\begin{array}{c}
+v_{d}\\
+v_{q}\\
+v_{f}\\
+T_{m}
+\end{array}\right]
+\end{array}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This fourth order nonlinear dynamical system represents the dynamics of
+ single SG.
+ 
+\end_layout
+
+\begin_layout Section
+Single generator with constant field current dynamics
+\end_layout
+
+\begin_layout Standard
+At this sections, we assume that the rotor current is constant (which means
+ that the field dynamics is very fast, or equivalently, the rotor is composed
+ of permanent magnet).
+\end_layout
+
+\begin_layout Standard
+Assuming 
+\begin_inset Formula $\frac{di_{f}}{dt}=0$
+\end_inset
+
+, and substituting it at 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithExIf"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]=\omega\left[\begin{array}{c}
+i_{q}\\
+-i_{d}
+\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
+0\\
+\omega i_{f}
+\end{array}\right]-\left[\begin{array}{c}
+v_{d}\\
+v_{q}
+\end{array}\right]\label{eq:idiqDynamicsWithFixxIf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:idiqDynamicsWithFixxIf"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:mechanicalPart"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:electricTorque"
+
+\end_inset
+
+ we obtained:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d}\\
+L_{s}i_{q}\\
+J\omega
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}\\
+i_{q}\\
+\omega
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d}\\
+-v_{q}\\
+T_{m}
+\end{array}\right]\label{eq:SGDynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This Third order nonlinear dynamical system represents the dynamics of single
+ SG with constant field current.
+ 
+\end_layout
+
+\begin_layout Section
+Model of microgrid comprising two synchronous generators in parallel
+\end_layout
+
+\begin_layout Standard
+In this section, we consider a microgrid comprising two identical synchronous
+ generators, with constant rotor (field) current and no neutral connection,
+ together with a resistive load (see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:microgrid_configuration"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{circuitikz}[american voltages]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scope}[shift={(-5,0)}]     
+\backslash
+draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{$v_a$}
+; 
+\backslash
+draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; 
+\backslash
+node (0,0) [align=left,text width=4cm] {SG1}; 
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+   
+\backslash
+draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=east]{};
+ 
+\backslash
+draw (0,0) to [R=$R_L$] (210 :2.5); 
+\backslash
+draw (0,0) to [R=$R_L$] (330 :2.5);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{scope}[shift={(5,0)}]    
+\backslash
+draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west]
+ {$v_a$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; 
+\backslash
+draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; 
+\backslash
+node (0,0) [align=left,text width=4cm] {SG2}; 
+\backslash
+end{scope}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+draw (5,2.5) to [short, i>=$i_{a2}$] (0,2.5) to [short, i<=$i_{a1}$] (-5,2.5);
+ 
+\backslash
+draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [short, i>=$i_{b2}$]
+   (-2.165 ,-1.25-1)  to [short, o-] (-2.165 ,-1.25 ); 
+\backslash
+draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [short, i>=$i_{b1}$]
+   (-2.165 ,-1.25-1); 
+\backslash
+draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2) to [short, i>=$i_{c2}$]
+  (2.165 ,-1.25-2)  to [short, o-] (2.165 ,-1.25 ); 
+\backslash
+draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [short, i>=$i_{c1}$]
+  (2.165 ,-1.25-2);
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{circuitikz}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Microgrid comprising two synchronous generators configuration
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:microgrid_configuration"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The rotor angles are 
+\begin_inset Formula $\theta_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\theta_{2}$
+\end_inset
+
+ and the torques acting on the generators are equal, denoted 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+.
+ By symmetry, we assume that the voltages at the (non-connected) midpoints
+ of the generators and the load are zero.
+\end_layout
+
+\begin_layout Standard
+The phase voltages and currents are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v_{1}=\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad v_{2}=\left[\begin{array}{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
+\end{array}\right],\quad i_{1}=\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\quad i_{2}=\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The impedances 
+\begin_inset Formula $Z=R_{s}+R_{g}+(L_{s}+L_{g})s$
+\end_inset
+
+ are comprised of the equivalent stator resistance 
+\begin_inset Formula $R_{s}$
+\end_inset
+
+ and stator inductance 
+\begin_inset Formula $L_{s}$
+\end_inset
+
+ and the line resistance 
+\begin_inset Formula $R_{g}$
+\end_inset
+
+ and inductance 
+\begin_inset Formula $L_{g}$
+\end_inset
+
+.
+ However, we consider for simplicity that 
+\begin_inset Formula $R_{g}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $L_{g}=0$
+\end_inset
+
+, since this leaves us with the same type of equations, see Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:one_phase_scheme"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{circuitikz}[american voltages] 
+\backslash
+draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j
+1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0)
+ node[ground] {};   
+\backslash
+draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_
+{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   
+\backslash
+node[draw] at (-1,4) {$j 
+\backslash
+in 
+\backslash
+{a,b,c
+\backslash
+}$}; 
+\backslash
+end{circuitikz} 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Microgrid comprising two synchronous generators one phase scheme
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:one_phase_scheme"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Recall Park transformation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:ParkTransformation"
+
+\end_inset
+
+, and apply it on the currents and voltages we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+v_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad\left[\begin{array}{c}
+v_{d2}\\
+v_{q2}\\
+v_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+i_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\quad\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+i_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Clearly 
+\begin_inset Formula $i_{01}=i_{02}=0$
+\end_inset
+
+ (from Kirchhoff's laws) and by symmetry argument we can show that 
+\begin_inset Formula $v_{01}=v_{02}=0$
+\end_inset
+
+ (because 
+\begin_inset Formula $v_{a}=R_{L}(i_{a1}+i_{a2})$
+\end_inset
+
+ etc).
+\end_layout
+
+\begin_layout Standard
+Thus, we only have to deal with 
+\begin_inset Formula $v_{dj},v_{qj}$
+\end_inset
+
+ (with 
+\begin_inset Formula $j\in\{1,2\}$
+\end_inset
+
+).
+ 
+\end_layout
+
+\begin_layout Standard
+We denote 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\delta=\theta_{2}-\theta_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+According to formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:SGDynamics"
+
+\end_inset
+
+, the dynamics of synchronous machine:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d1}\\
+-v_{q1}\\
+T_{m}
+\end{array}\right]\label{eq:dynamics_of_single_generator}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+where 
+\begin_inset Formula $J$
+\end_inset
+
+ is the moment of inertia, 
+\begin_inset Formula $D_{p}$
+\end_inset
+
+ is the frequency droop constant, 
+\begin_inset Formula $T_{m}$
+\end_inset
+
+ is the mechanical torque coming from the prime mover to the generator,
+ 
+\begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
+\end_inset
+
+, where 
+\begin_inset Formula $M_{f}$
+\end_inset
+
+ is the peak mutual inductance between the rotor and one of the stator windings,
+ and 
+\begin_inset Formula $i_{f}$
+\end_inset
+
+ is the rotor current.
+ Of course, a similar equation holds for the second generator.
+ To put the equations together, we use 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+v=R_{L}(i_{1}+i_{2})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and after applying Park transformation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})U(\theta_{2})^{-1}\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+0
+\end{array}\right]\label{eq:cur_and_volt_after_park}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A simple computation shows that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
+\cos(\delta) & -\sin(\delta) & 0\\
+\sin(\delta) & \cos(\delta) & 0\\
+0 & 0 & 1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+(recall that 
+\begin_inset Formula $\delta=\theta_{2}-\theta_{1}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+now, substitute that at 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:cur_and_volt_after_park"
+
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}
+\end{array}\right]+R_{L}\left[\begin{array}{cc}
+\cos(\delta) & -\sin(\delta)\\
+\sin(\delta) & \cos(\delta)
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Substituting this into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamics_of_single_generator"
+
+\end_inset
+
+, denoting 
+\begin_inset Formula $R_{tot}=R_{s}+R_{L}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccc}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right] & = & \left[\begin{array}{ccc}
+-R_{tot} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+0\\
+0\\
+T_{m}
+\end{array}\right]\\
+ &  & -\left[\begin{array}{ccc}
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+\omega_{2}
+\end{array}\right]
+\end{array}\label{dynamics_of_microgrid}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+or in short:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda=\left[\begin{array}{ccc}
+L_{s} & 0 & 0\\
+0 & L_{s} & 0\\
+0 & 0 & J
+\end{array}\right],e_{3}=\left[\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathcal{A}(\omega)=\left[\begin{array}{ccc}
+-R_{tot} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right],\mathcal{B}(\delta)=\left[\begin{array}{ccc}
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+,z_{i}=\left[\begin{array}{c}
+i_{di}\\
+i_{qi}\\
+\omega_{i}
+\end{array}\right],i\in\{1,2\}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Of course a symmetric equation holds for the second generator:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a seventh state variable, 
+\begin_inset Formula $\delta$
+\end_inset
+
+, for which the ODE is 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\delta}=\omega_{2}-\omega_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The whole system is described by:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+\varLambda z_{1}\\
+\varLambda z_{2}\\
+\delta
+\end{array}\right]=\left[\begin{array}{c|c|c}
+\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
+\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
+\hline -e_{3}^{T} & e_{3}^{T} & 0
+\end{array}\right]\left[\begin{array}{c}
+z_{1}\\
+z_{2}\\
+\delta
+\end{array}\right]+T_{m}\left[\begin{array}{c}
+e_{3}\\
+e_{3}\\
+0
+\end{array}\right]\label{eq:dynamics_whole}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this chapter, we show that microgid comprising of two identical SGs,
+ the synchronization manifold is locally exponentially stable.
+ First, we will rewrite the grid dynamics as synchronization error dynamic,
+ and equivalence SG dynamics.
+ Then, we will prove that under some conditions, the equivalence SG dynamics
+ is globally exponentially stable.
+ Finally, we will use the main result from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+, to show the stability of the system near the synchronization manifold.
+\end_layout
+
+\begin_layout Section
+Modeling the synchronization problem:
+\end_layout
+
+\begin_layout Standard
+In order to show synchronization, it is convenient to use the following
+ notation:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{c}
+\dot{e}=F(e,x)\\
+\dot{x}=G(e,x)
+\end{array}\right.\label{eq:sync_sestem}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e\coloneqq\left[\begin{array}{c}
+e_{d}\\
+e_{q}\\
+e_{\omega}\\
+\delta
+\end{array}\right]\coloneqq\left[\begin{array}{c}
+i_{d1}-i_{d2}\\
+i_{q1}-i_{q2}\\
+\omega_{1}-\omega_{2}\\
+\delta
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+x\coloneqq\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{\omega}
+\end{array}\right]\coloneqq\left[\begin{array}{c}
+i_{d1}+i_{d2}\\
+i_{q1}+i_{q2}\\
+\omega_{1}+\omega_{2}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lets calculate the dynamics of the new notation:
+\end_layout
+
+\begin_layout Standard
+from 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:dynamics_whole"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda\dot{e}=\varLambda(\dot{z}_{1}-\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}-\left(\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\varLambda\frac{d}{dt}\left[\begin{array}{c}
+e_{d}\\
+e_{q}\\
+e_{\omega}\\
+\delta
+\end{array}\right] & = & \left[\begin{array}{c}
+-R_{tot}(i_{d1}-i_{d2})+L_{s}(\omega_{1}i_{q1}-\omega_{2}i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}-\omega_{2}i_{d2})-R_{tot}(i_{q1}-i_{q2})-mi_{f}(\omega_{1}-\omega_{2})\\
+mi_{f}(i_{q1}-i_{q2})-D_{p}(\omega_{1}-\omega_{2})\\
+-(\omega_{1}-\omega_{2})
+\end{array}\right]\\
+ &  & +\left[\begin{array}{c}
+R_{L}\cos(\delta)(i_{d1}-i_{d2})+R_{L}\sin(\delta)(i_{q1}+i_{q2})\\
+R_{L}\cos(\delta)(i_{q1}-i_{q2})-R_{L}\sin(\delta)(i_{d1}+i_{d2})\\
+0\\
+0
+\end{array}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(a+b)(x-y)+(a-b)(x+y)=2(ax-by)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\omega_{1}i_{q1}-\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right]=\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}e_{d}+e_{w}x_{d}}{2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]\dot{e} & = & \left[\begin{array}{cccc}
+-R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]e\\
+ &  & +\left[\begin{array}{c}
+R_{L}\sin(\delta)x_{2}\\
+-R_{L}\sin(\delta)x_{1}\\
+0\\
+0
+\end{array}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+******************************
+\end_layout
+
+\begin_layout Standard
+For the 
+\begin_inset Formula $x$
+\end_inset
+
+ dynamics, we have:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda\dot{x}=\varLambda(\dot{z}_{1}+\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}+\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\varLambda\frac{d}{dt}\left[\begin{array}{c}
+x_{d}\\
+x_{q}\\
+x_{\omega}
+\end{array}\right] & = & \left[\begin{array}{c}
+-R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})\\
+-L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-mi_{f}(\omega_{1}+\omega_{2})\\
+mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
+\end{array}\right]\\
+ &  & +\left[\begin{array}{c}
+-R_{L}\cos(\delta)(i_{d1}+i_{d2})-R_{L}\sin(\delta)(i_{q1}-i_{q2})\\
+-R_{L}\cos(\delta)(i_{q1}+i_{q2})+R_{L}\sin(\delta)(i_{d1}-i_{d2})\\
+0
+\end{array}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+(a+b)(x+y)+(a-b)(x-y)=2(ax+by)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\omega_{1}i_{q1}+\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]=\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\varLambda\dot{x}=\left[\begin{array}{ccc}
+-R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]x+\left[\begin{array}{c}
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
+2T_{m}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For summery:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\dot{e}=F(e,x) & = & \left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1}\left[\begin{array}{cccc}
+-R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
+-\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]e\\
+ &  & +\left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1}\left[\begin{array}{c}
+R_{L}\sin(\delta)x_{2}\\
+-R_{L}\sin(\delta)x_{1}\\
+0\\
+0
+\end{array}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\dot{x}=G(e,x) & = & \varLambda^{-1}\left[\begin{array}{ccc}
+-R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]x\\
+ &  & +\varLambda^{-1}\left[\begin{array}{c}
+\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
+-\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
+2T_{m}
+\end{array}\right]
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Globally exponentially stability of two synchronized generators:
+\end_layout
+
+\begin_layout Standard
+****************************
+\series bold
+, 
+\series default
+to be globally exponential stable, for the dynamics of the two generators,
+ assuming that the system initial condition is located on the 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ manifold which is invariant manifold.
+ This proof is very similar to section 3.5 at 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "CaliiskanTabuada2014"
+
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\dot{\tilde{x}}=\tilde{G}(\tilde{x})\coloneqq G(0,\tilde{x})=\varLambda^{-1}\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
+-\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_{tot}-R_{L} & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This system describes two generators when they have equal state and no phase
+ between each other.
+\end_layout
+
+\begin_layout Standard
+Denote 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{\omega} & 0\\
+-\frac{L_{s}}{2}\tilde{\omega} & -R_{tot}-R_{L} & -mif\\
+0 & mi_{f} & -D_{p}
+\end{array}\right],\tilde{\omega}\coloneqq\tilde{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ has at list one equilibrium point (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cha:equivalence_pont"
+
+\end_inset
+
+) 
+\begin_inset Formula $x^{0}=\left[\begin{array}{c}
+x_{d}^{e}\\
+x_{q}^{e}\\
+\tilde{\omega}^{e}
+\end{array}\right]$
+\end_inset
+
+such:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\tilde{G}(x^{0})=0\rightarrow\varLambda^{-1}A(\tilde{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]=0\label{eq:G_at_equilibrium}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Performing coordinations shift , in order to make the origin into equilibrium
+ point.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+A natural Lyaponov function candidate is the total energy of the system:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+It is easy to see that:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max(L_{s},J)\left|\hat{x}\right|
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now, calculate 
+\begin_inset Formula $\dot{V}(\hat{x})$
+\end_inset
+
+ in order to show that under some conditions, 
+\begin_inset Formula $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$
+\end_inset
+
+, for some 
+\begin_inset Formula $\alpha.$
+\end_inset
+
+ This will prove that 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ is globally exponentially stable 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "nonlinearSystemsSastry"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\hat{x}}=\dot{\tilde{x}}=\varLambda^{-1}A(\tilde{\omega})\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+0\\
+0\\
+2T_{m}
+\end{array}\right]\label{eq:x_hat_dynamic}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Representing 
+\begin_inset Formula $A(\tilde{\omega})$
+\end_inset
+
+ as a sum of a constant symmetric matrix, constant skew symmetric matrix
+ and a skew symmetric matrix which depends on 
+\begin_inset Formula $\hat{\omega}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+R\coloneqq\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & 0 & 0\\
+0 & -R_{tot}-R_{L} & 0\\
+0 & 0 & -D_{p}
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+J(\tilde{\omega}^{e})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
+-\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mif\\
+0 & mi_{f} & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Delta(\hat{\omega})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+And now it is possible to represent the system dynamic:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right](\hat{x}-\tilde{x}^{0})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining this equation with 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:G_at_equilibrium"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:x_hat_dynamic"
+
+\end_inset
+
+ obtains: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calculate the derivative of the Lyponv function over the time: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $\varLambda$
+\end_inset
+
+ is diagonal matrix, then 
+\begin_inset Formula $\varLambda^{T}\varLambda^{-1}=I$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Because 
+\begin_inset Formula $J(\tilde{\omega}^{e})$
+\end_inset
+
+ and 
+\begin_inset Formula $\Delta(\hat{\omega})$
+\end_inset
+
+ are skew symmetric matrices, it implies that 
+\begin_inset Formula $\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}=0$
+\end_inset
+
+ and 
+\begin_inset Formula $\hat{x}^{T}\Delta(\hat{\omega})\hat{x}=0$
+\end_inset
+
+ .
+\end_layout
+
+\begin_layout Standard
+Calculating 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\begin{array}{ccc}
+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0} & = & \left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]^{T}\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+0 & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+x_{d}^{e}\\
+x_{q}^{e}\\
+\tilde{\omega}^{0}
+\end{array}\right]\\
+ & = & \left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]^{T}\left[\begin{array}{ccc}
+0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & 0
+\end{array}\right]\left[\begin{array}{c}
+\hat{x}_{d}\\
+\hat{x}_{q}\\
+\hat{\omega}
+\end{array}\right]\\
+ & = & \hat{x}^{T}P\hat{x}
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Combining all this together, obtains: 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Where 
+\begin_inset Formula $P+R=\left[\begin{array}{ccc}
+-R_{tot}-R_{L} & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & -R_{tot}-R_{L} & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}
+\end{array}\right]$
+\end_inset
+
+.
+ Calculating the eigenvalues of 
+\begin_inset Formula $P+R$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}-\lambda
+\end{vmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{e}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{e}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{e}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+=\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The first eigenvalue of 
+\begin_inset Formula $P+R$
+\end_inset
+
+ is 
+\begin_inset Formula $\lambda_{1}=-\left(R_{tot}+R_{L}\right)$
+\end_inset
+
+ which is negative.
+ 
+\begin_inset Formula $\pi(\lambda)=\lambda^{2}+\lambda\left(R_{tot}+R_{L}+D_{p}\right)+\left(R_{tot}+R_{L}\right)D_{p}-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+All eigenvalues are real numbers.
+ The condition which implies that all the eigenvalues will be negative is:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+-\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}<0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Which leads to the following condition:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+16\left(R_{tot}+R_{L}\right)D_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If this condition 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:condition_for_stable_G"
+
+\end_inset
+
+ holds, then 
+\begin_inset Formula $\dot{V}(\hat{x})<min(\lambda_{i})|\hat{x}|^{2},i\in\{1,2,3\}$
+\end_inset
+
+.
+ This proves that this system is globally exponentially stable.
+ That implies that 
+\begin_inset Formula $\tilde{x}^{e}$
+\end_inset
+
+ is the only equilibrium point of 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+, hence the original system has only one equilibrium point on the subspace
+ where 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+.
+ In addition it always has another equilibrium point on the surface 
+\begin_inset Formula $z_{1}=z_{2}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta=\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Synchronization theorem:
+\end_layout
+
+\begin_layout Standard
+In this section, we prove that if the initial state of the two generators
+ are sufficiently close to each other, i.e 
+\begin_inset Formula $|e(0)|$
+\end_inset
+
+ is small, then, under some conditions, the two generators will synchronize,
+ meaning that 
+\begin_inset Formula $lim_{t\to\infty}e(t)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+For this, we use the result from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+First, 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
+-\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
+-\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}{}_{2}-\frac{mif}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
+0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
+0 & 0 & -1 & 0
+\end{array}\right]\label{eq:div_of_F}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The requirement (2) at 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+ namely that matrix 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:div_of_F"
+
+\end_inset
+
+ should by uniformly bounded *************************is 
+\bar under
+not satisfied
+\bar default
+, because of the presences of 
+\begin_inset Formula $x_{w},x_{q},x_{d}$
+\end_inset
+
+ in the matrix.
+ However, it can be shown by energy methods that regardless of the initial
+ state, the state of this system will be eventually contained in a certain
+ bounded set (that depends on the parameters) and than 
+\begin_inset Formula $\frac{\partial F(}{\partial e}(0,x)$
+\end_inset
+
+ is clearly bounded in this bounded subset of the state space.
+\end_layout
+
+\begin_layout Standard
+The requirement (3) in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+ is satisfied as showed.
+ Additionally we showed at the last section that 
+\begin_inset Formula $\tilde{G}(\tilde{x})$
+\end_inset
+
+ is globally exponentially stable with equilibrium 
+\begin_inset Formula $x^{e}$
+\end_inset
+
+.
+ We will show that our system 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:sync_sestem"
+
+\end_inset
+
+ is UES-TL (Uniform exponential stability for the transversally linear system),
+ as it defines at 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+we need to show that the system 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is stable, where 
+\begin_inset Formula $\tilde{x}(t)$
+\end_inset
+
+ generated by the dynamics 
+\begin_inset Formula 
+\[
+\tilde{x}=\tilde{G}(\tilde{x})
+\]
+
+\end_inset
+
+ which we showed that it globally exponentially stable (and 
+\begin_inset Formula $lim_{t\to\infty}\tilde{x}(t)=0$
+\end_inset
+
+).
+ In order to have the UES-TL property, we will demand that 
+\begin_inset Formula $\tilde{G}(0)$
+\end_inset
+
+ is a Hurwitz matrix.
+ We need to show that there exist constants 
+\begin_inset Formula $k$
+\end_inset
+
+,
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ such for all 
+\begin_inset Formula $\left|e^{e}\right|\leq r$
+\end_inset
+
+ and for all 
+\begin_inset Formula $x^{e}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|e(t)\right|\leq k\left|e_{0}\right|exp(-\lambda t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In other words, we need to show that if LTV (linear time varying system),
+ which it matrix converges exponentially to a stable matrix, then the LTV
+ system is exponentially stable.
+ this theorem is known (
+\begin_inset CommandInset citation
+LatexCommand citep
+key "SchovanecGilliam1999"
+
+\end_inset
+
+), but for the clearance of the reading, we will repeat the proof:
+\end_layout
+
+\begin_layout Subparagraph*
+Theorem:
+\end_layout
+
+\begin_layout Standard
+Let 
+\begin_inset Formula $A$
+\end_inset
+
+ be a constant matrix with 
+\begin_inset Formula $Re\{\sigma(A)\}<0$
+\end_inset
+
+ and let 
+\begin_inset Formula $C$
+\end_inset
+
+ be a continuous matrix valued function on the function on the interval
+ 
+\begin_inset Formula $[0,\infty)$
+\end_inset
+
+.
+ Supposed that 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\intop_{0}^{\infty}\left|C(t)\right|dt=M<\infty
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Then, the solution of 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{x}(t)=[A+C(t)]x(t)\label{eq:LTV_dynamics}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+is globally exponentially stable.
+\end_layout
+
+\begin_layout Subparagraph*
+Proof:
+\end_layout
+
+\begin_layout Standard
+Suppose that x(t) is a solution of 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:LTV_dynamics"
+
+\end_inset
+
+ with 
+\begin_inset Formula $x(0)=x^{e}$
+\end_inset
+
+.
+ We have 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{x}(t)-Ax(t)=C(t)x(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If we multiply this equation through by the integrating factor (matrix)
+ 
+\begin_inset Formula $e^{-At}$
+\end_inset
+
+, we get 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\left(e^{-At}x(t)\right)=e^{-At}C(t)x(t)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Integrating the last equation from 
+\begin_inset Formula $0$
+\end_inset
+
+ to 
+\begin_inset Formula $t$
+\end_inset
+
+ gives:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{-At}x(t)-x(0)=\intop_{0}^{t}e^{-As}C(s)x(s)ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This gives us the formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+x(t)=e^{At}x(0)\intop_{0}^{t}e^{A(t-s)}C(s)x(s)ds\label{eq:LTV_integralForm}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Since 
+\begin_inset Formula $Re\{\sigma(A)\}<0$
+\end_inset
+
+, we can find constants 
+\begin_inset Formula $\sigma<0$
+\end_inset
+
+ and 
+\begin_inset Formula $K>0$
+\end_inset
+
+ such that 
+\begin_inset Formula $\left|e^{At}\right|\leq Ke^{\sigma t},\;t\geq0$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+using this estimates and taking norms in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:LTV_integralForm"
+
+\end_inset
+
+ we get 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|x(t)\right|\leq K\left|x^{e}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Multiply this through by 
+\begin_inset Formula $e^{-\sigma t}$
+\end_inset
+
+ to get
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By applying Gronwall's inequality:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K^{2}\left|x^{e}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
+\]
+
+\end_inset
+
+For any 
+\begin_inset Formula $0\le s\le t$
+\end_inset
+
+, we must have 
+\begin_inset Formula $\intop_{s}^{t}\left|C(u)\right|du\le\intop_{0}^{\infty}\left|C(t)\right|dt=M$
+\end_inset
+
+.
+ Thus, 
+\begin_inset Formula 
+\[
+exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]\le e^{KM}
+\]
+
+\end_inset
+
+Applying this gives
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+e^{KM}K^{2}\left|x^{e}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{e}\right|+e^{KM}K^{2}M
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+So 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left|x(t)\right|\leq e^{\sigma t}C^{e}\left|x^{e}\right|,\quad\sigma<0
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This proves that our system 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:sync_sestem"
+
+\end_inset
+
+is UES-TL.
+ By applying the main result of 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "VincentBayuLaurent2016"
+
+\end_inset
+
+, proves that this system is TULES-NL (Transversal uniform local exponential
+ stable).
+ That means that there exist strictly positive real numbers 
+\begin_inset Formula $r$
+\end_inset
+
+, 
+\begin_inset Formula $k$
+\end_inset
+
+ and 
+\begin_inset Formula $\lambda$
+\end_inset
+
+such for all 
+\begin_inset Formula $(e^{e},x^{e},t)$
+\end_inset
+
+ in 
+\begin_inset Formula $B_{e}(r)\times R^{3}\times\mathbb{R}_{\geq0}$
+\end_inset
+
+ , 
+\begin_inset Formula $e(t)$
+\end_inset
+
+ satisfies 
+\begin_inset Formula $\left|e(t)\right|\leq k\left|e^{e}\right|exp(-\lambda t)$
+\end_inset
+
+.
+ Namely the manifold 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ is exponentially stable for the system 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:sync_sestem"
+
+\end_inset
+
+, locally in 
+\begin_inset Formula $e$
+\end_inset
+
+,uniformly in 
+\begin_inset Formula $x$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsection text here.
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsubsection text here.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The conclusion goes here.
+\end_layout
+
+\begin_layout Section*
+Acknowledgment
+\end_layout
+
+\begin_layout Standard
+The authors would like to thank...
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "IEEEhowto:kopka"
+
+\end_inset
+
+ H.
+\begin_inset space ~
+\end_inset
+
+Kopka and P.
+\begin_inset space ~
+\end_inset
+
+W.
+ Daly, 
+\emph on
+A Guide to LaTeX
+\emph default
+, 3rd
+\begin_inset space ~
+\end_inset
+
+ed.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Harlow, England: Addison-Wesley, 1999.
+\end_layout
+
+\end_body
+\end_document
