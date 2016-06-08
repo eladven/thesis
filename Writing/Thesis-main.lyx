@@ -11,7 +11,7 @@
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp}{0pt}{\Huge\bfseries}
 \usepackage{tikz}
 \usepackage[europeanresistors,americaninductors]{circuitikz}
-
+ 
 \Title{\textbf{Stability of Synchronous Generators}}
 \Author{\textbf{\large Elad Venezian}}
 \Year{May 2016}
@@ -67,7 +67,7 @@
 \use_package undertilde 1
 \cite_engine natbib
 \cite_engine_type numerical
-\biblio_style plainnat
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -108,7 +108,7 @@ status open
 
 \begin_layout Plain Layout
 This is Micheal JasonSmith's uocthesis example ported to LyX by Etienne
- Laliberté (etiennlaliberte@gmail.com).
+ Lalibert�© (etiennlaliberte@gmail.com).
 \end_layout
 
 \begin_layout Plain Layout
@@ -324,7 +324,7 @@ filename "synchronization.lyx"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "references"
-options "plainnat"
+options "abbrvnat" 
 
 \end_inset
 
