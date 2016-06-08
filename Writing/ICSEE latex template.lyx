@@ -1,0 +1,380 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass IEEEtran
+\begin_preamble
+
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\newcommand{\MYfooter}{\smash{
+\hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
+
+\def\ps@IEEEtitlepagestyle{%
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }%
+\def\@oddfoot{\MYfooter}%
+\def\@evenfoot{\MYfooter}}
+
+
+% adjust as needed
+\addtolength{\footskip}{0\baselineskip}
+\addtolength{\textheight}{-1\baselineskip}
+\end_preamble
+\options conference
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding default
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle headings
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Template for ICSEE 2016
+\end_layout
+
+\begin_layout Author
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+Michael Shell
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+School of Electrical and
+\begin_inset Newline newline
+\end_inset
+
+Computer Engineering
+\begin_inset Newline newline
+\end_inset
+
+ Georgia Institute of Technology
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+Homer Simpson
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+Twentieth Century Fox
+\begin_inset Newline newline
+\end_inset
+
+ Springfield, USA
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+and
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Name
+status collapsed
+
+\begin_layout Plain Layout
+James Kirk
+\begin_inset Newline newline
+\end_inset
+
+ and Montgomery Scott
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Flex Flex:Author Affiliation
+status collapsed
+
+\begin_layout Plain Layout
+Starfleet Academy
+\begin_inset Newline newline
+\end_inset
+
+ San Francisco, California 96678-2391
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+%
+\backslash
+boldmath
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+The abstract goes here.
+ 
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% no 
+\backslash
+IEEEPARstart
+\end_layout
+
+\end_inset
+
+This demo file is intended to serve as a 
+\begin_inset Quotes eld
+\end_inset
+
+starter file
+\begin_inset Quotes erd
+\end_inset
+
+ for IEEE conference papers produced under LaTeX
+\begin_inset space \space{}
+\end_inset
+
+using IEEEtran.cls version 1.7 and later.
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% You must have at least 2 lines in the paragraph with the drop letter
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+% (should never be an issue)
+\end_layout
+
+\end_inset
+
+I wish you the best of success.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Subsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsection text here.
+\end_layout
+
+\begin_layout Subsubsection
+Subsubsection Heading Here
+\end_layout
+
+\begin_layout Standard
+Subsubsection text here.
+\end_layout
+
+\begin_layout Section
+Conclusion
+\end_layout
+
+\begin_layout Standard
+The conclusion goes here.
+\end_layout
+
+\begin_layout Section*
+Acknowledgment
+\end_layout
+
+\begin_layout Standard
+The authors would like to thank...
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "IEEEhowto:kopka"
+
+\end_inset
+
+ H.
+\begin_inset space ~
+\end_inset
+
+Kopka and P.
+\begin_inset space ~
+\end_inset
+
+W.
+ Daly, 
+\emph on
+A Guide to LaTeX
+\emph default
+, 3rd
+\begin_inset space ~
+\end_inset
+
+ed.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Harlow, England: Addison-Wesley, 1999.
+\end_layout
+
+\end_body
+\end_document
