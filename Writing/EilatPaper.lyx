@@ -173,8 +173,31 @@ boldmath
 \end_layout
 
 \begin_layout Abstract
-The abstract goes here.
+
+\size small
+Synchronous generators are an essential component of the electric grid.
+ Recently, the stability of the electric grid has become an area of high
+ interest and intensive research.
+ One reason for that is because the power grid 
+\size default
+which has traditionally relied
+\size small
+ on synchronous generators as it power source,
+\size default
+is changing and becoming more and more
+\size small
  
+\size default
+based on 
+\size small
+other sources.
+ mostly because of the usage of renewable energy sources.
+\end_layout
+
+\begin_layout Abstract
+In this work we discuss the stability of one generator connected to an infinite
+ bus, and show that reduced models fail to predict the behavior of this
+ system.
 \end_layout
 
 \begin_layout Section
@@ -204,8 +227,8 @@ The AC electricity grid was developed at the end of the XIX century, and
  and design the grid and its components are based on assumptions and methods,
  which were driven by experience and observations 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "sauerPai1998"
+LatexCommand cite
+key "SauerPai1998"
 
 \end_inset
 
@@ -214,11 +237,11 @@ key "sauerPai1998"
  which requires the conversion of the energy in order to interface with
  the power grid.
  When the rate of the converted energy will become a significant part, it
- is not clear whether the traditional models and methods for controling
+ is not clear whether the traditional models and methods for controlling
  the power grid will succeed to control it 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016"
+LatexCommand cite
+key "ZhongWeiss2011,DePersiVanDerSchaft2016"
 
 \end_inset
 
@@ -240,15 +263,15 @@ Synchronous generator
  models, in which the SGs are connected in a simple network and each SG
  is represented by reduced order equations, see for instance 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "DorflerAndBullo2012"
+LatexCommand cite
+key "DorflerBullo2012"
 
 \end_inset
 
  and 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "PorcoDorflerBullo2013"
+LatexCommand cite
+key "PorcoDorfleBullo2013"
 
 \end_inset
 
@@ -257,23 +280,23 @@ key "PorcoDorflerBullo2013"
  as fast variables, thus eliminating them from the state variables via the
  singular perturbation approach (see, for instance, 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "KhalilSingularPertubations"
+LatexCommand cite
+key "Khalil"
 
 \end_inset
 
 ) and keeping only the rotor angle, and the rotor angular velocity as relevant
  state variables, see for instance 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "kundur1994"
+LatexCommand cite
+key "Kundur"
 
 \end_inset
 
  and 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "sauerPai1998"
+LatexCommand cite
+key "SauerPai1998"
 
 \end_inset
 
@@ -298,60 +321,40 @@ SGs has the important property that once they synchronizes, means that their
  The famous Park's transformation performs that, so after applying Park's
  transformation on the SG model.
  The question whether the system is stable (which means that all the SGs
- are synchronized and remain at constant frequency) is know as frequency
+ are synchronized and remain at constant frequency) is known as frequency
  stability.
 \end_layout
 
 \begin_layout Standard
-In this work, we study two simple grid configurations: Single SG that connected
- to an infinite bus, and Two SG in parallel and a load.
- chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:microgrid_dynamics"
-
-\end_inset
-
- will discussess the dynamical model for the above configurations.
- chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:equivalence_pont"
-
-\end_inset
-
- discusses the conditions to have equilibrium point at the infinite bus
- configuration, and shows that micogrid comprised of two SGs can have equilibriu
-m point only on the synchronization manifold, and that there is at list
- one such equilibrium point.
- chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Model_reduction"
-
-\end_inset
-
- shows that the simplified model which known as the improved swing equation
- can't predict behavior that 4th order model predicts.
+The most common model, which known as the classical model, is a second order
+ non linear model.
  
 \begin_inset CommandInset citation
-LatexCommand citep
-key "monshizadehDePersisMonshizadehVanderSchaft2016"
+LatexCommand cite
+key "DePersiVanDerSchaft2016"
 
 \end_inset
 
- showed, that the improved swing equation model predicts behavior that the
- classical model (the swing equation model) can't predict.
- Chapter 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "cha:Synchronization"
+ showed that this model is not realistic enough and that more complicated
+ model, which known as the 
+\emph on
+improved swing equation 
+\emph default
+model should be used.
+ In this paper we show that even this model is not enough, because it can't
+ predict behavior that 4th order model predicts.
+\end_layout
 
-\end_inset
-
-, shows that a microgrid that comprised of two SGs, is stable near the manifold
- of synchronization.
- 
+\begin_layout Standard
+The rest of this paper is organized as follows.
+ In Section II, a fourth order model of SG connected to infinite bus is
+ established.
+ The reduction from the fourth order model to the second order Section III,
+ and issues related to its operation, e.g., frequency- and voltage-drooping
+ mechanisms for load sharing, are described in Section IV.
+ Simulation results are given in Section V, and experimental results are
+ given in Section VI with conclusions in Section VII.
+ A patent application has been filed for the technology described here.
 \begin_inset ERT
 status open
 
@@ -373,7 +376,7 @@ status open
 
 \end_inset
 
-I wish you the best of success.
+
 \end_layout
 
 \begin_layout Standard
@@ -408,6 +411,17 @@ Subsubsection text here.
 
 \begin_layout Section
 Conclusion
+\end_layout
+
+\begin_layout Standard
+In this chapter we derive the equations for microgrid a SG.
+ We start with derive the equations for single SG.
+ Later we obtain a simpler model that corresponds to constant field current.
+ After that we derive the equations for one SG connected to an infinite
+ bus.
+ At the end of this chapter we derive the model for a microgrid comprising
+ two identical SGs connected in parallel with a resistive load, with constant
+ field current.
 \end_layout
 
 \begin_layout Standard
@@ -515,7 +529,7 @@ Synchronous generator consist of two parts: rotor and stator.
  phase angle between the phases as shown in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:structOfSG"
+reference "fig:structOfSG-1"
 
 \end_inset
 
@@ -546,18 +560,18 @@ v_{c}
 
 \begin_layout Standard
 Lets define the vectors 
-\begin_inset Formula $\widetilde{\cos}\theta=\left[\begin{array}{c}
-\cos\left(\theta\right)\\
-\cos\left(\theta-\frac{2\pi}{3}\right)\\
-\cos\left(\theta-\frac{4\pi}{3}\right)
+\begin_inset Formula $\widetilde{cos}\theta=\left[\begin{array}{c}
+cos\left(\theta\right)\\
+cos\left(\theta-\frac{2\pi}{3}\right)\\
+cos\left(\theta-\frac{4\pi}{3}\right)
 \end{array}\right]$
 \end_inset
 
  and 
-\begin_inset Formula $\widetilde{\sin}\theta=\left[\begin{array}{c}
-\sin\left(\theta\right)\\
-\sin\left(\theta-\frac{2\pi}{3}\right)\\
-\sin\left(\theta-\frac{4\pi}{3}\right)
+\begin_inset Formula $\widetilde{sin}\theta=\left[\begin{array}{c}
+sin\left(\theta\right)\\
+sin\left(\theta-\frac{2\pi}{3}\right)\\
+sin\left(\theta-\frac{4\pi}{3}\right)
 \end{array}\right]$
 \end_inset
 
@@ -578,22 +592,18 @@ i_{c}
 \end{array}\right]$
 \end_inset
 
-, the rotor flux 
-\begin_inset Formula $\Phi_{f}$
-\end_inset
-
  and the rotor current by 
 \begin_inset Formula $i_{f}$
 \end_inset
 
-.
+ .
  
 \end_layout
 
 \begin_layout Standard
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:structOfSG"
+name "fig:structOfSG-1"
 
 \end_inset
 
@@ -607,7 +617,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename SGStucture.jpg
-	scale 60
+	scale 40
 
 \end_inset
 
@@ -664,7 +674,7 @@ The mutual inductance between the rotor coil and the each of the stator
 M_{a,f}\\
 M_{b,f}\\
 M_{c,f}
-\end{array}\right]=M_{f}\widetilde{\cos}\theta
+\end{array}\right]=M_{f}\widetilde{cos}\theta
 \]
 
 \end_inset
@@ -683,23 +693,8 @@ The flux linkage of the stator windings are
 L & -M & -M\\
 -M & L & -M\\
 -M & -M & L
-\end{array}\right]i+M_{f}\widetilde{\cos}\theta
+\end{array}\right]i+M_{f}\widetilde{cos}\theta
 \]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-The flux of the rotot is:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\Phi_{f}=M_{af}i_{a}+M_{bf}i_{b}+M_{cf}i_{c}+L_{f}i_{f}=L_{f}i_{f}+M_{f}<i,\widetilde{\cos}\theta>\label{eq:fieldFlux}
-\end{equation}
 
 \end_inset
 
@@ -717,7 +712,7 @@ Because there is no neutral, then
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\Phi=L_{s}i+M_{f}i_{f}\widetilde{\cos}\theta
+\Phi=L_{s}i+M_{f}i_{f}\widetilde{cos}\theta
 \]
 
 \end_inset
@@ -731,13 +726,15 @@ where
 \end_inset
 
 .
+ We will assume that the rotor current is constant (or equivalently, the
+ rotor is composed of permanent magnet).
  Each stator terminal voltage is given by 
 \end_layout
 
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-v=-R_{s}i-\frac{d\Phi}{dt}=-R_{s}i-L_{s}\frac{di}{dt}+e\label{eq:SGTerminalVlotage}
+v=-R_{s}i-\frac{d\Phi}{dt}=-R_{s}i-L_{s}\frac{di}{dt}+e\label{eq:SGTerminalVlotage-1}
 \end{equation}
 
 \end_inset
@@ -760,22 +757,7 @@ e_{c}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta\label{eq:emf}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-And the rotor terminal voltage is given by 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-v_{f}=-R_{f}i_{f}-\frac{d\Phi_{f}}{dt}\label{eq:fieldVoltage}
+e=M_{f}i_{f}\dot{\theta}\widetilde{sin}\theta\label{eq:emf-1}
 \end{equation}
 
 \end_inset
@@ -819,13 +801,13 @@ where
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
-\cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-\frac{4\pi}{3})\\
-\sin(\theta) & \sin(\theta-\frac{2\pi}{3}) & \sin(\theta-\frac{4\pi}{3})\\
+cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
+sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
 \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
-\end{array}\right]\label{eq:ParkTransformation}
-\end{equation}
+\end{array}\right]
+\]
 
 \end_inset
 
@@ -848,7 +830,7 @@ where
 Applying Park transformation to 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:SGTerminalVlotage"
+reference "eq:SGTerminalVlotage-1"
 
 \end_inset
 
@@ -858,7 +840,7 @@ reference "eq:SGTerminalVlotage"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-U(\theta)v-U(\theta)e=-R_{s}U(\theta)i-L_{s}U(\theta)\frac{di}{dt}\label{eq:SGTerminalVlotageAfetrPark}
+U(\theta)v-U(\theta)e=-R_{s}U(\theta)i-L_{s}U(\theta)\frac{di}{dt}\label{eq:SGTerminalVlotageAfetrPark-1}
 \end{equation}
 
 \end_inset
@@ -920,7 +902,7 @@ where
 We rewrite 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:SGTerminalVlotageAfetrPark"
+reference "eq:SGTerminalVlotageAfetrPark-1"
 
 \end_inset
 
@@ -946,7 +928,7 @@ i_{0}
 e_{d}-v_{d}\\
 e_{q}-v_{q}\\
 e_{0}-v_{0}
-\end{array}\right]\label{eq:idiqDynamics}
+\end{array}\right]\label{eq:idiqDynamics-1}
 \end{equation}
 
 \end_inset
@@ -959,7 +941,7 @@ Because there is no neutral connection,
 \begin_inset Formula $i_{0}=0,$
 \end_inset
 
- hence 
+hence 
 \begin_inset Formula $e_{0}=0$
 \end_inset
 
@@ -967,7 +949,7 @@ Because there is no neutral connection,
  Applying Park transformation on 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:emf"
+reference "eq:emf-1"
 
 \end_inset
 
@@ -976,43 +958,14 @@ reference "eq:emf"
 
 \begin_layout Standard
 \begin_inset Formula 
-\begin{equation}
+\[
 \left[\begin{array}{c}
 e_{d}\\
 e_{q}
 \end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
-\frac{di_{f}}{dt}\\
+0\\
 \omega i_{f}
-\end{array}\right]\label{eq:ed_eq}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Substitute 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:fieldFlux"
-
-\end_inset
-
- into 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:fieldVoltage"
-
-\end_inset
-
-, and applying Park's transformation yields:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}
+\end{array}\right]
 \]
 
 \end_inset
@@ -1021,92 +974,18 @@ v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt
 \end_layout
 
 \begin_layout Standard
-Using 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:idiqDynamics"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:ed_eq"
-
-\end_inset
-
- for 
-\begin_inset Formula $\frac{di_{d}}{dt}$
-\end_inset
-
- dynamics, and substituting it to the previous equation, gives:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Denote 
-\begin_inset Formula $\alpha=\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)^{-1}>0$
-\end_inset
-
- and 
+We  denote 
 \begin_inset Formula $m=\sqrt{\frac{3}{2}}M_{f}$
 \end_inset
 
-, we have 
+ to have 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\label{eq:if_dynamics}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Calculate 
-\begin_inset Formula $i_{d}$
-\end_inset
-
-and 
-\begin_inset Formula $i_{q}$
-\end_inset
-
- from 
+Substitute this equation to 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:idiqDynamics"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:ed_eq"
-
-\end_inset
-
-, and substituting 
-\begin_inset Formula $\frac{di_{f}}{dt}$
-\end_inset
-
- from 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:if_dynamics"
+reference "eq:idiqDynamics-1"
 
 \end_inset
 
@@ -1116,22 +995,22 @@ reference "eq:if_dynamics"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\frac{d}{dt}\left[\begin{array}{c}
+L_{s}\frac{d}{dt}\left[\begin{array}{c}
 i_{d}\\
 i_{q}
-\end{array}\right]=\omega\left[\begin{array}{c}
+\end{array}\right]=-R_{s}\left[\begin{array}{c}
+i_{d}\\
+i_{q}
+\end{array}\right]+\omega L_{s}\left[\begin{array}{c}
 i_{q}\\
 -i_{d}
-\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
-i_{d}\\
-i_{q}
-\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
-\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\\
+\end{array}\right]-m\left[\begin{array}{c}
+0\\
 \omega i_{f}
 \end{array}\right]-\left[\begin{array}{c}
 v_{d}\\
 v_{q}
-\end{array}\right]\label{eq:idiqDynamicsWithExIf}
+\end{array}\right]\label{eq:idiqDynamicsWithExIf-1}
 \end{equation}
 
 \end_inset
@@ -1146,7 +1025,7 @@ The rotational dynamics of the rotor is given by the equation:
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart}
+J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart-1}
 \end{equation}
 
 \end_inset
@@ -1188,7 +1067,7 @@ where
  The magnetic energy stored in the generator is 
 \begin_inset Formula 
 \[
-E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{\cos}\theta>
+E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{cos}\theta>
 \]
 
 \end_inset
@@ -1214,7 +1093,7 @@ T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{ma
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
+T_{e}=M_{f}i_{f}<i,\frac{d\tilde{cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque-1}
 \end{equation}
 
 \end_inset
@@ -1223,149 +1102,24 @@ T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin
 \end_layout
 
 \begin_layout Standard
-Using 
+Using  
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:idiqDynamicsWithExIf"
+reference "eq:idiqDynamicsWithExIf-1"
 
 \end_inset
 
 , 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:if_dynamics"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:mechanicalPart"
+reference "eq:mechanicalPart-1"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:electricTorque"
-
-\end_inset
-
- we obtained:
-\begin_inset Formula 
-\begin{equation}
-\begin{array}{ccc}
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d}\\
-L_{s}i_{q}\\
-L_{f}i_{f}\\
-J\omega
-\end{array}\right] & = & \left[\begin{array}{cccc}
--\alpha R_{s} & \alpha\omega L_{s} & \alpha mR_{f} & 0\\
--\omega L_{s} & -R_{s} & 0 & -mi_{f}\\
-\frac{\alpha mR_{s}}{L_{s}} & -\alpha m\omega & -\alpha R_{f} & 0\\
-0 & mi_{f} & 0 & -D_{p}
-\end{array}\right]\left[\begin{array}{c}
-i_{d}\\
-i_{q}\\
-i_{f}\\
-\omega
-\end{array}\right]\\
- & + & \left[\begin{array}{cccc}
--\alpha & 0 & \frac{\alpha m}{L_{f}} & 0\\
-0 & -1 & 0 & 0\\
-\frac{\alpha m}{L_{s}} & 0 & -\alpha & 0\\
-0 & 0 & 0 & 1
-\end{array}\right]\left[\begin{array}{c}
-v_{d}\\
-v_{q}\\
-v_{f}\\
-T_{m}
-\end{array}\right]
-\end{array}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-This fourth order nonlinear dynamical system represents the dynamics of
- single SG.
- 
-\end_layout
-
-\begin_layout Section
-Single generator with constant field current dynamics
-\end_layout
-
-\begin_layout Standard
-At this sections, we assume that the rotor current is constant (which means
- that the field dynamics is very fast, or equivalently, the rotor is composed
- of permanent magnet).
-\end_layout
-
-\begin_layout Standard
-Assuming 
-\begin_inset Formula $\frac{di_{f}}{dt}=0$
-\end_inset
-
-, and substituting it at 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:idiqDynamicsWithExIf"
-
-\end_inset
-
- gives:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\frac{d}{dt}\left[\begin{array}{c}
-i_{d}\\
-i_{q}
-\end{array}\right]=\omega\left[\begin{array}{c}
-i_{q}\\
--i_{d}
-\end{array}\right]-\frac{R_{s}}{L_{s}}\left[\begin{array}{c}
-i_{d}\\
-i_{q}
-\end{array}\right]-\frac{m}{L_{s}}\left[\begin{array}{c}
-0\\
-\omega i_{f}
-\end{array}\right]-\left[\begin{array}{c}
-v_{d}\\
-v_{q}
-\end{array}\right]\label{eq:idiqDynamicsWithFixxIf}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Using 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:idiqDynamicsWithFixxIf"
-
-\end_inset
-
-, 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:mechanicalPart"
-
-\end_inset
-
- and 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:electricTorque"
+reference "eq:electricTorque-1"
 
 \end_inset
 
@@ -1391,7 +1145,7 @@ i_{q}\\
 -v_{d}\\
 -v_{q}\\
 T_{m}
-\end{array}\right]\label{eq:SGDynamics}
+\end{array}\right]\label{eq:SGDynamics-1}
 \end{equation}
 
 \end_inset
@@ -1400,8 +1154,8 @@ T_{m}
 \end_layout
 
 \begin_layout Standard
-This Third order nonlinear dynamical system represents the dynamics of single
- SG with constant field current.
+This third order nonlinear dynamical system represents the dynamics of single
+ synchronous generated with constant field current.
  
 \end_layout
 
@@ -1452,10 +1206,10 @@ v_{a}\\
 v_{b}\\
 v_{c}
 \end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-\cos(\theta_{g})\\
-\cos(\theta_{g}-\frac{2\pi}{3})\\
-\cos(\theta_{g}-\frac{4\pi}{3})
-\end{array}\right]\label{eq:infBusVoltageABC}
+cos(\theta_{g})\\
+cos(\theta_{g}-\frac{2\pi}{3})\\
+cos(\theta_{g}-\frac{4\pi}{3})
+\end{array}\right]\label{eq:infBusVoltageABC-1}
 \end{equation}
 
 \end_inset
@@ -1500,7 +1254,7 @@ After applying Park transformation (which depends on
  which is the synchronous generator phase) on 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:infBusVoltageABC"
+reference "eq:infBusVoltageABC-1"
 
 \end_inset
 
@@ -1515,14 +1269,14 @@ v_{d}\\
 v_{q}\\
 v_{0}
 \end{array}\right]=U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-\cos(\theta_{g})\\
-\cos(\theta_{g}-\frac{2\pi}{3})\\
-\cos(\theta_{g}-\frac{4\pi}{3})
+cos(\theta_{g})\\
+cos(\theta_{g}-\frac{2\pi}{3})\\
+cos(\theta_{g}-\frac{4\pi}{3})
 \end{array}\right]=-V\left[\begin{array}{c}
-\sin(\delta)\\
-\cos(\delta)\\
+sin(\delta)\\
+cos(\delta)\\
 0
-\end{array}\right]\label{eq:infBusVoltageDQO}
+\end{array}\right]\label{eq:infBusVoltageDQO-1}
 \end{equation}
 
 \end_inset
@@ -1541,7 +1295,7 @@ It is easy to see that the dynamics of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\dot{\delta}=\omega-\omega_{g}\label{eq:deltaDynamics}
+\dot{\delta}=\omega-\omega_{g}\label{eq:deltaDynamics-1}
 \end{equation}
 
 \end_inset
@@ -1558,21 +1312,21 @@ where
  Substituting 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:infBusVoltageDQO"
+reference "eq:infBusVoltageDQO-1"
 
 \end_inset
 
  and 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:deltaDynamics"
+reference "eq:deltaDynamics-1"
 
 \end_inset
 
  into 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:SGDynamics"
+reference "eq:idiqDynamics-1"
 
 \end_inset
 
@@ -1598,11 +1352,11 @@ i_{q}\\
 \omega\\
 \delta
 \end{array}\right]+\left[\begin{array}{c}
-V\sin(\delta)\\
-V\cos(\delta)\\
+Vsin(\delta)\\
+Vcos(\delta)\\
 T_{m}\\
 \omega_{g}
-\end{array}\right]\label{eq:SGDynamicsInfBus}
+\end{array}\right]\label{eq:SGDynamicsInfBus-1}
 \end{equation}
 
 \end_inset
@@ -2060,6 +1814,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename sim5KWInfBus.eps
+	scale 50
 
 \end_inset
 
@@ -2128,6 +1883,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename sim1MWInfBus.eps
+	scale 50
 
 \end_inset
 
@@ -2196,6 +1952,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename simDiffBehavior1.eps
+	scale 50
 
 \end_inset
 
@@ -2276,6 +2033,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename simDiffRegionOFAttraction.eps
+	scale 50
 
 \end_inset
 
@@ -2340,28 +2098,31 @@ The authors would like to thank...
 \begin_layout Bibliography
 \begin_inset CommandInset bibitem
 LatexCommand bibitem
-key "IEEEhowto:kopka"
+key "SauerPai1998"
 
 \end_inset
 
- H.
-\begin_inset space ~
-\end_inset
-
-Kopka and P.
+ P.
 \begin_inset space ~
 \end_inset
 
 W.
- Daly, 
-\emph on
-A Guide to LaTeX
-\emph default
-, 3rd
 \begin_inset space ~
 \end_inset
 
-ed.
+Sauer and M.
+\begin_inset space ~
+\end_inset
+
+A.
+\begin_inset space ~
+\end_inset
+
+Pai, 
+\emph on
+Power Systems Dynamics and Stability
+\emph default
+.
 \begin_inset ERT
 status collapsed
 
@@ -2387,7 +2148,268 @@ relax
 
 \end_inset
 
- Harlow, England: Addison-Wesley, 1999.
+ Stipes Publishing, Champaign, IL, 1997.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "ZhongWeiss2011"
+
+\end_inset
+
+ Q.-C.
+ Zhong and G.
+ Weiss,
+\emph on
+ Synchronverters: Inverters that mimic synchronous generator
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ IEEE Trans.
+ Industr.
+ Electronics, 58 (2011), pp.
+ 1259-1267.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "DePersiVanDerSchaft2016"
+
+\end_inset
+
+ P.
+ Monshizadeh and C De Persis and N.
+ Monshizadeh and A.
+ van der Schaft,
+\emph on
+ Nonlinear Analysis of an Improved Swing Equation
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Submitted on Mar 2016
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "DorflerBullo2012"
+
+\end_inset
+
+ F.
+ Dorfler and F.
+ Bullo,
+\emph on
+ Synchronization and transient stability in power net- works and nonuniform
+ Kuramoto oscillators
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ SIAM J.
+ Control and Optim., 50 (2012), pp.
+ 1616-1642.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "PorcoDorfleBullo2013"
+
+\end_inset
+
+J.
+ W.
+ Simpson-Porco and F.
+ Dörfler and F.
+ Bullo, 
+\emph on
+Synchronization and power sharing for droop-controlled inverters in islanded
+ microgrids
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Automatica, 49(2013), pp.
+ 2603–2611.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Khalil"
+
+\end_inset
+
+H.K.
+ Khalil, 
+\emph on
+Nonlinear Systems
+\emph default
+ (third edition).
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ Prentice Hall, New Jersey, 2002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Kundur"
+
+\end_inset
+
+P.
+ Kundur, 
+\emph on
+Power System Stability and Control
+\emph default
+.
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+hskip
+\end_layout
+
+\end_inset
+
+ 1em plus 0.5em minus 0.4em
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+relax
+\end_layout
+
+\end_inset
+
+ McGraw-Hill, New York, 1994.
 \end_layout
 
 \end_body
