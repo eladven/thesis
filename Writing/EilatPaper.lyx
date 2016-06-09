@@ -395,14 +395,6 @@ status open
 
 \end_layout
 
-\begin_layout Subsubsection
-Subsubsection Heading Here
-\end_layout
-
-\begin_layout Standard
-Subsubsection text here.
-\end_layout
-
 \begin_layout Section
 Modeling SG connected to infinite bus
 \end_layout
@@ -1738,15 +1730,72 @@ reference "fig:InfBusOne5KWSG"
  model and the reduced model are almost the same.
  Although the currents at the reduced don't have a ripple that the fourth
  order model has, both models converges at the same rate with the same oscillati
-ons to the same equilibrium point (The parameters for this simulation can
- be found at the appendix, table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:5KWSG"
-
+ons to the same equilibrium point (The parameters for this simulation are
+ 
+\begin_inset Formula $J=0.2$
 \end_inset
 
-).
+ [
+\begin_inset Formula $kgm^{2}$
+\end_inset
+
+], 
+\begin_inset Formula $D_{p}=1.7$
+\end_inset
+
+ [
+\begin_inset Formula $J/sec$
+\end_inset
+
+], 
+\begin_inset Formula $R_{s}=0.152$
+\end_inset
+
+ [
+\begin_inset Formula $\Omega]$
+\end_inset
+
+, 
+\begin_inset Formula $L_{s}=4.4$
+\end_inset
+
+ [
+\begin_inset Formula $mH$
+\end_inset
+
+], 
+\begin_inset Formula $mi_{f}=1.05$
+\end_inset
+
+ [
+\begin_inset Formula $Vsec]$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{g}=60\cdotp2\pi$
+\end_inset
+
+ [
+\begin_inset Formula $rad/sec$
+\end_inset
+
+], 
+\begin_inset Formula $V=330$
+\end_inset
+
+ [
+\begin_inset Formula $V]$
+\end_inset
+
+, 
+\begin_inset Formula $Pm=5$
+\end_inset
+
+ [
+\begin_inset Formula $kW$
+\end_inset
+
+]).
  
 \end_layout
 
@@ -1807,15 +1856,72 @@ reference "fig:InfBusOne1MWSG"
  model and the reduced model are still very similar.
  Although the fourth order model currents are much rippled than the reduced
  model currents, both models converges at the same rate with the same oscillatio
-ns to the same equilibrium point (The parameters for this simulation can
- be found at the appendix, table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:1MWSG"
-
+ns to the same equilibrium point (The parameters for this simulation are
+ 
+\begin_inset Formula $J=40.05$
 \end_inset
 
-).
+ [
+\begin_inset Formula $kgm^{2}$
+\end_inset
+
+], 
+\begin_inset Formula $D_{p}=337$
+\end_inset
+
+ [
+\begin_inset Formula $J/sec$
+\end_inset
+
+], 
+\begin_inset Formula $R_{s}=0.4$
+\end_inset
+
+ [
+\begin_inset Formula $\Omega]$
+\end_inset
+
+, 
+\begin_inset Formula $L_{s}=18$
+\end_inset
+
+ [
+\begin_inset Formula $mH$
+\end_inset
+
+], 
+\begin_inset Formula $mi_{f}=1.79$
+\end_inset
+
+ [
+\begin_inset Formula $Vsec]$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{g}=60\cdotp2\pi$
+\end_inset
+
+ [
+\begin_inset Formula $rad/sec$
+\end_inset
+
+], 
+\begin_inset Formula $V=563$
+\end_inset
+
+ [
+\begin_inset Formula $V]$
+\end_inset
+
+, 
+\begin_inset Formula $Pm=1$
+\end_inset
+
+ [
+\begin_inset Formula $MW$
+\end_inset
+
+]).
  
 \end_layout
 
@@ -1873,14 +1979,72 @@ reference "fig:InfBusOne1DiffBehavior1"
 
 \end_inset
 
-, simulations show that for other parameters set (see appendix, table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:DifferentBehaviorParamsSetSG"
-
+, simulations show that for other parameters set (The parameters for this
+ simulation are 
+\begin_inset Formula $J=0.2$
 \end_inset
 
-) the behavior of the fourth order model and the reduced model is totally
+ [
+\begin_inset Formula $kgm^{2}$
+\end_inset
+
+], 
+\begin_inset Formula $D_{p}=1.7$
+\end_inset
+
+ [
+\begin_inset Formula $J/sec$
+\end_inset
+
+], 
+\begin_inset Formula $R_{s}=0.152$
+\end_inset
+
+ [
+\begin_inset Formula $\Omega]$
+\end_inset
+
+, 
+\begin_inset Formula $L_{s}=4.4$
+\end_inset
+
+ [
+\begin_inset Formula $mH$
+\end_inset
+
+], 
+\begin_inset Formula $mi_{f}=1.05$
+\end_inset
+
+ [
+\begin_inset Formula $Vsec]$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{g}=60\cdotp2\pi$
+\end_inset
+
+ [
+\begin_inset Formula $rad/sec$
+\end_inset
+
+], 
+\begin_inset Formula $V=200$
+\end_inset
+
+ [
+\begin_inset Formula $V]$
+\end_inset
+
+, 
+\begin_inset Formula $Pm=50$
+\end_inset
+
+ [
+\begin_inset Formula $kW$
+\end_inset
+
+]) the behavior of the fourth order model and the reduced model is totally
  different.
  while the four order model is stable (the eigenvalues of the Jacobian around
  the equilibrium point are:
@@ -1952,14 +2116,72 @@ reference "fig:InfBusOne1DiffRegionOfAttraction"
 
 \end_inset
 
-, simulations show that for some parameters set (see appendix, table 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "table:DifferentBehaviorParamsSetSG"
-
+, simulations show that for some parameters set (The parameters for this
+ simulation are 
+\begin_inset Formula $J=0.2$
 \end_inset
 
-) the initial condition of this simulation is within the region of attraction
+ [
+\begin_inset Formula $kgm^{2}$
+\end_inset
+
+], 
+\begin_inset Formula $D_{p}=1.7$
+\end_inset
+
+ [
+\begin_inset Formula $J/sec$
+\end_inset
+
+], 
+\begin_inset Formula $R_{s}=0.152$
+\end_inset
+
+ [
+\begin_inset Formula $\Omega]$
+\end_inset
+
+, 
+\begin_inset Formula $L_{s}=1.05$
+\end_inset
+
+ [
+\begin_inset Formula $mH$
+\end_inset
+
+], 
+\begin_inset Formula $mi_{f}=3.5$
+\end_inset
+
+ [
+\begin_inset Formula $Vsec]$
+\end_inset
+
+, 
+\begin_inset Formula $\omega_{g}=60\cdotp2\pi$
+\end_inset
+
+ [
+\begin_inset Formula $rad/sec$
+\end_inset
+
+], 
+\begin_inset Formula $V=330$
+\end_inset
+
+ [
+\begin_inset Formula $V]$
+\end_inset
+
+, 
+\begin_inset Formula $Pm=5$
+\end_inset
+
+ [
+\begin_inset Formula $kW$
+\end_inset
+
+]) the initial condition of this simulation is within the region of attraction
  of the reduced model, but outside the region of attraction of the fourth
  model.
  That cause the fourth order model to diverge while the reduce model converge
