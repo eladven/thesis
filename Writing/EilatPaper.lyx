@@ -655,7 +655,7 @@ The mutual inductance between the rotor coil and the each of the stator
 M_{a,f}\\
 M_{b,f}\\
 M_{c,f}
-\end{array}\right]=M_{f}\widetilde{cos}\theta
+\end{array}\right]=M_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -674,7 +674,7 @@ The flux linkage of the stator windings are
 L & -M & -M\\
 -M & L & -M\\
 -M & -M & L
-\end{array}\right]i+M_{f}\widetilde{cos}\theta
+\end{array}\right]i+M_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -693,7 +693,7 @@ Because there is no neutral, then
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\Phi=L_{s}i+M_{f}i_{f}\widetilde{cos}\theta
+\Phi=L_{s}i+M_{f}i_{f}\widetilde{\cos}\theta
 \]
 
 \end_inset
@@ -738,7 +738,7 @@ e_{c}
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-e=M_{f}i_{f}\dot{\theta}\widetilde{sin}\theta\label{eq:emf}
+e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta\label{eq:emf}
 \end{equation}
 
 \end_inset
@@ -784,8 +784,8 @@ where
 \begin_inset Formula 
 \[
 U(\theta)=\sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
-cos(\theta) & cos(\theta-\frac{2\pi}{3}) & cos(\theta-\frac{4\pi}{3})\\
-sin(\theta) & sin(\theta-\frac{2\pi}{3}) & sin(\theta-\frac{4\pi}{3})\\
+\cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-\frac{4\pi}{3})\\
+\sin(\theta) & \sin(\theta-\frac{2\pi}{3}) & \sin(\theta-\frac{4\pi}{3})\\
 \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}} & \sqrt{\frac{1}{2}}
 \end{array}\right]
 \]
@@ -1196,9 +1196,9 @@ v_{a}\\
 v_{b}\\
 v_{c}
 \end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-cos(\theta_{g})\\
-cos(\theta_{g}-\frac{2\pi}{3})\\
-cos(\theta_{g}-\frac{4\pi}{3})
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
 \end{array}\right]\label{eq:infBusVoltageABC}
 \end{equation}
 
@@ -1260,13 +1260,13 @@ v_{d}\\
 v_{q}\\
 v_{0}
 \end{array}\right] & = & U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-cos(\theta_{g})\\
-cos(\theta_{g}-\frac{2\pi}{3})\\
-cos(\theta_{g}-\frac{4\pi}{3})
+\cos(\theta_{g})\\
+\cos(\theta_{g}-\frac{2\pi}{3})\\
+\cos(\theta_{g}-\frac{4\pi}{3})
 \end{array}\right]\\
  & = & -V\left[\begin{array}{c}
-sin(\delta)\\
-cos(\delta)\\
+\sin(\delta)\\
+\cos(\delta)\\
 0
 \end{array}\right]
 \end{array}\label{eq:infBusVoltageDQO}
@@ -1347,8 +1347,8 @@ i_{q}\\
 \delta
 \end{array}\right]\\
  &  & +\left[\begin{array}{c}
-Vsin(\delta)\\
-Vcos(\delta)\\
+V\sin(\delta)\\
+V\cos(\delta)\\
 T_{m}\\
 \omega_{g}
 \end{array}\right]
