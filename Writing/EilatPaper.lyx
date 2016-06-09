@@ -178,13 +178,13 @@ boldmath
 Synchronous generators are an essential component of the electric grid.
  Recently, the stability of the electric grid has become an area of high
  interest and intensive research.
- One reason for that is because the power grid 
+ One reason is that the power grid 
 \size default
 which has traditionally relied
 \size small
- on synchronous generators as it power source,
+ on synchronous generators as its power source,
 \size default
-is changing and becoming more and more
+ is changing and becoming more and more
 \size small
  
 \size default
@@ -195,9 +195,9 @@ other sources.
 \end_layout
 
 \begin_layout Abstract
-In this work we discuss the stability of one generator connected to an infinite
- bus, and show that reduced models fail to predict the behavior of this
- system.
+In this work we discuss the stability of a single generator connected to
+ an infinite bus, and show that reduced models fail to predict the behavior
+ of this system.
 \end_layout
 
 \begin_layout Section
@@ -246,7 +246,7 @@ key "ZhongWeiss2011,DePersiVanDerSchaft2016"
 \end_inset
 
 .
- Therefore, there is increasing interest in the fundamental mathematical
+ Therefore, there is an increasing interest in the fundamental mathematical
  models of the electrical grid.
 \end_layout
 
@@ -259,9 +259,10 @@ Synchronous generator
  The mathematical model of a SG is very complex and difficult to use.
  This makes the electric grid to such a complicated nonlinear and time-varying
  system that any attempt to prove its stability analytically is hopeless.
- Stability analysis is usually done by simulation, or analytically on simplified
- models, in which the SGs are connected in a simple network and each SG
- is represented by reduced order equations, see for instance 
+ Stability analysis is usually done either by simulation, or analytically
+ on simplified models, in which the SGs are connected in a simple network
+ and each SG is represented by reduced order equations, see for instance
+ 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "DorflerBullo2012"
@@ -304,22 +305,23 @@ key "SauerPai1998"
 \end_layout
 
 \begin_layout Standard
-SGs has the important property that once they synchronizes, means that their
- rotors spin with the same velocity, they tend to remain synchronized even
+SGs has the important property that once they synchronize, that is their
+ rotors spin in the same velocity, they tend to remain synchronized even
  without any control.
  This is important attribute because the electricity grid must maintain
  constant frequency, and because the ability of a SG to transfer constant
  power through the grid exists only when the phase difference between each
- SG and the grid phase is constants.
- That is the reason why it is desirable to know if for a given grid which
- contains SGs and a loads,all the SGs and tend to synchronize and if the
- grid frequency remains constant.
+ SG and the grid is constant.
+ Therefore, it is desirable to know if for a given grid which contains SGs
+ and a loads,all the SGs and tend to synchronize and if the grid frequency
+ remains constant.
  In order to use the control stability analysis, and because the trajectory
  of the state of a SG in the steady state is sinusoidal, it is common to
- use transformation of the voltages and currents that maps sinusoidal trajectory
- into a constant point on the state plan.
- The famous Park's transformation performs that, so after applying Park's
- transformation on the SG model.
+ use transformation of the voltages and currents that map sinusoidal trajectory
+ into a constant point on the state plane.
+ The famous Park's transformation meets this requirement, so after applying
+ Park's transformation on the SG model, system that oscillate with fixed
+ sinusoidal oscillation will translated to stable system.
  The question whether the system is stable (which means that all the SGs
  are synchronized and remain at constant frequency) is known as frequency
  stability.
@@ -342,13 +344,13 @@ improved swing equation
 \emph default
 model should be used.
  In this paper we show that even this model is not enough, because it can't
- predict behavior that 4th order model predicts.
+ predict a behavior that is predicted by more complicated model.
 \end_layout
 
 \begin_layout Standard
 The rest of this paper is organized as follows.
  In Section II, a fourth order model of SG connected to infinite bus is
- established.
+ presented.
  The reduction from the fourth order model to the second order 
 \emph on
 improved swing equation 
@@ -356,7 +358,7 @@ improved swing equation
 is described in Section III.
  Simulations and local stability analysis that shows different behavior
  of the models are given in Section IV.
- Conclusions in Section V.
+ In Section V we conclude and discuss future directions.
 \begin_inset ERT
 status open
 
@@ -400,10 +402,10 @@ Modeling SG connected to infinite bus
 \end_layout
 
 \begin_layout Standard
-In this section we derive the equations for SG connected to infinite bus.
- We start with derive the equations for single SG assuming constant field
+In this section we derive the equations for a SG connected to infinite bus.
+ We start with deriving the equations for single SG, assuming constant field
  current.
- After that we derive the equations for one SG connected to an infinite
+ Then, we derive the equations for a single SG connected to an infinite
  bus.
  
 \end_layout
@@ -456,12 +458,12 @@ key "ZhongWeiss2011"
 
 \begin_layout Standard
 Synchronous generator consist of two parts: rotor and stator.
- The rotor is a rotated winding that spins inside the stator with the angle
+ The rotor is a rotated winding that spins inside the stator with an angle
  
 \begin_inset Formula $\theta$
 \end_inset
 
- with related to it initial angle.
+ with respect to its initial angle.
  The rotor can be considered as a coil with self inductance 
 \begin_inset Formula $L_{f}$
 \end_inset
@@ -470,13 +472,14 @@ Synchronous generator consist of two parts: rotor and stator.
 \begin_inset Formula $R_{f}$
 \end_inset
 
- and the voltage 
+ and a voltage 
 \begin_inset Formula $V_{f}$
 \end_inset
 
  across its terminals.
- The stator consist of three identical windings that are connected in star.
- We consider a generator without neutral connection and without damper windings.
+ The stator consists of three identical windings that are connected in a
+ star.
+ We consider a generator without neutral connection and no damper windings.
  The stator windings can be regarded as connected coils with self inductance
  
 \begin_inset Formula $L$
@@ -632,8 +635,8 @@ key "Grainger Stevenson2014"
 \end_layout
 
 \begin_layout Standard
-The mutual inductance between the rotor coil and the each of the stator
- coils varies with the rotor angle 
+The mutual inductance between the rotor coil and each of the stator coils
+ varies with the rotor angle 
 \begin_inset Formula $\theta$
 \end_inset
 
@@ -675,7 +678,7 @@ L & -M & -M\\
 \end_layout
 
 \begin_layout Standard
-Because there is no neutral, then 
+Since there is no neutral, 
 \begin_inset Formula $i_{a}+i_{b}+i_{c}=0$
 \end_inset
 
@@ -700,7 +703,7 @@ where
 
 .
  We will assume that the rotor current is constant (or equivalently, the
- rotor is composed of permanent magnet).
+ rotor is composed of a permanent magnet).
  Each stator terminal voltage is given by 
 \end_layout
 
@@ -740,7 +743,7 @@ e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta\label{eq:emf}
 
 \begin_layout Standard
 For synchronous generator with no load, the voltages at each terminal will
- be sinusoidal function.
+ be sinusoidal functions.
  In order to convert the volteges (and current) into a fixed value, we will
  apply Park's transformation:
 \end_layout
@@ -910,7 +913,7 @@ e_{0}-v_{0}
 \end_layout
 
 \begin_layout Standard
-Because there is no neutral connection, 
+Since there is no neutral connection, 
 \begin_inset Formula $i_{0}=0,$
 \end_inset
 
@@ -1039,7 +1042,7 @@ where
 \begin_inset Formula $T_{e}$
 \end_inset
 
- can be found from energy consideration.
+ can be found using energy consideration.
  The magnetic energy stored in the generator is 
 \begin_inset Formula 
 \[
@@ -1136,8 +1139,8 @@ T_{m}
 \end_layout
 
 \begin_layout Standard
-This third order nonlinear dynamical system represents the dynamics of single
- synchronous generated with constant field current.
+This third order nonlinear dynamical system represents the dynamics of a
+ single synchronous generated with constant field current.
  
 \end_layout
 
@@ -1148,7 +1151,7 @@ Model of a single generator connected to an infinite bus
 \begin_layout Standard
 In this section we develop a model for single synchronous generator which
  connected to an infinite bus.
- This section follows 
+ This section follows the work describe in 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "NatarajanWeiss2015"
@@ -1156,14 +1159,14 @@ key "NatarajanWeiss2015"
 \end_inset
 
 .
- The infinite bus is model as tree phase AC voltage source.
- i.e the infinite bus is not effected by the synchronous generator that connected
+ The infinite bus is modeled as tree phase AC voltage source.
+ i.e the infinite bus is not affected by the synchronous generator that connected
  to it.
  The reason for this model is that the influence of a single synchronous
  generator on a grid is very small.
  In general, the line that connect the synchronous generator to the grid
- has its impedance that consist of resistance and inductance, but because
- it connected to the synchronous generator in series, then the 
+ has its impedance that consist of resistance and inductance, but since
+ it is connected to the synchronous generator in series, the 
 \begin_inset Formula $R_{s}$
 \end_inset
 
@@ -1176,8 +1179,8 @@ key "NatarajanWeiss2015"
 \end_layout
 
 \begin_layout Standard
-Because the infinite bus is modeled as voltage source, then the voltage
- at the synchronous generator terminals is
+The infinite bus is modeled as voltage source.
+ Thus, the voltage at the synchronous generator terminals is
 \end_layout
 
 \begin_layout Standard
@@ -1362,8 +1365,8 @@ Develop the improved swing equation for infinite bus:
 \end_layout
 
 \begin_layout Standard
-We separate the model in to fast variable and slow variable in order to
- have singular perturbation analysis (see 
+We separate the model in to a fast variable and a slow variable in order
+ to have singular perturbation analysis (see 
 \begin_inset CommandInset citation
 LatexCommand cite
 key "Khalil"
@@ -1401,11 +1404,11 @@ Where
 \begin_inset Formula $\epsilon$
 \end_inset
 
- is small parameter.
+ is a small parameter.
 \end_layout
 
 \begin_layout Standard
-In our case, assume that 
+In our case, assuming that 
 \begin_inset Formula $L_{s}$
 \end_inset
 
@@ -1459,11 +1462,11 @@ V\cos(\delta)-mi_{f}\omega
 \end_layout
 
 \begin_layout Standard
-Because the assumption that 
+We assume that 
 \begin_inset Formula $\epsilon$
 \end_inset
 
- is very small, it means that 
+ is very small, meaning that 
 \begin_inset Formula $\epsilon\dot{y}=g(x,y,\epsilon)$
 \end_inset
 
@@ -1472,7 +1475,7 @@ Because the assumption that
 \end_inset
 
 , and it will reach it equilibrium (assuming that the equilibrium point
- exist and attractive) almost instantly with comparing to 
+ exist and attractive) almost instantly with regard to 
 \begin_inset Formula $x$
 \end_inset
 
@@ -1496,7 +1499,7 @@ The solution of this linear equation (in
 \begin_inset Formula $\hat{y}$
 \end_inset
 
-)
+) is:
 \end_layout
 
 \begin_layout Standard
@@ -1531,8 +1534,12 @@ Assuming that
 \begin_inset Formula $R_{s}mi_{f}\ll L_{s}V$
 \end_inset
 
- , and assuming that our dynamics is close to the equilibrium, namely omega
- neer omega_g
+ , and assuming that our dynamics are close to the equilibrium, namely 
+\begin_inset Formula $\omega\simeq\omega_{g}$
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1561,7 +1568,7 @@ Now, substitute
 \begin_inset Formula $\dot{x}=f(x,y,\epsilon)$
 \end_inset
 
- to have reduced model:
+ to have a reduced model:
 \end_layout
 
 \begin_layout Standard
@@ -1639,10 +1646,10 @@ Simulations:
 \end_layout
 
 \begin_layout Standard
-In this section, we provide simulation that shows that the improved swing
- equation model is a good reduction for many cases, but there are cases
- where there is mismatch between the behavior suggested by the improved
- swing equations model and the fourth order model 
+In this section, we present a simulation that demonstrates that the improved
+ swing equation model is a good reduction for many cases, but there are
+ cases in which there is mismatch between the behavior suggested by the
+ improved swing equations model and the fourth order model 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:SGDynamicsInfBus"
@@ -1658,7 +1665,7 @@ reference "eq:SGDynamicsInfBus"
 \begin_inset Formula $i_{q}$
 \end_inset
 
-over time for both the fourth order model and for the improved swing equation
+over time for both the fourth order model and the improved swing equation
  model, where for the improved swing equation model, we estimate these currents
  by 
 \begin_inset CommandInset ref
@@ -1668,9 +1675,9 @@ reference "eq:ISEInfBusEstimatedCurrents"
 \end_inset
 
 .
- In addition we will show the the frequency over time for both the fourth
- order model and the improved swing equation model, and the phase over time
- of the fourth order model and the improved swing equation model.
+ In addition we will show the frequency over time for the two models, and
+ the phase over time of the fourth order model and the improved swing equation
+ model.
 \end_layout
 
 \begin_layout Subsection
@@ -1727,10 +1734,10 @@ reference "fig:InfBusOne5KWSG"
 \end_inset
 
 , simulations show that for the 5KW SG, the behavior of the fourth order
- model and the reduced model are almost the same.
+ model and the reduced model is almost the same.
  Although the currents at the reduced don't have a ripple that the fourth
- order model has, both models converges at the same rate with the same oscillati
-ons to the same equilibrium point (The parameters for this simulation are
+ order model has, both models converge at the same rate with the same oscillatio
+ns to the same equilibrium point (The parameters for this simulation are
  
 \begin_inset Formula $J=0.2$
 \end_inset
@@ -1855,8 +1862,8 @@ reference "fig:InfBusOne1MWSG"
 , simulations show that for the 1MW SG, the behavior of the fourth order
  model and the reduced model are still very similar.
  Although the fourth order model currents are much rippled than the reduced
- model currents, both models converges at the same rate with the same oscillatio
-ns to the same equilibrium point (The parameters for this simulation are
+ model currents, both models converge at the same rate with the same oscillation
+s to the same equilibrium point (The parameters for this simulation are
  
 \begin_inset Formula $J=40.05$
 \end_inset
@@ -1926,7 +1933,7 @@ ns to the same equilibrium point (The parameters for this simulation are
 \end_layout
 
 \begin_layout Subsection
-Non stable behavior for the reduced model
+Non stable behavior of the reduced model
 \end_layout
 
 \begin_layout Standard
@@ -2044,7 +2051,7 @@ reference "fig:InfBusOne1DiffBehavior1"
 \begin_inset Formula $kW$
 \end_inset
 
-]) the behavior of the fourth order model and the reduced model is totally
+]) the behavior of the fourth order model and the reduced model is significantly
  different.
  while the four order model is stable (the eigenvalues of the Jacobian around
  the equilibrium point are:
@@ -2055,7 +2062,7 @@ reference "fig:InfBusOne1DiffBehavior1"
 
 \end_inset
 
-, the reduced model is not stable (the eigenvalues of the Jacobian around
+ the reduced model is not stable (the eigenvalues of the Jacobian around
  the equilibrium point are: 
 \begin_inset Formula $\left[-14.6+9.4979i,\:6.1-9.4i\right]$
 \end_inset
@@ -2184,7 +2191,7 @@ reference "fig:InfBusOne1DiffRegionOfAttraction"
 ]) the initial condition of this simulation is within the region of attraction
  of the reduced model, but outside the region of attraction of the fourth
  model.
- That cause the fourth order model to diverge while the reduce model converge
+ That cause the fourth order model to diverge while the reduce model converges
  to the equilibrium point.
  
 \end_layout
@@ -2195,7 +2202,7 @@ Conclusions
 
 \begin_layout Standard
 We have showed the relation between the fourth order model of SG connected
- to infinite bus and the improved swing equation model.
+ to an infinite bus and the improved swing equation model.
  Simulations are carried out to show that the fourth order model gives rise
  to a behavior that does not match what is suggested by the improved swing
  equation.
