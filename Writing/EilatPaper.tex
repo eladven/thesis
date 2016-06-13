@@ -8,33 +8,69 @@
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-
-
 \hyphenation{op-tical net-works semi-conduc-tor}
 
 \newcommand{\MYfooter}{\smash{
 \hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
 
 \def\ps@IEEEtitlepagestyle{%
-\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }%
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the
+     Science of Electrical Engineering \rightmark \hfil }%
 \def\@oddfoot{\MYfooter}%
 \def\@evenfoot{\MYfooter}}
-
 
 % adjust as needed
 \addtolength{\footskip}{0\baselineskip}
 \addtolength{\textheight}{-1\baselineskip}
 
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{problem_statement}[theorem]{Problem Statement}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{section}
+
+%%% The above 7 commands are used in the following way:
+%%% The definition environment, for example, is created by
+%%% \begin{definition}\label{xxx}. . .\end{definition}
+%\newcommand{\mylabel}[1]{\label{#1}
+%            \ifx\undefined\stillediting
+%            \else \fbox{$#1$}\fi }
+\newcommand{\BE}{\begin{equation}}
+\newcommand{\BEQ}[1]{\BE\mathlabel{#1}} % Changed by Olof
+\newcommand{\EEQ}{\end{equation}}
+\newcommand{\rfb}[1]{\mbox{\rm
+   (\ref{#1})}\ifx\undefined\stillediting\else:\fbox{$#1$}\fi}
+\newenvironment{matr}[1]{\left[ \begin{array}{#1}}{\end{array}
+                         \right]}
+%
+%\newfont{\roma}{cmr10 scaled 1200}
+%\font\fourteenrm = cmr10  scaled\magstep2
+%
+\renewcommand{\cline}{{\mathbb C}}
+\newcommand{\rline}  {{\mathbb R}}
+\renewcommand{\l}    {{\lambda}}
+\renewcommand{\o}    {{\omega}}
+\newcommand{\e}      {{\varepsilon}}
+\newcommand{\half}   {{\frac{1}{2}}}
+\newcommand{\m}      {{\hbox{\hskip 1pt}}}
+
 \makeatother
 
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{document}
 
-\title{A warning about the use of reduced models of synchronous generators }
-
-
-\author{\IEEEauthorblockN{Elad Venezian} \IEEEauthorblockA{School of EE, Tel Aviv University\\
-Ramat Aviv 69978, Israel} \and \IEEEauthorblockN{George Weiss} \IEEEauthorblockA{School of EE, Tel Aviv University\\
-Ramat Aviv 69978, Israel} }
+\title{A warning about the use of reduced models of synchronous 
+       generators }
+\author{\IEEEauthorblockN{Elad Venezian} \IEEEauthorblockA{School of 
+   EE, Tel Aviv University\\ Ramat Aviv 69978, Israel} \and 
+   \IEEEauthorblockN{George Weiss} \IEEEauthorblockA{School of EE, 
+   Tel Aviv University\\ Ramat Aviv 69978, Israel}}
 
 \maketitle
 %\boldmath
@@ -51,39 +87,45 @@ to an infinite bus, and show that reduced models fail to predict the
 behavior of this system.
 \end{abstract}
 
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Introduction}
 
 % no \IEEEPARstart 
 
-The AC electricity grid was developed at the end of the XIX century,
-and basically remained very similar till our days. Many techniques
-and models that have been developed in order to analyze and design
-the grid and its components are based on assumptions and methods,
-which were driven by experience and observations \cite{SauerPai1998}.
-In recent years, there is a trend of increasing use of renewable energy,
-which requires the conversion of the energy in order to interface
-with the power grid. When the rate of the converted energy will become
-a significant part, it is not clear whether the traditional models
-and methods for controlling the power grid will succeed to control
-it \cite{ZhongWeiss2011,DePersiVanDerSchaft2016}. Therefore, there
-is an increasing interest in the fundamental mathematical models of
-the electrical grid.
+The AC electricity grid was developed at the end of the XIXth century,
+and basically remained very similar until today. The grid is an 
+enormously complex nonlinear and randonly varying system for which 
+rigorous analysis is impossible. Many techniques and
+models that have been developed to analyze the stability of the
+grid, using rigorous modelling techniques but also practical shortcuts
+and simplifying assumptions driven by experience and observations, see
+for instance \cite{Kundur}, \cite{GrSt2014}, \cite{SauerPai1998},
+\cite{GOBS:03}, \cite{DoBull2012}.
 
-\textit{Synchronous generator} (SG) is the main power source of the
-electricity grid. The mathematical model of a SG is very complex and
-difficult to use. This makes the electric grid to such a complicated
-nonlinear and time-varying system that any attempt to prove its stability
-analytically is hopeless. Stability analysis is usually done either
-by simulation, or analytically on simplified models, in which the
-SGs are connected in a simple network and each SG is represented by
-reduced order equations, see for instance \cite{DorflerBullo2012}
-and \cite{PorcoDorfleBullo2013}. The reduced model of a SG is often
-obtained by treating the stator currents as fast variables, thus eliminating
-them from the state variables via the singular perturbation approach
-(see, for instance, \cite{Khalil}) and keeping only the rotor angle,
-and the rotor angular velocity as relevant state variables, see for
-instance \cite{Kundur} and \cite{SauerPai1998}.
+In recent years, due to the increasing penetration of renewable energy
+resources, which require power converters and produce an intermittent
+power output, it is not clear whether the traditional models and
+methods for controlling the power grid will succeed to control it
+\cite{ZhongWeiss2011,DePersiVanDerSchaft2016}. Therefore, there is an
+increasing interest in the fundamental mathematical models and
+stability analysis for the electrical grid.
+
+The {\em synchronous generator} (SG) is the main power source of the
+electricity grid. The mathematical model of a SG (see the earlier
+references and in addition \cite{Walker:94}, \cite{Fitzgerald:03},
+\cite{MaWe:15}, etc.) is complex and difficult to use as a component
+when we model a large network. The electric grid to such a complicated
+nonlinear and time-varying system that any attempt to prove its
+stability analytically is hopeless. Stability analysis is usually done
+either by simulation, or analytically on simplified models, in which
+the SGs are connected in a simple network and each SG is represented
+by reduced order equations, see for instance \cite{DoBull2012} and
+\cite{PorcoDorfleBullo2013}. The reduced model of a SG is often
+obtained by treating the stator currents as fast variables, thus
+eliminating them from the state variables via the singular
+perturbation approach (see, for instance, \cite{Khalil}) and keeping
+only the rotor angle, and the rotor angular velocity as relevant state
+variables, see for instance \cite{Kundur} and \cite{SauerPai1998}.
 
 SGs has the important property that once they synchronize, that is
 their rotors spin in the same velocity, they tend to remain synchronized
@@ -185,7 +227,7 @@ i_{c}
 \par\end{centering}
 
 \caption[Structure of an idealized three-phase round rotor synchronous generator]{Structure of an idealized three-phase round rotor synchronous generator,
-modified from \cite{Grainger Stevenson2014} Figure 3.4}
+modified from \cite{GrSt2014} Figure 3.4}
 \end{figure}
 
 
@@ -733,33 +775,31 @@ $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $Pm=50$
 {[}$kW${]}) the behavior of the fourth order model and the reduced
 model is significantly different. while the four order model is stable
 (the eigenvalues of the Jacobian around the equilibrium point are:
-\[
-\left[-11.41+376.9i,-11.41-376.9i,-508+837i,-508-837i\right]
-\]
- the reduced model is not stable (the eigenvalues of the Jacobian
-around the equilibrium point are: $\left[-14.6+9.4979i,\:6.1-9.4i\right]$)
-.
+$$\left[-11.41+376.9i,-11.41-376.9i,-508+837i,-508-837i\right]$$
+the reduced model is not stable (the eigenvalues of the Jacobian
+around the equilibrium point are: 
+$\left[-14.6+9.4979i,\:6.1-9.4i\right]$).
 
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Different region of attraction example}
 
 \begin{figure}[h]
 \includegraphics[scale=0.5]{simDiffRegionOFAttraction}
-
-\caption{Simulation example that shows different behavior for the reduced model}
+\caption{Simulation example that shows different behavior for the 
+reduced model}
 \label{fig:InfBusOne1DiffRegionOfAttraction}
 \end{figure}
 
-
-As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction}, simulations
-show that for some parameters set (The parameters for this simulation
-are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
-{[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$ {[}$Vsec]$,
-$\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$ {[}$V]$, $Pm=5$
-{[}$kW${]}) the initial condition of this simulation is within the
-region of attraction of the reduced model, but outside the region
-of attraction of the fourth model. That cause the fourth order model
-to diverge while the reduce model converges to the equilibrium point. 
+As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
+simulations show that for some parameters set (The parameters for this
+simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
+$R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
+{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
+{[}$V]$, $Pm=5$ {[}$kW${]}) the initial condition of this simulation
+is within the region of attraction of the reduced model, but outside
+the region of attraction of the fourth model. That cause the fourth
+order model to diverge while the reduce model converges to the
+equilibrium point.
 
 
 \section{Conclusions}
@@ -774,45 +814,65 @@ equation.
 \section*{Acknowledgment}
 
 The authors would like to thank...
+
+%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \begin{thebibliography}{10}
-\bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \emph{Power
-Systems Dynamics and Stability}.\hskip 1em plus 0.5em minus 0.4em\relax
-Stipes Publishing, Champaign, IL, 1997.
 
-\bibitem{ZhongWeiss2011} Q.-C. Zhong and G. Weiss,\emph{ Synchronverters:
-Inverters that mimic synchronous generator}.\hskip 1em plus 0.5em
-minus 0.4em\relax IEEE Trans. Industr. Electronics, 58 (2011), pp.
-1259-1267.
+\bibitem{Kundur} P.~Kundur, \emph{Power System Stability and Control}.
+ \hskip 1em plus 0.5em minus 0.4em\relax McGraw-Hill, New York, 1994.
 
-\bibitem{DePersiVanDerSchaft2016} P. Monshizadeh and C De Persis
-and N. Monshizadeh and A. van der Schaft,\emph{ Nonlinear Analysis
-of an Improved Swing Equation}.\hskip 1em plus 0.5em minus 0.4em\relax
-Submitted in 2016.
+\bibitem{GrSt2014} J.J.~Grainger and W.D.~Stevenson,
+ {\em Power Systems Analysis}, \m McGraw-Hill, New York, 1994.
 
-\bibitem{DorflerBullo2012} F. Dorfler and F. Bullo,\emph{ Synchronization
-and transient stability in power net- works and nonuniform Kuramoto
-oscillators}.\hskip 1em plus 0.5em minus 0.4em\relax SIAM J. Control
-and Optim., 50 (2012), pp. 1616-1642.
+\bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \m {\em Power 
+ Systems Dynamics and Stability}, Stipes Publishing, Champaign,
+ IL, 1997.
 
-\bibitem{PorcoDorfleBullo2013}J. W. Simpson-Porco and F. Dï¿½rfler
-and F. Bullo, \emph{Synchronization and power sharing for droop-controlled
-inverters in islanded microgrids}.\hskip 1em plus 0.5em minus 0.4em\relax
-Automatica, 49(2013), pp. 2603\textendash 2611.
+\bibitem{GOBS:03}
+ M.~Galaz, R.~Ortega, A.S.~Bazanella and A.M.~Stankovic, \m
+ An energy-shaping approach to the design of excitation control
+ of synchronous generators, {\em Automatica}, vol.~39, 2003,
+ pp.~111-119.
 
-\bibitem{Khalil}H.K. Khalil, \emph{Nonlinear Systems} (third edition).\hskip
-1em plus 0.5em minus 0.4em\relax Prentice Hall, New Jersey, 2002.
+\bibitem{DoBull2012} F. Dorfler and F. Bullo, \m 
+ \emph{Synchronization and transient stability in power networks and
+ nonuniform Kuramoto oscillators}.\hskip 1em plus 0.5em minus 
+ 0.4em\relax SIAM J. Control and Optim., vol.~50, 2012, 
+ pp.~1616-1642.
 
-\bibitem{Kundur}P. Kundur, \emph{Power System Stability and Control}.\hskip
-1em plus 0.5em minus 0.4em\relax McGraw-Hill, New York, 1994.
+\bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
+ Design, Manufacture and Operation}, \m Oxford University Press, 
+ Oxford, 1981.
 
-\bibitem{CaliskanTabuada2014}S.Y. Caliskan and P. Tabuada, \emph{Compositional
-transient stability analysis of multimachine power networks},\hskip
-1em plus 0.5em minus 0.4em\relax IEEE Trans. Control of Network Systems,
-1 (2014), pp. 4-14.
+\bibitem{Fitzgerald:03} A.E.~Fitzgerald, C.~Kingsley and S.D.~Umans,
+ \m {\em Electric Machinery}, \m McGraw-Hill, New York, 2003.
 
-\bibitem{Grainger Stevenson2014}J.J. Grainger and W.D. Stevenson,
-\emph{Power Systems Analysis},\hskip 1em plus 0.5em minus 0.4em\relax
-McGraw-Hill, New York, 1994.
+\bibitem{MaWe:15} Y.~Mandel and G.~Weiss, \m Adaptive internal model
+ based suppression of torque ripple in brushless DC motor drives,
+ {\em Systems Science \& Control Engineering}, vol.~5, 2015, 
+ pp.~162-176.
+
+\bibitem{ZhongWeiss2011} Q.-C.~Zhong and G.~Weiss, \m 
+ Synchronverters: Inverters that mimic synchronous generator}.
+ {\em IEEE Trans. Industr. Electronics}, vol.~58, 2011, 
+ pp.~1259-1267.
+
+\bibitem{DePersiVanDerSchaft2016} P.~Monshizadeh, C.~De Persis,
+ N.~Monshizadeh and A.~van der Schaft, \m Nonlinear Analysis
+ of an improved wwing equation, \m submitted in 2016.
+
+\bibitem{PorcoDorfleBullo2013} J.W.~Simpson-Porco, F.~Dörfler
+ and F.~Bullo, \m Synchronization and power sharing for
+ droop-controlled inverters in islanded microgrids, {\em 
+ Automatica}, vol. 49, 2013, pp.~2603-2611.
+
+\bibitem{Khalil} H.K.~Khalil, \m \emph{Nonlinear Systems} (third 
+ edition), Prentice Hall, New Jersey, 2002.
+
+\bibitem{CaliskanTabuada2014} S.Y. Caliskan and P. Tabuada, 
+ \emph{Compositional transient stability analysis of multimachine 
+ power networks},\hskip 1em plus 0.5em minus 0.4em\relax IEEE 
+ Trans. Control of Network Systems, 1 (2014), pp. 4-14.
 
 \bibitem{NatarajanWeiss2015}V. Natarajan and G. Weiss, \emph{Almost
 global asymptotic stability of a grid- connected synchronous generator},\hskip
