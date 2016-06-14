@@ -73,50 +73,41 @@
    Tel Aviv University\\ Ramat Aviv 69978, Israel}}
 
 \maketitle
-%\boldmath
+
 \begin{abstract}
 Synchronous generators are an essential component of the electric
 grid. Recently, the stability of the electric grid has become an area
-of high interest and intensive research. One reason is that the power
-grid which has traditionally relied on synchronous generators as its
-power source, is changing and becoming more and more based on other
-sources. mostly because of the usage of renewable energy sources.
-
-In this work we discuss the stability of a single generator connected
-to an infinite bus, and show that reduced models fail to predict the
-behavior of this system.
+of high interest and intensive research. We discuss the stability of a
+single generator connected to an infinite bus, and show that reduced
+models fail to predict the behavior of this system.
 \end{abstract}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Introduction}
 
-% no \IEEEPARstart 
-
 The AC electricity grid was developed at the end of the XIXth century,
-and basically remained very similar until today. The grid is an 
-enormously complex nonlinear and randonly varying system for which 
-rigorous analysis is impossible. Many techniques and
-models that have been developed to analyze the stability of the
-grid, using rigorous modelling techniques but also practical shortcuts
-and simplifying assumptions driven by experience and observations, see
-for instance \cite{Kundur}, \cite{GrSt2014}, \cite{SauerPai1998},
-\cite{GOBS:03}, \cite{DoBull2012}.
+and has remained very similar until today. The grid is an enormously
+complex nonlinear and randonly varying system for which rigorous
+stability analysis is impossible. Many techniques and models that have
+been developed to assess the stability of a power grid, using rigorous
+modelling and system theory techniques mixed with practical shortcuts
+and simplifying assumptions driven by experience, see for instance
+\cite{Kundur}, \cite{GrSt2014}, \cite{SauerPai1998}, \cite{GOBS:03},
+\cite{DoBull2012}.
 
 In recent years, due to the increasing penetration of renewable energy
-resources, which require power converters and produce an intermittent
-power output, it is not clear whether the traditional models and
-methods for controlling the power grid will succeed to control it
-\cite{ZhongWeiss2011,DePersiVanDerSchaft2016}. Therefore, there is an
-increasing interest in the fundamental mathematical models and
-stability analysis for the electrical grid.
+resources, which connect to the grid via power converters and produce
+an intermittent power output, it is not clear whether the traditional
+models and methods for controlling the power grid will succeed to
+control it \cite{ZhongWeiss2011,DePersiVanDerSchaft2016}. Therefore,
+there is an increasing interest in the fundamental mathematical models
+and stability analysis for the grid.
 
 The {\em synchronous generator} (SG) is the main power source of the
 electricity grid. The mathematical model of a SG (see the earlier
 references and in addition \cite{Walker:94}, \cite{Fitzgerald:03},
 \cite{MaWe:15}, etc.) is complex and difficult to use as a component
-when we model a large network. The electric grid to such a complicated
-nonlinear and time-varying system that any attempt to prove its
-stability analytically is hopeless. Stability analysis is usually done
+when we model a large network. Stability analysis is usually done
 either by simulation, or analytically on simplified models, in which
 the SGs are connected in a simple network and each SG is represented
 by reduced order equations, see for instance \cite{DoBull2012} and
@@ -124,48 +115,41 @@ by reduced order equations, see for instance \cite{DoBull2012} and
 obtained by treating the stator currents as fast variables, thus
 eliminating them from the state variables via the singular
 perturbation approach (see, for instance, \cite{Khalil}) and keeping
-only the rotor angle, and the rotor angular velocity as relevant state
-variables, see for instance \cite{Kundur} and \cite{SauerPai1998}.
+only the rotor angle, and the rotor angular velocity and the rotor
+field as relevant state variables, see for instance \cite{Kundur} and
+\cite{SauerPai1998}.
 
-SGs has the important property that once they synchronize, that is
-their rotors spin in the same velocity, they tend to remain synchronized
-even without any control. This is important attribute because the
-electricity grid must maintain constant frequency, and because the
-ability of a SG to transfer constant power through the grid exists
-only when the phase difference between each SG and the grid is constant.
-Therefore, it is desirable to know if for a given grid which contains
-SGs and a loads,all the SGs and tend to synchronize and if the grid
-frequency remains constant. In order to use the control stability
-analysis, and because the trajectory of the state of a SG in the steady
-state is sinusoidal, it is common to use transformation of the voltages
-and currents that map sinusoidal trajectory into a constant point
-on the state plane. The famous Park's transformation meets this requirement,
-so after applying Park's transformation on the SG model, system that
-oscillate with fixed sinusoidal oscillation will translated to stable
-system. The question whether the system is stable (which means that
-all the SGs are synchronized and remain at constant frequency) is
-known as frequency stability.
+SGs have the important property that once they synchronize, they tend
+to remain synchronized even without any control. This is important
+attribute because the electricity grid must maintain nearly constant
+frequency, and because the ability of a SG to transfer constant power
+to the grid exists only when the phase difference between it and the
+grid is constant. Therefore, it is desirable to know if for a given
+grid which contains SGs and a loads, all the SGs and tend to
+synchronize and if the grid frequency remains constant. To simplify
+the stability analysis, it is common to use the Park transformation of
+the voltages and currents, that maps sinusoidal positive sequence
+signals into a fixed point in the state space.
 
-The most common model, which known as the classical model, is a second
-order non linear model. \cite{DePersiVanDerSchaft2016} showed that
-this model is not realistic enough and that more complicated model,
-which known as the \emph{improved swing equation }model should be
-used. In this paper we show that even this model is not enough, because
-it can't predict a behavior that is predicted by more complicated
-model.
+The most common reduced model, which is known as the classical model,
+is a second order non linear model. \cite{DePersiVanDerSchaft2016}
+showed that this model is not realistic enough and that more
+complicated model, which known as the \emph{improved swing equation
+}model should be used. In this paper we show that even this model is
+not enough, because it can't predict a behavior that is predicted by
+more complicated model.
 
-The rest of this paper is organized as follows. In Section II, a fourth
-order model of SG connected to infinite bus is presented. The reduction
-from the fourth order model to the second order \emph{improved swing
-equation }is described in Section III. Simulations and local stability
-analysis that shows different behavior of the models are given in
-Section IV. In Section V we conclude and discuss future directions.% You must have at least 2 lines in the paragraph with the drop letter% (should never be an issue)
+The rest of this paper is organized as follows. In Section II, a
+fourth order model of SG connected to infinite bus is presented. The
+reduction from the fourth order model to the second order
+\emph{improved swing equation }is described in Section
+III. Simulations and local stability analysis that shows different
+behavior of the models are given in Section IV. In Section V we
+conclude and discuss future directions.% You must have at least 2
+lines in the paragraph with the drop letter% (should never be an
+issue)
 
-\hfill{}
-
-\hfill{}
-
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Modeling SG connected to infinite bus}
 
 In this section we derive the equations for a SG connected to infinite
@@ -840,6 +824,15 @@ The authors would like to thank...
  0.4em\relax SIAM J. Control and Optim., vol.~50, 2012, 
  pp.~1616-1642.
 
+\bibitem{ZhongWeiss2011} Q.-C.~Zhong and G.~Weiss, \m 
+ Synchronverters: Inverters that mimic synchronous generator.
+ {\em IEEE Trans. Industr. Electronics}, vol.~58, 2011, 
+ pp.~1259-1267.
+
+\bibitem{DePersiVanDerSchaft2016} P.~Monshizadeh, C.~De Persis,
+ N.~Monshizadeh and A.~van der Schaft, \m Nonlinear Analysis
+ of an improved wwing equation, \m submitted in 2016.
+
 \bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
  Design, Manufacture and Operation}, \m Oxford University Press, 
  Oxford, 1981.
@@ -851,15 +844,6 @@ The authors would like to thank...
  based suppression of torque ripple in brushless DC motor drives,
  {\em Systems Science \& Control Engineering}, vol.~5, 2015, 
  pp.~162-176.
-
-\bibitem{ZhongWeiss2011} Q.-C.~Zhong and G.~Weiss, \m 
- Synchronverters: Inverters that mimic synchronous generator}.
- {\em IEEE Trans. Industr. Electronics}, vol.~58, 2011, 
- pp.~1259-1267.
-
-\bibitem{DePersiVanDerSchaft2016} P.~Monshizadeh, C.~De Persis,
- N.~Monshizadeh and A.~van der Schaft, \m Nonlinear Analysis
- of an improved wwing equation, \m submitted in 2016.
 
 \bibitem{PorcoDorfleBullo2013} J.W.~Simpson-Porco, F.~Dörfler
  and F.~Bullo, \m Synchronization and power sharing for
