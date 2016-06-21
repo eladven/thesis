@@ -137,15 +137,15 @@ The most common reduced model, which is known as the classical model,
 is a second order non linear model. The reference
 \cite{DePersiSchaft:16} argues that this model is not realistic enough
 and that a more complicated (but still reduced) model, which they call
-{\em improved swing equation}, should be used. In this paper we show
+{\em improved swing equation} (ISE), should be used. In this paper we show
 that even the model proposed in \cite{DePersiSchaft:16} is not
 reliable for stability analysis, because it can't predict an unstable
 behavior that is predicted by more faithful model of the same system.
 
 The rest of this paper is organized as follows. In Section II, a
 fourth order model of a SG connected to infinite bus is presented. The
-reduction from the fourth order model to the second order
-\emph{improved swing equation} is described in Section III.
+reduction from the above model to the second order
+ISE is described in Section III.
 Simulations and local stability analysis that shows different behavior
 of the models are given in Section IV.
 
@@ -362,13 +362,12 @@ and the above equation into \rfb{eq:idiqDynamics}, we obtain
    \end{array} \nm\right] + \left[\nm \begin{array}{c} V\sin\delta
    \\ V\cos\delta\\ T_m\\ -\o_g \end{array} \nm\right]
 \end{equation}
-This fourth order nonlinear dynamical system is the model for one
-SG connected to an infinite bus.
+We refer this fourth order nonlinear dynamical system of one SG connected to an infinte bus as the {\em fourth order model} (FOM).
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{The improved swing equation}
 
-We separate the state variables into a fast variables and a slow 
+In this section, we show the relation between the ISE and the FOM. We start with the FOM, and by the following process, we get the ISE model. We separate the state variables into a fast variables and a slow 
 variables, in order to use singular perturbation analysis (see for
 instance \cite{Khalil}). Now the structure of the system is:
 $$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e)\\
@@ -446,23 +445,21 @@ J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delt
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \]
-This model is known as the {\em improved swing equation} model,
+This model is known as the {\em improved swing equation} (ISE) model,
 see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations}
 
-Here we present a simulation that demonstrates that the improved swing
-equation model is a good reduction for many cases, but there are cases
+Here we present a simulation that demonstrates that the ISE model is a good reduction for many cases, but there are cases
 in which there is mismatch between the behavior suggested by the
-improved swing equations model and the fourth order model
+ISE model and the FOM
 \rfb{eq:SGDynamicsInfBus}. For each simulation, we will show the
-currents $i_d$ and $i_q$ over time for both the fourth order model
-and the improved swing equation model, where for the improved swing
-equation model, we estimate these currents by
+currents $i_d$ and $i_q$ over time for both the FOM
+and the ISE models, where for the ISE model, we estimate these currents by
 \eqref{eq:ISEInfBusEstimatedCurrents}.  In addition we will show the
 frequency over time for the two models, and the phase over time of the
-fourth order model and the improved swing equation model.
+FOM and the ISE models.
 
 \subsection{5KW SG}
 
@@ -477,9 +474,8 @@ fourth order model and the improved swing equation model.
 
 
 As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations show that
-for the 5KW SG, the behavior of the fourth order model and the reduced
-model is almost the same. Although the currents at the reduced don't
-have a ripple that the fourth order model has, both models converge
+for the 5KW SG, the behavior of the FOM and the ISE is almost the same. Although the currents at the reduced don't
+have a ripple that the FOM has, both models converge
 at the same rate with the same oscillations to the same equilibrium
 point (The parameters for this simulation are $J=0.2$ {[}$kgm^{2}${]},
 $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
@@ -498,9 +494,8 @@ $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that
-for the 1MW SG, the behavior of the fourth order model and the reduced
-model are still very similar. Although the fourth order model currents
-are much rippled than the reduced model currents, both models converge
+for the 1MW SG, the behavior of the FOM and the ISE are still very similar. Although the FOM currents
+are much rippled than the ISE currents, both models converge
 at the same rate with the same oscillations to the same equilibrium
 point (The parameters for this simulation are $J=40.05$ {[}$kgm^{2}${]},
 $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
@@ -524,8 +519,7 @@ show that for other parameters set (The parameters for this simulation
 are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
 {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$,
 $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $Pm=50$
-{[}$kW${]}) the behavior of the fourth order model and the reduced
-model is significantly different. while the four order model is stable
+{[}$kW${]}) the behavior of the FOM and the ISE is significantly different. while the four order model is stable
 (the eigenvalues of the Jacobian around the equilibrium point are:
 $$\left[-11.41+376.9i,-11.41-376.9i,-508+837i,-508-837i\right]$$
 the reduced model is not stable (the eigenvalues of the Jacobian
@@ -549,18 +543,16 @@ $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
 {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
 {[}$V]$, $Pm=5$ {[}$kW${]}) the initial condition of this simulation
 is within the region of attraction of the reduced model, but outside
-the region of attraction of the fourth model. That cause the fourth
-order model to diverge while the reduce model converges to the
+the region of attraction of the FOM. That cause the FOM to diverge while the ISE converges to the
 equilibrium point.
 
 
 \section{Conclusions}
 
-We have showed the relation between the fourth order model of SG connected
-to an infinite bus and the improved swing equation model. Simulations
-are carried out to show that the fourth order model gives rise to
-a behavior that does not match what is suggested by the improved swing
-equation. 
+We have showed the relation between the FOM of SG connected
+to an infinite bus and the ISE model. Simulations
+are carried out to show that the FOM gives rise to
+a behavior that does not match what is suggested by the ISE. 
 
 
 \section*{Acknowledgment}
@@ -586,13 +578,13 @@ The authors would like to thank...
  of synchronous generators, {\em Automatica}, vol.~39, 2003,
  pp.~111-119.
 
-\bibitem{DoBull:12} F. Dorfler and F. Bullo, \m 
+\bibitem{DoBull:12} F. D{\"o}rfler and F. Bullo, \m 
  \emph{Synchronization and transient stability in power networks and
  nonuniform Kuramoto oscillators}.\hskip 1em plus 0.5em minus 
  0.4em\relax SIAM J. Control and Optim., vol.~50, 2012, 
  pp.~1616-1642.
 
-\bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D�rfler
+\bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
  droop-controlled inverters in islanded microgrids, {\em 
  Automatica}, vol. 49, 2013, pp.~2603-2611.
