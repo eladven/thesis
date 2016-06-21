@@ -4,6 +4,7 @@
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx,epsfig}
 \usepackage{mathptmx,times} % if new font selection scheme installed
+\usepackage{epstopdf}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -190,7 +191,7 @@ We denote the stator flux by $\Phi=\left[\Phi_a\ \Phi_b\ \Phi_c
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}
 \begin{centering}
-\includegraphics[scale=0.4]{SGStucture}
+\includegraphics[scale=0.5]{SGStucture}
 \par\end{centering} \label{fig:structOfSG}
 
 \caption[Structure of an idealized three-phase round rotor synchronous
@@ -466,13 +467,14 @@ fourth order model and the improved swing equation model.
 \subsection{5KW SG}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[h]
-\includegraphics[scale=0.5]{sim5KWInfBus}
+\begin{figure}[ht]
+\includegraphics[scale=0.6]{sim5KWInfBus}
 
 \caption{Simulation for infinite bus with single 5KW SG}
 \label{fig:InfBusOne5KWSG}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
 
 As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations show that
 for the 5KW SG, the behavior of the fourth order model and the reduced
@@ -487,8 +489,8 @@ $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
 \subsection{1MW SG}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[h]
-\includegraphics[scale=0.5]{sim1MWInfBus}
+\begin{figure}[ht]
+\includegraphics[scale=0.6]{sim1MWInfBus}
 
 \caption{Simulation for infinite bus with single 1MW SG}
 \label{fig:InfBusOne1MWSG}
@@ -508,8 +510,8 @@ $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
 \subsection{Non stable behavior of the reduced model}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[h]
-\includegraphics[scale=0.5]{simDiffBehavior1}
+\begin{figure}[ht]
+\includegraphics[scale=0.6]{simDiffBehavior1}
 
 \caption{Simulation example that shows different behavior for the 
          reduced model}
@@ -533,8 +535,8 @@ $\left[-14.6+9.4979i,\:6.1-9.4i\right]$).
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Different region of attraction example}
 
-\begin{figure}[h]
-\includegraphics[scale=0.5]{simDiffRegionOFAttraction}
+\begin{figure}[ht]
+\includegraphics[scale=0.6]{simDiffRegionOFAttraction}
 \caption{Simulation example that shows different behavior for the 
 reduced model}
 \label{fig:InfBusOne1DiffRegionOfAttraction}
