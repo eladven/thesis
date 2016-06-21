@@ -367,61 +367,62 @@ We refer this fourth order nonlinear dynamical system of one SG connected to an 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{The improved swing equation}
 
-In this section, we show the relation between the ISE and the FOM. We start with the FOM, and by the following process, we get the ISE model. We separate the state variables into a fast variables and a slow 
-variables, in order to use singular perturbation analysis (see for
-instance \cite{Khalil}). Now the structure of the system is:
+In this section, we show the relation between the ISE and the FOM. We start with the FOM, and by reduction process, we get the ISE model. 
+We start by applying the singular perturbation analysis (see for
+instance \cite{Khalil}). The FOM model \rfb{eq:SGDynamicsInfBus} has the following structure:  $$\dot{z} = F(z) $$ Because some of it state variables are multiplied by small parameter ($L_s$), We represent this dynamical system in the following structure:
 $$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e)\\
    \e\dot{y} \m=\m g(x,y,\e) \end{array}\right.$$
-where $x$ is the vector of slow state variables, $y$ is the vector of
-fast state variables and $\e>0$ is a small parameter.
 
-In our case, assuming that $L_s$ is very small in a suitable sense,
-define $\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}
-\right]$ and $y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$
-so that
+By doing this, we separate the state variables into a fast variables and a slow variables. $x$ is the vector of the slow state variables, and $y$ is the vector of the fast state variables and $\e>0$ is a small parameter.
+
+Assuming that $L_s$ is very small with compared to the other parameters, we
+ define $\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}
+\right]$ and $y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$.
+By taking the first and second lines from \rfb{eq:SGDynamicsInfBus}, we have
 $$ g(x,y,\e) \m=\m \left[\nm \begin{array}{cc} -R_s & \o L_s\\ -\o 
-   L_s & -R_s \end{array}\nm\right] \left[\nm \begin{array}{c} \o\\ 
-   \delta \end{array} \nm\right]+\left[\begin{array}{c} V\sin\delta\\ 
+   L_s & -R_s \end{array}\nm\right] \left[\nm \begin{array}{c} i_d\\ 
+   \i_q \end{array} \nm\right]+\left[\begin{array}{c} V\sin\delta\\ 
    V\cos\delta - mi_f\o \end{array}\right].$$
-We assume that $\e$ is very small, meaning that $\e\dot{y}=g(x,y,\e)$
-is much faster than $\dot{x}=f(x,y,\e)$, and it will reach its
-equilibrium (assuming that the equilibrium point exist and attractive)
-almost instantly with regard to $x$.  The equilibrium point
+Because our assumption  that $\e$ is very small, meaning that $\e\dot{y}=g(x,y,\e)$
+is much faster than $\dot{x}=f(x,y,\e)$, and it will reach its equilibrium (assuming that the equilibrium point exist and attractive)
+almost instantly related to $x$.  The equilibrium point
 $y_{0}=\hat{y}(x,\e=0)$ is the solution of $g(x,y,\e)=0$. The solution
 of this linear equation (in $\hat{y}$) is
 \[
-\begin{array}{ccc}
-\hat{y} & = & -\left[\begin{array}{cc}
+\hat{y}  =  -\left[\begin{array}{cc}
 -R_{s} & \omega L_{s}\\
 -\omega L_{s} & -R_{s}
-\end{array}\right]^{-1}\left[\begin{array}{c}
+\end{array}\right]^{-1}\left[\begin{array}{cc}
 V\sin(\delta)\\
 V\cos(\delta)-mi_{f}\omega
-\end{array}\right]\\
- & = & \left[\begin{array}{c}
-\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
+\end{array}\right]
+\]
+Implicitly:
+\[
+\hat{y}  =
+\left[\begin{array}{cc}
+\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-
+V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
 \frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega\sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
 \end{array}\right]
-\end{array}
 \]
 
 
 Assuming that $R_{s}\ll L_{s}\omega_{g}$ and $R_{s}mi_{f}\ll L_{s}V$
-, and assuming that our dynamics are close to the equilibrium, namely
-$\omega\simeq\omega_{g}$. 
+, and assuming that these dynamics are close to the equilibrium, namely $\omega\simeq\omega_{g}$ then: 
 
 \begin{equation}
 \hat{y}=\left[\begin{array}{c}
-\hat{i}_{d}=\\
+\hat{i}_{d}\\
 \hat{i}_{q}
 \end{array}\right]=\left[\begin{array}{c}
-\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
+\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}\\
 -\frac{V\sin(\delta)}{L_{s}\omega}
 \end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
 \end{equation}
 
 
-Now, substitute $\hat{y}$ in $\dot{x}=f(x,y,\epsilon)$ to have a
+Using the previous equation, substitute $\hat{y}$ in $\dot{x}=f(x,y,\epsilon)$ to have a
 reduced model:
 \[
 \left\{ \begin{array}{c}
@@ -441,7 +442,7 @@ and then the model is:
 
 \[
 \left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}+\\
+J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}\\
 \dot{\delta}=\omega-\omega_{g}
 \end{array}\right.
 \]
@@ -451,15 +452,9 @@ see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations}
 
-Here we present a simulation that demonstrates that the ISE model is a good reduction for many cases, but there are cases
-in which there is mismatch between the behavior suggested by the
-ISE model and the FOM
-\rfb{eq:SGDynamicsInfBus}. For each simulation, we will show the
-currents $i_d$ and $i_q$ over time for both the FOM
-and the ISE models, where for the ISE model, we estimate these currents by
-\eqref{eq:ISEInfBusEstimatedCurrents}.  In addition we will show the
-frequency over time for the two models, and the phase over time of the
-FOM and the ISE models.
+In this section we present simulations which demonstrates that the ISE model is a good reduction for many cases. We also show that there are cases in which there is a mismatch between the behavior suggested by the ISE model and the FOM. In each simulation result, the behavior of $i_d$ and $i_q$ over time is described for both the FOM
+and the ISE models. 
+Note that for the ISE model, we use \eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents.  The frequency over time of these two models  models, and the phase over time of the FOM and the ISE models are also shown .
 
 \subsection{5KW SG}
 
@@ -473,7 +468,7 @@ FOM and the ISE models.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
-As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations show that
+As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates that
 for the 5KW SG, the behavior of the FOM and the ISE is almost the same. Although the currents at the reduced don't
 have a ripple that the FOM has, both models converge
 at the same rate with the same oscillations to the same equilibrium
@@ -495,7 +490,7 @@ $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
 
 As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that
 for the 1MW SG, the behavior of the FOM and the ISE are still very similar. Although the FOM currents
-are much rippled than the ISE currents, both models converge
+are much more rippled than the ISE currents, both models converge
 at the same rate with the same oscillations to the same equilibrium
 point (The parameters for this simulation are $J=40.05$ {[}$kgm^{2}${]},
 $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
@@ -508,7 +503,7 @@ $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{simDiffBehavior1}
 
-\caption{Simulation example that shows different behavior for the 
+\caption{A simulation example showing different behavior for the 
          reduced model}
 \label{fig:InfBusOne1DiffBehavior1}
 \end{figure}
@@ -527,7 +522,7 @@ around the equilibrium point are:
 $\left[-14.6+9.4979i,\:6.1-9.4i\right]$).
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{Different region of attraction example}
+\subsection{An example for different region of attraction}
 
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{simDiffRegionOFAttraction}
@@ -549,15 +544,12 @@ equilibrium point.
 
 \section{Conclusions}
 
-We have showed the relation between the FOM of SG connected
+We have shown the relation between the FOM of SG connected
 to an infinite bus and the ISE model. Simulations
 are carried out to show that the FOM gives rise to
-a behavior that does not match what is suggested by the ISE. 
+a behavior which doesn't match the one suggested by the ISE. 
 
 
-\section*{Acknowledgment}
-
-The authors would like to thank...
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \begin{thebibliography}{10}
