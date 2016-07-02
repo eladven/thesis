@@ -79,8 +79,8 @@
 Synchronous generators are an essential component of the electric
 grid. Recently, the stability of the electric grid has become an area
 of high interest and intensive research. We discuss the stability of a
-single generator connected to an infinite bus, and show that reduced
-models fail to predict the behavior of this system.
+single generator connected to an infinite bus, and show that certain
+reduced models fail to predict the behavior of this system.
 \end{abstract}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
@@ -116,7 +116,7 @@ by reduced order equations, see for instance \cite{DoBull:12} and
 \cite{PoDoBu:13}. The reduced model of a SG is often obtained by
 treating the stator currents as fast variables, thus eliminating them
 from the state variables via the singular perturbation approach (see,
-for instance, \cite{Khalil}) and keeping only the rotor angle, and the
+for instance, \cite{Khalil}) and keeping only the rotor angle, the
 rotor angular velocity and the rotor field as relevant state
 variables, see for instance \cite{Kundur} and \cite{SauerPai1998}.
 
@@ -137,15 +137,16 @@ The most common reduced model, which is known as the classical model,
 is a second order non linear model. The reference
 \cite{DePersiSchaft:16} argues that this model is not realistic enough
 and that a more complicated (but still reduced) model, which they call
-{\em improved swing equation} (ISE), should be used. In this paper we show
-that even the model proposed in \cite{DePersiSchaft:16} is not
+{\em improved swing equation} (ISE), should be used. In this paper we
+show that even the model proposed in \cite{DePersiSchaft:16} is not
 reliable for stability analysis, because it can't predict an unstable
-behavior that is predicted by more faithful model of the same system.
+behavior that is predicted by a more faithful model of the same
+system.
 
 The rest of this paper is organized as follows. In Section II, a
-fourth order model of a SG connected to infinite bus is presented. The
-reduction from the above model to the second order
-ISE is described in Section III.
+fourth order model of a SG connected to infinite bus and having
+constant field current is presented. The reduction from the above
+model to the second order ISE is described in Section III.
 Simulations and local stability analysis that shows different behavior
 of the models are given in Section IV.
 
@@ -153,10 +154,11 @@ of the models are given in Section IV.
 \section{Modeling SG connected to infinite bus}
 
 In this section we derive the equations for a SG connected to infinite
-bus. We start with deriving the equations for single SG, assuming
-constant field current, following the notation in \cite{ZhWe:11}. Then
-we derive the equations for a single SG connected to an infinite bus,
-following \cite{NaWe:14}, \cite{NaWe:15}.
+bus and having a constant field (or rotor) current. We start with
+deriving the equations for single SG, assuming constant field current,
+following the notation in \cite{ZhWe:11}. Then we derive the equations
+for a single SG connected to an infinite bus, following
+\cite{NaWe:14}, \cite{NaWe:15}.
 
 \subsection{Single SG dynamics}
 
@@ -178,11 +180,11 @@ of voltages on the stator terminals is denoted by $v=\left[v_a\ v_b\
 v_c\right]^\top$. We denote by $v_s$ the voltage at the unconnected 
 center of the star (see Figure 1) and $v^n=[v_s\ v_s\ v_s]^\top$.
 We define the vectors
-$$ \widetilde{\cos}\theta \m=\m \left[\begin{array}{c} \cos\left(
+$$ \widetilde{\cos}\m\theta \m=\m \left[\begin{array}{c} \cos\left(
    \theta\right)\\ \cos\left(\theta-\frac{2\pi}{3}\right)\\
    \cos\left(\theta-\frac{4\pi}{3}\right) \end{array}\right] \m,\quad
-   \widetilde{\sin}\theta=\left[\begin{array}{c} \sin\left(\theta
-   \right)\\ \sin\left(\theta-\frac{2\pi}{3}\right)\\ \sin\left
+   \widetilde{\sin}\m\theta \m= \left[\begin{array}{c} \sin\left(
+   \theta\right)\\ \sin\left(\theta-\frac{2\pi}{3}\right)\\ \sin\left
    (\theta-\frac{4\pi}{3}\right) \end{array}\right] \m.$$
 We denote the stator flux by $\Phi=\left[\Phi_a\ \Phi_b\ \Phi_c
 \right]^\top$, the stator currents by $i=\left[i_a\ i_b\ i_c\right]
@@ -221,7 +223,7 @@ stator voltages satisfy
 \end{equation}
 where $e=\left[e_a\ e_b\ e_c \right] ^\top$ is the back electromotive 
 force (EMF) due to the rotor movement (also called synchronous 
-internal voltage), given by
+internal voltage), given by \vspace{-2mm}
 \BEQ{eq:emf}
    e \m=\m M_f i_f\dot{\theta}\widetilde{\sin}\theta \m.
 \end{equation}
@@ -253,7 +255,7 @@ $$ \frac{\dd i_{dq0}}{\dd\theta} \m=\m U(\theta)\frac{\dd i}
    {\dd\theta} + \frac{\dd U(\theta)}{\dd\theta}i \m=\m
    U(\theta)\frac{\dd i}{\dd\theta} + \left[\begin{array}{c}
    i_{q}\\ -i_{d}\\ 0 \end{array}\right].$$
-This implies that
+This implies that \vspace{-2mm}
 $$ \dot{i}_{dq0} \m=\m \frac{\dd i_{dq0}}{\dd\theta} \cdot \frac
    {\dd\theta}{\dd t} \m=\m U(\theta)\dot{i} + \o\left[\begin{array}
    {c} i_q\\ -i_d\\ 0 \end{array}\right] \m,$$
@@ -313,19 +315,21 @@ $$ \frac{\dd}{\dd t}\nm\left[\nm \begin{array}{c} L_s i_d\\ L_s i_q\\
    \end{array} \nm\right] + \left[\nm\nm \begin{array}{c} -v_d\\ -v_q
    \\ T_m \end{array} \nm\nm\right].$$
 This third order nonlinear dynamical system represents the dynamics
-of a single SG with constant field current. 
+of a single SG with constant field current, if we ignore the rotor 
+angle $\theta$. 
 
 \subsection{Model of a single generator connected to an infinite bus}
 
-In this subsection we develop a model for single SG connected to an
-infinite bus, following \cite{NaWe:14}, \cite{NaWe:15}. The infinite
-bus is modeled as a three phase AC voltage source, i.e, the infinite
-bus is not affected by the synchronous generator that is connected to
-it. The justification for this model is that the influence of a single
-SG on a grid is very small. In general, the line that connects the SG
-to the grid has its impedance that can be modeled (in most cases) as a
-resistance and an inductance in series, but these values can simply be
-added to the parameters $R_s$ and $L_s$ of the SG.
+In this subsection we develop a model for single SG with constant
+field current and connected to an infinite bus, following
+\cite{NaWe:14}, \cite{NaWe:15}. The infinite bus is modeled as a three
+phase AC voltage source, i.e, the infinite bus is not affected by the
+synchronous generator that is connected to it. The justification for
+this model is that the influence of a single SG on a grid is very
+small. In general, the line that connects the SG to the grid has its
+impedance that can be modeled (in most cases) as a resistance and an
+inductance in series, but these values can simply be added to the
+parameters $R_s$ and $L_s$ of the SG.
 
 The infinite bus voltage (at the SG terminals) is
 \BEQ{eq:infBusVoltageABC}
@@ -362,99 +366,90 @@ and the above equation into \rfb{eq:idiqDynamics}, we obtain
    \end{array} \nm\right] + \left[\nm \begin{array}{c} V\sin\delta
    \\ V\cos\delta\\ T_m\\ -\o_g \end{array} \nm\right]
 \end{equation}
-We refer this fourth order nonlinear dynamical system of one SG connected to an infinte bus as the {\em fourth order model} (FOM).
+We refer to this fourth order nonlinear dynamical system as the {\em 
+fourth order model} (FOM).
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{The improved swing equation}
 
-In this section, we show the relation between the ISE and the FOM. We start with the FOM, and by reduction process, we get the ISE model. 
-We start by applying the singular perturbation analysis (see for
-instance \cite{Khalil}). The FOM model \rfb{eq:SGDynamicsInfBus} has the following structure:  $$\dot{z} = F(z) $$ Because some of it state variables are multiplied by small parameter ($L_s$), We represent this dynamical system in the following structure:
-$$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e)\\
-   \e\dot{y} \m=\m g(x,y,\e) \end{array}\right.$$
+In this section, we show the relation between the ISE and the FOM. We
+start with the FOM, and by a model reduction process, we get the ISE
+model.  We apply ideas from singular perturbation analysis (see for
+instance \cite{Khalil}). The FOM \rfb{eq:SGDynamicsInfBus} has the
+following structure: \vspace{-2mm}
+$$\Lambda \m \dot{z} \m=\m F(z) \m,$$ 
+where $\Lambda$ is a diagonal $4\times 4$ matrix with positive
+coefficients on the diagonal. Because the first two coefficients on
+the diagonal of $\Lambda$ are equal to $L_s$, which in some sense can
+be regarded as being small, we rewrite this dynamical system in the
+following form:
+$$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e) \m,\\
+   \e\dot{y} \m=\m g(x,y,\e) \m. \end{array}\right.$$
+By doing this, we have separated the state variables into a vector of 
+fast variables, denoted by $y$, and another of slow variables, denoted
+by $x$. Here, $\e>0$ is the small parameter.
 
-By doing this, we separate the state variables into a fast variables and a slow variables. $x$ is the vector of the slow state variables, and $y$ is the vector of the fast state variables and $\e>0$ is a small parameter.
-
-Assuming that $L_s$ is very small with compared to the other parameters, we
- define $\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}
-\right]$ and $y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$.
-By taking the first and second lines from \rfb{eq:SGDynamicsInfBus}, we have
+We assuming that $\e$ is very small, meaning that for each $x$, the 
+vector $y$ converges to a temporary equilibrium value (that depends on
+$x$) much faster than the rate of change of $x$. In our specific case,
+$\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}\right]$ and
+$y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$. By taking the
+first and second lines from \rfb{eq:SGDynamicsInfBus}, we have
 $$ g(x,y,\e) \m=\m \left[\nm \begin{array}{cc} -R_s & \o L_s\\ -\o 
    L_s & -R_s \end{array}\nm\right] \left[\nm \begin{array}{c} i_d\\ 
    \i_q \end{array} \nm\right]+\left[\begin{array}{c} V\sin\delta\\ 
    V\cos\delta - mi_f\o \end{array}\right].$$
-Because our assumption  that $\e$ is very small, meaning that $\e\dot{y}=g(x,y,\e)$
-is much faster than $\dot{x}=f(x,y,\e)$, and it will reach its equilibrium (assuming that the equilibrium point exist and attractive)
-almost instantly related to $x$.  The equilibrium point
-$y_{0}=\hat{y}(x,\e=0)$ is the solution of $g(x,y,\e)=0$. The solution
-of this linear equation (in $\hat{y}$) is
-\[
-\hat{y}  =  -\left[\begin{array}{cc}
--R_{s} & \omega L_{s}\\
--\omega L_{s} & -R_{s}
-\end{array}\right]^{-1}\left[\begin{array}{cc}
-V\sin(\delta)\\
-V\cos(\delta)-mi_{f}\omega
-\end{array}\right]
-\]
-Implicitly:
-\[
-\hat{y}  =
-\left[\begin{array}{cc}
-\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-
-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
-\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega\sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
-\end{array}\right]
-\]
-
-
-Assuming that $R_{s}\ll L_{s}\omega_{g}$ and $R_{s}mi_{f}\ll L_{s}V$
-, and assuming that these dynamics are close to the equilibrium, namely $\omega\simeq\omega_{g}$ then: 
-
-\begin{equation}
-\hat{y}=\left[\begin{array}{c}
-\hat{i}_{d}\\
-\hat{i}_{q}
-\end{array}\right]=\left[\begin{array}{c}
-\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}\\
--\frac{V\sin(\delta)}{L_{s}\omega}
-\end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
+Our assumption that $\e$ is very small means that the subsystem $\e
+\dot{y}=g(x,y,\e)$ is much faster than $\dot{x}=f(x,y,\e)$ and it is 
+also stable, so that it will reach its temporary equilibrium almost 
+instantly compared to the slow movement of $x$. The temporary 
+equilibrium point $\hat{y}(x,\e)$ is the solution of $g(x,\hat y,\e)=
+0$. The solution of this linear equation (in $\hat{y}$) is
+$$ \hat{y} \m=\m -\left[\begin{array}{cc} -R_s & \o L_s\\
+   -\o L_s & -R_s \end{array}\right]^{-1}\left[\begin{array}{cc}
+   V\sin\delta\\ V\cos\delta - mi_f\o \end{array}\right]$$
+$$ \m\qquad=\m \left[\begin{array}{cc} \frac{R_s V\sin\delta - L_s\o
+   \left(mi_f\o - V\cos\delta\right)}{L_s^{2}\o^2+R_s^2}\\
+   \frac{-R_s\left(mi_f\o - V\cos\delta\right) - L_s V\o\sin\delta}
+   {L_s^2\o^2 + R_s^2} \end{array}\right] \m.$$
+Assuming that $R_s$ is small so that the terms containing $R_s$ are
+negligible, we obtain the following approximation of $\hat y$:
+\BEQ{eq:ISEInfBusEstimatedCurrents}
+   \hat{y}_{app} \m=\m \left[\begin{array}{c} \hat{i}_d\\
+   \hat{i}_q \end{array}\right] \m=\m \left[\begin{array}{c}
+   \frac{V\cos\delta - mi_f\o}{L_s\o}\\ -\frac{V\sin\delta}{L_s\o}
+   \end{array}\right] \m.
 \end{equation}
 
-
-Using the previous equation, substitute $\hat{y}$ in $\dot{x}=f(x,y,\epsilon)$ to have a
-reduced model:
-\[
-\left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}V\sin(\delta)}{L_{s}}+T_{m}\omega\\
-\dot{\delta}=\omega-\omega_{g}
-\end{array}\right.
-\]
-
-
-We assume that the active torque is due to fix mechanical power and
-a correction factor for the viscous friction and droop:
-
-\[
-T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
-\]
-and then the model is: 
-
-\[
-\left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}\\
-\dot{\delta}=\omega-\omega_{g}
-\end{array}\right.
-\]
+We substitute $\hat{y}_{app}$ obtained above into $\dot{x}=f(x,y,\e)$
+(in place of $y$) to get the reduced model
+$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o^2 \m=\m -\frac{mi_f V
+   \sin\delta}{L_s}+T_m\o \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
+   \end{array}\right.$$
+The power absorbed from the prime mover can be expressed approximately
+(assuming constant torque) as
+$$P_m \m=\m (T_m-D_p \o_g)\o \m.$$
+If we express from here $T_m\o$ and substitute into the model 
+derived a little earlier, we obtain
+$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m - 
+   \frac{mi_f V\sin\delta}{L_s} \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
+   \end{array}\right.$$
 This model is known as the {\em improved swing equation} (ISE) model,
-see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}.
+see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did 
+many different approximations to derive it.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations}
 
-In this section we present simulations which demonstrates that the ISE model is a good reduction for many cases. We also show that there are cases in which there is a mismatch between the behavior suggested by the ISE model and the FOM. In each simulation result, the behavior of $i_d$ and $i_q$ over time is described for both the FOM
-and the ISE models. 
-Note that for the ISE model, we use \eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents.  The frequency over time of these two models  models, and the phase over time of the FOM and the ISE models are also shown .
+In this section we present simulations which demonstrate that the ISE
+model is a good approximate model in many cases. We also show that
+there are cases in which there is a significant mismatch between the
+behavior suggested by the ISE model and the FOM. In each simulation
+result, the behavior of $i_d$ and $i_q$ over time is described for
+both the FOM and the ISE models. Note that for the ISE model, we use
+\eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We 
+plot the frequency $\o$ and the power angle $\delta$ as functions of
+time for these two models.
 
 \subsection{5KW SG}
 
@@ -462,20 +457,22 @@ Note that for the ISE model, we use \eqref{eq:ISEInfBusEstimatedCurrents} to est
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{sim5KWInfBus}
 
-\caption{Simulation for infinite bus with single 5KW SG}
-\label{fig:InfBusOne5KWSG}
+\caption{Simulations for a 5KW SG onnected to an infinite bus,
+using both models. For $\o$ and $\delta$ the results are very 
+similar.} \label{fig:InfBusOne5KWSG}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
-As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates that
-for the 5KW SG, the behavior of the FOM and the ISE is almost the same. Although the currents at the reduced don't
-have a ripple that the FOM has, both models converge
-at the same rate with the same oscillations to the same equilibrium
-point (The parameters for this simulation are $J=0.2$ {[}$kgm^{2}${]},
-$D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
-{[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$
-{[}$rad/sec${]}, $V=330$ {[}$V]$, $Pm=5$ {[}$kW${]}). 
+As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates
+that for the 5KW SG, the behavior of the FOM and the ISE is almost the
+same. Although the currents at the reduced don't have a ripple that
+the FOM has, both models converge at the same rate with the same
+oscillations to the same equilibrium point (The parameters for this
+simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
+$R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
+{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
+{[}$V]$, $Pm=5$ {[}$kW${]}).
 
 \subsection{1MW SG}
 
@@ -483,7 +480,7 @@ $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{sim1MWInfBus}
 
-\caption{Simulation for infinite bus with single 1MW SG}
+\caption{Simulation for a 1MW SG on an infinite bus, both models}
 \label{fig:InfBusOne1MWSG}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
@@ -504,17 +501,18 @@ $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
 \includegraphics[scale=0.6]{simDiffBehavior1}
 
 \caption{A simulation example showing different behavior for the 
-         reduced model}
+         FOM and the ISE reduced model for a 50 KW SG}
 \label{fig:InfBusOne1DiffBehavior1}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations
-show that for other parameters set (The parameters for this simulation
+show that for other parameters set (the parameters for this simulation
 are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
 {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$,
-$\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $Pm=50$
-{[}$kW${]}) the behavior of the FOM and the ISE is significantly different. while the four order model is stable
+$\o_g=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $P_m=50$
+{[}$KW${]}) the behavior of the FOM and the ISE is significantly 
+different. While the fourth order model is stable
 (the eigenvalues of the Jacobian around the equilibrium point are:
 $$\left[-11.41+376.9i,-11.41-376.9i,-508+837i,-508-837i\right]$$
 the reduced model is not stable (the eigenvalues of the Jacobian
@@ -527,7 +525,7 @@ $\left[-14.6+9.4979i,\:6.1-9.4i\right]$).
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{simDiffRegionOFAttraction}
 \caption{Simulation example that shows different behavior for the 
-reduced model}
+full and the reduced models, for a 5 KW SG.}
 \label{fig:InfBusOne1DiffRegionOfAttraction}
 \end{figure}
 
@@ -536,20 +534,18 @@ simulations show that for some parameters set (The parameters for this
 simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
 $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
 {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
-{[}$V]$, $Pm=5$ {[}$kW${]}) the initial condition of this simulation
+{[}$V]$, $P_m=5$ {[}$KW${]}) the initial condition of this simulation
 is within the region of attraction of the reduced model, but outside
 the region of attraction of the FOM. That cause the FOM to diverge while the ISE converges to the
 equilibrium point.
 
-
+%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \section{Conclusions}
 
-We have shown the relation between the FOM of SG connected
-to an infinite bus and the ISE model. Simulations
-are carried out to show that the FOM gives rise to
-a behavior which doesn't match the one suggested by the ISE. 
-
-
+We have investigated the relation between the FOM of a SG with constant
+field current connected to an infinite bus and the reduced ISE model. 
+Simulations show that sometimes the FOM shows a behavior which does
+not match the one suggested by the ISE model. 
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \begin{thebibliography}{10}
@@ -576,7 +572,7 @@ a behavior which doesn't match the one suggested by the ISE.
  0.4em\relax SIAM J. Control and Optim., vol.~50, 2012, 
  pp.~1616-1642.
 
-\bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.D{\"o}rfler
+\bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
  droop-controlled inverters in islanded microgrids, {\em 
  Automatica}, vol. 49, 2013, pp.~2603-2611.
