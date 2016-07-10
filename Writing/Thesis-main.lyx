@@ -107,8 +107,40 @@
 status open
 
 \begin_layout Plain Layout
+TBD: Rewrite the references.
+\end_layout
+
+\begin_layout Plain Layout
+TBD: Rewrite Abstract
+\end_layout
+
+\begin_layout Plain Layout
+TBD: Rewrite introduction
+\end_layout
+
+\begin_layout Plain Layout
+TBD:Rewrite modeling
+\end_layout
+
+\begin_layout Plain Layout
+TBD:Rewrite equikibrium point
+\end_layout
+
+\begin_layout Plain Layout
+TBD: Rewrite stability of two SG's
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Comment
+status open
+
+\begin_layout Plain Layout
 This is Micheal JasonSmith's uocthesis example ported to LyX by Etienne
- LalibertÃÂ© (etiennlaliberte@gmail.com).
 \end_layout
 
 \begin_layout Plain Layout
@@ -324,7 +356,7 @@ filename "synchronization.lyx"
 \begin_inset CommandInset bibtex
 LatexCommand bibtex
 bibfiles "references"
-options "abbrvnat" 
+options "abbrvnat"
 
 \end_inset
 
