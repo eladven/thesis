@@ -144,8 +144,7 @@ Stability analysis for the TICSG is given in Section IV.
 \section{Modeling SG connected to infinite bus}
 
 In this section we derive the equations for a SG connected to infinite
-bus and having a constant field (or rotor) current. We start with
-deriving the equations for single SG, assuming constant field current,
+bus and having a constant field (or rotor) current. We derive the equations for single SG, assuming constant field current,
 following the notation in \cite{ZhWe:11}. 
 
 The rotor of a SG is a winding (coil) on a magnetic core that spins
@@ -352,9 +351,9 @@ One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 
 %%%%%%%%%
 
-In order to use the four order model of single SG \eqref{eq:SingleSGDynamics} in this system, we apply  Park transformation \eqref{eq:ParkTransformation}, on the voltages: $\left[ v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  and currents $\left[v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$ where $i \in \{1,2\}$.
+In order to use the four order model of single SG \eqref{eq:SingleSGDynamics} in this system, we apply  Park transformation \eqref{eq:ParkTransformation}, on the terminal voltages: $\left[ v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  and currents $\left[v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$ where $i \in \{1,2\}$.
 
-From Kirchhoff's laws $i_{01}=i_{02}=0$ () and by symmetry
+From Kirchhoff's laws $i_{01}=i_{02}=0$  and by symmetry
 argument we can see that $v_{01}=v_{02}=0$.
 
 Thus, we only have to deal with $v_{dj},v_{qj}$ (with $j\in\{1,2\}$). 
@@ -362,8 +361,8 @@ Thus, we only have to deal with $v_{dj},v_{qj}$ (with $j\in\{1,2\}$).
 We denote 
 $$\delta=\theta_{2}-\theta_{1}$$
 
-The voltage of the load is:
-$$v_L=R_{L}(i_{1}+i_{2})$$
+An expression for the voltage at each SG terminal which is the load voltage is:
+$$v_1=v_2=v_L=R_{L}(i_{1}+i_{2})$$
 
 Rewriting this equation and after applying Park transformation yields,
 for the first SG:
