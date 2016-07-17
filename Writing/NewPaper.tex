@@ -321,48 +321,34 @@ In this section we develop a model for a microgid comprising of two identical SG
 \end{figure}
 
 %%%%%%%%%%%%%
-The rotor angles are $\theta_{1}$ and $\theta_{2}$ and the torques
-acting on the generators are equal, denoted $T_{m}$. By symmetry,
+We denote the first SG rotor angle as  $\theta_{1}$ and the second SG rotor angle as $\theta_{2}$. We assume identical constant torque that act on each of the generators, denoted as $T_{m}$. By symmetry,
 we assume that the voltages at the (non-connected) midpoints of the
 generators and the load are zero.
 
-The phase voltages and currents are:
+We denoted the phase voltages and currents of the first generator as: $v_{1}=\left[v_{a1}\  v_{b1}\  v_{c1}
+\right]^\top$ and $i_{1}=\left[i_{a1}\  i_{b1}\  i_{c1}
+\right]^\top$  respectively.
+Similarly, we denoted the phase voltages and currents of the second generator as: $v_{2}=\left[v_{a2}\  v_{b2}\  v_{c2}
+\right]^\top$ and $i_{2}=\left[i_{a2}\  i_{b2}\  i_{c2}
+\right]^\top$ respectively.
 
-\[
-v_{1}=\left[\begin{array}{c}
-v_{a1}\\
-v_{b1}\\
-v_{c1}
-\end{array}\right],\quad v_{2}=\left[\begin{array}{c}
-v_{a2}\\
-v_{b2}\\
-v_{c2}
-\end{array}\right],\quad i_{1}=\left[\begin{array}{c}
-i_{a1}\\
-i_{b1}\\
-i_{c1}
-\end{array}\right],\quad i_{2}=\left[\begin{array}{c}
-i_{a2}\\
-i_{b2}\\
-i_{c2}
-\end{array}\right]
-\]
+We denote by $Z$ the impedance of each SG stator. This impedance is comprised by the resistive impedance of the stator coil $R_s$ and the inductive impedance of the stator, namely $Z\left(s\right)=R_{s} + sL_{s}$. In general, the line that connects the SG to the grid has its impedance that can be modeled (in most cases) as a resistance and an inductance in series, but these values can simply be added to the parameters $R_s$ and $L_s$ of the SG.
+One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 
-The impedances $Z=R_{s}+R_{g}+(L_{s}+L_{g})s$ are comprised of the
-equivalent stator resistance $R_{s}$ and stator inductance $L_{s}$
-and the line resistance $R_{g}$ and inductance $L_{g}$. However,
-we consider for simplicity that $R_{g}=0$ and $L_{g}=0$, since this
-leaves us with the same type of equations, see Figure \ref{fig:one_phase_scheme}.
 
-\begin{figure}
-\begin{circuitikz}[american voltages] \draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[ground] {};   \draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+%%%% Figure Tree phase TICSG system.
+\begin{figure}[!htb]
+\begin{circuitikz}[american voltages,scale=0.6, transform shape]
+\draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[ground] {};   \draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
 
-\caption{Microgrid comprising two synchronous generators one phase scheme}
+\caption{{\em two identical coupled SGs} (TICSG) model - one phase diagram}
 
-\label{fig:one_phase_scheme}
+\label{fig:TICSGOnePhase}
 \end{figure}
 
-Recall Park transformation \eqref{eq:ParkTransformation}, and apply
+%%%%%%%%%
+
+In order to use the four order model of single SG in this system, we apply  Park transformation \eqref{eq:ParkTransformation}, and apply
 it on the currents and voltages we have:
 
 \[
