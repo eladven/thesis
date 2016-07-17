@@ -5,6 +5,8 @@
 \usepackage{graphicx,epsfig}
 \usepackage{mathptmx,times} % if new font selection scheme installed
 \usepackage{epstopdf}
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
@@ -66,7 +68,7 @@
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{document}
 
-\title{ Exponential stability of the synchronization manifold of a microgid comprising of two identical synchronous generators}
+\title{ Exponential stability  of a microgid comprising of two identical synchronous generators}
 \author{\IEEEauthorblockN{Elad Venezian} \IEEEauthorblockA{School of 
    EE, Tel Aviv University\\ Ramat Aviv 69978, Israel} \and 
    \IEEEauthorblockN{George Weiss} \IEEEauthorblockA{School of EE, 
@@ -131,22 +133,12 @@ analysis, it is common to use the Park transformation of the voltages
 and currents, that maps sinusoidal positive sequence signals into a
 fixed point in the state space.
 
-The most common reduced model, which is known as the classical model,
-is a second order non linear model. The reference
-\cite{DePersiSchaft:16} argues that this model is not realistic enough
-and that a more complicated (but still reduced) model, which they call
-{\em improved swing equation} (ISE), should be used. In this paper we
-show that even the model proposed in \cite{DePersiSchaft:16} is not
-reliable for stability analysis, because it can't predict an unstable
-behavior that is predicted by a more faithful model of the same
-system.
+In this paper, we study the configuration of a two identical SGs in parallel and a resistive  load. 
 
 The rest of this paper is organized as follows. In Section II, a
 fourth order model of a SG connected to infinite bus and having
-constant field current is presented. The reduction from the above
-model to the second order ISE is described in Section III.
-Simulations and local stability analysis that shows different behavior
-of the models are given in Section IV.
+constant field current is presented. The model of {\em two identical coupled SGs} (TICSG) is described in Section III. In section IV, we discuss  the equilibrium points of the TICSG system.
+Stability analysis for the TICSG is given in Section IV.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Modeling SG connected to infinite bus}
@@ -154,11 +146,7 @@ of the models are given in Section IV.
 In this section we derive the equations for a SG connected to infinite
 bus and having a constant field (or rotor) current. We start with
 deriving the equations for single SG, assuming constant field current,
-following the notation in \cite{ZhWe:11}. Then we derive the equations
-for a single SG connected to an infinite bus, following
-\cite{NaWe:14}, \cite{NaWe:15}.
-
-\subsection{Single SG dynamics}
+following the notation in \cite{ZhWe:11}. 
 
 The rotor of a SG is a winding (coil) on a magnetic core that spins
 inside a circular cavity in the stator, having an angle $\theta$ with
@@ -316,18 +304,327 @@ This third order nonlinear dynamical system represents the dynamics
 of a single SG with constant field current, if we ignore the rotor 
 angle $\theta$. 
 
-\subsection{Model of a single generator connected to an infinite bus}
+\section{TICSG modeling}
 
-In this subsection we develop a model for single SG with constant
-field current and connected to an infinite bus, following
-\cite{NaWe:14}, \cite{NaWe:15}. The infinite bus is modeled as a three
-phase AC voltage source, i.e, the infinite bus is not affected by the
-synchronous generator that is connected to it. The justification for
-this model is that the influence of a single SG on a grid is very
-small. In general, the line that connects the SG to the grid has its
-impedance that can be modeled (in most cases) as a resistance and an
-inductance in series, but these values can simply be added to the
-parameters $R_s$ and $L_s$ of the SG.
+In this section we develop a model for a microgid comprising of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
+
+%%%% Figure Tree phase TICSG system.
+\begin{figure}[!htb]
+\begin{circuitikz}[american voltages,scale=0.6, transform shape]
+\begin{scope}[shift={(-5,0)}]     \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG1}; \end{scope}
+   \draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=east]{}; \draw (0,0) to [R=$R_L$] (210 :2.5); \draw (0,0) to [R=$R_L$] (330 :2.5);
+\begin{scope}[shift={(5,0)}]    \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west] {$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG2}; \end{scope}
+\draw (5,2.5) to [short, i>=$i_{a2}$] (0,2.5) to [short, i<=$i_{a1}$] (-5,2.5); \draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [short, i>=$i_{b2}$]   (-2.165 ,-1.25-1)  to [short, o-] (-2.165 ,-1.25 ); \draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [short, i>=$i_{b1}$]   (-2.165 ,-1.25-1); \draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2) to [short, i>=$i_{c2}$]  (2.165 ,-1.25-2)  to [short, o-] (2.165 ,-1.25 ); \draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [short, i>=$i_{c1}$]  (2.165 ,-1.25-2);
+\end{circuitikz}\caption{{\em two identical coupled SGs} (TICSG) model - three phase diagram}
+
+\label{fig:TICSGThreePhase}
+\end{figure}
+
+%%%%%%%%%%%%%
+The rotor angles are $\theta_{1}$ and $\theta_{2}$ and the torques
+acting on the generators are equal, denoted $T_{m}$. By symmetry,
+we assume that the voltages at the (non-connected) midpoints of the
+generators and the load are zero.
+
+The phase voltages and currents are:
+
+\[
+v_{1}=\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad v_{2}=\left[\begin{array}{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
+\end{array}\right],\quad i_{1}=\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\quad i_{2}=\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+The impedances $Z=R_{s}+R_{g}+(L_{s}+L_{g})s$ are comprised of the
+equivalent stator resistance $R_{s}$ and stator inductance $L_{s}$
+and the line resistance $R_{g}$ and inductance $L_{g}$. However,
+we consider for simplicity that $R_{g}=0$ and $L_{g}=0$, since this
+leaves us with the same type of equations, see Figure \ref{fig:one_phase_scheme}.
+
+\begin{figure}
+\begin{circuitikz}[american voltages] \draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[ground] {};   \draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+
+\caption{Microgrid comprising two synchronous generators one phase scheme}
+
+\label{fig:one_phase_scheme}
+\end{figure}
+
+Recall Park transformation \eqref{eq:ParkTransformation}, and apply
+it on the currents and voltages we have:
+
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+v_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+v_{a1}\\
+v_{b1}\\
+v_{c1}
+\end{array}\right],\quad\left[\begin{array}{c}
+v_{d2}\\
+v_{q2}\\
+v_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+v_{a2}\\
+v_{b2}\\
+v_{c2}
+\end{array}\right]
+\]
+
+\[
+\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+i_{01}
+\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
+i_{a1}\\
+i_{b1}\\
+i_{c1}
+\end{array}\right],\quad\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+i_{02}
+\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+Clearly $i_{01}=i_{02}=0$ (from Kirchhoff's laws) and by symmetry
+argument we can show that $v_{01}=v_{02}=0$ (because $v_{a}=R_{L}(i_{a1}+i_{a2})$
+etc).
+
+Thus, we only have to deal with $v_{dj},v_{qj}$ (with $j\in\{1,2\}$). 
+
+We denote 
+
+\[
+\delta=\theta_{2}-\theta_{1}
+\]
+
+According to formula \eqref{eq:SGDynamics}, the dynamics of synchronous
+machine:
+
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right]=\left[\begin{array}{ccc}
+-R_{s} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{s} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+-v_{d1}\\
+-v_{q1}\\
+T_{m}
+\end{array}\right]\label{eq:dynamics_of_single_generator}
+\end{equation}
+
+where $J$ is the moment of inertia, $D_{p}$ is the frequency droop
+constant, $T_{m}$ is the mechanical torque coming from the prime
+mover to the generator, $m=\sqrt{\frac{3}{2}}M_{f}$, where $M_{f}$
+is the peak mutual inductance between the rotor and one of the stator
+windings, and $i_{f}$ is the rotor current. Of course, a similar
+equation holds for the second generator. To put the equations together,
+we use 
+
+\[
+v=R_{L}(i_{1}+i_{2})
+\]
+
+and after applying Park transformation:
+
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})\left[\begin{array}{c}
+i_{a2}\\
+i_{b2}\\
+i_{c2}
+\end{array}\right]
+\]
+
+\begin{equation}
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}\\
+0
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+0
+\end{array}\right]+R_{L}U(\theta_{1})U(\theta_{2})^{-1}\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+0
+\end{array}\right]\label{eq:cur_and_volt_after_park}
+\end{equation}
+
+A simple computation shows that 
+
+\[
+U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
+\cos(\delta) & -\sin(\delta) & 0\\
+\sin(\delta) & \cos(\delta) & 0\\
+0 & 0 & 1
+\end{array}\right]
+\]
+
+(recall that $\delta=\theta_{2}-\theta_{1}$).
+
+now, substitute that at \eqref{eq:cur_and_volt_after_park} gives:
+
+\[
+\left[\begin{array}{c}
+v_{d1}\\
+v_{q1}
+\end{array}\right]=R_{L}\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}
+\end{array}\right]+R_{L}\left[\begin{array}{cc}
+\cos(\delta) & -\sin(\delta)\\
+\sin(\delta) & \cos(\delta)
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}
+\end{array}\right]
+\]
+
+Substituting this into \eqref{eq:dynamics_of_single_generator}, denoting
+$R_{tot}=R_{s}+R_{L}$:
+
+\begin{equation}
+\begin{array}{ccc}
+\frac{d}{dt}\left[\begin{array}{c}
+L_{s}i_{d1}\\
+L_{s}i_{q1}\\
+J\omega_{1}
+\end{array}\right] & = & \left[\begin{array}{ccc}
+-R_{tot} & \omega_{1}L_{s} & 0\\
+-\omega_{1}L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d1}\\
+i_{q1}\\
+\omega_{1}
+\end{array}\right]+\left[\begin{array}{c}
+0\\
+0\\
+T_{m}
+\end{array}\right]\\
+ &  & -\left[\begin{array}{ccc}
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d2}\\
+i_{q2}\\
+\omega_{2}
+\end{array}\right]
+\end{array}\label{dynamics_of_microgrid}
+\end{equation}
+
+or in short:
+
+\[
+\varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
+\]
+
+Where 
+
+\[
+\varLambda=\left[\begin{array}{ccc}
+L_{s} & 0 & 0\\
+0 & L_{s} & 0\\
+0 & 0 & J
+\end{array}\right],e_{3}=\left[\begin{array}{c}
+0\\
+0\\
+1
+\end{array}\right]
+\]
+
+\[
+\mathcal{A}(\omega)=\left[\begin{array}{ccc}
+-R_{tot} & \omega L_{s} & 0\\
+-\omega L_{s} & -R_{tot} & -mi_{f}\\
+0 & mi_{f} & D_{p}
+\end{array}\right],\mathcal{B}(\delta)=\left[\begin{array}{ccc}
+R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
+R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
+0 & 0 & 0
+\end{array}\right]
+\]
+
+\[
+,z_{i}=\left[\begin{array}{c}
+i_{di}\\
+i_{qi}\\
+\omega_{i}
+\end{array}\right],i\in\{1,2\}
+\]
+
+Of course a symmetric equation holds for the second generator:
+
+\[
+\varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\]
+
+There is a seventh state variable, $\delta$, for which the ODE is 
+
+\[
+\dot{\delta}=\omega_{2}-\omega_{1}
+\]
+
+The whole system is described by:
+
+\begin{equation}
+\frac{d}{dt}\left[\begin{array}{c}
+\varLambda z_{1}\\
+\varLambda z_{2}\\
+\delta
+\end{array}\right]=\left[\begin{array}{c|c|c}
+\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
+\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
+\hline -e_{3}^{T} & e_{3}^{T} & 0
+\end{array}\right]\left[\begin{array}{c}
+z_{1}\\
+z_{2}\\
+\delta
+\end{array}\right]+T_{m}\left[\begin{array}{c}
+e_{3}\\
+e_{3}\\
+0
+\end{array}\right]\label{eq:dynamics_whole}
+\end{equation}
+
+%%$$%%$$%%$$%%$$
 
 The infinite bus voltage (at the SG terminals) is
 \BEQ{eq:infBusVoltageABC}
