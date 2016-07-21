@@ -481,12 +481,12 @@ We refer this seven order non linear dynamic system as the TICSG model.
 
 \section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
 
-In this section, we study the equilibrium points of the TICSG model. First, we show that  if there exist equilibrium points, they must located on the synchronization manifold i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$, $\delta^e=\pi k$, for some $k \in \mathbb{Z}$. Second, we show that the TICSG system has at list one equilibrium point with no phase (i.e with $\delta^e=0$).
+In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization manifold i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$, $\delta^e=\pi k$, for some $k \in \mathbb{Z}$. Second, we show that the TICSG system has at list one equilibrium point with zero phase (i.e with $\delta^e=0$).
 
 \subsection{An equilibrium point must satisfy synchronization condition.}
-We will start form the algebraic equation:
+We will start to investigate the solution of the algebraic equation:  
 
-\[
+\begin{equation}
 \left[\begin{array}{c|c|c}
 \mathcal{A}(\omega_{1}^{e}) & -\mathcal{B}(\delta^{e}) & 0\\
 \hline -\mathcal{B}(-\delta^{e}) & \mathcal{A}(\omega_{2}^{e}) & 0\\
@@ -500,40 +500,51 @@ e_{3}\\
 e_{3}\\
 0
 \end{array}\right]=0
-\]
+\label{eq:algebricEquation}
+\end{equation}
 
-At the seventh line ($\dot{\delta})$ we have 
-%\[
-%-\omega_{1}^{e}+\omega_{2}^{e}=0\longrightarrow%%\omega_{1}^{e}=\omega_{2}^{e}\coloneqq\omega^{e}
-%\]
+It easy to see that according to the seventh line $$\omega_{1}^{e}=\omega_{2}^{e}=\omega^{e}$$.
 
-From the third line ($\dot{\omega}_{1})$ and the sixth line ($\dot{\omega}_{2})$
-we have 
+From the third and the sixth lines we have: 
 
-\[
+$$
 \left\{ \begin{array}{c}
 mi_{f}i_{q1}^{e}-D_{p}\omega_{1}^{e}+T_{m}=0\\
 mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
-\end{array}\right.\longrightarrow\left\{ \begin{array}{c}
-mi_{f}i_{q1}^{e}-D_{p}\omega^{e}=0\\
-mi_{f}i_{q2}^{e}-D_{p}\omega^{e}=0
 \end{array}\right.\longrightarrow i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e}
-\]
+$$
 
-From the first line ($\dot{i}_{d1})$, the second line ($\dot{i}_{q1})$,
-the forth line ($\dot{i}_{d2})$ and the fifth line ($\dot{i}_{q2})$
-we have 
+From the first, second, fourth and fifth lines:
 
-\[
-\left\{ \begin{array}{c}
+$$
+ \begin{array}{c}
 -R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d2}^{e}+R_{L}\sin\delta^{e}i_{q}^{e}=0\\
 -\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}\sin\delta^{e}i_{d2}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0\\
 -R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d1}^{e}-R_{L}\sin\delta^{e}i_{q}^{e}=0\\
 -\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}\sin\delta^{e}i_{d1}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0
-\end{array}\right.
+\end{array}
+$$
+By denoting:
+\[
+M=\left[\begin{array}{cc}
+-R_{tot} & -R_{L}\cos\delta^{e}\\
+-\omega^{e}L_{s} & -R_{L}\sin\delta^{e}\\
+-R_{L}\cos\delta^{e} & -R_{tot}\\
+R_{L}\sin\delta^{e} & -\omega^{e}L_{s}
+\end{array}\right]
 \]
 
-This system of equations can be represented at matrix form:
+and 
+
+\[
+n=\left[\begin{array}{c}
+i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
+\end{array}\right]
+\]
+We represent this lines in the following way:
 
 \begin{equation}
 M\left[\begin{array}{c}
@@ -542,447 +553,141 @@ i_{d2}^{e}
 \end{array}\right]=n\label{eq:equilibrium_system}
 \end{equation}
 
-Where 
+Now, we  show by contradiction that any equilibrium point must satisfy: $\sin\delta^e=0$.
+We use Rouch\'e Capelli Theorem:  Any liner equations system with the form  $Mx=n$ has a  solution if and only if $rank\left[M|n\right]=rank\left[M\right].$
 
-%\[
-%M=\left[\begin{array}{cc}
-%-R_{tot} & -R_{L}\cos\delta^{e}\\
-%-\omega^{e}L_{s} & -R_{L}\sin\delta^{e}\\
-%-R_{L}\cos\delta^{e} & -R_{tot}\\
-%R_{L}\sin\delta^{e} & -\omega^{e}L_{s}
-%\end{array}\right]
-%\]
-%
-%and 
+We negated to assume that $\sin\delta^{e}\ne0$. Simple calculation shows that under this assumption   $rank\left[M|n\right]=3$ must hold.
 
-%\[
-%n=\left[\begin{array}{c}
-%i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}\sin\delta^{e}\right)\\
-%-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
-%i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
-%-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
-%\end{array}\right]
-%\]
-%
-%
-%\subparagraph*{Rouch�\textendash Capelli Theorem: }
-%
-%The system $Mx=n$ has a solution if and only if $rank\left[M|n\right]=rank\left[M\right].$
-%
-%We will prove by contradiction that $\sin\delta_{0}=0$ is a necessary
-%condition for the system \eqref{eq:equilibrium_system} to have solution.
-%Negated to assume that $\sin\delta^{e}\ne0$. We will show that $rank\left[M|n\right]=3.$
-%
-%Denote $\alpha=\omega_{0}L_{s}+R_{L}\sin\delta_{0}$ and $\beta=\omega_{0}L_{s}-R_{L}\sin\delta_{0}$,
-%then:
-%
-%\begin{equation}
-%\left[M|n\right]=\left[\begin{array}{ccc}
-%-R_{tot} & \quad-R_{L}\cos\delta^{e}\quad & i_{q}^{e}\alpha\\
-%-\omega^{e}L_{s} & \quad-R_{L}\sin\delta^{e}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
-%-R_{L}\cos\delta^{e} & \quad-R_{tot}\quad & i_{q}^{e}\beta\\
-%R_{L}\sin\delta^{e} & \quad-\omega^{e}L_{s}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
-%\end{array}\right]\label{eq:M_n}
-%\end{equation}
-%
-%
-%\subsubsection*{Case A: $\alpha=0$ and $\beta=0$}
-%
-%Because $\alpha=0$ and $\beta=0$ it means that $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}$
-%hance $R_{L}\sin\delta^{e}=0$ which contradicts our assumption.
-%
-%\subsubsection*{Case B: $\alpha=0$ and $\beta\protect\ne0$}
-%
-%Lets define 
-%
-%\begin{equation}
-%T=\left[\begin{array}{cccc}
-%0 & 0 & 1 & 0\\
-%1 & 0 & 0 & 0\\
-%0 & 1 & 0 & -1
-%\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
-%-R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
-%-R_{tot} & -R_{L}\cos\delta^{e} & 0\\
-%0 & \beta & 0
-%\end{array}\right]\label{eq:MATRIX_1}
-%\end{equation}
-%
-%Now, if $\cos\delta^{e}=0$ then $rank(T)=3$. If $\cos\delta^{e}\ne0$
-%we define 
-%
-%\[
-%T_{2}=\left[\begin{array}{ccc}
-%1 & 0 & 0\\
-%0 & \beta & -R_{L}\cos\delta^{e}\\
-%0 & 0 & 1
-%\end{array}\right]T=\left[\begin{array}{ccc}
-%-R_{L}\cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
-%-R_{tot}\beta & 0 & 0\\
-%0 & \beta & 0
-%\end{array}\right]
-%\]
-%
-%it is easy to see that $rank(T_{2})=3$.
-%
-%\subsubsection*{Case C: $\alpha\protect\ne0$ and $\beta=0$}
-%
-%Lets define
-%
-%\begin{equation}
-%T_{3}=\left[\begin{array}{cccc}
-%1 & 0 & 0 & 0\\
-%0 & 0 & 1 & 0\\
-%0 & 1 & 0 & -1
-%\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
-%-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
-%-R_{L}\cos\delta^{e} & -R_{tot} & 0\\
-%-\alpha & 0 & 0
-%\end{array}\right]\label{eq:MATRIX_2}
-%\end{equation}
-%
-%it is easy to see that $rank(T_{3})=3$.
-%
-%\subsubsection*{Case D: $\alpha\protect\ne0$ and $\beta\protect\ne0$}
-%
-%Lets define
-%
-%\begin{equation}
-%T_{4}=\left[\begin{array}{cccc}
-%1 & 0 & 0 & 0\\
-%\alpha & 0 & \beta & 0\\
-%0 & 1 & 0 & -1
-%\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
-%-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
-%\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
-%-\alpha & \beta & 0
-%\end{array}\right]\label{eq:MATRIX_4}
-%\end{equation}
-%
-%Now, if $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$,
-%because $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}$
-%must be different than zero, it is easy to see that $rank(T_{4})=3$.
-%(It is impossible that both $-\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta}=0$
-%and $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}=0$
-%because that implies that $(\alpha+\beta)R_{L}\cos\delta^{e}=(\alpha+\beta)R_{tot}$,
-%and $\alpha+\beta=2\omega^{e}L_{s}>0$ and $R_{tot}>R_{L}\cos\delta^{e}$).
-%
-%Assuming that $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\ne0$
-%we define
-%
-%\[
-%\begin{array}{c}
-%T_{5}=\left[\begin{array}{ccc}
-%1 & 0\quad & 0\\
-%0 & 0\quad & 1\\
-%0 & -\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\quad & -\beta
-%\end{array}\right]T_{4}=\\
-%\left[\begin{array}{ccc}
-%-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
-%-\alpha & \beta & 0\\
-%\frac{4L_{s}R_{tot}\omega^{e}\sin\delta^{e}}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}\cos\delta^{e}\right)+R_{L}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\sin\delta^{0}\right]} & 0 & 0
-%\end{array}\right]
-%\end{array}
-%\]
-%
-%by assumption, $\sin\delta^{e}\ne0$ which imply that $rank(T_{5})=3$. 
-%
-%Because we showed that for any possible case, after applying linear
-%transformation on $\left[M|n\right]$ the resulting rank is 3, it
-%implies that $rank\left[M|n\right]=3.$ 
-%
-%Obviously, $rank\left[M\right]\le2$ which implies that under the
-%assumption that $\sin\delta^{e}\ne0$ the system \eqref{eq:equilibrium_system}
-%doesn't have solution. That means that if there is equilibrium point
-%for the system \eqref{eq:dynamics_whole}, it must satisfied $\sin\delta^{e}=0$
-%which means that $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}.$
-%
-%If $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$ then $\sin\delta^{e}=0$
-%and $\cos\delta^{e}=1$.Now: 
-%
-%\[
-%M=\left[\begin{array}{cc}
-%-R_{tot} & -R_{L}\\
-%-\omega^{e}L_{s} & 0\\
-%-R_{L} & -R_{tot}\\
-%0 & -\omega^{e}L_{s}
-%\end{array}\right]
-%\]
-%
-%and 
-%
-%\[
-%N=\left[\begin{array}{c}
-%i_{q}^{e}\omega^{e}L_{s}\\
-%-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
-%i_{q}^{e}\omega^{e}L_{s}\\
-%-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
-%\end{array}\right]
-%\]
-%
-%This system have one solution: $i_{d1}^{e}=i_{d2}^{e}\coloneqq i_{d}^{e}$
-%
-%\subsection{Equilibrium point on the synchronization surface.}
-%
-%The algebraic equation for calculating $z^{e}=z_{1}^{e}=z_{2}^{e}$
-%is:
-%
-%\begin{equation}
-%\left[\begin{array}{ccc}
-%-R_{s}-2R_{L} & \omega^{e}L_{s} & 0\\
-%-\omega^{e}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
-%0 & mi_{f} & -D_{p}
-%\end{array}\right]\left[\begin{array}{c}
-%i_{d}^{e}\\
-%i_{q}^{e}\\
-%\omega^{e}
-%\end{array}\right]=\left[\begin{array}{c}
-%0\\
-%0\\
-%-T_{m}
-%\end{array}\right]\label{eq:equilbrium_algebric_eq}
-%\end{equation}
-%
-%We take scalar products on both sides with $z^{e}$:
-%
-%\[
-%\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}
-%\]
-%
-%This equation makes perfect physical sense. Indeed, assume that there
-%is no actual friction in the machine, $D_{p}$ is created by feedback,
-%so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied
-%to one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
-%is the mechanical power entering one generator. On the other hand,
-%it is easy to see that $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
-%which is exactly half of the power dissipated in all the resistors,
-%hence it is the electric power leaving one generator.
-%
-%From \eqref{eq:equilbrium_algebric_eq}, we want to derive a scalar
-%equation to the determine the equilibrium velocity $\omega^{0}$.
-%The last line of the matrix equation \eqref{eq:equilbrium_algebric_eq}
-%is $mi_{f}i_{q}^{e}-D_{p}\omega^{e}=-T_{m}$. from where
-%
-%\begin{equation}
-%T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
-%\end{equation}
-%
-%The sides of this equation are the mechanical torque acting on each
-%generator at equilibrium.
-%
-%The first line of the matrix equilibrium \eqref{eq:equilbrium_algebric_eq}
-%is $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$,
-%hence:
-%
-%\[
-%i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
-%\]
-%
-%From \eqref{eq:eq_0_first_eq} 
-%\begin{equation}
-%i_{q}^{e}=\frac{T_{m}-D_{p}\omega^{e}}{-mi_{f}}\label{eq:iq_0_}
-%\end{equation}
-%
-%Combining the last two formulas,
-%
-%\begin{equation}
-%i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}\label{eq:id_0_}
-%\end{equation}
-%
-%The second line of the matrix equation on \eqref{eq:eq_0_first_eq},
-%is $\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$.
-%Substituting here the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$
-%from \eqref{eq:iq_0_}, \eqref{eq:id_0_}, we get 
-%
-%\[
-%-\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
-%\]
-%
-%We multiply all terms with $-\left(R_{tot}+R_{L}\right)mi_{f}$ to
-%have:
-%
-%\[
-%\left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
-%\]
-%
-%\begin{equation}
-%D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{e}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
-%\end{equation}
-%
-%This is a cubic equation in $\omega^{e}$. 
-%
-%Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
-%$p(\omega^{e}).$ $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$.
-%On the other hand, we note that $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$.
-%
-%Hence, \eqref{eq:cuibi_eq} has at least one solution ing the interval
-%$\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
+Obviously, $rank\left[M\right]\le2$.  Rouch\'e Capelli Theorem implies that under the
+previous assumption the linear equations system \eqref{eq:equilibrium_system} doesn't have solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ or explicitly: $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}.$
 
-In this section, we show the relation between the ISE and the FOM. We
-start with the FOM, and by a model reduction process, we get the ISE
-model.  We apply ideas from singular perturbation analysis (see for
-instance \cite{Khalil}). The FOM \rfb{eq:SGDynamicsInfBus} has the
-following structure: \vspace{-2mm}
-$$\Lambda \m \dot{z} \m=\m F(z) \m,$$ 
-where $\Lambda$ is a diagonal $4\times 4$ matrix with positive
-coefficients on the diagonal. Because the first two coefficients on
-the diagonal of $\Lambda$ are equal to $L_s$, which in some sense can
-be regarded as being small, we rewrite this dynamical system in the
-following form:
-$$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e) \m,\\
-   \e\dot{y} \m=\m g(x,y,\e) \m. \end{array}\right.$$
-By doing this, we have separated the state variables into a vector of 
-fast variables, denoted by $y$, and another of slow variables, denoted
-by $x$. Here, $\e>0$ is the small parameter.
+After subtitling $\sin\delta^{e}=0$
+and $\cos\delta^{e}=1$, the linear equations system  \eqref{eq:equilibrium_system} became to be:
 
-We assuming that $\e$ is very small, meaning that for each $x$, the 
-vector $y$ converges to a temporary equilibrium value (that depends on
-$x$) much faster than the rate of change of $x$. In our specific case,
-$\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}\right]$ and
-$y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$. By taking the
-first and second lines from \rfb{eq:SGDynamicsInfBus}, we have
-$$ g(x,y,\e) \m=\m \left[\nm \begin{array}{cc} -R_s & \o L_s\\ -\o 
-   L_s & -R_s \end{array}\nm\right] \left[\nm \begin{array}{c} i_d\\ 
-   \i_q \end{array} \nm\right]+\left[\begin{array}{c} V\sin\delta\\ 
-   V\cos\delta - mi_f\o \end{array}\right].$$
-Our assumption that $\e$ is very small means that the subsystem $\e
-\dot{y}=g(x,y,\e)$ is much faster than $\dot{x}=f(x,y,\e)$ and it is 
-also stable, so that it will reach its temporary equilibrium almost 
-instantly compared to the slow movement of $x$. The temporary 
-equilibrium point $\hat{y}(x,\e)$ is the solution of $g(x,\hat y,\e)=
-0$. The solution of this linear equation (in $\hat{y}$) is
-$$ \hat{y} \m=\m -\left[\begin{array}{cc} -R_s & \o L_s\\
-   -\o L_s & -R_s \end{array}\right]^{-1}\left[\begin{array}{cc}
-   V\sin\delta\\ V\cos\delta - mi_f\o \end{array}\right]$$
-$$ \m\qquad=\m \left[\begin{array}{cc} \frac{R_s V\sin\delta - L_s\o
-   \left(mi_f\o - V\cos\delta\right)}{L_s^{2}\o^2+R_s^2}\\
-   \frac{-R_s\left(mi_f\o - V\cos\delta\right) - L_s V\o\sin\delta}
-   {L_s^2\o^2 + R_s^2} \end{array}\right] \m.$$
-Assuming that $R_s$ is small so that the terms containing $R_s$ are
-negligible, we obtain the following approximation of $\hat y$:
-\BEQ{eq:ISEInfBusEstimatedCurrents}
-   \hat{y}_{app} \m=\m \left[\begin{array}{c} \hat{i}_d\\
-   \hat{i}_q \end{array}\right] \m=\m \left[\begin{array}{c}
-   \frac{V\cos\delta - mi_f\o}{L_s\o}\\ -\frac{V\sin\delta}{L_s\o}
-   \end{array}\right] \m.
+$$
+M=\left[\begin{array}{cc}
+-R_{tot} & -R_{L}\\
+-\omega^{e}L_{s} & 0\\
+-R_{L} & -R_{tot}\\
+0 & -\omega^{e}L_{s}
+\end{array}\right]
+$$
+
+and 
+
+$$
+N=\left[\begin{array}{c}
+i_{q}^{e}\omega^{e}L_{s}\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
+i_{q}^{e}\omega^{e}L_{s}\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
+\end{array}\right]
+$$
+
+This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
+
+
+
+\subsection{The TICSG system has at list one equilibrium point on the synchronization surface}
+Here, we show that the TICSG system has at list one equilibrium point which satisfies 
+\begin{equation}
+z^{e}=z_{1}^{e}=z_{2}^{e},\quad \delta^e=\pi k,\qquad k\in\mathbb{Z}\label{eq:eqPointConditions}
 \end{equation}
 
-We substitute $\hat{y}_{app}$ obtained above into $\dot{x}=f(x,y,\e)$
-(in place of $y$) to get the reduced model
-$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o^2 \m=\m -\frac{mi_f V
-   \sin\delta}{L_s}+T_m\o \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
-   \end{array}\right.$$
-The power absorbed from the prime mover can be expressed approximately
-(assuming constant torque) as
-$$P_m \m=\m (T_m-D_p \o_g)\o \m.$$
-If we express from here $T_m\o$ and substitute into the model 
-derived a little earlier, we obtain
-$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m - 
-   \frac{mi_f V\sin\delta}{L_s} \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
-   \end{array}\right.$$
-This model is known as the {\em improved swing equation} (ISE) model,
-see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did 
-many different approximations to derive it.
+After substituting condition \eqref{eq:eqPointConditions} into \eqref{eq:algebricEquation} ,the algebraic equation for  to be:
+
+\begin{equation}
+\left[\begin{array}{ccc}
+-R_{s}-2R_{L} & \omega^{e}L_{s} & 0\\
+-\omega^{e}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
+0 & mi_{f} & -D_{p}
+\end{array}\right]\left[\begin{array}{c}
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}
+\end{array}\right]=\left[\begin{array}{c}
+0\\
+0\\
+-T_{m}
+\end{array}\right]\label{eq:equilbrium_algebric_eq}
+\end{equation}
+
+We take scalar products on both sides with $z^{e}$:
+
+\[
+\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}
+\]
+
+This equation makes perfect physical sense. Indeed, assume that there
+is no actual friction in the machine, $D_{p}$ is created by feedback,
+so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied
+to one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
+is the mechanical power entering one generator. On the other hand,
+it is easy to see that $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
+which is exactly half of the power dissipated in all the resistors,
+hence it is the electric power leaving one generator.
+
+From \eqref{eq:equilbrium_algebric_eq}, we derive a scalar
+equation to determine the equilibrium velocity $\omega^{e}$.
+From the last line of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
+
+\begin{equation}
+T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
+\end{equation}
+
+The left side of this equation can interpreted as the  mechanical torque acting on each
+generator at equilibrium.
+
+The first line of the matrix equilibrium \eqref{eq:equilbrium_algebric_eq}
+is $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$,
+hence:
+
+\[
+i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
+\]
+
+From \eqref{eq:eq_0_first_eq} 
+\begin{equation}
+i_{q}^{e}=\frac{T_{m}-D_{p}\omega^{e}}{-mi_{f}}\label{eq:iq_0_}
+\end{equation}
+
+Combining the last two formulas,
+
+\begin{equation}
+i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}\label{eq:id_0_}
+\end{equation}
+
+The second line of the matrix equation on \eqref{eq:eq_0_first_eq},
+is $\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$.
+Substituting the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$
+from \eqref{eq:iq_0_}, \eqref{eq:id_0_}, we get:
+
+\[
+-\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
+\]
+
+We multiply all terms with $-\left(R_{tot}+R_{L}\right)mi_{f}$ to
+have:
+
+\[
+\left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
+\]
+
+\begin{equation}
+D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{e}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
+\end{equation}
+
+This is a cubic equation in $\omega^{e}$. 
+
+Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
+$p(\omega^{e}).$ $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$.
+On the other hand, we note that $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$.
+
+Hence, \eqref{eq:cuibi_eq} has at least one solution ing the interval
+$\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\section{Simulations}
 
-In this section we present simulations which demonstrate that the ISE
-model is a good approximate model in many cases. We also show that
-there are cases in which there is a significant mismatch between the
-behavior suggested by the ISE model and the FOM. In each simulation
-result, the behavior of $i_d$ and $i_q$ over time is described for
-both the FOM and the ISE models. Note that for the ISE model, we use
-\eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We 
-plot the frequency $\o$ and the power angle $\delta$ as functions of
-time for these two models.
-
-\subsection{5KW SG}
-
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[ht]
-\includegraphics[scale=0.6]{sim5KWInfBus}
-
-\caption{Simulations for a 5KW SG onnected to an infinite bus,
-using both models. For $\o$ and $\delta$ the results are very 
-similar.} \label{fig:InfBusOne5KWSG}
-\end{figure}
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-
-
-As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates
-that for the 5KW SG, the behavior of the FOM and the ISE is almost the
-same. Although the currents at the reduced don't have a ripple that
-the FOM has, both models converge at the same rate with the same
-oscillations to the same equilibrium point (The parameters for this
-simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
-$R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
-{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
-{[}$V]$, $Pm=5$ {[}$kW${]}).
-
-\subsection{1MW SG}
-
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[ht]
-\includegraphics[scale=0.6]{sim1MWInfBus}
-
-\caption{Simulation for a 1MW SG on an infinite bus, both models}
-\label{fig:InfBusOne1MWSG}
-\end{figure}
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-
-As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that
-for the 1MW SG, the behavior of the FOM and the ISE are still very similar. Although the FOM currents
-are much more rippled than the ISE currents, both models converge
-at the same rate with the same oscillations to the same equilibrium
-point (The parameters for this simulation are $J=40.05$ {[}$kgm^{2}${]},
-$D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
-{[}$mH${]}, $mi_{f}=1.79$ {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$
-{[}$rad/sec${]}, $V=563$ {[}$V]$, $Pm=1$ {[}$MW${]}). 
-
-\subsection{Non stable behavior of the reduced model}
-
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[ht]
-\includegraphics[scale=0.6]{simDiffBehavior1}
-
-\caption{A simulation example showing different behavior for the 
-         FOM and the ISE reduced model for a 50 KW SG}
-\label{fig:InfBusOne1DiffBehavior1}
-\end{figure}
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-
-As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations
-show that for other parameters set (the parameters for this simulation
-are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
-{[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$,
-$\o_g=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $P_m=50$
-{[}$KW${]}) the behavior of the FOM and the ISE is significantly 
-different. While the fourth order model is stable
-(the eigenvalues of the Jacobian around the equilibrium point are:
-$$\left[-11.41+376.9i,-11.41-376.9i,-508+837i,-508-837i\right]$$
-the reduced model is not stable (the eigenvalues of the Jacobian
-around the equilibrium point are: 
-$\left[-14.6+9.4979i,\:6.1-9.4i\right]$).
-
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{An example for different region of attraction}
-
-\begin{figure}[ht]
-\includegraphics[scale=0.6]{simDiffRegionOFAttraction}
-\caption{Simulation example that shows different behavior for the 
-full and the reduced models, for a 5 KW SG.}
-\label{fig:InfBusOne1DiffRegionOfAttraction}
-\end{figure}
-
-As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
-simulations show that for some parameters set (The parameters for this
-simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
-$R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
-{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
-{[}$V]$, $P_m=5$ {[}$KW${]}) the initial condition of this simulation
-is within the region of attraction of the reduced model, but outside
-the region of attraction of the FOM. That cause the FOM to diverge while the ISE converges to the
-equilibrium point.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \section{Conclusions}
