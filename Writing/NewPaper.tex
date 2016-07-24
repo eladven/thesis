@@ -481,7 +481,7 @@ We refer this seven order non linear dynamic system as the TICSG model.
 
 \section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
 
-In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization manifold i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$, $\delta^e=\pi k$, for some $k \in \mathbb{Z}$. Second, we show that the TICSG system has at list one equilibrium point with zero phase (i.e with $\delta^e=0$).
+In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization manifold i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$ and $\delta^e=0$ or $\delta^e = \pi$   (modulo $2\pi$). Second, we show that the TICSG system has at list one equilibrium point with zero phase (i.e with $\delta^e=0$).
 
 \subsection{An equilibrium point must satisfy synchronization condition.}
 We will start to investigate the solution of the algebraic equation:  
@@ -559,16 +559,16 @@ We use Rouch\'e Capelli Theorem:  Any liner equations system with the form  $Mx=
 We negated to assume that $\sin\delta^{e}\ne0$. Simple calculation shows that under this assumption   $rank\left[M|n\right]=3$ must hold.
 
 Obviously, $rank\left[M\right]\le2$.  Rouch\'e Capelli Theorem implies that under the
-previous assumption the linear equations system \eqref{eq:equilibrium_system} doesn't have solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ or explicitly: $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}.$
+previous assumption the linear equations system \eqref{eq:equilibrium_system} doesn't have solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ means that : $\delta^{e}=0$ or $\delta^e = \pi$ (modulo $2\pi$).
 
 After subtitling $\sin\delta^{e}=0$
-and $\cos\delta^{e}=1$, the linear equations system  \eqref{eq:equilibrium_system} became to be:
+and $\cos\delta^{e}=\pm 1$, the linear equations system  \eqref{eq:equilibrium_system} becomes:
 
 $$
 M=\left[\begin{array}{cc}
--R_{tot} & -R_{L}\\
+-R_{tot} & \mp R_{L}\\
 -\omega^{e}L_{s} & 0\\
--R_{L} & -R_{tot}\\
+  \mp R_{L} & -R_{tot}\\
 0 & -\omega^{e}L_{s}
 \end{array}\right]
 $$
@@ -578,9 +578,9 @@ and
 $$
 N=\left[\begin{array}{c}
 i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)\\
 i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)
 \end{array}\right]
 $$
 
@@ -591,10 +591,10 @@ This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
 \subsection{The TICSG system has at list one equilibrium point on the synchronization surface}
 Here, we show that the TICSG system has at list one equilibrium point which satisfies 
 \begin{equation}
-z^{e}=z_{1}^{e}=z_{2}^{e},\quad \delta^e=\pi k,\qquad k\in\mathbb{Z}\label{eq:eqPointConditions}
+z_1^{e}=z_2^{e}=z^{e},\quad \delta^e=0\label{eq:eqPointConditions}
 \end{equation}
 
-After substituting condition \eqref{eq:eqPointConditions} into \eqref{eq:algebricEquation} ,the algebraic equation for  to be:
+After substituting condition \eqref{eq:eqPointConditions} into \eqref{eq:algebricEquation} ,we get:
 
 \begin{equation}
 \left[\begin{array}{ccc}
@@ -658,34 +658,31 @@ i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_
 \end{equation}
 
 The second line of the matrix equation on \eqref{eq:eq_0_first_eq},
-is $\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$.
-Substituting the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$
-from \eqref{eq:iq_0_}, \eqref{eq:id_0_}, we get:
-
-\[
--\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
-\]
-
-We multiply all terms with $-\left(R_{tot}+R_{L}\right)mi_{f}$ to
-have:
-
-\[
-\left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
-\]
+is 
+$$\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$$
+Substituting in this equation the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$ yields the following cubic equation in $\omega^e$, denoting $R_T = R_L+R_{tot}$:
 
 \begin{equation}
-D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{e}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
+\begin{split}
+D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2} +\left(D_{p}R_T^{2}+m^{2}i_{f}^{2}R_T\right) \omega^{e}  -T_{m}R_T^{2}=0
+\end{split}\label{eq:cuibi_eq}
 \end{equation}
 
-This is a cubic equation in $\omega^{e}$. 
-
 Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
-$p(\omega^{e}).$ $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$.
-On the other hand, we note that $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$.
+$p(\omega^{e})$. 
+$$p(0)=-T_{m}R_T^{2}<0$$
+On the other hand, we note that 
+$$
+p(\frac{T_{m}}{D_{p}}) =m^{2}i_{f}^{2}R_T\frac{T_{m}}{D_{p}}>0
+$$
 
-Hence, \eqref{eq:cuibi_eq} has at least one solution ing the interval
+Hence, \eqref{eq:cuibi_eq} has at least one solution in the interval
 $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
 
+That shows that the TICSG system has at list one equilibrium point  that located on the synchronization manifold 
+$\epsilon=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e= 0\}$.
+
+Note, that the anti synchronization manifold  $\epsilon '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
