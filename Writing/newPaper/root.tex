@@ -1,6 +1,16 @@
-\documentclass[conference]{IEEEtran}
-\usepackage[latin9]{inputenc}
-\pagestyle{headings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%2345678901234567890123456789012345678901234567890123456789012345678901234567890
+%        1         2         3         4         5         6         7         8
+
+\documentclass[letterpaper, 10 pt, conference]{ieeeconf}  % Comment this line out if you need a4paper
+
+%\documentclass[a4paper, 10pt, conference]{ieeeconf}      % Use this line for a4 paper
+
+\IEEEoverridecommandlockouts                              % This command is only needed if 
+                                                          % you want to use the \thanks command
+
+\overrideIEEEmargins                                      % Needed to meet printer requirements.
+
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx,epsfig}
 \usepackage{mathptmx,times} % if new font selection scheme installed
@@ -8,22 +18,6 @@
 \usepackage{tikz}
 \usepackage[europeanresistors,americaninductors]{circuitikz}
 \usepackage{mathtools}
-\makeatletter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\hyphenation{op-tical net-works semi-conduc-tor}
-
-\newcommand{\MYfooter}{\smash{
-\hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
-
-\def\ps@IEEEtitlepagestyle{%
-\def\@oddhead{\mbox{}2016 ICSEE International Conference on the
-     Science of Electrical Engineering \rightmark \hfil }%
-\def\@oddfoot{\MYfooter}%
-\def\@evenfoot{\MYfooter}}
-
-% adjust as needed
-\addtolength{\footskip}{0\baselineskip}
-\addtolength{\textheight}{-1\baselineskip}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \newtheorem{theorem}{Theorem}[section]
@@ -35,13 +29,7 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{problem_statement}[theorem]{Problem Statement}
 \newtheorem{remark}[theorem]{Remark}
-%\numberwithin{equation}{section}
-%%% The above 7 commands are used in the following way:
-%%% The definition environment, for example, is created by
-%%% \begin{definition}\label{xxx}. . .\end{definition}
-%\newcommand{\mylabel}[1]{\label{#1}
-%            \ifx\undefined\stillediting
-%            \else \fbox{$#1$}\fi }
+
 \newcommand{\BE}{\begin{equation}}
 \newcommand{\BEQ}[1]{\BE\label{#1}} % Changed by Olof
 \newcommand{\EEQ}{\end{equation}}
@@ -49,10 +37,6 @@
    (\ref{#1})}\ifx\undefined\stillediting\else:\fbox{$#1$}\fi}
 \newenvironment{matr}[1]{\left[ \begin{array}{#1}}{\end{array}
                          \right]}
-%
-%\newfont{\roma}{cmr10 scaled 1200}
-%\font\fourteenrm = cmr10  scaled\magstep2
-%
 \renewcommand{\cline}{{\mathbb C}}
 \newcommand{\rline}  {{\mathbb R}}
 \renewcommand{\l}    {{\lambda}}
@@ -65,25 +49,53 @@
 
 \makeatother
 
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+% See the \addtolength command later in the file to balance the column lengths
+% on the last page of the document
+
+% The following packages can be found on http:\\www.ctan.org
+%\usepackage{graphics} % for pdf, bitmapped graphics files
+%\usepackage{epsfig} % for postscript graphics files
+%\usepackage{mathptmx} % assumes new font selection scheme installed
+%\usepackage{times} % assumes new font selection scheme installed
+%\usepackage{amsmath} % assumes amsmath package installed
+%\usepackage{amssymb}  % assumes amsmath package installed
+
+\title{\LARGE \bf
+Exponential stability of a microgid comprising of two identical synchronous generators
+}
+
+
+\author{Elad Venezian$^{1}$ and George Weiss$^{2}$% <-this % stops a space
+\thanks{$^{1}$Elad Venezianis with School of EE,
+        Tel Aviv University Ramat Aviv 69978, Israel
+        {\tt\small eladv@gmail.com}}%
+\thanks{$^{2}$George Weiss with the Department of Electrical Engineering, Wright State University,
+        Dayton, OH 45435, USA
+        {\tt\small gweiss@eng.tau.ac.il}}%
+}
+
+
 \begin{document}
 
-\title{ Exponential stability  of a microgid comprising of two identical synchronous generators}
-\author{\IEEEauthorblockN{Elad Venezian} \IEEEauthorblockA{School of 
-   EE, Tel Aviv University\\ Ramat Aviv 69978, Israel} \and 
-   \IEEEauthorblockN{George Weiss} \IEEEauthorblockA{School of EE, 
-   Tel Aviv University\\ Ramat Aviv 69978, Israel}}
+
 
 \maketitle
+\thispagestyle{empty}
+\pagestyle{empty}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
+
 Synchronous generators are an essential component of the electric
 grid. Recently, the stability of the electric grid has become an area
 of high interest and intensive research. We discuss the stability of a
 grid composed of two identical synchronous generators, and show sufficient conditions for exponential stability.
+
 \end{abstract}
 
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 
 The AC electricity grid was developed at the end of the XIXth century,
@@ -1240,7 +1252,11 @@ We have investigated  a grid comprising of a two identical SGs in parallel and a
 $$ A^e = \lim_{t \to \infty} \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) $$ is a Hurwitz matrix, then the the subspace $\epsilon$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
-\begin{thebibliography}{10}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+References are important to the reader; therefore, each citation must be complete and correct. If at all possible, references should be commonly available publications.
+
+
+\begin{thebibliography}{99}
 
 \bibitem{Kundur} P.~Kundur, \emph{Power System Stability and Control}.
  \hskip 1em plus 0.5em minus 0.4em\relax McGraw-Hill, New York, 1994.
@@ -1317,4 +1333,5 @@ $$ A^e = \lim_{t \to \infty} \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}
 } \m  1999.
 
 \end{thebibliography}
+
 \end{document}
