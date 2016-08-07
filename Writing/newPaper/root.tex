@@ -61,7 +61,7 @@
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
-Exponential stability of a microgid comprising of two identical synchronous generators
+Stability of a microgrid with two synchronous generators 
 }
 
 
@@ -321,7 +321,7 @@ angle $\theta$.
 
 \section{TICSG modeling}
 
-In this section we develop a model for a microgid comprising of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
+In this section we develop a model for a microgid composed of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
 
 %%%% Figure Tree phase TICSG system.
 \begin{figure}[!htb]
@@ -354,7 +354,7 @@ One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 %%%% Figure Tree phase TICSG system.
 \begin{figure}[!htb]
 \begin{circuitikz}[american voltages,scale=0.6, transform shape]
-\draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[ground] {};   \draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+\draw   (0,0) node[sground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[sground] {};   \draw   (10,0) node[sground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
 
 \caption{{\em two identical coupled SGs} (TICSG) model - one phase diagram}
 
@@ -1248,7 +1248,7 @@ Namely the subspace $\epsilon$ is exponentially stable for the TICSG system, loc
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \section{Conclusions}
 
-We have investigated  a grid comprising of a two identical SGs in parallel and a resistive load. We have showed that this system has equilibrium point only on the synchronization subspace or anti-synchronization subspace. We showed that there is exactly one equilibrium point on the synchronization manifold. We showed that the assuming that $16 R_T D_p > L_s^2\left(\left(x_q^e\right)^2 +  \left(x_d^e\right)^2 \right)$  and assuming that 
+We have investigated  a grid composed of a two identical SGs in parallel and a resistive load. We have showed that this system has equilibrium point only on the synchronization subspace or anti-synchronization subspace. We showed that there is exactly one equilibrium point on the synchronization manifold. We showed that the assuming that $16 R_T D_p > L_s^2\left(\left(x_q^e\right)^2 +  \left(x_d^e\right)^2 \right)$  and assuming that 
 $$ A^e = \lim_{t \to \infty} \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) $$ is a Hurwitz matrix, then the the subspace $\epsilon$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
