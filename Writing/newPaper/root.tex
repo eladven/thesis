@@ -354,9 +354,13 @@ One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 %%%% Figure Tree phase TICSG system.
 \begin{figure}[!htb]
 \begin{circuitikz}[american voltages,scale=0.6, transform shape]
-\draw   (0,0) node[sground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[sground] {};   \draw   (10,0) node[sground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+\draw   (0,0) node[sground] {}   to [V,v^<=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[sground] {};   
 
-\caption{{\em two identical coupled SGs} (TICSG) model - one phase diagram}
+%\draw (5,3) [L=$L_s$] (5,3){} to  [R=$R_s$,i>=$i_{j2}$] (7,3){}
+\draw   (10,0) node[sground] {}   to [V,v^<=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$,mirror] (7,3){}   to [L=$L_s$, mirror] (5,3){};  
+ \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+
+\caption{{\em A microgrid comprising two identical SGs and a load - equivalent circuit diagram for one phase.}}
 
 \label{fig:TICSGOnePhase}
 \end{figure}
