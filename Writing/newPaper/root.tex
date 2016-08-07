@@ -18,6 +18,7 @@
 \usepackage{tikz}
 \usepackage[europeanresistors,americaninductors]{circuitikz}
 \usepackage{mathtools}
+\usepackage{mathrsfs}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \newtheorem{theorem}{Theorem}[section]
@@ -695,10 +696,9 @@ $$
 Hence, \eqref{eq:cuibi_eq} has at least one solution in the interval
 $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
 
-That shows that the TICSG system has at list one equilibrium point  that located on the synchronization subspace 
-$\epsilon=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e= 0\}$.
+It shows that the TICSG system has at list one equilibrium point  that located on the synchronization subspace $ \mathscr{E}=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e= 0\}$.
 
-Note, that the anti synchronization subspace  $\epsilon '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
+Note, that the anti synchronization subspace  $\mathscr{E} '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 \section{Synchronization}
@@ -805,7 +805,7 @@ $$
 
 
 We note that $F(0,x)=0$, which shows that the subspace
-$\epsilon=\left\{ \left[\begin{array}{c}
+$\mathscr{E}=\left\{ \left[\begin{array}{c}
 x\\
 e
 \end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $ is invariant.
@@ -878,7 +878,7 @@ $$
 \subsection{Globally exponentially stability of the TICSG system on the synchronization subspace }
 
 In this subsection, we provide sufficient conditions for the equilibrium
-point which located on the synchronization subspace $\epsilon=\left\{ \left[ e\ x \right]^\top \in\mathbb{R}^{7}|e=0\right\} $,  to be a globally exponential stable equilibrium point, for trajectories with initial condition that lies on the $\epsilon$ subspace.  Because we showed that  $\epsilon$ is invariant subspace, it means that any trajectory that starts within this subspace, remains inside it.
+point which located on the synchronization subspace $\mathscr{E}=\left\{ \left[ e\ x \right]^\top \in\mathbb{R}^{7}|e=0\right\} $,  to be a globally exponential stable equilibrium point, for trajectories with initial condition that lies on the $\mathscr{E}$ subspace.  Because we showed that  $\mathscr{E}$ is invariant subspace, it means that any trajectory that starts within this subspace, remains inside it.
 
 We denote the state variables of of these trajectories as $\tilde{x} = \left[x_d \ x_q\ x_\omega \right]^\top$. 
 
@@ -909,7 +909,7 @@ $$
 
 This system describes the two SGs with perfect synchronization between each other.
 
-Because the TICSG system has at list one equilibrium point on the $\epsilon$ subspace, it means that $\tilde{G}(\tilde{x})$ has at list one equilibrium point 
+Because the TICSG system has at list one equilibrium point on the $\mathscr{E}$ subspace, it means that $\tilde{G}(\tilde{x})$ has at list one equilibrium point 
 $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\ \tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall that by definition $x = z_1 + z_2$).
 
 \begin{equation}
@@ -1092,12 +1092,12 @@ In order to show that, we use the main result of \cite{AndrieuJayawardhanaPraly}
 $$ \dot{e} = F\left(e,x\right),\quad \dot{x} = G\left(e,x\right)$$ for   $F, G \in C^2$ , \cite{AndrieuJayawardhanaPraly} defines the following properties:
 
 \subsubsection{TULES-NL (Transversal uniform local exponential stability)}
-There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\epsilon$ is exponentially stable locally in e, uniformly in x.
+There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
 \subsubsection{UES-TL (Uniform exponential stability for the transversally linear system)}
 there exist strictly positive real numbers $\tilde{ k}$ and $\tilde{\lambda}$  such that any solution $\left(e \left(e_0, x_0, t\right), x \left(x_0, t\right)\right)$ of the transversally linear system
 $$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,\quad \dot{\tilde{x}} = \tilde{G}  \left( \tilde{x}  \right) =G\left(0,x\right)$$
 satisfies, for all $\left(e_0,x_0,t\right)$,   
- $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\epsilon}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
+ $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
 
 
 One of the main results of \cite{AndrieuJayawardhanaPraly} is that if 
@@ -1106,7 +1106,7 @@ One of the main results of \cite{AndrieuJayawardhanaPraly} is that if
 \frac{\partial F(e,x)}{\partial e}(0,x)\le \mu \quad\forall x  \label{eq:assumption1}
 \end{equation}
 and 
-$\epsilon=\left\{ \left[\begin{array}{c}
+$\mathscr{E}=\left\{ \left[\begin{array}{c}
 x\\
 e
 \end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $ is invariant, then 
@@ -1126,7 +1126,7 @@ The requirement \eqref{eq:assumption1}  which require that matrix \eqref{eq:div_
 of the initial state, the state of TICSG system is always contained in a certain bounded set (that depends on the initial state).
 It implies that $\frac{\partial F(}{\partial e}(0,x)$ is clearly bounded in this bounded subset of the state space.
 
-We showed at the previous section that $\epsilon$ is an invariant manifold. 
+We showed at the previous section that $\mathscr{E}$ is an invariant manifold. 
 
 In order to show that the TICSG system has the  UES-TL property, we need to show that the system  
 $$
@@ -1248,12 +1248,12 @@ the main result of \cite{AndrieuJayawardhanaPraly}, it proves that the TICSG sys
 Therefore there exist strictly positive real numbers $r$, $k$
 and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right| \le r $
 , $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0 \right|exp(-\lambda t)$.
-Namely the subspace $\epsilon$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
+Namely the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \section{Conclusions}
 
 We have investigated  a grid composed of a two identical SGs in parallel and a resistive load. We have showed that this system has equilibrium point only on the synchronization subspace or anti-synchronization subspace. We showed that there is exactly one equilibrium point on the synchronization manifold. We showed that the assuming that $16 R_T D_p > L_s^2\left(\left(x_q^e\right)^2 +  \left(x_d^e\right)^2 \right)$  and assuming that 
-$$ A^e = \lim_{t \to \infty} \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) $$ is a Hurwitz matrix, then the the subspace $\epsilon$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
+$$ A^e = \lim_{t \to \infty} \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) $$ is a Hurwitz matrix, then the the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
