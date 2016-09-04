@@ -423,12 +423,17 @@ negligible, we obtain the following approximation of $\hat y$:
 
 We substitute $\hat{y}_{app}$ obtained above into $\dot{x}=f(x,y,\e)$
 (in place of $y$) to get the reduced model
-$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o^2 \m=\m -\frac{mi_f V
+
+\BEQ{eq:ISWWithConstTm}
+ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o^2 \m=\m -\frac{mi_f V
    \sin\delta}{L_s}+T_m\o \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
-   \end{array}\right.$$
-The power absorbed from the prime mover can be expressed approximately
-(assuming constant torque) as
-$$P_m \m=\m (T_m-D_p \o_g)\o \m.$$
+   \end{array}\right.
+  \end{equation}
+   
+The power absorbed from the prime mover can be expressed approximately as
+\BEQ{eq:tourqeApproximation}
+P_m \m=\m (T_m-D_p \o_g)\o \m.
+ \end{equation}
 If we express from here $T_m\o$ and substitute into the model 
 derived a little earlier, we obtain
 $$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m - 
@@ -436,7 +441,13 @@ $$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m -
    \end{array}\right.$$
 This model is known as the {\em improved swing equation} (ISE) model,
 see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did 
-many different approximations to derive it.
+many different approximations to derive it. It is normally assumed that $P_m$ is constant, but this is not necessary. 
+
+Let us see what happens if we do not use the crude approximation \eqref{eq:tourqeApproximation} and instead return to \eqref{eq:ISWWithConstTm}, divide the first equation by $\omega$ and substitute $\dot{\omega} = \ddot{\delta}$, we then obtain 
+$$
+J\ddot{\delta}+D_p \dot{\delta} + \frac{mi_f V \sin \delta}{L_s \left(\omega_g + \dot{\delta}\right)}=T_m - D_p \omega_g
+$$
+This is an ugly nonlinear ODE, but (if $R_s=0$) its equilibrium points are exactly the same as for the FOM and if we approximate $\omega_g+\dot{\delta} \approx \omega_g$, then we get the classical swing equation.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations}
@@ -449,7 +460,7 @@ result, the behavior of $i_d$ and $i_q$ over time is described for
 both the FOM and the ISE models. Note that for the ISE model, we use
 \eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We 
 plot the frequency $\o$ and the power angle $\delta$ as functions of
-time for these two models.
+time for these two models. In all simulations , variables with a hat correspond to the reduced model. All simulations assume constant $P_m$.
 
 \subsection{5KW SG}
 
