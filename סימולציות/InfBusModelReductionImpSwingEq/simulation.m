@@ -6,20 +6,18 @@ w = warning ('off','all');
 rmpath('folderthatisnotonpath')
 warning(w)
 
-global Ls J Dp mif Rs Pm V wg Dwg
-
-%initValues5KWSG;
+global Ls J Dp mif Rs Pm V wg
+initValues5KWSG;
 %initValues1MWSG;
 %initValuesReduceNonStableExample;
-initValuesNonStableExample;
+%initValuesNonStableExample;
 
 global x0;
-x0 = calculateEquilibrium(Ls, J, Dp, mif, Rs, Pm, V, wg);
 
-x0_sim = x0(:,1);
 
-[t,x] = ode15s(@modelDynamics,[0 T],x0_sim);
-[t_hat,x_hat] = ode15s(@reducedModelDynamics,[0 T],[x0_sim(3),x0_sim(4)]);
+[t,x] = ode15s(@modelDynamics,[0 T],x0);
+[t_hat,x_hat] = ode15s(@reducedModelDynamics,[0 T],[x0(3),x0(4)]);
+
 
 iq_hat = zeros(1,length(t_hat));
 id_hat = zeros(1,length(t_hat));
@@ -27,7 +25,7 @@ for i=1:length(iq_hat)
     iq_hat(i) =  - (V*sin(x_hat(i,2)))/(Ls*x_hat(i,1));
     id_hat(i) =    - (mif*x_hat(i,1) - V*cos(x_hat(i,2)))/(Ls*x_hat(i,1));
 end
-figure;
+figure (1)
 subplot(3,1,1)
 hold on;
 plot(t,x(:,1:2))
@@ -53,6 +51,8 @@ legend({'$\delta$','$\hat{\delta}$'},'Interpreter','latex','Position', [0.93,0.2
 
 
 %%
+
+x0 = calculateEquilibrium(Ls, J, Dp, mif, Rs, Pm, V, wg);
 eig_ = calculateEigOfJacobianOfEqPointForOrigSys(Ls, J, Dp, mif, Rs, Pm, V, wg,x0(1,1), x0(2,1), x0(3,1), x0(4,1));
 display('The detailed system (1) is localy ');
 if (max(real(eig_)) >0)
