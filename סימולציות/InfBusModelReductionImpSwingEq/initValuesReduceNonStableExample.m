@@ -15,3 +15,4 @@ V = 200;
 x_eq = calculateEquilibrium(Ls, J, Dp, mif, Rs, Pm, V, wg);
 x0 = [x_eq(1,1)+5;x_eq(2,1)-5;x_eq(3,1)-10;x_eq(4,1)];
 T = 1; 
+Tm = 800;

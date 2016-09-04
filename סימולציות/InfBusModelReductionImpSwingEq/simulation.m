@@ -6,11 +6,11 @@ w = warning ('off','all');
 rmpath('folderthatisnotonpath')
 warning(w)
 
-global Ls J Dp mif Rs Pm V wg
-initValues5KWSG;
+global Ls J Dp mif Rs Pm V wg Tm
+%initValues5KWSG;
 %initValues1MWSG;
 %initValuesReduceNonStableExample;
-%initValuesNonStableExample;
+initValuesNonStableExample;
 
 global x0;
 
