@@ -1,3 +1,4 @@
+% Conference paper for the ICSEE in Eilat, November 2016. 
 \documentclass[conference]{IEEEtran}
 \usepackage[latin9]{inputenc}
 \pagestyle{headings}
@@ -290,12 +291,15 @@ The rotational dynamics of the rotor is given by
 \end{equation}
 where $J$ is the moment of inertia of the rotor, $T_m-D_p\o$ is is the
 mechanical torque coming from the prime mover, $T_e$ is the
-electromagnetic torque developed by the generator, and $D_p>0$ expresses the combination of three effects: the 
-frequency droop control of the prime mover, the damper windings, and the viscous friction. The frequency droop (the largest of the three effects) is used in
-order to stabilize the frequency of the grid, see \cite{Kundur},
-\cite{PoDoBu:13}, \cite{CaTa:14}, \cite{ZhWe:11}. $T_e$ can be found
-using energy consideration. It is easy to see that the magnetic 
-energy stored in the generator is
+electromagnetic torque developed by the generator, and $D_p>0$
+expresses the combination of three effects: the frequency droop
+control of the prime mover, the linearized damper windings, and the
+viscous friction. The frequency droop (the largest of the three
+effects) is used in order to stabilize the frequency of the grid, see
+\cite{Kundur}, \cite{PoDoBu:13}, \cite{CaTa:14}, \cite{ZhWe:11}.
+
+$T_e$ can be found using energy consideration. It is easy to see that
+the magnetic energy stored in the generator is
 $$ E_{mag} \m=\m \half \left(\langle i,L_s i \rangle + L_f i_f^2
    \right) + M_f i_f \langle i,\widetilde{\cos}\theta \rangle \m.$$
 The electromagnetic torque can be calculated as follows:
@@ -442,17 +446,27 @@ and substitute into the model \eqref{eq:ISWWithConstTm}, we obtain
 $$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m - 
    \frac{mi_f V\sin\delta}{L_s} \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
    \end{array}\right.$$
-This model is known as the {\em improved swing equation} (ISE) model,
-see \cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did 
-many different approximations to derive it. The references just cited normally assume that $P_m$ is constant, which then causes $T_m$ to be a function of $\o$. Our perspective is to view $T_m$ as a constant parameter. 
+This model is known as the {\em improved swing equation} (ISE), see
+\cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did many
+different approximations to derive it. The references just cited
+normally assume that $P_m$ is constant, which then causes $T_m$ to be
+a function of $\o$. Our perspective is to view $T_m$ as a constant
+parameter.
 
-Let us see what happens if we do not use the crude approximation \eqref{eq:tourqeApproximation} and instead return to \eqref{eq:ISWWithConstTm}. If we divide the first equation by $\o$ and substitute $\dot{\o} = \ddot{\delta}$, then we obtain 
+Let us see what happens if we do not use the crude approximation
+\eqref{eq:tourqeApproximation} and instead return to
+\eqref{eq:ISWWithConstTm}. If we divide the first equation by $\o$ and
+substitute $\dot{\o} = \ddot{\delta}$, then we obtain
 \begin{equation} \label{Rishon}
-  J\ddot{\delta}+D_p \dot{\delta} + \frac{mi_f V \sin \delta}{L_s \left(\o_g + \dot{\delta}\right)}=T_m - D_p \o_g .
+   J\ddot{\delta}+D_p \dot{\delta} + \frac{mi_f V \sin \delta}{L_s 
+   \left(\o_g + \dot{\delta}\right)} \m=\m T_m - D_p \o_g .
 \end{equation}
-This is an ugly nonlinear ODE. If $R_s=0$ then its equilibrium points are exactly the same as for the FOM and if we approximate $\o_g+\dot{\delta}\approx\o_g$, then we get the classical swing equation. We think that 
-the reduced model \eqref{Rishon} (which is equivalent to \eqref{eq:ISWWithConstTm})
-is closer to the FOM than the ISE. 
+This is an ugly nonlinear ODE. If $R_s=0$ then its equilibrium points
+are exactly the same as for the FOM and if we approximate
+$\o_g+\dot{\delta}\approx\o_g$, then we get the classical swing
+equation. We think that the reduced model \eqref{Rishon} (which is
+equivalent to \eqref{eq:ISWWithConstTm}) is closer to the FOM than the
+ISE.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations}
@@ -463,11 +477,18 @@ there are cases in which there is a significant mismatch between the
 behavior suggested by the ISE model and the FOM. In each simulation
 result, the behavior of $i_d$ and $i_q$ over time is described for
 both the FOM and the ISE models. Note that for the ISE model, we use
-\eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We 
+\eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We
 plot the frequency $\o$ and the power angle $\delta$ as functions of
-time for these two models. In all the simulations, variables with a hat correspond to the reduced model. All simulations assume constant $P_m$. We did the same simulations also under the assumption of constant $T_m$ and the results are very similar.
+time for these two models. In all the simulations, variables with a
+hat correspond to the reduced model. All simulations assume constant
+$P_m$. We redid the same simulations also under the assumption of
+constant $T_m$ and the results are very similar, and not shown.
 
-The first two simulations concern small SGs of 5KW and 1MW, respectively, with parameters taken from \cite{Eitan}. These models were originally meant to represent synchronverters, which are a type of inverters, but from the point of view of the model, this does not matter. 
+The first two simulations concern small SGs of 5KW and 1MW,
+respectively, with parameters taken from \cite{Eitan}. These models
+were originally meant to represent synchronverters, which are a type
+of inverters, but from the point of view of the model, this does not
+matter.
 
 \subsection{5KW SG}
 \vspace{-5mm}
@@ -483,13 +504,13 @@ similar.} \label{fig:InfBusOne5KWSG}
 
 As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates
 that for the 5KW SG, the behavior of the FOM and the ISE is almost the
-same. Although the currents at the reduced don't have a ripple that
-the FOM has, both models converge at the same rate with the same
-oscillations to the same equilibrium point (The parameters for this
+same. Although the currents for the ISE have less ripple than for
+the FOM, both models converge at the same rate with the same
+oscillations to the same equilibrium point. The parameters for this
 simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
 $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
 {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
-{[}$V]$, $Pm=5$ {[}$kW${]}).
+{[}$V]$, $P_m=5$ {[}$kW${]}.
 
 \subsection{1MW SG}
 \vspace{-4mm}
@@ -502,14 +523,15 @@ $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that
-for the 1MW SG, the behavior of the FOM and the ISE are still very similar. Although the FOM currents
-are much more rippled than the ISE currents, both models converge
-at the same rate with the same oscillations to the same equilibrium
-point (The parameters for this simulation are $J=40.05$ {[}$kgm^{2}${]},
-$D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
-{[}$mH${]}, $mi_{f}=1.79$ {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$
-{[}$rad/sec${]}, $V=563$ {[}$V]$, $Pm=1$ {[}$MW${]}). 
+As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that for
+the 1MW SG, the behavior of the FOM and the ISE are still very
+similar. Although the FOM currents are much more rippled than the ISE
+currents, both models converge at the same rate with the same
+oscillations to the same equilibrium point. The parameters for this
+simulation are $J=40.05$ {[}$kgm^{2}${]}, $D_{p}=337$ {[}$J/sec${]},
+$R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$ {[}$mH${]}, $mi_{f}=1.79$
+{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=563$
+{[}$V]$, $P_m=1$ {[}$MW${]}.
 
 \subsection{Non stable behavior of the reduced model}
 \vspace{-4mm}
@@ -523,20 +545,20 @@ $D_{p}=337$ {[}$J/sec${]}, $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations
-show that for other parameters set (the parameters for this simulation
-are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
+As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations show
+that for other parameters set (the parameters for this simulation are
+$J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
 {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$,
 $\o_g=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $P_m=50$
-{[}$KW${]}) the behavior of the FOM and the ISE is significantly 
-different. The FOM is stable,
-since the eigenvalues of the Jacobian around the equilibrium point are
-$-11.41\pm 376.9i,\ \ \ -508\pm 837i.$
-The ISE doesn't have equilibrium point for these parameters. The ISE model have equilibrium point only if  
-$ \left| \sin\delta^e \right|= \left| \frac{P_m L_s}{mi_f V} \right| \le 1$ holds.
+{[}$KW${]}) the behavior of the FOM and the ISE is significantly
+different. The FOM is locally stable, since the eigenvalues of the
+Jacobian around the equilibrium point are $-11.41\pm 376.9i,\ 
+-508\pm 837i.$ The ISE doesn't have any equilibrium point for these
+parameters. The ISE model has equilibrium points only if $ \left|
+\sin\delta^e \right|= \left| \frac{P_m L_s}{mi_f V} \right| \le 1$.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{An example for different region of attraction}
+\subsection{An example for different regions of attraction}
 
 \begin{figure}[ht]
 \includegraphics[scale=0.6]{simDiffRegionOFAttraction}
@@ -546,14 +568,14 @@ full and the reduced models, for a 5 KW SG.}
 \end{figure}
 
 As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
-simulations show that for some parameters set (The parameters for this
+simulations show that for some parameters set (the parameters for this
 simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
 $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
 {[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
 {[}$V]$, $P_m=5$ {[}$KW${]}) the initial condition of this simulation
 is within the region of attraction of the reduced model, but outside
-the region of attraction of the FOM. That cause the FOM to diverge while the ISE converges to the
-equilibrium point.
+the region of attraction of the FOM. This causes the FOM to diverge
+while the ISE converges to the equilibrium point.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \section{Conclusions}
