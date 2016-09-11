@@ -1,0 +1,187 @@
+%% LyX 2.2.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[12pt,english]{report}
+\usepackage{mathptmx}
+\renewcommand{\familydefault}{\rmdefault}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2cm,lmargin=2cm,rmargin=2cm,headheight=1cm,headsep=1cm,footskip=1cm}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage{esint}
+\usepackage[numbers]{natbib}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{nomencl}
+% the following is useful when we have the old nomencl.sty package
+\providecommand{\printnomenclature}{\printglossary}
+\providecommand{\makenomenclature}{\makeglossary}
+\makenomenclature
+\doublespacing
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage{breakurl}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{tauthesis}
+\usepackage[font={small,bf}, labelfont={small,bf}, margin=1cm]{caption}
+\usepackage{titlesec}
+\newcommand{\hsp}{\hspace{20pt}}
+\titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp}{0pt}{\Huge\bfseries}
+\usepackage{tikz}
+\usepackage[europeanresistors,americaninductors]{circuitikz}
+ 
+\Title{\textbf{Stability of Synchronous Generators}}
+\Author{\textbf{\large Elad Venezian}}
+\Year{May 2016}
+\Supervisor{Prof. George Weiss}
+\Department{School of Electrical Engineering}
+\Degree{Master of Science in Electrical Engineering}
+
+\makeatother
+
+\begin{document}
+
+\coverpage
+
+\titlepage
+
+\prelimpages
+
+\chapter*{Abstract}
+
+Synchronous generators are an essential component of the
+electric grid. Recently, the stability of the electric grid has become
+an area of high interest and intensive research. One reason for that
+is because the electric grid becomes more and more dependent on renewable
+energy sources.
+
+In this work we discuss the stability of a single generator connected
+to an infinite bus, and show that certain reduced models fail to predict
+the behavior of this system.
+
+In the second part of this work, we discuss the stability of a grid
+composed of two identical synchronous generators, and show sufficient
+conditions for exponential stability. 
+
+\tableofcontents{}
+
+\textpages
+
+\listoffigures
+
+\listoftables
+
+\printnomenclature{}
+
+\chapter{Introduction\label{cha:introduction}}
+
+The AC electricity grid was developed at the end of the XIX century,
+and basically remained very similar till our days. Many techniques
+and models that have been developed in order to analyze and design
+the grid and its components are based on assumptions and methods,
+which were driven by experience and observations \citep{sauerPai1998}.
+In recent years, there is a trend of increasing use of renewable energy,
+which requires the conversion of the energy in order to interface
+with the power grid. When the rate of the converted energy will become
+a significant part, it is not clear whether the traditional models
+and methods for controling the power grid will succeed to control
+it \citep{ZhongWeiss2011,monshizadehDePersisMonshizadehVanderSchaft2016}.
+Therefore, there is increasing interest in the fundamental mathematical
+models of the electrical grid.
+
+\textit{Synchronous generator} (SG) is the main power source of the
+electricity grid. The mathematical model of a SG is very complex and
+difficult to use. This makes the electric grid to such a complicated
+nonlinear and time-varying system that any attempt to prove its stability
+analytically is hopeless. Stability analysis is usually done by simulation,
+or analytically on simplified models, in which the SGs are connected
+in a simple network and each SG is represented by reduced order equations,
+see for instance \citep{DorflerAndBullo2012} and \citep{PorcoDorflerBullo2013}.
+The reduced model of a SG is often obtained by treating the stator
+currents as fast variables, thus eliminating them from the state variables
+via the singular perturbation approach (see, for instance, \citep{KhalilSingularPertubations})
+and keeping only the rotor angle, and the rotor angular velocity as
+relevant state variables, see for instance \citep{kundur1994} and
+\citep{sauerPai1998}.
+
+SGs has the important property that once they synchronizes, means
+that their rotors spin with the same velocity, they tend to remain
+synchronized even without any control. This is important attribute
+because the electricity grid must maintain constant frequency, and
+because the ability of a SG to transfer constant power through the
+grid exists only when the phase difference between each SG and the
+grid phase is constants. That is the reason why it is desirable to
+know if for a given grid which contains SGs and a loads,all the SGs
+and tend to synchronize and if the grid frequency remains constant.
+In order to use the control stability analysis, and because the trajectory
+of the state of a SG in the steady state is sinusoidal, it is common
+to use transformation of the voltages and currents that maps sinusoidal
+trajectory into a constant point on the state plan. The famous Park's
+transformation performs that, so after applying Park's transformation
+on the SG model. The question whether the system is stable (which
+means that all the SGs are synchronized and remain at constant frequency)
+is know as frequency stability.
+
+In this work, we study two simple grid configurations: Single SG that
+connected to an infinite bus, and Two SG in parallel and a load. chapter
+\ref{cha:microgrid_dynamics} will discussess the dynamical model
+for the above configurations. chapter \ref{cha:equivalence_pont}
+discusses the conditions to have equilibrium point at the infinite
+bus configuration, and shows that micogrid comprised of two SGs can
+have equilibrium point only on the synchronization manifold, and that
+there is at list one such equilibrium point. chapter \ref{cha:Model_reduction}
+shows that the simplified model which known as the improved swing
+equation can't predict behavior that 4th order model predicts. \citep{monshizadehDePersisMonshizadehVanderSchaft2016}
+showed, that the improved swing equation model predicts behavior that
+the classical model (the swing equation model) can't predict. Chapter
+\ref{cha:Synchronization}, shows that a microgrid that comprised
+of two SGs, is stable near the manifold of synchronization.
+
+
+\include{The_microgrid_dynamics}
+
+\include{equivalence_point_existence_and_uniqueness}
+
+\include{Model_reduction}
+
+\include{synchronization}
+
+\bibliographystyle{abbrvnat}
+\bibliography{references}
+
+
+\appendix
+\include{appendix}
+
+\newpage{}
+
+\begin{comment}
+It is possible to create the Hebrew part in \LyX{}, but this is less
+of our concern. Any typesetting software like \LyX{} (or Word or
+OpenOffice) is as good for this purpose. After creating the PDF file
+from the Hebrew document, include it here using the Insert -> File
+-> External material -> PDFpages (one of the options). See the example
+below. 
+\end{comment}
+
+\end{document}
