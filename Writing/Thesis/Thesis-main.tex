@@ -253,6 +253,12 @@ windings is
 $$ \Phi \m=\m \left[\begin{array}{ccc} L & -M & -M\\ -M & L & -M\\
    -M & -M & L \end{array}\right]i + M_f i_f\widetilde{\cos}\theta
    \m.$$
+   
+The equation for the rotor flux linkage is
+\begin{equation}
+\Phi_f=M_{af}i_a+ M_{bf}i_b+M_{cf}i_c+L_fi_f=L_fi_f+M_f\left<i,\widetilde{\cos}\theta\right>. \label{eq:fieldFlux} 
+\end{equation}
+
 Since there is no neutral line, $i_a+i_b+i_c=0$, so the previous
 equation can be rewritten as 
 $$\Phi \m=\m L_s i + M_f i_f \widetilde{\cos}\theta \m,$$
@@ -268,7 +274,12 @@ where $e=\left[e_a\ e_b\ e_c \right] ^\top$  is the back electromotive force (EM
 by:
 
 \begin{equation}
-e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta\label{eq:emf}
+e=M_{f}i_{f}\dot{\theta}\widetilde{\sin}\theta-M_{f}\frac{d\Phi_{f}}{dt}i_{f}\widetilde{\cos}\theta.\label{eq:emf}
+\end{equation}
+
+The rotor voltage satisfies 
+\begin{equation}
+v_f=-R_fi_f-\frac{d\Phi_f}{dt}.\label{eq:fieldVoltage}
 \end{equation}
 
 For a SG with no load, the voltages at each terminal
@@ -325,31 +336,31 @@ e_{q}
 \end{array}\right]=-\sqrt{\frac{3}{2}}M_{f}\left[\begin{array}{c}
 \frac{di_{f}}{dt}\\
 \omega i_{f}
-\end{array}\right]\label{eq:ed_eq}
+\end{array}\right].\label{eq:ed_eq}
 \end{equation}
 
 Substitute \eqref{eq:fieldFlux} into \eqref{eq:fieldVoltage}, and
 applying Park's transformation yields:
 
-\[
-v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}
-\]
+$$
+v_{f}=-R_{f}i_{f}-L_{f}\frac{di_{f}}{dt}-\sqrt{\frac{3}{2}}M_{f}\frac{di_{d}}{dt}.
+$$
 
-Using \eqref{eq:idiqDynamics} and \eqref{eq:ed_eq} for $\frac{di_{d}}{dt}$
+Using  \eqref{eq:idiqDynamics}  and  \eqref{eq:ed_eq}  for  $\frac{di_{d}}{dt}$
 dynamics, and substituting it to the previous equation, gives:
 
-\[
-\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}
-\]
+$$
+\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)\frac{di_{f}}{dt}=\sqrt{\frac{3}{2}}\frac{M_{f}}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{R_{f}}{L_{f}}i_{f}-\frac{v_{f}}{L_{f}}.
+$$
 
 Denote $\alpha=\left(1-\frac{3M_{f}^{2}}{2L_{f}L_{s}}\right)^{-1}>0$
 and $m=\sqrt{\frac{3}{2}}M_{f}$, we have 
 
 \begin{equation}
-\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}\label{eq:if_dynamics}
+\frac{di_{f}}{dt}=\frac{\alpha m}{L_{f}}\left(\omega i_{q}-\frac{R_{s}}{L_{s}}i_{d}-\frac{v_{d}}{L_{s}}\right)-\frac{\alpha R_{f}}{L_{f}}i_{f}-\frac{\alpha v_{f}}{L_{f}}.\label{eq:if_dynamics}
 \end{equation}
 
-Calculate $i_{d}$and $i_{q}$ from \eqref{eq:idiqDynamics} and \eqref{eq:ed_eq},
+Calculate $i_{d}$ and $i_{q}$ from \eqref{eq:idiqDynamics} and \eqref{eq:ed_eq},
 and substituting $\frac{di_{f}}{dt}$ from \eqref{eq:if_dynamics}
 gives:
 
@@ -369,41 +380,35 @@ i_{q}
 \end{array}\right]-\left[\begin{array}{c}
 v_{d}\\
 v_{q}
-\end{array}\right]\label{eq:idiqDynamicsWithExIf}
+\end{array}\right].\label{eq:idiqDynamicsWithExIf}
 \end{equation}
 
-The rotational dynamics of the rotor is given by the equation:
-
-\begin{equation}
-J\dot{\omega}=T_{m}-T_{e}-D_{p}\omega\label{eq:mechanicalPart}
+The rotational dynamics of the rotor is given by
+\BEQ{eq:mechanicalPart}
+   J\dot{\omega} \m=\m T_{m}-T_{e}-D_{p} \omega \m,
 \end{equation}
-
-where $J$ is the moment of inertia of the rotor, $T_{m}$ is is the
-mechanical torque which applies by the prime mover, $T_{e}$ is the
-electromagnetic torque developed by the generator, and $D_{p}$ is
-a damping factor, which consist of the viscous friction acting on
-the rotor and the frequency droop from $\omega$ to the mechanical
-torque of the prime mover, which added in order to control the frequency
-of the generator.
-
-$T_{e}$ can be found from energy consideration. The magnetic energy
-stored in the generator is 
-\[
-E_{mag}=\frac{1}{2}\left(<i,\Phi>+i_{f}\Phi_{f}\right)=\frac{1}{2}\left(<i,L_{s}i>+Li_{f}^{2}\right)+M_{f}i_{f}<i,\widetilde{\cos}\theta>
-\]
-
+where $J$ is the moment of inertia of the rotor, $T_m-D_p\o$ is is the
+mechanical torque coming from the prime mover, $T_e$ is the
+electromagnetic torque developed by the generator, and $D_p$ is a the
+frequency droop coefficient. The feedback term $D_p\o$ is used in
+order to control the frequency of the grid, see \cite{Kundur},
+\cite{PoDoBu:13}, \cite{CaTa:14}, \cite{ZhWe:11}. $T_e$ can be found
+using energy consideration. It is easy to see that the magnetic 
+energy stored in the generator is
+$$ E_{mag} \m=\m \half \left(\langle i,L_s i \rangle + L_f i_f^2
+   \right) + M_f i_f \langle i,\widetilde{\cos}\theta \rangle \m.$$
 The electromagnetic torque can be calculated as follows:
-
-\[
-T_{e}=\frac{\partial E_{mag}}{\partial\theta}|_{\Phi=const}=\frac{\partial E_{mag}}{\partial\theta}|_{i=const}
-\]
-
-\begin{equation}
-T_{e}=M_{f}i_{f}<i,\frac{d\tilde{\cos}\theta}{d\theta}>=M_{f}i_{f}<i,\tilde{\sin}\theta>=-mi_{f}i_{q}\label{eq:electricTorque}
-\end{equation}
+$$ T_e \m=\m \frac{\partial E_{mag}}{\partial\theta}|_{\Phi,\Phi_f
+   \ const.} \m=\m - \frac{\partial E_{mag}}{\partial\theta}|_{i,
+   i_f\ const.}$$
+(see \cite{ZhWe:11}), whence
+$$ T_e \m=\m M_f i_f \left\langle i,\frac{\dd\widetilde{\cos}\theta}
+   {\dd\theta} \right\rangle \m=\m M_f i_f \langle i,\widetilde
+   {\sin} \theta\rangle \m=\m -m i_f i_q \m.$$
 
 Using \eqref{eq:idiqDynamicsWithExIf}, \eqref{eq:if_dynamics}, \eqref{eq:mechanicalPart}
-and \eqref{eq:electricTorque} we obtained:
+and the last formula, we obtain
+
 \begin{equation}
 \begin{array}{ccc}
 \frac{d}{dt}\left[\begin{array}{c}
@@ -433,17 +438,17 @@ v_{q}\\
 v_{f}\\
 T_{m}
 \end{array}\right]
-\end{array}
+\end{array}\label{eq:idiqDynamicsWithExIf}
 \end{equation}
 
 This fourth order nonlinear dynamical system represents the dynamics
-of single SG. 
+of single SG, if we ignore the rotor angle $\theta$.
 
 \section{Single generator with constant field current dynamics}
 
 At this sections, we assume that the rotor current is constant (which
 means that the field dynamics is very fast, or equivalently, the rotor
-is composed of permanent magnet).
+is composed of a permanent magnet).
 
 Assuming $\frac{di_{f}}{dt}=0$, and substituting it at \eqref{eq:idiqDynamicsWithExIf}
 gives:
@@ -467,8 +472,8 @@ v_{q}
 \end{array}\right]\label{eq:idiqDynamicsWithFixxIf}
 \end{equation}
 
-Using \eqref{eq:idiqDynamicsWithFixxIf}, \eqref{eq:mechanicalPart}
-and \eqref{eq:electricTorque} we obtained:
+Using \eqref{eq:idiqDynamicsWithFixxIf} and \eqref{eq:mechanicalPart}
+we obtain
 
 \begin{equation}
 \frac{d}{dt}\left[\begin{array}{c}
@@ -491,7 +496,7 @@ T_{m}
 \end{equation}
 
 This Third order nonlinear dynamical system represents the dynamics
-of single SG with constant field current. 
+of single SG with constant field current, if we ignore the rotor angle $\theta$.
 
 \section{Model of a single generator connected to an infinite bus }
 
