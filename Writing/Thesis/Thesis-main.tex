@@ -500,361 +500,171 @@ of single SG with constant field current, if we ignore the rotor angle $\theta$.
 
 \section{Model of a single generator connected to an infinite bus }
 
-In this section we develop a model for single synchronous generator
-which connected to an infinite bus. This section follows \citep{NatarajanWeiss2015}.
-The infinite bus is model as tree phase AC voltage source. i.e the
-infinite bus is not effected by the synchronous generator that connected
-to it. The reason for this model is that the influence of a single
-synchronous generator on a grid is very small. In general, the line
-that connect the synchronous generator to the grid has its impedance
-that consist of resistance and inductance, but because it connected
-to the synchronous generator in series, then the $R_{s}$ and $L_{s}$
-parameters can take into account the impedance of both the synchronous
-generator and the line.
+In this subsection we develop a model for single SG with constant
+field current and connected to an infinite bus, following
+\cite{NaWe:14}, \cite{NaWe:15}. The infinite bus is modeled as a three
+phase AC voltage source, i.e, the infinite bus is not affected by the
+synchronous generator that is connected to it. The justification for
+this model is that the influence of a single SG on a grid is very
+small. In general, the line that connects the SG to the grid has its
+impedance that can be modeled (in most cases) as a resistance and an
+inductance in series, but these values can simply be added to the
+parameters $R_s$ and $L_s$ of the SG.
 
-Because the infinite bus is modeled as voltage source, then the voltage
-at the synchronous generator terminals is
-
-\begin{equation}
-v=\left[\begin{array}{c}
-v_{a}\\
-v_{b}\\
-v_{c}
-\end{array}\right]=\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-\cos(\theta_{g})\\
-\cos(\theta_{g}-\frac{2\pi}{3})\\
-\cos(\theta_{g}-\frac{4\pi}{3})
-\end{array}\right]\label{eq:infBusVoltageABC}
+The infinite bus voltage (at the SG terminals) is
+\BEQ{eq:infBusVoltageABC}
+   v \m=\m \left[\begin{array}{c} v_a\\ v_b\\ v_c \end{array}\right]
+   \m=\m \sqrt{\frac{2}{3}} V\left[ \begin{array}{c} \cos(\theta_{g})
+   \\ \cos(\theta_{g}-\frac{2\pi}{3})\\ \cos(\theta_{g}-\frac{4\pi}
+   {3}) \end{array}\right] ,
+\end{equation}
+where $V$ is the grid line voltage magnitude, and $\theta_g$ is the
+grid angle. Let us define the {\em power angle} $\delta$ which
+represents the difference between the grid and the synchronous
+generator angles: \vspace{-2mm}
+$$ \delta \m=\m \theta-\theta_g \m.$$
+After applying the Park transformation to \rfb{eq:infBusVoltageABC},
+we get 
+\BEQ{BusVoltage}
+   \left[\nm\begin{array}{c} v_d\\ v_q\\ v_0 \end{array} \nm\right]
+   = U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c} \cos
+   (\theta_g)\\ \cos(\theta_g-\frac{2\pi}{3})\\ \cos(\theta_g
+   -\frac{4\pi}{3}) \end{array}\right] = -V\left[\nm \begin
+   {array}{c} \sin\delta\\ \cos\delta\\ 0 \end{array}\nm\right].
 \end{equation}
 
-where $V$ is the grid voltage magnitude, and $\theta_{g}$ is the
-grid phase. Lets define the angle $\delta$ which represent the difference
-between the grid and the synchronous generator angles:
-
-\[
-\delta=\theta-\theta_{g}
-\]
-
-After applying Park transformation (which depends on $\theta$ which
-is the synchronous generator phase) on \eqref{eq:infBusVoltageABC}
-we have 
-
-\begin{equation}
-v_{dqo}=\left[\begin{array}{c}
-v_{d}\\
-v_{q}\\
-v_{0}
-\end{array}\right]=U(\theta)\sqrt{\frac{2}{3}}V\left[\begin{array}{c}
-\cos(\theta_{g})\\
-\cos(\theta_{g}-\frac{2\pi}{3})\\
-\cos(\theta_{g}-\frac{4\pi}{3})
-\end{array}\right]=-V\left[\begin{array}{c}
-\sin(\delta)\\
-\cos(\delta)\\
-0
-\end{array}\right]\label{eq:infBusVoltageDQO}
+It is easy to see that the dynamics of $\delta$ is \vspace{-2mm}
+$$\dot{\delta} \m=\m \o-\o_g \m,$$
+where $\o_g$ is the grid frequency. Substituting \rfb{BusVoltage}
+and the above equation into \rfb{eq:SGDynamics}, we obtain
+\BEQ{eq:SGDynamicsInfBus}
+   \frac{\dd}{\dd t} \left[\nm \begin{array}{c}
+   L_s i_d\\ L_s i_q\\ J\o\\ \delta \end{array} \nm\right] = \left[
+   \nm \begin{array}{cccc} -R_s & \o L_s & 0 & 0\\ -\o L_s & -R_s &
+   -mi_f & 0\\ 0 & mi_f & -D_p & 0\\ 0 & 0 & 1 & 0 \end{array} \nm
+   \right] \left[\nm \begin{array}{c} i_d\\ i_q\\ \o\\ \delta
+   \end{array} \nm\right] + \left[\nm \begin{array}{c} V\sin\delta
+   \\ V\cos\delta\\ T_m\\ -\o_g \end{array} \nm\right]
 \end{equation}
+We refer to this fourth order nonlinear dynamical system as the {\em 
+fourth order model} (FOM).
 
-It is easy to see that the dynamics of $\delta$ is 
+\section{TICSG modeling}
 
-\begin{equation}
-\dot{\delta}=\omega-\omega_{g}\label{eq:deltaDynamics}
-\end{equation}
+In this section we develop a model for a microgid composed of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
 
-where $\omega_{g}$ is the grid frequency. Substituting \eqref{eq:infBusVoltageDQO}
-and \eqref{eq:deltaDynamics} into \eqref{eq:SGDynamics} gives:
-
-\begin{equation}
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d}\\
-L_{s}i_{q}\\
-J\omega\\
-\delta
-\end{array}\right]=\left[\begin{array}{cccc}
--R_{s} & \omega L_{s} & 0 & 0\\
--\omega L_{s} & -R_{s} & -mi_{f} & 0\\
-0 & mi_{f} & -D_{p} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]\left[\begin{array}{c}
-i_{d}\\
-i_{q}\\
-\omega\\
-\delta
-\end{array}\right]+\left[\begin{array}{c}
-V\sin(\delta)\\
-V\cos(\delta)\\
-T_{m}\\
-\omega_{g}
-\end{array}\right]\label{eq:SGDynamicsInfBus}
-\end{equation}
-
-This fourth order nonlinear dynamical system is the model for one
-synchronous generator which connected to an infinite bus.
-
-\section{Model of microgrid comprising two synchronous generators in parallel}
-
-In this section, we consider a microgrid comprising two identical
-synchronous generators, with constant rotor (field) current and no
-neutral connection, together with a resistive load (see Figure \ref{fig:microgrid_configuration}).
-
-\begin{figure}
-\begin{circuitikz}[american voltages]
+%%%% Figure Tree phase TICSG system.
+\begin{figure}[!htb]
+\begin{circuitikz}[american voltages,scale=1, transform shape]
 \begin{scope}[shift={(-5,0)}]     \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG1}; \end{scope}
    \draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=east]{}; \draw (0,0) to [R=$R_L$] (210 :2.5); \draw (0,0) to [R=$R_L$] (330 :2.5);
 \begin{scope}[shift={(5,0)}]    \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west] {$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG2}; \end{scope}
 \draw (5,2.5) to [short, i>=$i_{a2}$] (0,2.5) to [short, i<=$i_{a1}$] (-5,2.5); \draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [short, i>=$i_{b2}$]   (-2.165 ,-1.25-1)  to [short, o-] (-2.165 ,-1.25 ); \draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [short, i>=$i_{b1}$]   (-2.165 ,-1.25-1); \draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2) to [short, i>=$i_{c2}$]  (2.165 ,-1.25-2)  to [short, o-] (2.165 ,-1.25 ); \draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [short, i>=$i_{c1}$]  (2.165 ,-1.25-2);
-\end{circuitikz}\caption{Microgrid comprising two synchronous generators configuration}
+\end{circuitikz}\caption{{\em two identical coupled SGs} (TICSG) model - three phase diagram}
 
-\label{fig:microgrid_configuration}
+\label{fig:TICSGThreePhase}
 \end{figure}
 
-The rotor angles are $\theta_{1}$ and $\theta_{2}$ and the torques
-acting on the generators are equal, denoted $T_{m}$. By symmetry,
+%%%%%%%%%%%%%
+We denote the first SG rotor angle as  $\theta_{1}$ and the second SG rotor angle as $\theta_{2}$. We assume identical constant torque that act on each of the generators, denoted as $T_{m}$. By symmetry,
 we assume that the voltages at the (non-connected) midpoints of the
 generators and the load are zero.
 
-The phase voltages and currents are:
+We denoted the phase voltages and currents of the first generator as: $v_{1}=\left[v_{a1}\  v_{b1}\  v_{c1}
+\right]^\top$ and $i_{1}=\left[i_{a1}\  i_{b1}\  i_{c1}
+\right]^\top$  respectively.
+Similarly, we denoted the phase voltages and currents of the second generator as: $v_{2}=\left[v_{a2}\  v_{b2}\  v_{c2}
+\right]^\top$ and $i_{2}=\left[i_{a2}\  i_{b2}\  i_{c2}
+\right]^\top$ respectively.
 
-\[
-v_{1}=\left[\begin{array}{c}
-v_{a1}\\
-v_{b1}\\
-v_{c1}
-\end{array}\right],\quad v_{2}=\left[\begin{array}{c}
-v_{a2}\\
-v_{b2}\\
-v_{c2}
-\end{array}\right],\quad i_{1}=\left[\begin{array}{c}
-i_{a1}\\
-i_{b1}\\
-i_{c1}
-\end{array}\right],\quad i_{2}=\left[\begin{array}{c}
-i_{a2}\\
-i_{b2}\\
-i_{c2}
-\end{array}\right]
-\]
+We denote by $Z$ the impedance of each SG stator. This impedance is comprised by the resistive impedance of the stator coil $R_s$ and the inductive impedance of the stator, namely $Z\left(s\right)=R_{s} + sL_{s}$. In general, the line that connects the SG to the grid has its impedance that can be modeled (in most cases) as a resistance and an inductance in series, but these values can simply be added to the parameters $R_s$ and $L_s$ of the SG.
+One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 
-The impedances $Z=R_{s}+R_{g}+(L_{s}+L_{g})s$ are comprised of the
-equivalent stator resistance $R_{s}$ and stator inductance $L_{s}$
-and the line resistance $R_{g}$ and inductance $L_{g}$. However,
-we consider for simplicity that $R_{g}=0$ and $L_{g}=0$, since this
-leaves us with the same type of equations, see Figure \ref{fig:one_phase_scheme}.
 
-\begin{figure}
-\begin{circuitikz}[american voltages] \draw   (0,0) node[ground] {}   to [V,v=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, o-] (5,0){}    to  (5,0) node[ground] {};   \draw   (10,0) node[ground] {}   to [V,v=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$] (7,3){}   to [L=$L_s$] (5,3){};   \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
+%%%% Figure Tree phase TICSG system.
+\begin{figure}[!htb]
+\begin{circuitikz}[american voltages,scale=1, transform shape]
+\draw   (0,0) node[sground] {}   to [V,v^<=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, *-] (5,0){}    to  (5,0) node[sground] {};   
+\draw    (4.5, 2.5) to [open,v=$v_L$] (4.5,0);
+\draw   (10,0) node[sground] {}   to [V,v^<=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$,mirror] (7,3){}   to [L=$L_s$, mirror] (5,3){};  
+ \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
 
-\caption{Microgrid comprising two synchronous generators one phase scheme}
+\caption{{\em A microgrid comprising two identical SGs and a load - equivalent circuit diagram for one phase.}}
 
-\label{fig:one_phase_scheme}
+\label{fig:TICSGOnePhase}
 \end{figure}
 
-Recall Park transformation \eqref{eq:ParkTransformation}, and apply
-it on the currents and voltages we have:
+%%%%%%%%%
 
-\[
+In order to use the fourth order model of a single SG \eqref{eq:SGDynamics} in the two SGs system, we apply  the Park transformation \eqref{eq:ParkTransformation}, on each SG  terminal voltages: $\left[ v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  and currents $\left[v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  ($i \in \{1,2\}$).
+
+An expression of the voltage at each SG terminal is:
+$$v_1=v_2=v_L=R_{L}(i_{1}+i_{2})$$
+
+Rewriting this equation for the first SG after applying Park transformation yields:
+
+$$
 \left[\begin{array}{c}
 v_{d1}\\
 v_{q1}\\
 v_{01}
-\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
-v_{a1}\\
-v_{b1}\\
-v_{c1}
-\end{array}\right],\quad\left[\begin{array}{c}
-v_{d2}\\
-v_{q2}\\
-v_{02}
-\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
-v_{a2}\\
-v_{b2}\\
-v_{c2}
-\end{array}\right]
-\]
-
-\[
-\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}\\
-i_{01}
-\end{array}\right]=U(\theta_{1})\left[\begin{array}{c}
-i_{a1}\\
-i_{b1}\\
-i_{c1}
-\end{array}\right],\quad\left[\begin{array}{c}
-i_{d2}\\
-i_{q2}\\
-i_{02}
-\end{array}\right]=U(\theta_{2})\left[\begin{array}{c}
-i_{a2}\\
-i_{b2}\\
-i_{c2}
-\end{array}\right]
-\]
-
-Clearly $i_{01}=i_{02}=0$ (from Kirchhoff's laws) and by symmetry
-argument we can show that $v_{01}=v_{02}=0$ (because $v_{a}=R_{L}(i_{a1}+i_{a2})$
-etc).
-
-Thus, we only have to deal with $v_{dj},v_{qj}$ (with $j\in\{1,2\}$). 
-
-We denote 
-
-\[
-\delta=\theta_{2}-\theta_{1}
-\]
-
-According to formula \eqref{eq:SGDynamics}, the dynamics of synchronous
-machine:
-
-\begin{equation}
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d1}\\
-L_{s}i_{q1}\\
-J\omega_{1}
-\end{array}\right]=\left[\begin{array}{ccc}
--R_{s} & \omega_{1}L_{s} & 0\\
--\omega_{1}L_{s} & -R_{s} & -mi_{f}\\
-0 & mi_{f} & D_{p}
-\end{array}\right]\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}\\
-\omega_{1}
-\end{array}\right]+\left[\begin{array}{c}
--v_{d1}\\
--v_{q1}\\
-T_{m}
-\end{array}\right]\label{eq:dynamics_of_single_generator}
-\end{equation}
-
-where $J$ is the moment of inertia, $D_{p}$ is the frequency droop
-constant, $T_{m}$ is the mechanical torque coming from the prime
-mover to the generator, $m=\sqrt{\frac{3}{2}}M_{f}$, where $M_{f}$
-is the peak mutual inductance between the rotor and one of the stator
-windings, and $i_{f}$ is the rotor current. Of course, a similar
-equation holds for the second generator. To put the equations together,
-we use 
-
-\[
-v=R_{L}(i_{1}+i_{2})
-\]
-
-and after applying Park transformation:
-
-\[
-\left[\begin{array}{c}
-v_{d1}\\
-v_{q1}\\
-0
 \end{array}\right]=R_{L}\left[\begin{array}{c}
 i_{d1}\\
 i_{q1}\\
-0
+i_{01}
 \end{array}\right]+R_{L}U(\theta_{1})\left[\begin{array}{c}
 i_{a2}\\
 i_{b2}\\
 i_{c2}
 \end{array}\right]
-\]
+$$
 
-\begin{equation}
-\left[\begin{array}{c}
+Because Park transformations argument is  $\theta_1$,  the second SG current can't be transformed directly to the d-q coordinates:   $U(\theta_{1})\left[ i_{a2}\ i_{b2}\ i_{c2}\right]^\top \neq \left[ i_{d2}\ i_{q2}\ i_{02}\right]$. 
+
+We express  the currents of the second SG in the d-q coordinates by using the inverse Park transformation: 
+\BEQ{eq:TICSGVolAndCurr}
+ \left[\begin{array}{c}
 v_{d1}\\
 v_{q1}\\
-0
+v_{01}
 \end{array}\right]=R_{L}\left[\begin{array}{c}
 i_{d1}\\
 i_{q1}\\
-0
+i_{01}
 \end{array}\right]+R_{L}U(\theta_{1})U(\theta_{2})^{-1}\left[\begin{array}{c}
 i_{d2}\\
 i_{q2}\\
-0
-\end{array}\right]\label{eq:cur_and_volt_after_park}
+i_{02}
+\end{array}\right].
 \end{equation}
 
-A simple computation shows that 
+We denote $$\delta=\theta_{2}-\theta_{1}$$
 
-\[
-U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
+A simple computation shows that 
+\BEQ{eq:ParkChangeAngle}
+  U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
 \cos(\delta) & -\sin(\delta) & 0\\
 \sin(\delta) & \cos(\delta) & 0\\
 0 & 0 & 1
-\end{array}\right]
-\]
-
-(recall that $\delta=\theta_{2}-\theta_{1}$).
-
-now, substitute that at \eqref{eq:cur_and_volt_after_park} gives:
-
-\[
-\left[\begin{array}{c}
-v_{d1}\\
-v_{q1}
-\end{array}\right]=R_{L}\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}
-\end{array}\right]+R_{L}\left[\begin{array}{cc}
-\cos(\delta) & -\sin(\delta)\\
-\sin(\delta) & \cos(\delta)
-\end{array}\right]\left[\begin{array}{c}
-i_{d2}\\
-i_{q2}
-\end{array}\right]
-\]
-
-Substituting this into \eqref{eq:dynamics_of_single_generator}, denoting
-$R_{tot}=R_{s}+R_{L}$:
-
-\begin{equation}
-\begin{array}{ccc}
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d1}\\
-L_{s}i_{q1}\\
-J\omega_{1}
-\end{array}\right] & = & \left[\begin{array}{ccc}
--R_{tot} & \omega_{1}L_{s} & 0\\
--\omega_{1}L_{s} & -R_{tot} & -mi_{f}\\
-0 & mi_{f} & D_{p}
-\end{array}\right]\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}\\
-\omega_{1}
-\end{array}\right]+\left[\begin{array}{c}
-0\\
-0\\
-T_{m}
-\end{array}\right]\\
- &  & -\left[\begin{array}{ccc}
-R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
-R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
-0 & 0 & 0
-\end{array}\right]\left[\begin{array}{c}
-i_{d2}\\
-i_{q2}\\
-\omega_{2}
-\end{array}\right]
-\end{array}\label{dynamics_of_microgrid}
+\end{array}\right].
 \end{equation}
 
-or in short:
+Because our assumption that the SGs don't have a neutral connection, and by using Kirchhoff's laws we obtain that $i_{01}=i_{02}=0$.  Substituting this into \eqref{eq:TICSGVolAndCurr} and \eqref{eq:ParkChangeAngle} shows that $v_{01} = 0$.
+
+Substitute \eqref{eq:SGDynamics} and \eqref{eq:ParkChangeAngle} into \eqref{eq:TICSGVolAndCurr}  gives:
 
 \[
 \varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
 \]
-
-Where 
+Where we denote
+ \[z_{i}=\left[i_{di}\ i_{qi}\  \omega_{i}\right]^\top,i\in\{1,2\},\]
 
 \[
 \varLambda=\left[\begin{array}{ccc}
 L_{s} & 0 & 0\\
 0 & L_{s} & 0\\
 0 & 0 & J
-\end{array}\right],e_{3}=\left[\begin{array}{c}
-0\\
-0\\
-1
-\end{array}\right]
+\end{array}\right],
 \]
 
 \[
@@ -862,20 +672,16 @@ L_{s} & 0 & 0\\
 -R_{tot} & \omega L_{s} & 0\\
 -\omega L_{s} & -R_{tot} & -mi_{f}\\
 0 & mi_{f} & D_{p}
-\end{array}\right],\mathcal{B}(\delta)=\left[\begin{array}{ccc}
+\end{array}\right],
+\]
+\[\mathcal{B}(\delta)=\left[\begin{array}{ccc}
 R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
 R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
 0 & 0 & 0
-\end{array}\right]
+\end{array}\right],
 \]
-
-\[
-,z_{i}=\left[\begin{array}{c}
-i_{di}\\
-i_{qi}\\
-\omega_{i}
-\end{array}\right],i\in\{1,2\}
-\]
+\[e_{3}=\left[0\ 0\ 1\right]^\top\] and
+\[ R_{tot}=R_{s}+R_{L} \]
 
 Of course a symmetric equation holds for the second generator:
 
@@ -883,20 +689,22 @@ Of course a symmetric equation holds for the second generator:
 \varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
 \]
 
-There is a seventh state variable, $\delta$, for which the ODE is 
+We denote the angular velocity  of the SG rotor as $\omega_i = \dot{\theta_i}$ where $i \in \{1,2\}$. 
+An additional ODE for $\delta$ is:
 
 \[
 \dot{\delta}=\omega_{2}-\omega_{1}
 \]
 
-The whole system is described by:
+Rewriting the entire system dynamics gives:
 
 \begin{equation}
+\begin{array}{ccc}
 \frac{d}{dt}\left[\begin{array}{c}
 \varLambda z_{1}\\
 \varLambda z_{2}\\
 \delta
-\end{array}\right]=\left[\begin{array}{c|c|c}
+\end{array}\right] & = & \left[\begin{array}{c|c|c}
 \mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
 \hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
 \hline -e_{3}^{T} & e_{3}^{T} & 0
@@ -904,13 +712,17 @@ The whole system is described by:
 z_{1}\\
 z_{2}\\
 \delta
-\end{array}\right]+T_{m}\left[\begin{array}{c}
+\end{array}\right]\\
+ &  & +T_{m}\left[\begin{array}{c}
 e_{3}\\
 e_{3}\\
 0
-\end{array}\right]\label{eq:dynamics_whole}
+\end{array}\right]
+\end{array}\label{eq:TICSGDynamics}
 \end{equation}
 
+We refer this seven order non linear dynamic system as the TICSG model.
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
 

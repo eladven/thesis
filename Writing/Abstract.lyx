@@ -1,7 +1,9 @@
-#LyX 2.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 474
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
 \begin_document
 \begin_header
+\save_transient_properties true
+\origin unavailable
 \textclass report
 \use_default_options true
 \maintain_unincluded_children false
@@ -9,16 +11,16 @@
 \language_package default
 \inputencoding auto
 \fontencoding global
-\font_roman default
-\font_sans default
-\font_typewriter default
-\font_math auto
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
 \font_default_family default
 \use_non_tex_fonts false
 \font_sc false
 \font_osf false
-\font_sf_scale 100
-\font_tt_scale 100
+\font_sf_scale 100 100
+\font_tt_scale 100 100
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -79,23 +81,21 @@ Abstract
 Synchronous generators are an essential component of the electric grid.
  Recently, the stability of the electric grid has become an area of high
  interest and intensive research.
- One reason for that is because the electric grid that conservatively was
- based only on synchronous generators as it power source, change and became
- more and more composed of other sources, mostly because of the usage of
- renewable energy sources.
+ One reason for that is because the electric grid becomes more and more
+ dependent on renewable energy sources.
 \end_layout
 
 \begin_layout Standard
-In this work we discuss the stability of a grid that is comprised of one
- synchronous generator connected to an infinite bus, and we show that reduced
- models that are common by used for design and analysis can fail to predict
- the behavior of this system.
+In this work we discuss the stability of a single generator connected to
+ an infinite bus, and show that certain reduced models fail to predict the
+ behavior of this system.
 \end_layout
 
 \begin_layout Standard
-The second part of this thesis shows sufficient conditions for grid composed
- of two identical synchronous generators to synchronize and converge to
- a steady state.
+In the second part of this work, we discuss the stability of a grid composed
+ of two identical synchronous generators, and show sufficient conditions
+ for exponential stability.
+ 
 \end_layout
 
 \end_body
