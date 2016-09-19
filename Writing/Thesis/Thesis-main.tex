@@ -25,6 +25,7 @@
 \usepackage{ulem}
 \usepackage{nomencl}
 \usepackage{epstopdf}
+\usepackage{mathrsfs}
 % the following is useful when we have the old nomencl.sty package
 \providecommand{\printnomenclature}{\printglossary}
 \providecommand{\makenomenclature}{\makeglossary}
@@ -733,9 +734,9 @@ bus configuration, and the two SG microgid.
 
 \section{Equilibrium points of SG connected to an infinite bus.}
 
-This section follows \citep{NatarajanWeiss2015}. In order to search
-the equilibrium point of single SG which connected to an infinite
-bus, we will find the roots of: 
+This section follows \citep{NaWe:15}. In order to search
+the equilibrium points of single SG which connected to an infinite
+bus, we  find the roots of: 
 
 \begin{equation}
 \left[\begin{array}{c}
@@ -758,26 +759,24 @@ V\sin\delta^{e}\\
 V\cos\delta^{e}\\
 T_{m}\\
 \omega_{g}
-\end{array}\right]\label{eq:SGDynamicsInfBusEqPoint}
+\end{array}\right].\label{eq:SGDynamicsInfBusEqPoint}
 \end{equation}
 
-By taking the fourth, and the third lines, it shows that the equilibrium
-point $z_{e}=\left[\begin{array}{c}
-i_{d}^{e}\\
-i_{q}^{e}\\
-\omega^{e}\\
+By taking the fourth, and the third lines, it is easy to see  that the equilibrium
+point $z_{e}=\left[i_{d}^{e}\ i_{q}^{e}\
+\omega^{e}\
 \delta^{e}
-\end{array}\right]$ must satisfy:
+\right]^\top$ must satisfy:
 
-\[
+$$
 \omega^{e}=\omega_{g},\qquad i_{q}^{e}=\frac{D_{p}\omega_{g}-T_{m}}{mi_{f}}
-\]
+.$$
 
-Using the value of $i_{q}^{e}$ at the first line yields:
+Substitute the the value of $i_{q}^{e}$ at the first line yields:
 
-\[
+$$
 i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{V\sin\delta^{e}}{R_{s}}
-\]
+.$$
 
 Using the second line, after substituting the values of $i_{d}^{e}$
 and $i_{q}^{e}$ gives:
@@ -789,29 +788,16 @@ and $i_{q}^{e}$ gives:
 where $|z|$ and $\psi$ define by the impedance of the generator:
 $z=R_{s}+j\omega_{g}L_{s}=|z|e^{j\psi}$.
 
-Because the arccos function, SG which connected to an infinite bus
-can have one, two or zero solutions (modulo $2\pi$).
+This equation may have one, two or zero solutions (modulo $2\pi$).
 
-\section{Equilibrium points of a microgrid comprising two SGs.}
+\section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
 
-In this section, we study the equilibrium points of a microgrid domprising
-two SGs. We start by showing that such equilibrium point must satisfy
-synchronization between the two generators (means that the state variables
-are equal between the two generators, and there is no phase between
-the two generators), or anti-synchronization between the two generators
-(means that the state variables are equal between the two generators,
-and there is phase of $\pi$ between the two generators). Later in
-this section, we show that there exist at list one equilibrium point,
-which located on the manifold of synchronization of the two generators. 
+In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization subspace or on the anti-synchronization subspace i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$ and $\delta^e=0$ or $\delta^e = \pi$   (modulo $2\pi$). Second, we show that the TICSG system has at list one equilibrium point on the synchronization subspace (i.e with $\delta^e=0$).
 
-\subsection{An equilibrium can be only on the surface $z_{1}=z_{2}$.}
+\subsection{An equilibrium point must satisfy synchronization condition.}
+We  start by investigate the solution of the algebraic equation:  
 
-First, we will show that the system \eqref{eq:dynamics_whole} has
-equilibrium point, and those equilibrium point have the structure
-$z_{1}^{e}=z_{2}^{e}=z^{e},\qquad\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$.
-For proving that, we will start form the algebraic equation:
-
-\[
+\begin{equation}
 \left[\begin{array}{c|c|c}
 \mathcal{A}(\omega_{1}^{e}) & -\mathcal{B}(\delta^{e}) & 0\\
 \hline -\mathcal{B}(-\delta^{e}) & \mathcal{A}(\omega_{2}^{e}) & 0\\
@@ -825,50 +811,31 @@ e_{3}\\
 e_{3}\\
 0
 \end{array}\right]=0
-\]
+\label{eq:algebricEquation}
+\end{equation}
 
-At the seventh line ($\dot{\delta})$ we have 
-\[
--\omega_{1}^{e}+\omega_{2}^{e}=0\longrightarrow\omega_{1}^{e}=\omega_{2}^{e}\coloneqq\omega^{e}
-\]
+It easy to see that according to the seventh line $$\omega_{1}^{e}=\omega_{2}^{e}=\omega^{e}$$.
 
-From the third line ($\dot{\omega}_{1})$ and the sixth line ($\dot{\omega}_{2})$
-we have 
+From the third and the sixth lines we have: 
 
-\[
+$$
 \left\{ \begin{array}{c}
 mi_{f}i_{q1}^{e}-D_{p}\omega_{1}^{e}+T_{m}=0\\
 mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
-\end{array}\right.\longrightarrow\left\{ \begin{array}{c}
-mi_{f}i_{q1}^{e}-D_{p}\omega^{e}=0\\
-mi_{f}i_{q2}^{e}-D_{p}\omega^{e}=0
 \end{array}\right.\longrightarrow i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e}
-\]
+$$
 
-From the first line ($\dot{i}_{d1})$, the second line ($\dot{i}_{q1})$,
-the forth line ($\dot{i}_{d2})$ and the fifth line ($\dot{i}_{q2})$
-we have 
+From the first, second, fourth and fifth lines:
 
-\[
-\left\{ \begin{array}{c}
+$$
+ \begin{array}{c}
 -R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d2}^{e}+R_{L}\sin\delta^{e}i_{q}^{e}=0\\
 -\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}\sin\delta^{e}i_{d2}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0\\
 -R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d1}^{e}-R_{L}\sin\delta^{e}i_{q}^{e}=0\\
 -\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}\sin\delta^{e}i_{d1}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0
-\end{array}\right.
-\]
-
-This system of equations can be represented at matrix form:
-
-\begin{equation}
-M\left[\begin{array}{c}
-i_{d1}^{e}\\
-i_{d2}^{e}
-\end{array}\right]=n\label{eq:equilibrium_system}
-\end{equation}
-
-Where 
-
+\end{array}
+$$
+By denoting:
 \[
 M=\left[\begin{array}{cc}
 -R_{tot} & -R_{L}\cos\delta^{e}\\
@@ -888,168 +855,54 @@ i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
 \end{array}\right]
 \]
-
-
-\subparagraph*{Rouché\textendash Capelli Theorem: }
-
-The system $Mx=n$ has a solution if and only if $rank\left[M|n\right]=rank\left[M\right].$
-
-We will prove by contradiction that $\sin\delta_{0}=0$ is a necessary
-condition for the system \eqref{eq:equilibrium_system} to have solution.
-Negated to assume that $\sin\delta^{e}\ne0$. We will show that $rank\left[M|n\right]=3.$
-
-Denote $\alpha=\omega_{0}L_{s}+R_{L}\sin\delta_{0}$ and $\beta=\omega_{0}L_{s}-R_{L}\sin\delta_{0}$,
-then:
+We represent these lines in the following way:
 
 \begin{equation}
-\left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & \quad-R_{L}\cos\delta^{e}\quad & i_{q}^{e}\alpha\\
--\omega^{e}L_{s} & \quad-R_{L}\sin\delta^{e}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
--R_{L}\cos\delta^{e} & \quad-R_{tot}\quad & i_{q}^{e}\beta\\
-R_{L}\sin\delta^{e} & \quad-\omega^{e}L_{s}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
-\end{array}\right]\label{eq:M_n}
+M\left[\begin{array}{c}
+i_{d1}^{e}\\
+i_{d2}^{e}
+\end{array}\right]=n\label{eq:equilibrium_system}
 \end{equation}
 
+Now, we  show by contradiction that any equilibrium point must satisfy: $\sin\delta^e=0$.
+We use Rouch\'e Capelli Theorem:  Any liner equations system with the form  $Mx=n$ has a  solution if and only if $rank\left[M|n\right]=rank\left[M\right].$
 
-\subsubsection*{Case A: $\alpha=0$ and $\beta=0$}
+We negated to assume that $\sin\delta^{e}\ne0$. Simple calculation (see Appendix \ref{chap:AppendixProof}) shows that under this assumption   $rank\left[M|n\right]=3$ must hold.
 
-Because $\alpha=0$ and $\beta=0$ it means that $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}$
-hance $R_{L}\sin\delta^{e}=0$ which contradicts our assumption.
+Obviously, $rank\left[M\right]\le2$.  Rouch\'e Capelli Theorem implies that under the
+previous assumption the linear equations system \eqref{eq:equilibrium_system} doesn't have solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ means that : $\delta^{e}=0$ or $\delta^e = \pi$ (modulo $2\pi$).
 
-\subsubsection*{Case B: $\alpha=0$ and $\beta\protect\ne0$}
+After subtitling $\sin\delta^{e}=0$
+and $\cos\delta^{e}=\pm 1$, the linear equations system  \eqref{eq:equilibrium_system} becomes:
 
-Lets define 
-
-\begin{equation}
-T=\left[\begin{array}{cccc}
-0 & 0 & 1 & 0\\
-1 & 0 & 0 & 0\\
-0 & 1 & 0 & -1
-\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
--R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
--R_{tot} & -R_{L}\cos\delta^{e} & 0\\
-0 & \beta & 0
-\end{array}\right]\label{eq:MATRIX_1}
-\end{equation}
-
-Now, if $\cos\delta^{e}=0$ then $rank(T)=3$. If $\cos\delta^{e}\ne0$
-we define 
-
-\[
-T_{2}=\left[\begin{array}{ccc}
-1 & 0 & 0\\
-0 & \beta & -R_{L}\cos\delta^{e}\\
-0 & 0 & 1
-\end{array}\right]T=\left[\begin{array}{ccc}
--R_{L}\cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
--R_{tot}\beta & 0 & 0\\
-0 & \beta & 0
-\end{array}\right]
-\]
-
-it is easy to see that $rank(T_{2})=3$.
-
-\subsubsection*{Case C: $\alpha\protect\ne0$ and $\beta=0$}
-
-Lets define
-
-\begin{equation}
-T_{3}=\left[\begin{array}{cccc}
-1 & 0 & 0 & 0\\
-0 & 0 & 1 & 0\\
-0 & 1 & 0 & -1
-\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
--R_{L}\cos\delta^{e} & -R_{tot} & 0\\
--\alpha & 0 & 0
-\end{array}\right]\label{eq:MATRIX_2}
-\end{equation}
-
-it is easy to see that $rank(T_{3})=3$.
-
-\subsubsection*{Case D: $\alpha\protect\ne0$ and $\beta\protect\ne0$}
-
-Lets define
-
-\begin{equation}
-T_{4}=\left[\begin{array}{cccc}
-1 & 0 & 0 & 0\\
-\alpha & 0 & \beta & 0\\
-0 & 1 & 0 & -1
-\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
--R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
-\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
--\alpha & \beta & 0
-\end{array}\right]\label{eq:MATRIX_4}
-\end{equation}
-
-Now, if $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$,
-because $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}$
-must be different than zero, it is easy to see that $rank(T_{4})=3$.
-(It is impossible that both $-\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta}=0$
-and $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}=0$
-because that implies that $(\alpha+\beta)R_{L}\cos\delta^{e}=(\alpha+\beta)R_{tot}$,
-and $\alpha+\beta=2\omega^{e}L_{s}>0$ and $R_{tot}>R_{L}\cos\delta^{e}$).
-
-Assuming that $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\ne0$
-we define
-
-\[
-\begin{array}{c}
-T_{5}=\left[\begin{array}{ccc}
-1 & 0\quad & 0\\
-0 & 0\quad & 1\\
-0 & -\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\quad & -\beta
-\end{array}\right]T_{4}=\\
-\left[\begin{array}{ccc}
--R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
--\alpha & \beta & 0\\
-\frac{4L_{s}R_{tot}\omega^{e}\sin\delta^{e}}{\beta\left[L_{s}\omega^{0}\left(R_{tot}-R_{L}\cos\delta^{e}\right)+R_{L}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\sin\delta^{0}\right]} & 0 & 0
-\end{array}\right]
-\end{array}
-\]
-
-by assumption, $\sin\delta^{e}\ne0$ which imply that $rank(T_{5})=3$. 
-
-Because we showed that for any possible case, after applying linear
-transformation on $\left[M|n\right]$ the resulting rank is 3, it
-implies that $rank\left[M|n\right]=3.$ 
-
-Obviously, $rank\left[M\right]\le2$ which implies that under the
-assumption that $\sin\delta^{e}\ne0$ the system \eqref{eq:equilibrium_system}
-doesn't have solution. That means that if there is equilibrium point
-for the system \eqref{eq:dynamics_whole}, it must satisfied $\sin\delta^{e}=0$
-which means that $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}.$
-
-If $\delta^{e}=\pi k,\qquad k\in\mathbb{Z}$ then $\sin\delta^{e}=0$
-and $\cos\delta^{e}=1$.Now: 
-
-\[
+$$
 M=\left[\begin{array}{cc}
--R_{tot} & -R_{L}\\
+-R_{tot} & \mp R_{L}\\
 -\omega^{e}L_{s} & 0\\
--R_{L} & -R_{tot}\\
+  \mp R_{L} & -R_{tot}\\
 0 & -\omega^{e}L_{s}
 \end{array}\right]
-\]
+$$
 
 and 
 
-\[
+$$
 N=\left[\begin{array}{c}
 i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)\\
 i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\right)
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)
 \end{array}\right]
-\]
+$$
 
-This system have one solution: $i_{d1}^{e}=i_{d2}^{e}\coloneqq i_{d}^{e}$
+This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
+\subsection{The TICSG system has at list one equilibrium point on the synchronization subspace}
+Here, we show that the TICSG system has at list one equilibrium point which satisfies 
+\begin{equation}
+z_1^{e}=z_2^{e}=z^{e},\quad \delta^e=0\label{eq:eqPointConditions}
+\end{equation}
 
-\subsection{Equilibrium point on the synchronization surface.}
-
-The algebraic equation for calculating $z^{e}=z_{1}^{e}=z_{2}^{e}$
-is:
+After substituting condition \eqref{eq:eqPointConditions} into \eqref{eq:algebricEquation} ,we get:
 
 \begin{equation}
 \left[\begin{array}{ccc}
@@ -1082,16 +935,15 @@ it is easy to see that $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{
 which is exactly half of the power dissipated in all the resistors,
 hence it is the electric power leaving one generator.
 
-From \eqref{eq:equilbrium_algebric_eq}, we want to derive a scalar
-equation to the determine the equilibrium velocity $\omega^{0}$.
-The last line of the matrix equation \eqref{eq:equilbrium_algebric_eq}
-is $mi_{f}i_{q}^{e}-D_{p}\omega^{e}=-T_{m}$. from where
+From \eqref{eq:equilbrium_algebric_eq}, we derive a scalar
+equation to determine the equilibrium velocity $\omega^{e}$.
+From the last line of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
 
 \begin{equation}
 T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
 \end{equation}
 
-The sides of this equation are the mechanical torque acting on each
+The left side of this equation can interpreted as the  mechanical torque acting on each
 generator at equilibrium.
 
 The first line of the matrix equilibrium \eqref{eq:equilbrium_algebric_eq}
@@ -1114,36 +966,30 @@ i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_
 \end{equation}
 
 The second line of the matrix equation on \eqref{eq:eq_0_first_eq},
-is $\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$.
-Substituting here the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$
-from \eqref{eq:iq_0_}, \eqref{eq:id_0_}, we get 
-
-\[
--\omega^{e}L_{s}\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}-\left(R_{tot}+R_{L}\right)\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}+mi_{f}\omega^{e}=0
-\]
-
-We multiply all terms with $-\left(R_{tot}+R_{L}\right)mi_{f}$ to
-have:
-
-\[
-\left(\omega^{e}\right)^{2}L_{s}^{2}\left(T_{m}-D_{p}\omega^{e}\right)-\left(R_{tot}+R_{L}\right)^{2}\left(T_{m}-D_{p}\omega^{e}\right)+-\left(R_{tot}+R_{L}\right)m^{2}i_{f}^{2}\omega^{e}=0
-\]
+is 
+$$\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$$
+Substituting in this equation the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$ yields the following cubic equation in $\omega^e$, denoting $R_T = R_L+R_{tot}$:
 
 \begin{equation}
-D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\omega^{e}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=0\label{eq:cuibi_eq}
+\begin{split}
+D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2} +\left(D_{p}R_T^{2}+m^{2}i_{f}^{2}R_T\right) \omega^{e}  -T_{m}R_T^{2}=0
+\end{split}\label{eq:cuibi_eq}
 \end{equation}
 
-This is a cubic equation in $\omega^{e}$. 
-
 Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
-$p(\omega^{e}).$ $p(0)=-T_{m}\left(R_{tot}+R_{L}\right)^{2}<0$.
-On the other hand, we note that $p(\frac{T_{m}}{D_{p}})=D_{p}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{3}-T_{m}L_{s}^{2}\left(\frac{T_{m}}{D_{p}}\right)^{2}+\left[D_{p}\left(R_{tot}+R_{L}\right)^{2}+m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\right]\frac{T_{m}}{D_{p}}-T_{m}\left(R_{tot}+R_{L}\right)^{2}=m^{2}i_{f}^{2}\left(R_{tot}+R_{L}\right)\frac{T_{m}}{D_{p}}>0$.
+$p(\omega^{e})$. 
+$$p(0)=-T_{m}R_T^{2}<0$$
+On the other hand, we note that 
+$$
+p(\frac{T_{m}}{D_{p}}) =m^{2}i_{f}^{2}R_T\frac{T_{m}}{D_{p}}>0
+$$
 
-Hence, \eqref{eq:cuibi_eq} has at least one solution ing the interval
-$\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
+Hence, \eqref{eq:cuibi_eq} has at least one solution in the interval $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
 
+It shows that the TICSG system has at list one equilibrium point  that located on the synchronization subspace $\mathscr{E}=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e= 0\}$.
 
-
+Note, that the anti synchronization subspace  $\mathscr{E} '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \chapter{Model Reduction\label{cha:Model_reduction}}
 
 \section{Develop the improved swing equation for infinite bus:}
@@ -2214,7 +2060,152 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 \label{table:DifferentRegionOfAttraction}
 \end{table}
 
+\chapter{Proof that for the TICSG, assuming that  $\sin\delta_{0}=0$, $rank\left[M|n\right]=3$\label{chap:AppendixProof}}
 
+\[
+M=\left[\begin{array}{cc}
+-R_{tot} & -R_{L}\cos\delta^{e}\\
+-\omega^{e}L_{s} & -R_{L}\sin\delta^{e}\\
+-R_{L}\cos\delta^{e} & -R_{tot}\\
+R_{L}\sin\delta^{e} & -\omega^{e}L_{s}
+\end{array}\right]
+\]
+
+and 
+
+\[
+n=\left[\begin{array}{c}
+i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
+-mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
+\end{array}\right]
+\]
+
+Denote $\alpha=\omega_{0}L_{s}+R_{L}\sin\delta_{0}$ and $\beta=\omega_{0}L_{s}-R_{L}\sin\delta_{0}$,
+then:
+
+\begin{equation}
+\left[M|n\right]=\left[\begin{array}{ccc}
+-R_{tot} & \quad-R_{L}\cos\delta^{e}\quad & i_{q}^{e}\alpha\\
+-\omega^{e}L_{s} & \quad-R_{L}\sin\delta^{e}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
+-R_{L}\cos\delta^{e} & \quad-R_{tot}\quad & i_{q}^{e}\beta\\
+R_{L}\sin\delta^{e} & \quad-\omega^{e}L_{s}\quad & -mi_{f}\omega^{e}-i_{q}^{0}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
+\end{array}\right]\label{eq:M_n}
+\end{equation}
+
+
+\subsubsection*{Case A: $\alpha=0$ and $\beta=0$}
+
+Because $\alpha=0$ and $\beta=0$ it means that $\omega^{e}L_{s}+R_{L}\sin\delta^{e}=\omega^{e}L_{s}-R_{L}\sin\delta^{e}$ 
+and hence $R_{L}\sin\delta^{e}=0$ which contradicts our assumption.
+
+\subsubsection*{Case B: $\alpha=0$ and $\beta\protect\ne0$}
+
+Lets define 
+
+\begin{equation}
+T=\left[\begin{array}{cccc}
+0 & 0 & 1 & 0\\
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
+-R_{L}\cos\delta^{e} & -R_{tot} & i_{q}^{e}\beta\\
+-R_{tot} & -R_{L}\cos\delta^{e} & 0\\
+0 & \beta & 0
+\end{array}\right].\label{eq:MATRIX_1}
+\end{equation}
+
+Now, if $\cos\delta^{e}=0$ then $rank(T)=3$. If $\cos\delta^{e}\ne0$
+we define 
+
+\[
+T_{2}=\left[\begin{array}{ccc}
+1 & 0 & 0\\
+0 & \beta & -R_{L}\cos\delta^{e}\\
+0 & 0 & 1
+\end{array}\right]T=\left[\begin{array}{ccc}
+-R_{L}\cos\delta_{0} & -R_{tot} & i_{q}^{e}\beta\\
+-R_{tot}\beta & 0 & 0\\
+0 & \beta & 0
+\end{array}\right]
+\]
+
+it is easy to see that $rank(T_{2})=3$.
+
+\subsubsection*{Case C: $\alpha\protect\ne0$ and $\beta=0$}
+
+Lets define
+
+\begin{equation}
+T_{3}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+-R_{L}\cos\delta^{e} & -R_{tot} & 0\\
+-\alpha & 0 & 0
+\end{array}\right]\label{eq:MATRIX_2}
+\end{equation}
+
+it is easy to see that $rank(T_{3})=3$.
+
+\subsubsection*{Case D: $\alpha\protect\ne0$ and $\beta\protect\ne0$}
+
+Lets define
+
+\begin{equation}
+T_{4}=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0\\
+\alpha & 0 & \beta & 0\\
+0 & 1 & 0 & -1
+\end{array}\right]\left[M|n\right]=\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} & -\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta} & 0\\
+-\alpha & \beta & 0
+\end{array}\right].\label{eq:MATRIX_4}
+\end{equation}
+
+It is impossible that both $-\frac{R_{L}\cos\delta^{e}}{\alpha}+\frac{R_{tot}}{\beta}=0$
+and $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha}=0$
+because it implies that 
+$$\left\{ \begin{array}{c}
+-\beta R_{L}\cos\delta^{e}+\alpha R_{tot}=0\\
+\alpha R_{L}\cos\delta^{e}-\beta R_{tot}=0
+\end{array}\right..$$ 
+
+By subtract the first equation from the second we get 
+
+$(\alpha+\beta)R_{L}\cos\delta^{e}=(\alpha+\beta)R_{tot}$, which is impossible because  $\alpha+\beta=2\omega^{e}L_{s}>0$ and $R_{tot}=R_L+R_s>R_{L}\cos\delta^{e}$.
+
+
+
+If $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$ and $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} \neq 0$,
+then it is easy to see that $rank(T_{4})=3$.
+
+If $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\ne0$
+we define
+
+\[
+\begin{array}{c}
+T_{5}=\left[\begin{array}{ccc}
+1 & 0\quad & 0\\
+0 & 0\quad & 1\\
+0 & -\beta \quad & -\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}
+\end{array}\right]T_{4}=\\
+\left[\begin{array}{ccc}
+-R_{tot} & -R_{L}\cos\delta^{e} & i_{q}^{e}\alpha\\
+-\alpha & \beta & 0\\
+R_{tot} \left( \frac{\beta}{\alpha}- \frac{\alpha}{\beta}\right) & 0 & 0
+\end{array}\right]
+\end{array}
+\]
+
+because $ \alpha \neq \beta$, $rank(T_{5})=3$. 
+
+We show that for any possible case, after applying linear
+transformation on $\left[M|n\right]$ the resulting rank is 3. 
 
 \newpage{}
 
