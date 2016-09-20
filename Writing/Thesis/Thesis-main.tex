@@ -51,6 +51,7 @@
 \titleformat{\chapter}[hang]{\Huge\bfseries}{\thechapter\hsp}{0pt}{\Huge\bfseries}
 \usepackage{tikz}
 \usepackage[europeanresistors,americaninductors]{circuitikz}
+\usepackage{amsthm}
  
 \Title{\textbf{Stability of Synchronous Generators}}
 \Author{\textbf{\large Elad Venezian}}
@@ -62,6 +63,7 @@
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \newtheorem{theorem}{Theorem}[section]
+
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 
@@ -70,13 +72,7 @@
 \newtheorem{example}[theorem]{Example}
 \newtheorem{problem_statement}[theorem]{Problem Statement}
 \newtheorem{remark}[theorem]{Remark}
-%\numberwithin{equation}{section}
-%%% The above 7 commands are used in the following way:
-%%% The definition environment, for example, is created by
-%%% \begin{definition}\label{xxx}. . .\end{definition}
-%\newcommand{\mylabel}[1]{\label{#1}
-%            \ifx\undefined\stillediting
-%            \else \fbox{$#1$}\fi }
+
 \newcommand{\BE}{\begin{equation}}
 \newcommand{\BEQ}[1]{\BE\label{#1}} % Changed by Olof
 \newcommand{\EEQ}{\end{equation}}
@@ -84,10 +80,6 @@
    (\ref{#1})}\ifx\undefined\stillediting\else:\fbox{$#1$}\fi}
 \newenvironment{matr}[1]{\left[ \begin{array}{#1}}{\end{array}
                          \right]}
-%
-%\newfont{\roma}{cmr10 scaled 1200}
-%\font\fourteenrm = cmr10  scaled\magstep2
-%
 \renewcommand{\cline}{{\mathbb C}}
 \newcommand{\rline}  {{\mathbb R}}
 \renewcommand{\l}    {{\lambda}}
@@ -1185,21 +1177,25 @@ while the ISE converges to the equilibrium point.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
+\chapter{Synchronization}
 
-\chapter{Synchronization\label{cha:Synchronization}}
-
-In this chapter, we show that microgid comprising of two identical
-SGs, the synchronization manifold is locally exponentially stable.
-First, we will rewrite the grid dynamics as synchronization error
-dynamic, and equivalence SG dynamics. Then, we will prove that under
+In this chapter, we show that the synchronization subspace of the TICSG system, is locally exponentially stable.
+We start with rewrite the TICSG dynamics as synchronization error
+ and equivalence SG dynamics. Then, we  prove that under
 some conditions, the equivalence SG dynamics is globally exponentially
-stable. Finally, we will use the main result from \citep{VincentBayuLaurent2016},
-to show the stability of the system near the synchronization manifold.
+stable. Finally, we use the main result from  \cite{AndrieuJayawardhanaPraly},
+to show the stability of the system near the synchronization subspace.
 
 \section{Modeling the synchronization problem:}
+The TICSG system has the following structure:
+$$ \tilde{\Lambda}\frac{d}{dt}\left[z_1\ z_2\ \delta\right]^{\top}= f\left( \left[z_1\ z_2\ \delta\right]^{\top} \right)$$
+where $\tilde{\Lambda} = diag \left( \Lambda,\Lambda,1 \right) $.
+In order to show synchronization, it is convenient to denote:
+$$e =  \left[\left(z_1^\top-z_2^\top \right)\ \delta \right]^\top = \left[e_d\ e_q\ e_{\omega}\ \delta \right]^\top $$
+and 
+$$x =z_1+z_2 = \left[ x_d\ x_q\ x_\omega\right]^\top.$$  
 
-In order to show synchronization, it is convenient to use the following
-notation:
+And to use the following structure:
 
 \begin{equation}
 \left\{ \begin{array}{c}
@@ -1208,377 +1204,307 @@ notation:
 \end{array}\right.\label{eq:sync_sestem}
 \end{equation}
 
-Where 
+For some functions $F$ and $G$. 
 
-\[
-e\coloneqq\left[\begin{array}{c}
+From \eqref{eq:TICSGDynamics}:
+$$
+\begin{aligned}
+\Lambda(\dot{z}_{1}-\dot{z}_{2})&=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\\&-\left(\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\right)
+\end{aligned}
+$$
+Calculating  $F$:
+$$
+\begin{aligned}
+&  \left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right] \frac{d}{dt}\left[\begin{array}{c}
 e_{d}\\
 e_{q}\\
 e_{\omega}\\
 \delta
-\end{array}\right]\coloneqq\left[\begin{array}{c}
-i_{d1}-i_{d2}\\
-i_{q1}-i_{q2}\\
-\omega_{1}-\omega_{2}\\
-\delta
-\end{array}\right]
-\]
-
-\[
-x\coloneqq\left[\begin{array}{c}
-x_{d}\\
-x_{q}\\
-x_{\omega}
-\end{array}\right]\coloneqq\left[\begin{array}{c}
-i_{d1}+i_{d2}\\
-i_{q1}+i_{q2}\\
-\omega_{1}+\omega_{2}
-\end{array}\right]
-\]
-
-Lets calculate the dynamics of the new notation:
-
-from \eqref{eq:dynamics_whole}:
-
-\[
-\varLambda\dot{e}=\varLambda(\dot{z}_{1}-\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}-\left(\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\right)
-\]
-
-\[
-\begin{array}{ccc}
-\varLambda\frac{d}{dt}\left[\begin{array}{c}
-e_{d}\\
-e_{q}\\
-e_{\omega}\\
-\delta
-\end{array}\right] & = & \left[\begin{array}{c}
+\end{array}\right]  =  \\ & \left[\begin{array}{c}
 -R_{tot}(i_{d1}-i_{d2})+L_{s}(\omega_{1}i_{q1}-\omega_{2}i_{q2})\\
 -L_{s}(\omega_{1}i_{d1}-\omega_{2}i_{d2})-R_{tot}(i_{q1}-i_{q2})-mi_{f}(\omega_{1}-\omega_{2})\\
 mi_{f}(i_{q1}-i_{q2})-D_{p}(\omega_{1}-\omega_{2})\\
 -(\omega_{1}-\omega_{2})
 \end{array}\right]\\
- &  & +\left[\begin{array}{c}
+ + & \left[\begin{array}{c}
 R_{L}\cos(\delta)(i_{d1}-i_{d2})+R_{L}\sin(\delta)(i_{q1}+i_{q2})\\
 R_{L}\cos(\delta)(i_{q1}-i_{q2})-R_{L}\sin(\delta)(i_{d1}+i_{d2})\\
 0\\
 0
-\end{array}\right]
-\end{array}
-\]
+\end{array}\right].
+\end{aligned}
+$$
 
-Now, 
+Because the following equation   
+$$(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$$
+holds for any $x$, $y$, $a$ and $b$, it implies that:
+$$
+\begin{aligned}
+\omega_{1}i_{q1}-\omega_{2}i_{q2}= &\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
+\end{aligned}
+$$
 
-\[
-(a+b)(x-y)+(a-b)(x+y)=2(ax-by)
-\]
-
-So
-
-\[
-\omega_{1}i_{q1}-\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right]=\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
-\]
-
-and
-
-\begin{equation}
-\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}e_{d}+e_{w}x_{d}}{2}
-\end{equation}
-
-\[
-\begin{array}{ccc}
-\left[\begin{array}{cc}
+and the previous equation can be rewritten as:
+$$
+\dot{e}  = F(e,x) =\left[\begin{array}{cc}
 \varLambda & 0\\
 0 & 1
-\end{array}\right]\dot{e} & = & \left[\begin{array}{cccc}
--R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
--\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
+\end{array}\right]^{-1}\left(A_e\left(x,e\right) e +B_e\left(x,e\right)  \right)
+$$
+
+Where 
+
+$$
+\begin{aligned}
+&A_e\left(x,e\right)  = \\ & \left[\begin{array}{cccc}
+-R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{q}-mif & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & -1 & 0
-\end{array}\right]e\\
- &  & +\left[\begin{array}{c}
+\end{array}\right]
+\end{aligned}
+$$ 
+and
+$$
+B_e\left(x,e\right) = 
+\left[\begin{array}{c}
 R_{L}\sin(\delta)x_{2}\\
 -R_{L}\sin(\delta)x_{1}\\
 0\\
 0
-\end{array}\right]
-\end{array}
-\]
+\end{array}\right].
+$$
 
-It is easy to see that $F(0,x)=0$, which shows that the manifold
-$\epsilon=\left\{ \left[\begin{array}{c}
+
+
+We note that $F(0,x)=0$, which shows that the subspace
+$\mathscr{E}=\left\{ \left[\begin{array}{c}
 x\\
 e
 \end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $ is invariant.
 
 For the $x$ dynamics, we have:
 
-\[
-\varLambda\dot{x}=\varLambda(\dot{z}_{1}+\dot{z}_{2})=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}+\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
-\]
+$$
+\begin{aligned}
+\Lambda(\dot{z}_{1}+\dot{z}_{2})= & \mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\\+&\mathcal{A}(\omega_{2})z_{2}  +T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\end{aligned}
+$$
 
-\[
-\begin{array}{ccc}
-\varLambda\frac{d}{dt}\left[\begin{array}{c}
+$$
+\begin{aligned}
+&\Lambda\frac{d}{dt}\left[\begin{array}{c}
 x_{d}\\
 x_{q}\\
 x_{\omega}
-\end{array}\right] & = & \left[\begin{array}{c}
+\end{array}\right]  = \\
+ & \left[\begin{array}{c}
 -R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})\\
 -L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-mi_{f}(\omega_{1}+\omega_{2})\\
 mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
 \end{array}\right]\\
- &  & +\left[\begin{array}{c}
+ +& \left[\begin{array}{c}
 -R_{L}\cos(\delta)(i_{d1}+i_{d2})-R_{L}\sin(\delta)(i_{q1}-i_{q2})\\
 -R_{L}\cos(\delta)(i_{q1}+i_{q2})+R_{L}\sin(\delta)(i_{d1}-i_{d2})\\
 0
 \end{array}\right]
-\end{array}
-\]
+\end{aligned}
+$$
 
-Now, 
-
-\[
+Again, because the  equation  
+$$
 (a+b)(x+y)+(a-b)(x-y)=2(ax+by)
-\]
+$$
+holds for any $x$, $y$, $a$ and $b$, it implies that:
+$$
+\begin{aligned}
+\omega_{1}i_{q1}+\omega_{2}i_{q2} &=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]\\ & =\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
+\end{aligned}
+$$
 
-So
+and similarly:
 
-\[
-\omega_{1}i_{q1}+\omega_{2}i_{q2}=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]=\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
-\]
-
-and
-
-\[
+$$
 \omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
-\]
+$$ 
 
-\[
-\varLambda\dot{x}=\left[\begin{array}{ccc}
+And the $x$ dynamics can be rewrite as:
+$$ \dot{x}=G \left( x,e\right)= \Lambda^{-1}\left(A_x \left(x,e \right) x + B_x \left( x,e\right) \right) $$
+
+Where
+$$
+A_x \left(x,e \right)=\left[\begin{array}{ccc}
 -R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
 -\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
 0 & mi_{f} & -D_{p}
-\end{array}\right]x+\left[\begin{array}{c}
+\end{array}\right]
+$$
+
+$$
+B_x \left(x,e \right)=\left[\begin{array}{c}
 \frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
 -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
 2T_{m}
 \end{array}\right]
-\]
+$$
 
-For summery:
-
-\[
-\begin{array}{ccc}
-\dot{e}=F(e,x) & = & \left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right]^{-1}\left[\begin{array}{cccc}
--R_{tot}+R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{3} & \frac{L_{s}}{2}x_{2} & 0\\
--\frac{L_{s}}{2}x_{3} & -R_{tot}+R_{L}\cos(\delta) & -\frac{L_{s}}{2}x_{2}-mif & 0\\
-0 & mi_{f} & -D_{p} & 0\\
-0 & 0 & -1 & 0
-\end{array}\right]e\\
- &  & +\left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right]^{-1}\left[\begin{array}{c}
-R_{L}\sin(\delta)x_{2}\\
--R_{L}\sin(\delta)x_{1}\\
-0\\
-0
-\end{array}\right]
-\end{array}
-\]
-
-\[
-\begin{array}{ccc}
-\dot{x}=G(e,x) & = & \varLambda^{-1}\left[\begin{array}{ccc}
--R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
-0 & mi_{f} & -D_{p}
-\end{array}\right]x\\
- &  & +\varLambda^{-1}\left[\begin{array}{c}
-\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
--\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
-2T_{m}
-\end{array}\right]
-\end{array}
-\]
-
-
-\section{Globally exponentially stability of two synchronized generators:}
+\section{Globally exponentially stability of the TICSG system on the synchronization subspace }
 
 In this section, we provide sufficient conditions for the equilibrium
-point which exist and located on the manifold $\epsilon=\left\{ \left[\begin{array}{c}
-x\\
-e
-\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $\textbf{ }(chapter \ref{cha:equivalence_pont})\textbf{, }to be globally
-exponential stable, for the dynamics of the two generators, assuming
-that the system initial condition is located on the $\epsilon$ manifold
-which is invariant manifold. This proof is very similar to section
-3.5 at \citep{CaliiskanTabuada2014} 
-\[
-\dot{\tilde{x}}=\tilde{G}(\tilde{x})\coloneqq G(0,\tilde{x})=\varLambda^{-1}\left[\begin{array}{ccc}
--R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
--\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_{tot}-R_{L} & -mif\\
+point which located on the synchronization subspace $\mathscr{E}=\left\{ \left[ e\ x \right]^\top \in\mathbb{R}^{7}|e=0\right\} $,  to be a globally exponential stable equilibrium point, for trajectories with initial condition that lies on the $\mathscr{E}$ subspace.  Because we showed that  $\mathscr{E}$ is invariant subspace, it means that any trajectory that starts within this subspace, remains inside it.
+
+We denote the state variables of of these trajectories as $\tilde{x} = \left[x_d \ x_q\ x_\omega \right]^\top$. 
+
+The dynamics of these trajectories is (denoted as $\tilde{G}$):
+$$
+\dot{\tilde{x}}=\tilde{G}(\tilde{x})=G(0,\tilde{x})=
+ \Lambda^{-1} A\left( \tilde{x}_\omega \right) \tilde{x}+\Lambda^{-1} B 
+$$
+
+Where we denote:
+$$
+A\left( \tilde{x}_\omega \right)=A_x\left(0, \tilde{x}_\omega \right) =  
+ \left[\begin{array}{ccc}
+-R_T & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
+-\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_T & -mif\\
 0 & mi_{f} & -D_{p}
-\end{array}\right]\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+\end{array}\right]
+$$
+and
+$$
+B = B_x\left(0, \tilde{x}_\omega \right)  =  
+ \left[\begin{array}{c}
 0\\
 0\\
 2T_{m}
-\end{array}\right]
-\]
+\end{array}\right].
+$$
 
-This system describes two generators when they have equal state and
-no phase between each other.
+This system describes the two SGs with perfect synchronization between each other.
 
-Denote 
-
-\[
-A(\tilde{\omega})\coloneqq\left[\begin{array}{ccc}
--R_{tot}-R_{L} & \frac{L_{s}}{2}\tilde{\omega} & 0\\
--\frac{L_{s}}{2}\tilde{\omega} & -R_{tot}-R_{L} & -mif\\
-0 & mi_{f} & -D_{p}
-\end{array}\right],\tilde{\omega}\coloneqq\tilde{x}
-\]
-
-$\tilde{G}(\tilde{x})$ has at list one equilibrium point (\ref{cha:equivalence_pont})
-$x^{0}=\left[\begin{array}{c}
-x_{d}^{e}\\
-x_{q}^{e}\\
-\tilde{\omega}^{e}
-\end{array}\right]$such:
+Because the TICSG system has at list one equilibrium point on the $\mathscr{E}$ subspace, it means that $\tilde{G}(\tilde{x})$ has at list one equilibrium point 
+$\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\ \tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall that by definition $x = z_1 + z_2$).
 
 \begin{equation}
-\tilde{G}(x^{0})=0\rightarrow\varLambda^{-1}A(\tilde{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
+\tilde{G}(\tilde{x}^{e})=0\rightarrow\varLambda^{-1}A(\tilde{x}_{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
 0\\
 0\\
 2T_{m}
 \end{array}\right]=0\label{eq:G_at_equilibrium}
 \end{equation}
 
-Performing coordinations shift , in order to make the origin into
-equilibrium point.
-
-\[
+In order to shift the equilibrium point into the origin, we denote the new  coordinates:
+$$
 \hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
-\]
+$$
 
-A natural Lyaponov function candidate is the total energy of the system:
-
-\[
+A natural Lyaponov function candidate for this system, is the total energy of the system:
+$$
 V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}
-\]
+$$
 
 It is easy to see that:
+$$
+\frac{1}{2} min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq \frac{1}{2} max(L_{s},J)|\hat{x}|{}^{2}
+$$
 
-\[
-min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq max(L_{s},J)|\hat{x}|{}^{2}
-\]
-
-\[
+$$
 \left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max(L_{s},J)\left|\hat{x}\right|
-\]
+$$
 
-Now, calculate $\dot{V}(\hat{x})$ in order to show that under some
+We calculate $\dot{V}(\hat{x})$ in order to show that under some
 conditions, $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$, for some
-$\alpha.$ This will prove that $\tilde{G}(\tilde{x})$ is globally
-exponentially stable \citep{nonlinearSystemsSastry}.
+$\alpha.$ This  proves that $\tilde{G}(\tilde{x})$ is globally
+exponentially stable (see for instance \cite{Sastry}).
 
-\[
+$$
 \dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
-\]
+$$
 
 \begin{equation}
-\dot{\hat{x}}=\dot{\tilde{x}}=\varLambda^{-1}A(\tilde{\omega})\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
+\dot{\hat{x}}=\dot{\tilde{x}}=\varLambda^{-1}A(\tilde{x}_\omega)\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
 0\\
 0\\
 2T_{m}
 \end{array}\right]\label{eq:x_hat_dynamic}
 \end{equation}
 
-Representing $A(\tilde{\omega})$ as a sum of a constant symmetric
+We rewrite  $A(\tilde{x}_{\omega})$ as a sum of a constant symmetric
 matrix, constant skew symmetric matrix and a skew symmetric matrix
-which depends on $\hat{\omega}$:
-
-\[
+which depends on $\hat{x}_{\omega}$:
+$$ 
+A(\tilde{x}_{\omega})\tilde{x}=\left[R+J(\tilde{x}_{\omega}^{e})+\Delta(\hat{x}_{\omega})\right](\hat{x}+\tilde{x}^{e})
+$$
+While
+$$
 R\coloneqq\left[\begin{array}{ccc}
--R_{tot}-R_{L} & 0 & 0\\
-0 & -R_{tot}-R_{L} & 0\\
+-R_T & 0 & 0\\
+0 & -R_T & 0\\
 0 & 0 & -D_{p}
 \end{array}\right]
-\]
+$$
 
-\[
-J(\tilde{\omega}^{e})\coloneqq\left[\begin{array}{ccc}
+$$
+J\coloneqq\left[\begin{array}{ccc}
 0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
 -\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mif\\
 0 & mi_{f} & 0
 \end{array}\right]
-\]
+$$
 
-\[
-\Delta(\hat{\omega})\coloneqq\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
--\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+$$
+\Delta(\hat{x}_{\omega})\coloneqq\left[\begin{array}{ccc}
+0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{x}_{\omega} & 0 & 0\\
 0 & 0 & 0
 \end{array}\right]
-\]
+$$
 
-And now it is possible to represent the system dynamic:
 
-\[
-A(\tilde{\omega})\tilde{x}=\left[R+J(\tilde{\omega}^{0})+\Delta(\hat{\omega})\right](\hat{x}-\tilde{x}^{0})
-\]
 
-Combining this equation with \eqref{eq:G_at_equilibrium} and \eqref{eq:x_hat_dynamic}
+Combining the previous equation with \eqref{eq:G_at_equilibrium} and \eqref{eq:x_hat_dynamic}
 obtains: 
+$$
+\dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right) 
+$$
 
-\[
-\dot{\hat{x}}=\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right\} 
-\]
+We calculate the derivative of the Lyponv function over  time: 
+$$
+\dot{V}(\hat{x})=\left(\Lambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\Lambda^{T}\Lambda^{-1}\left( \left[R+J+\Delta(\hat{x}_{\omega})\right]\hat{x}+\Delta(\hat{x}_{\omega})\tilde{x}^{e}\right)
+$$
 
-Calculate the derivative of the Lyponv function over the time: 
+Because $\Lambda$ is diagonal matrix, then $\Lambda^{T}\Lambda^{-1}=I$
 
-\[
-\dot{V}(\hat{x})=\left(\varLambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\varLambda^{T}\varLambda^{-1}\left\{ \left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{0}\right\} 
-\]
-
-Because $\varLambda$ is diagonal matrix, then $\varLambda^{T}\varLambda^{-1}=I$:
-
-\[
-\dot{V}(\hat{x})=\hat{x}^{T}\left[R+J(\tilde{\omega}^{e})+\Delta(\hat{\omega})\right]\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
-\]
-
-\[
-\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{e}
-\]
+$$
+\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}
+$$
 
 Because $J(\tilde{\omega}^{e})$ and $\Delta(\hat{\omega})$ are skew
 symmetric matrices, it implies that $\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}=0$
 and $\hat{x}^{T}\Delta(\hat{\omega})\hat{x}=0$ .
 
-Calculating 
-
-\[
-\begin{array}{ccc}
-\hat{x}^{T}\Delta(\hat{\omega})\tilde{x}^{0} & = & \left[\begin{array}{c}
+$$
+\begin{aligned}
+\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}  = &\left[\begin{array}{c}
 \hat{x}_{d}\\
 \hat{x}_{q}\\
-\hat{\omega}
+\hat{x}_{\omega}
 \end{array}\right]^{T}\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\hat{\omega} & 0\\
--\frac{L_{s}}{2}\hat{\omega} & 0 & 0\\
+0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
+-\frac{L_{s}}{2}\hat{x}_{\omega} & 0 & 0\\
 0 & 0 & 0
 \end{array}\right]\left[\begin{array}{c}
 x_{d}^{e}\\
 x_{q}^{e}\\
-\tilde{\omega}^{0}
+\tilde{x}_{\omega}^{e}
 \end{array}\right]\\
- & = & \left[\begin{array}{c}
+  =&  \left[\begin{array}{c}
 \hat{x}_{d}\\
 \hat{x}_{q}\\
-\hat{\omega}
+\hat{x}_{\omega}
 \end{array}\right]^{T}\left[\begin{array}{ccc}
 0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
 0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
@@ -1586,81 +1512,90 @@ x_{q}^{e}\\
 \end{array}\right]\left[\begin{array}{c}
 \hat{x}_{d}\\
 \hat{x}_{q}\\
-\hat{\omega}
-\end{array}\right]\\
- & = & \hat{x}^{T}P\hat{x}
-\end{array}
-\]
-
+\hat{x}_{\omega}
+\end{array}\right]
+\\= & \hat{x}^{\top}P\hat{x}
+\end{aligned}
+$$
+Where we denote:
+$$
+P=\left[\begin{array}{ccc}
+0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
+\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & 0
+\end{array}\right]
+$$
 Combining all this together, obtains: 
 
 \[
 \dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
 \]
 
-Where $P+R=\left[\begin{array}{ccc}
--R_{tot}-R_{L} & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
-0 & -R_{tot}-R_{L} & -\frac{L_{s}}{4}x_{d}^{e}\\
+Where 
+$$P+R=\left[\begin{array}{ccc}
+-R_T & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
+0 & -R_T & -\frac{L_{s}}{4}x_{d}^{e}\\
 \frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}
-\end{array}\right]$. Calculating the eigenvalues of $P+R$:
+\end{array}\right].$$
+ Calculating the eigenvalues of $P+R$ gives:
+ $\lambda_{1}=-R_T$
+which is always negative. 
 
-\[
-det\left(P+R-\lambda I\right)=\begin{vmatrix}-R_{tot}-R_{L}-\lambda & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
-0 & -R_{tot}-R_{L}-\lambda & -\frac{L_{s}}{4}x_{d}^{e}\\
-\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}-\lambda
-\end{vmatrix}
-\]
+$$
+\lambda_{2,3}=-\frac{R_T+D_{p}}{2} \pm\frac{\sqrt{4\left(R_T-D_{p}\right)^{2}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
+$$
 
-\[
-=\left(-R_{tot}-R_{L}-\lambda\right)\left[\left(-R_{tot}-R_{L}-\lambda\right)\left(-D_{p}-\lambda\right)+\frac{L_{s}^{2}}{16}\left(x_{d}^{e}\right)^{2}\right]+\frac{L_{s}}{4}x_{q}^{e}\left[-\left(-R_{tot}-R_{L}-\lambda\right)\frac{L_{s}}{4}x_{q}^{e}\right]
-\]
-
-\[
-=\left(R_{tot}+R_{L}+\lambda\right)\left[\left(R_{tot}+R_{L}+\lambda\right)\left(D_{p}+\lambda\right)-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]\right]=\left(R_{tot}+R_{L}+\lambda\right)\pi(\lambda)
-\]
-
-The first eigenvalue of $P+R$ is $\lambda_{1}=-\left(R_{tot}+R_{L}\right)$
-which is negative. $\pi(\lambda)=\lambda^{2}+\lambda\left(R_{tot}+R_{L}+D_{p}\right)+\left(R_{tot}+R_{L}\right)D_{p}-\frac{L_{s}^{2}}{16}\left[\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right]$
-
-\[
-\lambda_{2,3}=-\frac{R_{tot}+R_{L}+D_{p}}{2}\pm\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
-\]
-
-All eigenvalues are real numbers. The condition which implies that
-all the eigenvalues will be negative is:
-
-\[
--\frac{R_{tot}+R_{L}+D_{p}}{2}+\frac{\sqrt{4\left(R_{tot}+R_{L}-D_{p}\right)^{2}+2\left(R_{tot}+R_{L}\right)D_{p}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}<0
-\]
-
-\[
-4\left(R_{tot}+R_{L}+D_{p}\right)^{2}>4\left(R_{tot}+R_{L}-D_{p}\right)^{2}++L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)
-\]
-
-Which leads to the following condition:
+All eigenvalues are real numbers. The condition which guarantees that all the three eigenvalues are negative is:
 
 \begin{equation}
-16\left(R_{tot}+R_{L}\right)D_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
+16 R_TD_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
 \end{equation}
 
-If this condition \eqref{eq:condition_for_stable_G} holds, then $\dot{V}(\hat{x})<min(\lambda_{i})|\hat{x}|^{2},i\in\{1,2,3\}$.
-This proves that this system is globally exponentially stable. That
-implies that $\tilde{x}^{e}$ is the only equilibrium point of $\tilde{G}(\tilde{x})$,
-hence the original system has only one equilibrium point on the subspace
-where $z_{1}=z_{2}$ and $\delta=0$. In addition it always has another
-equilibrium point on the surface $z_{1}=z_{2}$ and $\delta=\pi$.
+When  condition \eqref{eq:condition_for_stable_G} holds, then $\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|\hat{x}|^{2},i\in\{1,2,3\}$.
+and this system is globally exponentially stable. Note that because it proves global stability, it  means that $\tilde{x}^{e}$ is the only equilibrium point of $\tilde{G}(\tilde{x})$,
+hence the TICSG system has exactly one equilibrium point on the the synchronization subspace.
 
 \section{Synchronization theorem:}
 
-In this section, we prove that if the initial state of the two generators
-are sufficiently close to each other, i.e $|e(0)|$ is small, then,
-under some conditions, the two generators will synchronize, meaning
-that $lim_{t\to\infty}e(t)=0$.
+In this subsection, we prove that if the initial state of the two generators
+are sufficiently close to each other, i.e $|e(0)|$ is small enough, then, under some conditions, the two generators will synchronize, meaning that $lim_{t\to\infty}e(t)=0$.
 
-For this, we use the result from \citep{VincentBayuLaurent2016}.
+In order to show that, we use the main result of \cite{AndrieuJayawardhanaPraly}. For system in the form 
+$$ \dot{e} = F\left(e,x\right),\quad \dot{x} = G\left(e,x\right)$$ for   $F, G \in C^2$ , \cite{AndrieuJayawardhanaPraly} defines the following properties:
 
-First, 
+\subsection{TULES-NL (Transversal uniform local exponential stability)}
+There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+\subsection{UES-TL (Uniform exponential stability for the transversally linear system)}
+there exist strictly positive real numbers $\tilde{ k}$ and $\tilde{\lambda}$  such that any solution $\left(e \left(e_0, x_0, t\right), x \left(x_0, t\right)\right)$ of the transversally linear system
+$$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,\quad \dot{\tilde{x}} = \tilde{G}  \left( \tilde{x}  \right) =G\left(0,x\right)$$
+satisfies, for all $\left(e_0,x_0,t\right)$,   
+ $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
 
+
+One of the main results of \cite{AndrieuJayawardhanaPraly} is that if 
+
+\begin{equation}
+\frac{\partial F(e,x)}{\partial e}(0,x)\le \mu \quad\forall x  \label{eq:assumption1}
+\end{equation}
+and 
+$\mathscr{E}=\left\{ \left[\begin{array}{c}
+x\\
+e
+\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $ is invariant, then 
+the TULES-NL property is equivalent to the UES-TL property.
+
+\begin{theorem}
+If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
+$$\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x})$$
+Where $\tilde{x}$ is the solution of the system:
+$$
+\dot{\tilde{x}}=\tilde{G}(\tilde{x})=G(0,\tilde{x})
+$$
+ is a Hurwitz matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists), Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+\end{theorem}
+ 
+\begin{proof}
+For the TICSG system, 
 \begin{equation}
 \frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
 -\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
@@ -1670,144 +1605,44 @@ First,
 \end{array}\right]\label{eq:div_of_F}
 \end{equation}
 
-The requirement (2) at \citep{VincentBayuLaurent2016} namely that
-matrix \eqref{eq:div_of_F} should by uniformly bounded (in norm on
-the manifold $\epsilon=\left\{ \left[\begin{array}{c}
-x\\
-e
-\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $is \uline{not satisfied}, because of the presences of $x_{w},x_{q},x_{d}$
-in the matrix. However, it can be shown by energy methods that regardless
-of the initial state, the state of this system will be eventually
-contained in a certain bounded set (that depends on the parameters)
-and than $\frac{\partial F(}{\partial e}(0,x)$ is clearly bounded
-in this bounded subset of the state space.
+Condition \eqref{eq:assumption1} requires that matrix \eqref{eq:div_of_F} should by uniformly bounded is not satisfied, because of the presences of $x_{w},x_{q},x_{d}$ as elements in the matrix. However, it can be shown by energy considerations  that regardless
+of the initial state, the state of TICSG system is always contained in a certain bounded set (that depends on the initial state).
+It implies that $\frac{\partial F(}{\partial e}(0,x)$ is clearly bounded in this bounded subset of the state space.
 
-The requirement (3) in \citep{VincentBayuLaurent2016} is satisfied
-as showed. Additionally we showed at the last section that $\tilde{G}(\tilde{x})$
-is globally exponentially stable with equilibrium $x^{e}$. We will
-show that our system \eqref{eq:sync_sestem} is UES-TL (Uniform exponential
-stability for the transversally linear system), as it defines at \citep{VincentBayuLaurent2016}. 
+As showed at the previous section, $\mathscr{E}$ is an invariant manifold. In addition, as showed in the previous subsection, if  condition \eqref{eq:condition_for_stable_G} hold, then the system $
+\tilde{x}=\tilde{G}(\tilde{x})$ is exponentially stable and hence the limit $\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x})$ exists and according to the second condition this matrix is Hurwitz.
 
-we need to show that the system 
-
-\[
+In order to use the main result of \cite{AndrieuJayawardhanaPraly}, we need to show that the system  
+$$
 \dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
-\]
+$$
+is globally exponentially stable. Note, that this system is linear time varying system.
 
-is stable, where $\tilde{x}(t)$ generated by the dynamics 
-\[
-\tilde{x}=\tilde{G}(\tilde{x})
-\]
- which we showed that it globally exponentially stable (and $lim_{t\to\infty}\tilde{x}(t)=0$).
-In order to have the UES-TL property, we will demand that $\tilde{G}(0)$
-is a Hurwitz matrix. We need to show that there exist constants $k$,$r$
-and $\lambda$ such for all $\left|e^{e}\right|\leq r$ and for all
-$x^{e}$.
-
-\[
-\left|e(t)\right|\leq k\left|e_{0}\right|exp(-\lambda t)
-\]
-
-In other words, we need to show that if LTV (linear time varying system),
-which it matrix converges exponentially to a stable matrix, then the
-LTV system is exponentially stable. this theorem is known (\citep{SchovanecGilliam1999}),
-but for the clearance of the reading, we will repeat the proof:
-
-\subparagraph*{Theorem:}
-
-Let $A$ be a constant matrix with $Re\{\sigma(A)\}<0$ and let $C$
-be a continuous matrix valued function on the function on the interval
-$[0,\infty)$. Supposed that 
-
+We use the known theorem that for system with the form: 
+$$
+\dot{x}(t)=[A+C(t)]x(t)
+$$
+Where $A$ is a constant matrix with $Re\{\sigma(A)\}<0$ and  $C$
+is a continuous matrix valued function on the function on the interval
+$[0,\infty)$ that satisfies: 
 \[
 \intop_{0}^{\infty}\left|C(t)\right|dt=M<\infty
 \]
+Then, this system is a globally exponentialy stable (see for instance \cite{SchovanecGilliam1999}).
 
-Then, the solution of 
-
-\begin{equation}
-\dot{x}(t)=[A+C(t)]x(t)\label{eq:LTV_dynamics}
-\end{equation}
-
-is globally exponentially stable.
-
-\subparagraph*{Proof:}
-
-Suppose that x(t) is a solution of \eqref{eq:LTV_dynamics} with $x(0)=x^{e}$.
-We have 
-
-\[
-\dot{x}(t)-Ax(t)=C(t)x(t)
-\]
-
-If we multiply this equation through by the integrating factor (matrix)
-$e^{-At}$, we get 
-
-\[
-\frac{d}{dt}\left(e^{-At}x(t)\right)=e^{-At}C(t)x(t)
-\]
-
-Integrating the last equation from $0$ to $t$ gives:
-
-\[
-e^{-At}x(t)-x(0)=\intop_{0}^{t}e^{-As}C(s)x(s)ds
-\]
-
-This gives us the formula
-
-\begin{equation}
-x(t)=e^{At}x(0)\intop_{0}^{t}e^{A(t-s)}C(s)x(s)ds\label{eq:LTV_integralForm}
-\end{equation}
-
-Since $Re\{\sigma(A)\}<0$, we can find constants $\sigma<0$ and
-$K>0$ such that $\left|e^{At}\right|\leq Ke^{\sigma t},\;t\geq0$ 
-
-using this estimates and taking norms in \eqref{eq:LTV_integralForm}
-we get 
-
-\[
-\left|x(t)\right|\leq K\left|x^{e}\right|e^{\sigma t}+\intop_{0}^{t}Ke^{\sigma(t-s)}\left|C(s)\right|\left|x(s)\right|ds
-\]
-
-Multiply this through by $e^{-\sigma t}$ to get
-
-\[
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K\left|C(s)\right|e^{-\sigma s}\left|x(s)\right|ds
-\]
-
-By applying Gronwall's inequality:
-
-\[
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+\intop_{0}^{t}K^{2}\left|x^{e}\right|\left|C(s)\right|exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]ds
-\]
-For any $0\le s\le t$, we must have $\intop_{s}^{t}\left|C(u)\right|du\le\intop_{0}^{\infty}\left|C(t)\right|dt=M$.
-Thus, 
-\[
-exp\left[\intop_{s}^{t}K\left|C(u)\right|du\right]\le e^{KM}
-\]
-Applying this gives
-
-\[
-e^{-\sigma t}\left|x(t)\right|\leq K\left|x^{e}\right|+e^{KM}K^{2}\left|x^{e}\right|\intop_{0}^{t}\left|C(s)\right|ds\le K\left|x^{e}\right|+e^{KM}K^{2}M
-\]
-
-So 
-
-\[
-\left|x(t)\right|\leq e^{\sigma t}C^{e}\left|x^{e}\right|,\quad\sigma<0
-\]
-
-This proves that our system \eqref{eq:sync_sestem}is UES-TL. By applying
-the main result of \citep{VincentBayuLaurent2016}, proves that this
-system is TULES-NL (Transversal uniform local exponential stable).
-That means that there exist strictly positive real numbers $r$, $k$
-and $\lambda$such for all $(e^{e},x^{e},t)$ in $B_{e}(r)\times R^{3}\times\mathbb{R}_{\geq0}$
-, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e^{e}\right|exp(-\lambda t)$.
-Namely the manifold $\epsilon$ is exponentially stable for the system
-\eqref{eq:sync_sestem}, locally in $e$,uniformly in $x$.
-
+Because the system $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$ is exponentially stable, then the matrix $\frac{\partial F}{\partial e}(0,\tilde{x})$ converges exponentially and the condition of the previous theorem holds.  That proves that the TICSG system is UES-TL. By applying
+the main result of \cite{AndrieuJayawardhanaPraly}, it proves that the TICSG system is TULES-NL.
+Therefore there exist strictly positive real numbers $r$, $k$
+and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right| \le r $
+, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0 \right|exp(-\lambda t)$.
+Namely the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
+\end{proof}
+%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
 \begin{thebibliography}{10}
+
+\bibitem{AndrieuJayawardhanaPraly} V.~Andrieu, B.~Jayawardhana and L.~Praly, \m On the transverse exponential stability and its use in incremental stability, observer and synchronization. In {\em Proc. of the 52nd IEEE Conference on Decision and Control,
+} \m  2013.
 
 \bibitem{Eitan} E.~Brown, \m {\em A study of the use of synchronverters for grid stabilization using
 simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
@@ -1825,6 +1660,12 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
  
  \bibitem{Fitzgerald:03} A.E.~Fitzgerald, C.~Kingsley and S.D.~Umans,
  \m {\em Electric Machinery}, \m McGraw-Hill, New York, 2003.
+ 
+ \bibitem{GOBS:03}
+ M.~Galaz, R.~Ortega, A.S.~Bazanella and A.M.~Stankovic, \m
+ An energy-shaping approach to the design of excitation control
+ of synchronous generators, {\em Automatica}, vol.~39, 2003,
+ pp.~111-119.
 
 \bibitem{GrSt2014} J.J.~Grainger and W.D.~Stevenson,
  {\em Power Systems Analysis}, \m McGraw-Hill, New York, 1994.
@@ -1853,16 +1694,16 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 \bibitem{NaWe:15} V.~Natarajan and G.~Weiss, \m Almost global 
  asymptotic stability of a grid-connected synchronous generator,
  submitted in 2015.
-
-\bibitem{GOBS:03}
- M.~Galaz, R.~Ortega, A.S.~Bazanella and A.M.~Stankovic, \m
- An energy-shaping approach to the design of excitation control
- of synchronous generators, {\em Automatica}, vol.~39, 2003,
- pp.~111-119.
+ 
+ \bibitem{Sastry} S.~Sastry, \emph{Nonlinear Systems}.
+ \hskip 1em plus 0.5em minus 0.4em\relax Springer, New York, 1999.
 
 \bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \m {\em Power 
  Systems Dynamics and Stability}, Stipes Publishing, Champaign,
  IL, 1997.
+
+\bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University.
+} \m  1999.
 
 \bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
@@ -1889,7 +1730,7 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 
 \subsection*{5 KW SG}
 
-The parameters of 5KW SG are taken from \cite{Brown2015}
+The parameters of 5KW SG are taken from \cite{Eitan}
 
 \begin{table}[H]
 \begin{tabular}{|c|c|}
@@ -1920,7 +1761,7 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 
 \subsection*{1 MW SG}
 
-The parameters of 1MW SG are taken from \cite{Brown2015}
+The parameters of 1MW SG are taken from \cite{Eitan}
 
 \begin{table}[H]
 \begin{tabular}{|c|c|}
