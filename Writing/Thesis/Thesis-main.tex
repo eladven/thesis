@@ -991,240 +991,199 @@ It shows that the TICSG system has at list one equilibrium point  that located o
 Note, that the anti synchronization subspace  $\mathscr{E} '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \chapter{Model Reduction\label{cha:Model_reduction}}
+In this chapter, we show model reduction for the FOM.
+\section{The improved swing equation}
 
-\section{Develop the improved swing equation for infinite bus:}
+In this section, we show the relation between the ISE and the FOM. We
+start with the FOM, and by a model reduction process, we get the ISE
+model.  We apply ideas from singular perturbation analysis (see for
+instance \cite{Khalil}). The FOM \rfb{eq:SGDynamicsInfBus} has the
+following structure: \vspace{-3mm}
+$$\m\ \ \Lambda \m \dot{z} \m=\m F(z) \m,$$ 
+where $\Lambda$ is a diagonal $4\times 4$ matrix with positive
+coefficients on the diagonal. Because the first two coefficients on
+the diagonal of $\Lambda$ are equal to $L_s$, which in some sense can
+be regarded as being small, we rewrite this dynamical system in the
+following form:
+$$ \left\{ \begin{array}{c} \dot{x} \m=\m f(x,y,\e) \m,\\
+   \e\dot{y} \m=\m g(x,y,\e) \m. \end{array}\right.$$
+By doing this, we have separated the state variables into a vector of 
+fast variables, denoted by $y$, and another of slow variables, denoted
+by $x$. Here, $\e>0$ is the small parameter.
 
-\ \ \ The dynamics of one synchronous generator connected to infinite
-bus, assuming that the field current is constant, is the following
-\eqref{eq:SGDynamicsInfBus}
-
-\[
-\frac{d}{dt}\left[\begin{array}{c}
-L_{s}i_{d}\\
-L_{s}i_{q}\\
-J\omega\\
-\delta
-\end{array}\right]=\left[\begin{array}{cccc}
--R_{s} & \omega L_{s} & 0 & 0\\
--\omega L_{s} & -R_{s} & -mi_{f} & 0\\
-0 & mi_{f} & -D_{p} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]\left[\begin{array}{c}
-i_{d}\\
-i_{q}\\
-\omega\\
-\delta
-\end{array}\right]+\left[\begin{array}{c}
-V\sin(\delta)\\
-V\cos(\delta)\\
-T_{m}\\
--\omega_{g}
-\end{array}\right]
-\]
-
-We separate the model in to fast variable and slow variable in order
-to have singular perturbation analysis (see \citep{KhalilSingularPertubations}).
-The new dynamics form is:
-
-\[
-\left\{ \begin{array}{c}
-\dot{x}=f(x,y,\epsilon)\\
-\epsilon\dot{y}=g(x,y,\epsilon)
-\end{array}\right.
-\]
-
-Where $x$ is the slow varying variable, $y$ is the fast varying
-variable and $\epsilon$ is small parameter.
-
-In our case, assume that $L_{s}$ is much smaller than the other parameter,
-define $\epsilon$ as $L_{s}$, $x=\left[\begin{array}{c}
-\omega\\
-\delta
-\end{array}\right]$, and $y=\left[\begin{array}{c}
-i_{d}\\
-i_{q}
-\end{array}\right]$
-
-and now 
-
-\[
-g(x,y,\epsilon)=\left[\begin{array}{cc}
--R_{s} & \omega L_{s}\\
--\omega L_{s} & -R_{s}
-\end{array}\right]\left[\begin{array}{c}
-\omega\\
-\delta
-\end{array}\right]+\left[\begin{array}{c}
-V\sin(\delta)\\
-V\cos(\delta)-mi_{f}\omega
-\end{array}\right]
-\]
-
-Because the assumption that $\epsilon$ is very small, it means that
-$\epsilon\dot{y}=g(x,y,\epsilon)$ is much faster than $\dot{x}=f(x,y,\epsilon)$,
-and it will reach it equilibrium (assuming that the equilibrium point
-exist and attractive) almost instantly with comparing to $x$.
-
-The equilibrium point $y_{0}=\hat{y}(x,\epsilon=0)$ is the root of
-$g(x,y,\epsilon)=0.$ 
-
-The solution of this linear equation (in $\hat{y}$)
-
-\[
-\hat{y}=-\left[\begin{array}{cc}
--R_{s} & \omega L_{s}\\
--\omega L_{s} & -R_{s}
-\end{array}\right]^{-1}\left[\begin{array}{c}
-V\sin(\delta)\\
-V\cos(\delta)-mi_{f}\omega
-\end{array}\right]=\left[\begin{array}{c}
-\frac{R_{s}V\sin(\delta)-L_{s}\omega\left(mi_{f}\omega-V\cos(\delta)\right)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}\\
-\frac{-R_{s}\left(mi_{f}\omega-V\cos(\delta)\right)-L_{s}V\omega\sin(\delta)}{L_{s}^{2}\omega^{2}+R_{s}^{2}}
-\end{array}\right]
-\]
-
-Assuming that $R_{s}\ll L_{s}\omega_{g}$ and $R_{s}mi_{f}\ll L_{s}V$
-, and assuming that our dynamics is close to the equilibrium, namely
-$\omega\thickapprox\omega_{g}$ then:
-
-\begin{equation}
-\hat{y}=\left[\begin{array}{c}
-\frac{V\cos(\delta)-mi_{f}\omega}{L_{s}\omega}=\\
--\frac{V\sin(\delta)}{L_{s}\omega}
-\end{array}\right]\label{eq:ISEInfBusEstimatedCurrents}
+We assuming that $\e$ is very small, meaning that for each $x$, the 
+vector $y$ converges to a temporary equilibrium value (that depends on
+$x$) much faster than the rate of change of $x$. In our specific case,
+$\e=L_s$, $x=\left[\begin{array}{c} \o\\ \delta\end{array}\right]$ and
+$y=\left[\begin{array}{c} i_d\\ i_q \end{array}\right]$. By taking the
+first and second lines from \rfb{eq:SGDynamicsInfBus}, we have
+$$ g(x,y,\e) \m=\m \left[\nm \begin{array}{cc} -R_s & \o L_s\\ -\o 
+   L_s & -R_s \end{array}\nm\right] \left[\nm \begin{array}{c} i_d\\ 
+   \i_q \end{array} \nm\right]+\left[\begin{array}{c} V\sin\delta\\ 
+   V\cos\delta - mi_f\o \end{array}\right].$$
+Our assumption that $\e$ is very small means that the subsystem $\e
+\dot{y}=g(x,y,\e)$ is much faster than $\dot{x}=f(x,y,\e)$ and it is 
+also stable, so that it will reach its temporary equilibrium almost 
+instantly compared to the slow movement of $x$. The temporary 
+equilibrium point $\hat{y}(x,\e)$ is the solution of $g(x,\hat y,\e)=
+0$. The solution of this linear equation (in $\hat{y}$) is
+$$ \hat{y} \m=\m -\left[\begin{array}{cc} -R_s & \o L_s\\
+   -\o L_s & -R_s \end{array}\right]^{-1}\left[\begin{array}{cc}
+   V\sin\delta\\ V\cos\delta - mi_f\o \end{array}\right]$$
+$$ \m\qquad=\m \left[\begin{array}{cc} \frac{R_s V\sin\delta - L_s\o
+   \left(mi_f\o - V\cos\delta\right)}{L_s^{2}\o^2+R_s^2}\\
+   \frac{-R_s\left(mi_f\o - V\cos\delta\right) - L_s V\o\sin\delta}
+   {L_s^2\o^2 + R_s^2} \end{array}\right] \m.$$
+Assuming that $R_s$ is small so that the terms containing $R_s$ are
+negligible, we obtain the following approximation of $\hat y$:
+\BEQ{eq:ISEInfBusEstimatedCurrents}
+   \hat{y}_{app} \m=\m \left[\begin{array}{c} \hat{i}_d\\
+   \hat{i}_q \end{array}\right] \m=\m \left[\begin{array}{c}
+   \frac{V\cos\delta - mi_f\o}{L_s\o}\\ -\frac{V\sin\delta}{L_s\o}
+   \end{array}\right] \m.
 \end{equation}
 
-\[
-\hat{i}_{q}=-\frac{V\sin(\delta)}{L_{s}\omega}
-\]
+We substitute $\hat{y}_{app}$ obtained above into $\dot{x}=f(x,y,\e)$
+(in place of $y$) to get the reduced model
+\BEQ{eq:ISWWithConstTm}
+ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o^2 \m=\m -\frac{mi_f V
+   \sin\delta}{L_s}+T_m\o \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
+   \end{array}\right.
+  \end{equation}
+   
+The power absorbed from the prime mover can be expressed approximately as \vspace{-2mm}
+\BEQ{eq:tourqeApproximation}
+P_m \m=\m (T_m-D_p \o_g)\o \m.
+ \end{equation}
+This crude approximation cannot be justified other than as a means to obtain the so-called improved swing equation, as we shall see below. A more precise expression of $P_m$ is 
+$$P_m=(T_m-d_p\o)\o \m,$$
+where $d_p>0$ is the part of $D_p$ due to the droop control of the prime mover (so that $T_m-d_p\o$ is the prime mover torque). 
+ 
+If we express $T_m\o$ from \eqref{eq:tourqeApproximation}
+and substitute into the model \eqref{eq:ISWWithConstTm}, we obtain
+$$ \left\{ \begin{array}{c} J\dot{\o}\o+D_p\o(\o-\o_g) \m=\m P_m - 
+   \frac{mi_f V\sin\delta}{L_s} \m,\\ \dot{\delta} \m=\m \o-\o_g \m.
+   \end{array}\right.$$
+This model is known as the {\em improved swing equation} (ISE), see
+\cite{DePersiSchaft:16}, \cite{ZhouOhsawa2009}. Note that we did many
+different approximations to derive it. The references just cited
+normally assume that $P_m$ is constant, which then causes $T_m$ to be
+a function of $\o$. Our perspective is to view $T_m$ as a constant
+parameter.
 
-Now, substitute $\hat{y}$ in $\dot{x}=f(x,y,\epsilon)$ to have reduced
-model:
+Let us see what happens if we do not use the crude approximation
+\eqref{eq:tourqeApproximation} and instead return to
+\eqref{eq:ISWWithConstTm}. If we divide the first equation by $\o$ and
+substitute $\dot{\o} = \ddot{\delta}$, then we obtain
+\begin{equation} \label{Rishon}
+   J\ddot{\delta}+D_p \dot{\delta} + \frac{mi_f V \sin \delta}{L_s 
+   \left(\o_g + \dot{\delta}\right)} \m=\m T_m - D_p \o_g .
+\end{equation}
+This is an ugly nonlinear ODE. If $R_s=0$ then its equilibrium points
+are exactly the same as for the FOM and if we approximate
+$\o_g+\dot{\delta}\approx\o_g$, then we get the classical swing
+equation. We think that the reduced model \eqref{Rishon} (which is
+equivalent to \eqref{eq:ISWWithConstTm}) is closer to the FOM than the
+ISE.
 
-\[
-\left\{ \begin{array}{c}
-J\dot{\omega}=-\frac{mi_{f}V\sin(\delta)}{L_{s}\omega}-D_{p}\omega+T_{m}\\
-\dot{\delta}=\omega-\omega_{g}
-\end{array}\right.
-\]
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{Simulations}
 
-Or 
+In this section we present simulations which demonstrate that the ISE
+model is a good approximate model in many cases. We also show that
+there are cases in which there is a significant mismatch between the
+behavior suggested by the ISE model and the FOM. In each simulation
+result, the behavior of $i_d$ and $i_q$ over time is described for
+both the FOM and the ISE models. Note that for the ISE model, we use
+\eqref{eq:ISEInfBusEstimatedCurrents} to estimate these currents. We
+plot the frequency $\o$ and the power angle $\delta$ as functions of
+time for these two models. In all the simulations, variables with a
+hat correspond to the reduced model. All simulations assume constant
+$P_m$. We redid the same simulations also under the assumption of
+constant $T_m$ and the results are very similar, and not shown.
 
-\[
-\left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega\omega=-\frac{mi_{f}V\sin(\delta)}{L_{s}}+T_{m}\omega\\
-\dot{\delta}=\omega-\omega_{g}
-\end{array}\right.
-\]
+The first two simulations concern small SGs of 5KW and 1MW,
+respectively, with parameters taken from \cite{Eitan}. These models
+were originally meant to represent synchronverters, which are a type
+of inverters, but from the point of view of the model, this does not
+matter.
 
-At the fourth order model  \eqref{eq:SGDynamicsInfBus}, there is
-the assumption of constant mechanical torque. But in order to compare
-this model with the one in \citep{monshizadehDePersisMonshizadehVanderSchaft2016},\citep{zhouOhsawa2009},
-it is possible to assume that the income torque is due to fix mechanical
-power and a correction factor for the viscose looses:
+\subsection{5KW SG}
+\vspace{-5mm}
 
-\[
-T_{m}=\frac{P_{m}}{\omega}+D_{p}\omega_{g}
-\]
-
-and then the model is: 
-
-\[
-\left\{ \begin{array}{c}
-J\dot{\omega}\omega+D_{p}\omega(\omega-\omega_{g})=P_{m}-\frac{mi_{f}V\sin(\delta)}{L_{s}}+\\
-\dot{\delta}=\omega-\omega_{g}
-\end{array}\right.
-\]
-
-This model is known as the \textit{improved swing equation} model,
-see \citep{monshizadehDePersisMonshizadehVanderSchaft2016},\citep{zhouOhsawa2009}.
-
-\section{Simulations:}
-
-In this section, we provide simulation that shows that the improved
-swing equation is a good reduction for many cases, but there are cases
-where there is mismatch between the behavior suggested by the improved
-swing equations and the whole model \eqref{eq:SGDynamicsInfBus}.
-For each simulation, we will show the currents $i_{d}$ and $i_{q}$over
-time for both the fourth order model and for the improved swing equation
-model, where for the improved swing equation model, we will estimate
-these currents by \eqref{eq:ISEInfBusEstimatedCurrents}. In addition
-we will show the the frequency over time for both the whole model
-and the improved swing equation model, and the phase over time of
-the whole model and the improved swing equation model.
-
-\subsection*{A. 5KW SG:}
-
-\begin{figure}
-\includegraphics{sim5KWInfBus}
-
-\caption{Simulation for infinite bus with single 5KW SG}
-\label{fig:InfBusOne5KWSG}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht] 
+\includegraphics[scale=0.9]{sim5KWInfBus}
+\caption{Simulations for a 5KW SG connected to an infinite bus,
+using both models. For $\o$ and $\delta$ the results are very 
+similar.} \label{fig:InfBusOne5KWSG}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations show that
-for the 5KW SG, the behavior of the fourth order model and the reduced
-model are almost the same. Although the currents at the reduced don't
-have a ripple that the fourth order model has, both models converges
-at the same rate with the same oscillations to the same equilibrium
-point (The parameters for this simulation can be found at the appendix,
+As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates
+that for the 5KW SG, the behavior of the FOM and the ISE is almost the
+same. Although the currents for the ISE have less ripple than for
+the FOM, both models converge at the same rate with the same
+oscillations to the same equilibrium point. (The parameters for this simulation can be found at the appendix,
 table \ref{table:5KWSG}). 
 
-\subsection*{B. 1MW SG:}
+\subsection{1MW SG}
+\vspace{-4mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{sim1MWInfBus}
 
-\begin{figure}
-\includegraphics{sim1MWInfBus}
-
-\caption{Simulation for infinite bus with single 1MW SG}
+\caption{Simulation for a 1MW SG on an infinite bus, both models}
 \label{fig:InfBusOne1MWSG}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that
-for the 1MW SG, the behavior of the fourth order model and the reduced
-model are still very similar. Although the fourth order model currents
-are much rippled than the reduced model currents, both models converges
-at the same rate with the same oscillations to the same equilibrium
-point (The parameters for this simulation can be found at the appendix,
+As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that for
+the 1MW SG, the behavior of the FOM and the ISE are still very
+similar. Although the FOM currents are much more rippled than the ISE
+currents, both models converge at the same rate with the same
+oscillations to the same equilibrium point. (The parameters for this simulation can be found at the appendix,
 table \ref{table:1MWSG}). 
 
-\subsection*{C. Non stable behavior for the reduced model:}
+\subsection{Non stable behavior of the reduced model}
+\vspace{-4mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{simDiffBehavior1}
 
-\begin{figure}
-\includegraphics{simDiffBehavior1}
-
-\caption{Simulation example that shows different behavior for the reduced model}
+\caption{A simulation example showing different behavior for the 
+         FOM and the ISE reduced model for a 50 KW SG}
 \label{fig:InfBusOne1DiffBehavior1}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations
-show that for other parameters set (see appendix, table \ref{table:DifferentBehaviorParamsSetSG})
-the behavior of the fourth order model and the reduced model is totally
-different. while the four order model is stable (the eigenvalues of
-the Jacobian around the equilibrium point are: 
-\[
-\left[\begin{array}{cccc}
--11.41+376.9i, & -11.41-376.9i, & -508+837i, & -508-837i\end{array}\right]
-\]
-, the reduced model is not stable (the eigenvalues of the Jacobian
-around the equilibrium point are: $\left[\begin{array}{cc}
--14.6+9.4979i, & 6.1-9.4i\end{array}\right]$) .
+As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations show
+that for other parameters set (The parameters for this simulation can be found at the appendix,
+table \ref{table:DifferentBehaviorParamsSetSG}).  the behavior of the FOM and the ISE is significantly
+different. The FOM is locally stable, since the eigenvalues of the
+Jacobian around the equilibrium point are $-11.41\pm 376.9i,\ 
+-508\pm 837i.$ The ISE doesn't have any equilibrium point for these
+parameters. The ISE model has equilibrium points only if $ \left|
+\sin\delta^e \right|= \left| \frac{P_m L_s}{mi_f V} \right| \le 1$.
 
-\subsection*{D. Different region of attraction example :}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\subsection{An example for different regions of attraction}
 
-\begin{figure}
-\includegraphics{simDiffRegionOFAttraction}
-
-\caption{Simulation example that shows different behavior for the reduced model}
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{simDiffRegionOFAttraction}
+\caption{Simulation example that shows different behavior for the 
+full and the reduced models, for a 5 KW SG.}
 \label{fig:InfBusOne1DiffRegionOfAttraction}
 \end{figure}
 
-As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction}, simulations
-show that for some parameters set (see appendix, table \ref{table:DifferentBehaviorParamsSetSG})
-the initial condition of this simulation is within the region of attraction
-of the reduced model, but outside the region of attraction of the
-fourth model. That cause the fourth order model to diverge while the
-reduce model converge to the equilibrium point. 
+As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
+simulations show that for some parameters set (The parameters for this simulation can be found at the appendix,
+table \ref{table:DifferentRegionOfAttraction}).  the initial condition of this simulation
+is within the region of attraction of the reduced model, but outside
+the region of attraction of the FOM. This causes the FOM to diverge
+while the ISE converges to the equilibrium point.
 
+%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
 
 \chapter{Synchronization\label{cha:Synchronization}}
