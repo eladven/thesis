@@ -11,17 +11,32 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+%\newcommand{\MYfooter}{\smash{
+%\hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
+%
+%\def\ps@IEEEtitlepagestyle{%
+%\def\@oddhead{\mbox{}2016 ICSEE International Conference on the
+%     Science of Electrical Engineering \rightmark \hfil }%
+%\def\@oddfoot{\MYfooter}%
+%\def\@evenfoot{\MYfooter}}
+%
+%% adjust as needed
+%\addtolength{\footskip}{0\baselineskip}
+%\addtolength{\textheight}{-1\baselineskip}
+
+
+
 \newcommand{\MYfooter}{\smash{
 \hfil\parbox[t][\height][t]{\textwidth}{}\hfil\hbox{}}}
-
+\makeatletter
 \def\ps@IEEEtitlepagestyle{%
-\def\@oddhead{\mbox{}2016 ICSEE International Conference on the
-     Science of Electrical Engineering \rightmark \hfil }%
-\def\@oddfoot{\MYfooter}%
-\def\@evenfoot{\MYfooter}}
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }
 
-% adjust as needed
-\addtolength{\footskip}{0\baselineskip}
+ \def\@oddfoot{\MYfooter{978-1-5090-2152-9/16/\$31.00\:\copyright2016\:IEEE}}
+ 
+\def\@evenfoot{\MYfooter}}
+\def\ps@headings{%
+\def\@oddhead{\mbox{}2016 ICSEE International Conference on the Science of Electrical Engineering \rightmark \hfil }} \makeatother \pagestyle{headings} % adjust as needed \addtolength{\footskip}{0\baselineskip}
 \addtolength{\textheight}{-1\baselineskip}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
