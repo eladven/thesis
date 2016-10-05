@@ -182,9 +182,21 @@ reliable for stability analysis, because it can't predict an unstable
 behavior that is predicted by a more faithful model of the same
 system.
 
-In this work, we study two simple grid configurations: Single SG that
-connected to an infinite bus, and Two SG in parallel and a load. In chapter
-\ref{cha:microgrid_dynamics} fourth order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
+In the second part of this work,  we discus  two SGs connected to a resistive load as shown in Figure \ref{fig:TICSGThreePhase}. These generators are driven by identical prime movers, that have frequency droop control. We show that if the difference between the two initial states of the SGs are sufficiently close to each other, then they synchronized exponentially and the system converges to a stable equilibrium point.
+
+%%%% Figure Tree phase TICSG system.
+\begin{figure}[!htb]
+\begin{circuitikz}[american voltages,scale=1, transform shape]
+\begin{scope}[shift={(-5,0)}]     \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{}; \node (0,0) [align=left,text width=4cm] {SG1}; \end{scope}
+   \draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=south]{\Large $V_a$}; \draw (0,0) to [R=$R_L$] (210 :2.5); \draw (0,0) to [R=$R_L$] (330 :2.5);
+\begin{scope}[shift={(5,0)}]    \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west] {}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{}; \node (0,0) [align=left,text width=4cm] {SG2}; \end{scope}
+\draw (5,2.5) to [R, l=$Z_l$,*-*, i>=$i_{a2}$] (0,2.5) to [R, l=$Z_l$,*-*, i<=$i_{a1}$]  (-5,2.5); \draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [R, l=$Z_l$,*-*, i>=$i_{b2}$]   (-2.165 ,-1.25-1)  node[anchor=north]{\Large $V_b$} to [short, o-] (-2.165 ,-1.25 ); \draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [R, l_=$Z_l$,i>=$i_{b1}$, *-*]   (-2.165 ,-1.25-1); \draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2)  to  [R, l=$Z_l$,*-*, i>=$i_{c2}$]  (2.165 ,-1.25-2)node[anchor=north]{\Large $V_c$}  to [short, o-] (2.165 ,-1.25 ); \draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [R, l_=$Z_l$,*-*, i>=$i_{c1}$]  (2.165 ,-1.25-2);
+\end{circuitikz}\caption{{\em The two identical coupled SGs} (TICSG) model - three phase diagram, not showing the rotor windings and the prime movers.}
+
+\label{fig:TICSGThreePhase}
+\end{figure}
+
+The thesis has the following structure: in chapter   \ref{cha:microgrid_dynamics} fourth order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
 discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system. The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. Stability analysis for the TICSG is given in Chapter \ref{cha:Synchronization}.
 
 
@@ -542,19 +554,7 @@ fourth order model} (FOM).
 
 \section{TICSG modeling}
 
-In this section we develop a model for a microgid composed of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
-
-%%%% Figure Tree phase TICSG system.
-\begin{figure}[!htb]
-\begin{circuitikz}[american voltages,scale=1, transform shape]
-\begin{scope}[shift={(-5,0)}]     \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG1}; \end{scope}
-   \draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=east]{}; \draw (0,0) to [R=$R_L$] (210 :2.5); \draw (0,0) to [R=$R_L$] (330 :2.5);
-\begin{scope}[shift={(5,0)}]    \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west] {$v_a$}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{$v_b$}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{$v_c$}; \node (0,0) [align=left,text width=4cm] {SG2}; \end{scope}
-\draw (5,2.5) to [short, i>=$i_{a2}$] (0,2.5) to [short, i<=$i_{a1}$] (-5,2.5); \draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [short, i>=$i_{b2}$]   (-2.165 ,-1.25-1)  to [short, o-] (-2.165 ,-1.25 ); \draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [short, i>=$i_{b1}$]   (-2.165 ,-1.25-1); \draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2) to [short, i>=$i_{c2}$]  (2.165 ,-1.25-2)  to [short, o-] (2.165 ,-1.25 ); \draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [short, i>=$i_{c1}$]  (2.165 ,-1.25-2);
-\end{circuitikz}\caption{{\em two identical coupled SGs} (TICSG) model - three phase diagram}
-
-\label{fig:TICSGThreePhase}
-\end{figure}
+In this section we develop a model for a microgid composed of two identical SGs connected connected to a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
 
 %%%%%%%%%%%%%
 We denote the first SG rotor angle as  $\theta_{1}$ and the second SG rotor angle as $\theta_{2}$. We assume identical constant torque that act on each of the generators, denoted as $T_{m}$. By symmetry,
@@ -1175,7 +1175,7 @@ while the ISE converges to the equilibrium point.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
-\chapter{Synchronization}
+\chapter{Synchronization \label{cha:Synchronization}}
 
 In this chapter, we show that the synchronization subspace of the TICSG system, is locally exponentially stable.
 We start with rewrite the TICSG dynamics as synchronization error
@@ -1723,8 +1723,8 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 \end{thebibliography}
 
 \appendix
-
-\chapter{Synchronous generator parameters\label{chap:Appendix}}
+\chapter{appendix \label{chap:Appendix}}
+\section{Synchronous generator parameters\label{chap:Appendix}}
 
 \subsection*{5 KW SG}
 
@@ -1858,7 +1858,7 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 \label{table:DifferentRegionOfAttraction}
 \end{table}
 
-\chapter{Proof that for the TICSG, assuming that  $\sin\delta_{0}=0$, $rank\left[M|n\right]=3$\label{chap:AppendixProof}}
+\section{Proof that for the TICSG, $rank\left[M|n\right]=3$, assuming that  $\sin\delta_{0}=0$ \label{chap:AppendixProof}}
 
 \[
 M=\left[\begin{array}{cc}
