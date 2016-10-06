@@ -681,11 +681,11 @@ Of course a symmetric equation holds for the second generator:
 \varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
 \]
 
-We denote the angular velocity  of the SG rotor as $\omega_i = \dot{\theta_i}$ where $i \in \{1,2\}$. 
+We denote the angular velocities  of the SG rotors by $\omega_i = \dot{\theta_i}$ where $i \in \{1,2\}$. 
 An additional ODE for $\delta$ is:
 
 \[
-\dot{\delta}=\omega_{2}-\omega_{1}
+\dot{\delta}=\omega_{2}-\omega_{1}.
 \]
 
 Rewriting the entire system dynamics gives:
@@ -713,7 +713,7 @@ e_{3}\\
 \end{array}\label{eq:TICSGDynamics}
 \end{equation}
 
-We refer this seven order non linear dynamic system as the TICSG model.
+We refer this seventh order nonlinear dynamic system as the TICSG model.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
@@ -783,7 +783,7 @@ This equation may have one, two or zero solutions (modulo $2\pi$).
 
 \section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
 
-In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization subspace or on the anti-synchronization subspace i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$ and $\delta^e=0$ or $\delta^e = \pi$   (modulo $2\pi$). Second, we show that the TICSG system has at list one equilibrium point on the synchronization subspace (i.e with $\delta^e=0$).
+In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization subspace or on the anti-synchronization subspace i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$ and $\delta^e=0$ or $\delta^e = \pi$   (modulo $2\pi$). Second, we show that the TICSG system has at least one equilibrium point on the synchronization subspace (i.e with $\delta^e=0$).
 
 \subsection{An equilibrium point must satisfy synchronization condition.}
 We  start by investigate the solution of the algebraic equation:  
@@ -846,22 +846,22 @@ i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
 \end{array}\right]
 \]
-We represent these lines in the following way:
+we rewrite these lines in the following way:
 
 \begin{equation}
 M\left[\begin{array}{c}
 i_{d1}^{e}\\
 i_{d2}^{e}
-\end{array}\right]=n\label{eq:equilibrium_system}
+\end{array}\right]=n.\label{eq:equilibrium_system}
 \end{equation}
 
 Now, we  show by contradiction that any equilibrium point must satisfy: $\sin\delta^e=0$.
-We use Rouch\'e Capelli Theorem:  Any liner equations system with the form  $Mx=n$ has a  solution if and only if $rank\left[M|n\right]=rank\left[M\right].$
+We use the Rouch\'e Capelli theorem:  Any liner equations system with the form  $Mx=n$ has a  solution if and only if rank$\left[M|n\right]=$rank$\left[M\right].$
 
-We negated to assume that $\sin\delta^{e}\ne0$. Simple calculation (see Appendix \ref{chap:AppendixProof}) shows that under this assumption   $rank\left[M|n\right]=3$ must hold.
+if we negated to assume that $\sin\delta^{e}\ne0$, then a simple calculation (see Appendix \ref{chap:AppendixProof}) shows that under this assumption   rank$\left[M|n\right]=3$ must hold.
 
-Obviously, $rank\left[M\right]\le2$.  Rouch\'e Capelli Theorem implies that under the
-previous assumption the linear equations system \eqref{eq:equilibrium_system} doesn't have solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ means that : $\delta^{e}=0$ or $\delta^e = \pi$ (modulo $2\pi$).
+Obviously, rank$\left[M\right]\le2$.  The Rouch\'e Capelli Theorem implies that under the
+previous assumption the linear equations system \eqref{eq:equilibrium_system} does not have any solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ means that : $\delta^{e}=0$ or $\delta^e = \pi$ (modulo $2\pi$).
 
 After subtitling $\sin\delta^{e}=0$
 and $\cos\delta^{e}=\pm 1$, the linear equations system  \eqref{eq:equilibrium_system} becomes:
@@ -878,7 +878,7 @@ $$
 and 
 
 $$
-N=\left[\begin{array}{c}
+n=\left[\begin{array}{c}
 i_{q}^{e}\omega^{e}L_{s}\\
 -mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)\\
 i_{q}^{e}\omega^{e}L_{s}\\
@@ -887,13 +887,14 @@ i_{q}^{e}\omega^{e}L_{s}\\
 $$
 
 This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
-\subsection{The TICSG system has at list one equilibrium point on the synchronization subspace}
-Here, we show that the TICSG system has at list one equilibrium point which satisfies 
+\subsection{The TICSG system has at least one equilibrium point on the synchronization subspace}
+Here, we show that the TICSG system has at least one equilibrium point on the three dimensional subspace
 \begin{equation}
-z_1^{e}=z_2^{e}=z^{e},\quad \delta^e=0\label{eq:eqPointConditions}
+\mathscr{E}=\{ \left[z_1 \ z_2 \ \delta  \right]^\top   |  z_1=z_2,\delta= 0\}\label{eq:SyncSubspace}
 \end{equation}
+Which we call the \textit{synchronization subspace}.
 
-After substituting condition \eqref{eq:eqPointConditions} into \eqref{eq:algebricEquation} ,we get:
+After substituting condition \eqref{eq:SyncSubspace} into  \eqref{eq:algebricEquation} ,we get:
 
 \begin{equation}
 \left[\begin{array}{ccc}
@@ -1859,7 +1860,7 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 \label{table:DifferentRegionOfAttraction}
 \end{table}
 
-\section{Proof that for the TICSG, $rank\left[M|n\right]=3$, assuming that  $\sin\delta_{0}=0$ \label{chap:AppendixProof}}
+\section{Proof that for the TICSG, rank$\left[M|n\right]=3$, assuming that  $\sin\delta_{0}=0$ \label{chap:AppendixProof}}
 
 \[
 M=\left[\begin{array}{cc}
@@ -1915,7 +1916,7 @@ T=\left[\begin{array}{cccc}
 \end{array}\right].\label{eq:MATRIX_1}
 \end{equation}
 
-Now, if $\cos\delta^{e}=0$ then $rank(T)=3$. If $\cos\delta^{e}\ne0$
+Now, if $\cos\delta^{e}=0$ then rank$(T)=3$. If $\cos\delta^{e}\ne0$
 we define 
 
 \[
@@ -1930,7 +1931,7 @@ T_{2}=\left[\begin{array}{ccc}
 \end{array}\right]
 \]
 
-it is easy to see that $rank(T_{2})=3$.
+it is easy to see that rank$(T_{2})=3$.
 
 \subsubsection*{Case C: $\alpha\protect\ne0$ and $\beta=0$}
 
@@ -1948,7 +1949,7 @@ T_{3}=\left[\begin{array}{cccc}
 \end{array}\right]\label{eq:MATRIX_2}
 \end{equation}
 
-it is easy to see that $rank(T_{3})=3$.
+it is easy to see that rank$(T_{3})=3$.
 
 \subsubsection*{Case D: $\alpha\protect\ne0$ and $\beta\protect\ne0$}
 
@@ -1981,7 +1982,7 @@ $(\alpha+\beta)R_{L}\cos\delta^{e}=(\alpha+\beta)R_{tot}$, which is impossible b
 
 
 If $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}=0$ and $\frac{R_{L}\cos\delta^{e}}{\beta}-\frac{R_{tot}}{\alpha} \neq 0$,
-then it is easy to see that $rank(T_{4})=3$.
+then it is easy to see that rank$(T_{4})=3$.
 
 If $-\frac{R_{L}\cos\delta_{0}}{\alpha}+\frac{R_{tot}}{\beta}\ne0$
 we define
@@ -2001,7 +2002,7 @@ R_{tot} \left( \frac{\beta}{\alpha}- \frac{\alpha}{\beta}\right) & 0 & 0
 \end{array}
 \]
 
-because $ \alpha \neq \beta$, $rank(T_{5})=3$. 
+because $ \alpha \neq \beta$, rank$(T_{5})=3$. 
 
 We show that for any possible case, after applying linear
 transformation on $\left[M|n\right]$ the resulting rank is 3. 
