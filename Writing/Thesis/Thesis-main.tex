@@ -262,7 +262,7 @@ The equation for the rotor flux linkage is
 \Phi_f=M_{af}i_a+ M_{bf}i_b+M_{cf}i_c+L_fi_f=L_fi_f+M_f\left<i,\widetilde{\cos}\theta\right>. \label{eq:fieldFlux} 
 \end{equation}
 
-Since there is no neutral line, $i_a+i_b+i_c=0$, so the previous
+Since there is no neutral line, $i_a+i_b+i_c=0$, so that the previous
 equation can be rewritten as 
 $$\Phi \m=\m L_s i + M_f i_f \widetilde{\cos}\theta \m,$$
 where $L_s=L+M$. We will assume that the rotor current is constant
@@ -291,15 +291,15 @@ currents in a more convenient way, we apply the Park transformation
 with respect to the rotor angle:
 $$ x_{dq0} \m=\m \left[\begin{array}{c} x_{d}\\ x_{q}\\ x_{0}
    \end{array}\right] \m=\m U(\theta) \left[\begin{array}{c} x_{a}\\
-   x_b\\ x_c\end{array}\right] \m=\m U(\theta) x_{abc} \m,$$
-where $x_{abc}$ is a vector in $abc$ coordinates, $x_{dq0}$
+   x_b\\ x_c\end{array}\right] \m=\m U(\theta) x \m,$$
+where $x$ is a vector in $abc$ coordinates, $x_{dq0}$
 is the same vector in the $dq0$ coordinates, and $U(\theta)$ is the
 following unitary matrix:
 \BEQ{eq:ParkTransformation}
  U(\theta) \m=\m \sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
    \cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-
-   \frac{4\pi}{3})\\ \sin(\theta) & \sin(\theta-\frac{2\pi}{3})
-   & \sin(\theta-\frac{4\pi}{3})\\ \sqrt{1/2} & \sqrt{1/2} & 
+   \frac{4\pi}{3})\\ -\sin(\theta) & -\sin(\theta-\frac{2\pi}{3})
+   & -\sin(\theta-\frac{4\pi}{3})\\ \sqrt{1/2} & \sqrt{1/2} & 
    \sqrt{1/2} \end{array}\right] \m.
 \end{equation}
 
@@ -319,7 +319,9 @@ This implies that \vspace{-2mm}
 $$ \dot{i}_{dq0} \m=\m \frac{\dd i_{dq0}}{\dd\theta} \cdot \frac
    {\dd\theta}{\dd t} \m=\m U(\theta)\dot{i} + \o\left[\begin{array}
    {c} i_q\\ -i_d\\ 0 \end{array}\right] \m,$$
-where $\o=\dot{\theta}$. We rewrite \rfb{aPark} as follows:
+where 
+$$\o=\dot{\theta}.$$
+We rewrite \rfb{aPark} as follows:
 
 \BEQ{eq:idiqDynamics}
    L_s\frac{\dd}{\dd t}\nm\left[\nm\begin{array}{c} i_d\\ i_q\\ i_0
@@ -393,7 +395,7 @@ The rotational dynamics of the rotor is given by
 where $J$ is the moment of inertia of the rotor, $T_m-D_p\o$ is is the
 mechanical torque coming from the prime mover, $T_e$ is the
 electromagnetic torque developed by the generator, and $D_p$ is a the
-frequency droop coefficient. The feedback term $D_p\o$ is used in
+frequency droop coefficient employed in the prime movers connected to the generators. If any viscous friction is present, it can be absorbed into the term $D_p\omega$. The feedback term $D_p\o$ is used in
 order to control the frequency of the grid, see \cite{Kundur},
 \cite{PoDoBu:13}, \cite{CaTa:14}, \cite{ZhWe:11}. $T_e$ can be found
 using energy consideration. It is easy to see that the magnetic 
