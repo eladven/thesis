@@ -927,7 +927,7 @@ it is easy to see that $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{
 which is exactly half of the power dissipated in all the resistors,
 hence it is the electric power leaving one generator.
 
-From \eqref{eq:equilbrium_algebric_eq}, we derive a scalar
+From \eqref{eq:equilbrium_algebric_eq} we derive a scalar
 equation to determine the equilibrium velocity $\omega^{e}$.
 From the last line of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
 
@@ -935,15 +935,15 @@ From the last line of the matrix equation\eqref{eq:equilbrium_algebric_eq} we ha
 T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
 \end{equation}
 
-The left side of this equation can interpreted as the  mechanical torque acting on each
+The left side of this equation is the mechanical torque acting on each
 generator at equilibrium.
 
-The first line of the matrix equilibrium \eqref{eq:equilbrium_algebric_eq}
+The first line of  \eqref{eq:equilbrium_algebric_eq}
 is $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$,
-hence:
+\quad hence
 
 \[
-i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}
+i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}.
 \]
 
 From \eqref{eq:eq_0_first_eq} 
@@ -957,10 +957,10 @@ Combining the last two formulas,
 i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}\label{eq:id_0_}
 \end{equation}
 
-The second line of the matrix equation on \eqref{eq:eq_0_first_eq},
+The second line of the matrix equation on \eqref{eq:eq_0_first_eq}
 is 
-$$\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0$$
-Substituting in this equation the expressions for ,$i_{q}^{e}$ and $i_{d}^{e}$ yields the following cubic equation in $\omega^e$, denoting $R_T = R_L+R_{tot}$:
+$$\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0.$$
+Substituting in this equation the expressions for $i_{q}^{e}$ and $i_{d}^{e}$ yields the following cubic equation in $\omega^e$, where we denote $R_T = R_L+R_{tot}$:
 
 \begin{equation}
 \begin{split}
@@ -970,17 +970,18 @@ D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^
 
 Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
 $p(\omega^{e})$. 
-$$p(0)=-T_{m}R_T^{2}<0$$
+Clearly 
+$$p(0)=-T_{m}R_T^{2}<0.$$
 On the other hand, we note that 
 $$
-p(\frac{T_{m}}{D_{p}}) =m^{2}i_{f}^{2}R_T\frac{T_{m}}{D_{p}}>0
+p(\frac{T_{m}}{D_{p}}) =m^{2}i_{f}^{2}R_T\frac{T_{m}}{D_{p}}>0.
 $$
 
 Hence, \eqref{eq:cuibi_eq} has at least one solution in the interval $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
 
-It shows that the TICSG system has at list one equilibrium point  that located on the synchronization subspace $\mathscr{E}=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e= 0\}$.
+This shows that the TICSG system has at least one equilibrium point  that located on the synchronization subspace \eqref{eq:SyncSubspace}.
 
-Note, that the anti synchronization subspace  $\mathscr{E} '=\{ \left[z^e \ z^e \ \delta^e  \right]^\top   |  \delta^e=\pi \}$ may also have equilibrium points.
+Note, that the anti-synchronization manifold  $\mathscr{E} '=\{ \left[z \ z \ \delta  \right]^\top   |  \delta=\pi \}$ may also have equilibrium points.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \chapter{Model Reduction\label{cha:Model_reduction}}
 In this chapter, we show model reduction for the FOM.
