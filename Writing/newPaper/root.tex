@@ -284,7 +284,8 @@ $\tilde v=0$. Applying the Park transformation to \rfb{eq:emf} gives
 $$ \left[\begin{array}{c} e_d\\ e_q \end{array}\right] \m=\m -\sqrt
    {\frac{3}{2}} M_{f} \left[ \begin{array}{c} 0\\ \o i_f
    \end{array}\right] \m.$$
-We denote $m=\sqrt{\frac{3}{2}}M_{f}$. If we substitute the last
+We denote 
+$$m=\sqrt{\frac{3}{2}}M_{f}.$$ If we substitute the last
 formula into \rfb{eq:idiqDynamics}, we get
 \BEQ{eq:idiqDynamicsWithExIf}
    L_s\frac{\dd}{\dd t} \nm \left[\nm \begin{array}{c}
@@ -328,26 +329,26 @@ and the last formula, we obtain
    \\ T_m \end{array} \nm\nm\right].
 \end{equation}
 This third order nonlinear dynamical system represents the dynamics
-of a single SG with constant field current, if we ignore the rotor 
+of a single SG with constant field current, if we ignore the dynamics of the rotor 
 angle $\theta$. 
 
 \section{TICSG modeling}
 
-In this section we develop a model for a microgid composed of two identical SGs connected in parallel with a resistive load, assuming constant field current (see Figure \ref{fig:TICSGThreePhase}).
+In this section we develop the TICSG model that represent a microgid composed of two identical SGs connected in parallel with a resistive load, assuming constant field currents (see Figure \ref{fig:TICSGThreePhase}).
 
-We denote the first SG rotor angle as  $\theta_{1}$ and the second SG rotor angle as $\theta_{2}$. We assume identical constant torque that act on each of the generators, denoted as $T_{m}$. By symmetry,
+We denote the SG rotor angles by  $\theta_{1}$ and $\theta_{2}$. We assume that identical prime movers act on the generators, producing the torques  $T_{m}-D_p \omega_i$ where $T_m>0$, $D_p>0$ and $i \in \{1,2\}$. By symmetry,
 we assume that the voltages at the (non-connected) midpoints of the
 generators and the load are zero.
 
-We denoted the phase voltages and currents of the first generator as: $v_{1}=\left[v_{a1}\  v_{b1}\  v_{c1}
+We denoted the phase voltages and currents of the first generator by: $v_{1}=\left[v_{a1}\  v_{b1}\  v_{c1}
 \right]^\top$ and $i_{1}=\left[i_{a1}\  i_{b1}\  i_{c1}
 \right]^\top$  respectively.
 Similarly, we denoted the phase voltages and currents of the second generator as: $v_{2}=\left[v_{a2}\  v_{b2}\  v_{c2}
 \right]^\top$ and $i_{2}=\left[i_{a2}\  i_{b2}\  i_{c2}
 \right]^\top$ respectively.
 
-We denote by $Z$ the impedance of each SG stator. This impedance is comprised by the resistive impedance of the stator coil $R_s$ and the inductive impedance of the stator, namely $Z\left(s\right)=R_{s} + sL_{s}$. In general, the line that connects the SG to the grid has its impedance that can be modeled (in most cases) as a resistance and an inductance in series, but these values can simply be added to the parameters $R_s$ and $L_s$ of the SG.
-One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
+We denote by $Z$ the impedance of each SG stator. This impedance is comprised by the resistive impedance of the stator coil $R_s$ and the inductive impedance of the stator, namely $Z\left(s\right)=R_{s} + sL_{s}$. The line that connects the SG to the load has its impedance $Z_l$ that can be modeled  as a resistance and an inductance in series, but these values can simply be added to the parameters $R_s$ and $L_s$ of the SG.
+After this simplification, each phase of the circuit from Figure \ref{fig:TICSGThreePhase} is presented at Figure \ref{fig:TICSGOnePhase}.
 
 
 %%%% Figure Tree phase TICSG system.
@@ -358,7 +359,7 @@ One phase scheme of the grid is presented at Figure \ref{fig:TICSGOnePhase}.
 \draw   (10,0) node[sground] {}   to [V,v^<=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$,mirror] (7,3){}   to [L=$L_s$, mirror] (5,3){};  
  \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
 
-\caption{{\em A microgrid comprising two identical SGs and a load - equivalent circuit diagram for one phase.}}
+\caption{ A microgrid comprising two identical SGs and a resistive load - equivalent circuit diagram for one phase, $j \in \{a,b,c\}.$}
 
 \label{fig:TICSGOnePhase}
 \end{figure}
@@ -370,7 +371,7 @@ In order to use the fourth order model of a single SG \eqref{eq:SingleSGDynamics
 An expression of the voltage at each SG terminal is:
 $$v_1=v_2=v_L=R_{L}(i_{1}+i_{2})$$
 
-Rewriting this equation for the first SG after applying Park transformation yields:
+Rewriting this equation for the first SG after applying the Park transformation yields:
 
 $$
 \left[\begin{array}{c}
@@ -407,7 +408,7 @@ i_{02}
 \end{array}\right].
 \end{equation}
 
-We denote $$\delta=\theta_{2}-\theta_{1}$$
+We denote $$\delta=\theta_{2}-\theta_{1}.$$
 
 A simple computation shows that 
 \BEQ{eq:ParkChangeAngle}
@@ -418,15 +419,15 @@ A simple computation shows that
 \end{array}\right].
 \end{equation}
 
-Because our assumption that the SGs don't have a neutral connection, and by using Kirchhoff's laws we obtain that $i_{01}=i_{02}=0$.  Substituting this into \eqref{eq:TICSGVolAndCurr} and \eqref{eq:ParkChangeAngle} shows that $v_{01} = 0$.
+Since the SGs don't have a neutral connection,  by using Kirchhoff's laws we obtain that $i_{01}=i_{02}=0$.  Substituting this into \eqref{eq:TICSGVolAndCurr} and \eqref{eq:ParkChangeAngle} shows that $v_{01} = 0$.
 
 Substitute \eqref{eq:SingleSGDynamics} and \eqref{eq:ParkChangeAngle} into \eqref{eq:TICSGVolAndCurr}  gives:
 
 \[
 \varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
 \]
-Where we denote
- \[z_{i}=\left[i_{di}\ i_{qi}\  \omega_{i}\right]^\top,i\in\{1,2\},\]
+where we have denoted
+ $$z_{i}=\left[i_{di}\ i_{qi}\  \omega_{i}\right]^\top,\quad i\in\{1,2\},$$
 
 \[
 \varLambda=\left[\begin{array}{ccc}
@@ -449,8 +450,7 @@ R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
 0 & 0 & 0
 \end{array}\right],
 \]
-\[e_{3}=\left[0\ 0\ 1\right]^\top\] and
-\[ R_{tot}=R_{s}+R_{L} \]
+$$e_{3}=\left[0\ 0\ 1\right]^\top, \quad  R_{tot}=R_{s}+R_{L}.$$
 
 Of course a symmetric equation holds for the second generator:
 
