@@ -803,11 +803,11 @@ e
 We note that $F(0,x)=0$, which shows that 
 $\mathscr{E} $ is invariant.
 
-For the $x$ dynamics, we have:
+For the $x$ dynamics we have:
 
 $$
 \begin{aligned}
-\Lambda(\dot{z}_{1}+\dot{z}_{2})= & \mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\\+&\mathcal{A}(\omega_{2})z_{2}  +T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
+\Lambda\dot{x}= & \mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\\+&\mathcal{A}(\omega_{2})z_{2}  +T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}.
 \end{aligned}
 $$
 
@@ -831,27 +831,26 @@ mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
 \end{aligned}
 $$
 
-Again, because the  equation  
+Since the identity 
 $$
 (a+b)(x+y)+(a-b)(x-y)=2(ax+by)
 $$
-holds for any $x$, $y$, $a$ and $b$, it implies that:
+holds for any $x$, $y$, $a$ and $b$, it follows that
 $$
 \begin{aligned}
 \omega_{1}i_{q1}+\omega_{2}i_{q2} &=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]\\ & =\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
 \end{aligned}
 $$
 
-and similarly:
+and similarly
 
 $$
 \omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
 $$ 
 
-And the $x$ dynamics can be rewrite as:
-$$ \dot{x}=G \left( x,e\right)= \Lambda^{-1}\left(A_x \left(x,e \right) x + B_x \left( x,e\right) \right) $$
-
-Where
+The $x$ dynamics can be rewritten as:
+$$ \dot{x}=G \left( x,e\right)= \Lambda^{-1}\left(A_x \left(x,e \right) x + B_x \left( x,e\right) \right), $$
+where
 $$
 A_x \left(x,e \right)=\left[\begin{array}{ccc}
 -R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
@@ -913,29 +912,29 @@ $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\ \tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e
 \end{array}\right]=0\label{eq:G_at_equilibrium}
 \end{equation}
 
-In order to shift the equilibrium point into the origin, we denote the new  coordinates:
+In order to shift the equilibrium point into the origin, we introduce the new  coordinates
 $$
 \hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
 $$
 
-A natural Lyaponov function candidate for this system, is the total energy of the system:
+A natural Lyapunov function candidate for this system is 
 $$
-V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}
+V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}.
 $$
 
 It is easy to see that:
 $$
-\frac{1}{2} min(L_{s},J)|\hat{x}|{}^{2}\leq V(\hat{x})\leq \frac{1}{2} max(L_{s},J)|\hat{x}|{}^{2}
+\frac{1}{2} min\left\{L_{s},J\right\}|\hat{x}|{}^{2}\leq V(\hat{x})\leq \frac{1}{2} max\left\{L_{s},J\right\}|\hat{x}|{}^{2}
 $$
 
 $$
-\left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max(L_{s},J)\left|\hat{x}\right|
+\left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max\left\{L_{s},J\right\}\left|\hat{x}\right|
 $$
 
 We calculate $\dot{V}(\hat{x})$ in order to show that under some
 conditions, $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$, for some
 $\alpha.$ This  proves that $\tilde{G}(\tilde{x})$ is globally
-exponentially stable (see for instance \cite{Sastry}).
+exponentially stable (see for instance theorum 5.17, p195 at \cite{Sastry}).
 
 $$
 \dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
