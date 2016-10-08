@@ -761,10 +761,10 @@ $$(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$$
 holds for any $x$, $y$, $a$ and $b$, it implies that:
 $$
 \begin{aligned}
-\omega_{1}i_{q1}-\omega_{2}i_{q2}= &\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}-i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}+i_{q2})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
+\omega_{2}i_{q2}-\omega_{1}i_{q1}= &\frac{1}{2}\left[(\omega_{1}+\omega_{1})(i_{q2}-i_{q1})+(\omega_{2}-\omega_{1})(i_{q2}+i_{q1})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
 \end{aligned}
 $$
-
+ 
 and the previous equation can be rewritten as:
 $$
 \dot{e}  = F(e,x) =\left[\begin{array}{cc}
@@ -777,8 +777,8 @@ Where
 $$
 \begin{aligned}
 &A_e\left(x,e\right)  = \\ & \left[\begin{array}{cccc}
--R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{\omega} & -\frac{L_{s}}{2}x_{q} & 0\\
-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{q}-mif & 0\\
+-R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mif & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]
@@ -1120,13 +1120,63 @@ Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_fo
 \end{theorem}
  
 \begin{proof}
-For the TICSG system, 
+We start by calculating $\frac{\partial F(e,x)}{\partial e}(0,x)$ for the TICSG system. 
+$$
+\begin{aligned}
+ F = \left[\begin{array}{cc} F_\zeta \\ F_\delta \end{array}\right] &= \left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1} \left[\begin{array}{cc}
+A_{e_z}(x,\delta) & 0\\
+e_3^\top & 0
+\end{array}\right]   \left[\begin{array}{cc} e_\zeta \\ \delta \end{array}\right]    \\ &+ \left[\begin{array}{cc}
+\varLambda & 0\\
+0 & 1
+\end{array}\right]^{-1}B_e\left(x,\delta\right)
+\end{aligned}
+$$
+where $A_e(x,\delta) = \left[\begin{array}{cc}
+A_{e_z}(x,\delta) & 0\\
+e_3^\top & 0
+\end{array}\right] $ and $e_\zeta = \left[e_d \ e_q \ e_\omega \right]^\top$.
+
+$$
+\frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
+ \frac{\partial F_\zeta}{\partial e_\zeta} & \frac{\partial F_\zeta}{\partial \delta} \\
+\frac{\partial F_\delta}{\partial e_\zeta}  & \frac{\partial F_\delta}{\partial \delta}
+
+\end{array}\right]
+$$
+We have 
+$$
+\begin{aligned}
+&\frac{\partial F_\zeta}{\partial e_\zeta}(0,x)=\varLambda^{-1}A_{e_z}(x,0) \\&=\left[\begin{array}{ccc}
+-R_{tot}+R_{L} & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} \\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L} & -\frac{L_{s}}{2}x_{d}-mif \\
+0 & mi_{f} & -D_{p} 
+\end{array}\right],
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+ \frac{\partial F_\zeta}{\partial \delta} & =  \varLambda^{-1} \frac{\partial F_\zeta}{\partial \delta}\left( A_{e_\zeta}(x,\delta) \right)e_\zeta+ \frac{\partial F_\zeta}{\partial \delta}\left(B_e(x,\delta)\right)
+ \end{aligned}
+$$
+$$
+ \frac{\partial F_\zeta}{\partial \delta}(0,x)  =  \left[\begin{array}{ccc}
+ -R_L x_q\\
+R_Lx_d\\
+0
+\end{array}\right],\quad \frac{\partial F_\delta}{\partial e_\zeta}=e_3^\top,\quad \frac{\partial F_\delta}{\partial \delta}
+=0$$
+Finally
 \begin{equation}
 \frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
 -\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
--\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}{}_{2}-\frac{mif}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
+-\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}-\frac{mif}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
 0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
-0 & 0 & -1 & 0
+0 & 0 & 1 & 0
 \end{array}\right]\label{eq:div_of_F}
 \end{equation}
 
