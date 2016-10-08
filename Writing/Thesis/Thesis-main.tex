@@ -1465,13 +1465,13 @@ $$
 \dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right) 
 $$
 
-We calculate the derivative of the Lyponv function over  time: 
+We calculate the derivative of the Lyapunov function over  time: 
 $$
 \dot{V}(\hat{x})=\left(\Lambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\Lambda^{T}\Lambda^{-1}\left( \left[R+J+\Delta(\hat{x}_{\omega})\right]\hat{x}+\Delta(\hat{x}_{\omega})\tilde{x}^{e}\right)
 $$
 
 Because $\Lambda$ is diagonal matrix, then $\Lambda^{T}\Lambda^{-1}=I$
-
+  
 $$
 \dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}
 $$
@@ -1520,7 +1520,7 @@ P=\left[\begin{array}{ccc}
 \end{array}\right]
 $$
 Combining all this together, obtains: 
-
+ 
 \[
 \dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
 \]
@@ -1533,8 +1533,7 @@ $$P+R=\left[\begin{array}{ccc}
 \end{array}\right].$$
  Calculating the eigenvalues of $P+R$ gives:
  $\lambda_{1}=-R_T$
-which is always negative. 
-
+which is always negative,
 $$
 \lambda_{2,3}=-\frac{R_T+D_{p}}{2} \pm\frac{\sqrt{4\left(R_T-D_{p}\right)^{2}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
 $$
@@ -1544,48 +1543,59 @@ All eigenvalues are real numbers. The condition which guarantees that all the th
 \begin{equation}
 16 R_TD_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
 \end{equation}
-
-When  condition \eqref{eq:condition_for_stable_G} holds, then $\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|\hat{x}|^{2},i\in\{1,2,3\}$.
-and this system is globally exponentially stable. Note that because it proves global stability, it  means that $\tilde{x}^{e}$ is the only equilibrium point of $\tilde{G}(\tilde{x})$,
-hence the TICSG system has exactly one equilibrium point on the the synchronization subspace.
+ 
+When  condition \eqref{eq:condition_for_stable_G} holds, then $\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|\hat{x}|^{2},\quad i\in\{1,2,3\}$,
+and this system is globally exponentially stable. Note that because it proves global stability in $\mathscr{E}$, it  means that $\tilde{x}^{e}$ is the only equilibrium point of $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$,
+hence the TICSG system has exactly one equilibrium point on the the synchronization subspace $\mathscr{E}$.
 
 \section{Synchronization theorem:}
 
 In this subsection, we prove that if the initial state of the two generators
 are sufficiently close to each other, i.e $|e(0)|$ is small enough, then, under some conditions, the two generators will synchronize, meaning that $lim_{t\to\infty}e(t)=0$.
 
-In order to show that, we use the main result of \cite{AndrieuJayawardhanaPraly}. For system in the form 
-$$ \dot{e} = F\left(e,x\right),\quad \dot{x} = G\left(e,x\right)$$ for   $F, G \in C^2$ , \cite{AndrieuJayawardhanaPraly} defines the following properties:
+In order to show that, we use the main result of \cite{AndrieuJayawardhanaPraly}. Consider a system of the form 
+\begin{equation}
+ \dot{e} = F\left(e,x\right),\quad \dot{x} = G\left(e,x\right) \label{eq:systemForm}
+ \end{equation}
+ where $e$ and $x$ are finite-dimensional real vector valued functions and $F, G \in C^2$ with $F(0,x)=0$. \cite{AndrieuJayawardhanaPraly} defines the following  properties:
 
 \subsection{TULES-NL (Transversal uniform local exponential stability)}
-There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in $e$, uniformly in $x$.
 \subsection{UES-TL (Uniform exponential stability for the transversally linear system)}
 there exist strictly positive real numbers $\tilde{ k}$ and $\tilde{\lambda}$  such that any solution $\left(e \left(e_0, x_0, t\right), x \left(x_0, t\right)\right)$ of the transversally linear system
 $$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,\quad \dot{\tilde{x}} = \tilde{G}  \left( \tilde{x}  \right) =G\left(0,x\right)$$
 satisfies, for all $\left(e_0,x_0,t\right)$,   
  $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
 
-
-One of the main results of \cite{AndrieuJayawardhanaPraly} is that if 
-
+ 
+\begin{theorem}
+If a  system  has form \eqref{eq:systemForm}, and it satisfies the following conditions: 
+\begin{enumerate}
+\item
+There exist a positive real number $\mu$, such that: 
 \begin{equation}
-\frac{\partial F(e,x)}{\partial e}(0,x)\le \mu \quad\forall x  \label{eq:assumption1}
+\frac{\partial F(e,x)}{\partial e}(0,x)\le \mu \quad\forall x. \label{eq:assumption1}
 \end{equation}
-and 
-$\mathscr{E}=\left\{ \left[\begin{array}{c}
-x\\
-e
-\end{array}\right]\in\mathbb{R}^{7}|e=0\right\} $ is invariant, then 
-the TULES-NL property is equivalent to the UES-TL property.
+\item
+The manifold $\mathscr{E}$ is invariant.
+\item
+If there exist positive definite matrix $Q$, such the function $P:\mathbb{R}^{n_x}\to\mathbb{R}^{n_e \times n_e}$ given by
+$$P\left(\tilde{x}\right)=\lim_{T \to+\infty} \int_0^T \left( \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right)\right)^\top Q \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right) ds$$
+exist (\cite{AndrieuJayawardhanaPraly} sows that $P$ always exist for UES-TL systems that satisfies conditions 1 and 2).
+\item
+there exist positive real numbers $\eta$ and $c$ such that, for all $(e,x)$ in $B_e(\eta)\times \mathbb{R}^n_x$,
+$$\left| \frac{\partial P}{\partial x}(x)\right| \le c,$$
+$$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$
+\end{enumerate}
+then the UES-TL property implies the TULES-NL property for this system.
+\end{theorem}
 
+This theorem is one of the main results of \cite{AndrieuJayawardhanaPraly}. 
+ 
 \begin{theorem}
 If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
-$$\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x})$$
-Where $\tilde{x}$ is the solution of the system:
-$$
-\dot{\tilde{x}}=\tilde{G}(\tilde{x})=G(0,\tilde{x})
-$$
- is a Hurwitz matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists), Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+$$A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$$
+Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
 \end{theorem}
  
 \begin{proof}
