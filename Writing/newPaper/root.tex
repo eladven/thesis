@@ -440,7 +440,7 @@ L_{s} & 0 & 0\\
 \mathcal{A}(\omega)=\left[\begin{array}{ccc}
 -R_{tot} & \omega L_{s} & 0\\
 -\omega L_{s} & -R_{tot} & -mi_{f}\\
-0 & mi_{f} & D_{p}
+0 & mi_{f} & -D_{p}
 \end{array}\right],
 \]
 \[\mathcal{B}(\delta)=\left[\begin{array}{ccc}
@@ -490,6 +490,90 @@ e_{3}\\
 \end{equation}
 
 We refer this seventh order nonlinear dynamic system as the TICSG model.
+
+
+\begin{lemma}
+The TICSG system is foreword complete, i.e. for any initial state $\left[ z_1^{0\top} \ z_2^{0\top}  \ \delta^{0}  \right]^\top \in \mathbb{R}^7 $, the (unique) solution of the TICSG system is defined for all $t>0$.
+\end{lemma}
+\begin{proof}
+(This proof is in the spirit of \cite[p.7]{NaWe:15}).
+
+The right hand side of the TICSG model \eqref{eq:TICSGDynamics} is a locally Lipschitz function on its state space. For any initial state it follows from standard well posedness results (see for instance \cite[Ch. 3]{Khalil}) that there exists a unique solution $( z_1 \ z_2  \ \delta  )$ for \eqref{eq:TICSGDynamics} defined on a maximal time interval $[0,T_{max})$, with $T_{max} > 0$. We will show via contradiction that $T_{max}=\infty$. Suppose that $T_{max}$  is finite. For each $t\in [0,T_m)$ define 
+$$V\left(\left[\begin{array}{c}
+z_1\\ z_2
+\end{array}\right]\right) =  \left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
+\varLambda & 0\\ 0 & \varLambda
+\end{array}\right]\left[\begin{array}{c}
+z_1\\ z_2
+\end{array}\right].$$
+Then 
+$$\dot{V}(t) = 2\left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
+\varLambda & 0\\ 0 & \varLambda
+\end{array}\right]\left[\begin{array}{c}
+\dot{z_1}\\ \dot{z_2}
+\end{array}\right].$$ 
+After substitute \eqref{eq:TICSGDynamics} we get
+$$
+\begin{aligned}
+{V}(t) &= 2\left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
+\varLambda & 0\\ 0 & \varLambda
+\end{array}\right] \\ & \left[\begin{array}{c}
+\varLambda^{-1}\left(\mathcal{A}(\omega_1)z_1- \mathcal{B}(\delta)z_2+T_me_3\right)
+\\ 
+\varLambda^{-1}\left(- \mathcal{B}(-\delta)z_1+\mathcal{A}(\omega_2)z_2+T_me_3\right)
+\end{array}\right].
+\end{aligned}
+$$ 
+Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$ then 
+$$
+\begin{aligned}
+\dot{V}(t) =& 2\left(z_1^\top\mathcal{A}(\omega_1)z_1+z_2^\top\mathcal{A}(\omega_2)z_2\right) \\ +&2\left(-2z_1^\top\mathcal{B}(\delta)z_2 + T_mz_1^\top e_3+ T_mz_2^\top e_3\right)
+\end{aligned}
+$$ 
+explicitly,
+$$
+\begin{aligned}
+\dot{V}(t) &= 2\left(-R_{tot}\left(i_{d1}^2+i_{q1}^2+i_{d2}^2+i_{q2}^2 \right) -D_p\left( \omega_1^2+\omega_2^2\right)\right) \\
+& +4R_L\left( -\cos(\delta)i_{d1}i_{d2}-\cos(\delta)i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}\right)\\ &+4 R_L\left(\sin(\delta)i_{q2}i_{d1}\right)
+ +2T_m(\omega_1+\omega2).
+\end{aligned}
+$$ 
+This equation can be described in a matrix form
+
+$$
+\begin{aligned}
+\dot{V(t)} &= -2D_p\left( \omega_1^2+\omega_2^2\right) +2T_m(\omega_1+\omega2)-2\vec{i}^\top A\vec{i}
+\end{aligned}
+$$ 
+where $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ i_{q2}]^\top$ and 
+$$
+\begin{aligned}
+A&=\left[\begin{array}{cc|cc}
+R_{tot} & 0 & R_L \cos(\delta) & -R_L \sin(\delta) \\ 
+0 & R_{tot} & R_L R_L \sin(\delta) & R_L\cos(\delta) \\ 
+\hline
+R_L\cos(\delta) & R_L \sin(\delta) & R_{tot} & 0 \\ 
+-R_L \sin(\delta) & R_L\cos(\delta) & 0 & R_{tot} 
+\end{array}\right]\\&=\left[
+\begin{array}{c|c}
+A_1 & B \\
+\hline
+B^* & A_1
+\end{array}
+\right].
+\end{aligned}$$
+
+According to Schur's Inequality if the therm $A_1-B^*A_1^{-1}B$ is a positive definite matrix, then it implies that  the matrix $A$ is a positive definite matrix. 
+
+$$
+A_1-B^*A_1^-1B= \left[\begin{array}{cc}
+R_{tot}-\frac{R_L^2}{R_{tot}} & 0  \\ 
+0 & R_{tot}-\frac{R_L^2}{R_{tot}}  
+\end{array}\right].$$
+Because the term $R_{tot}$ is bigger then $R_L$ then $A_1-B^*A_1^-1B$ is positive definite matrix, which implies that A is a positive definite matrix.
+Which shows that if either $|i_{d1}|$, $|i_{q1}|$, $|\omega_{1}|$, $|i_{d2}|$, $|i_{q2}|$ or $|\omega_{2}|$ is sufficiently large, then $\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\omega_{1}$, $i_{d2}$, $i_{q2}$ and $\omega_{2}$ are bounded on $[0,T_{max})$ Since $T_{max}$ is bounded then $\delta$ must also be bounded. Hence $(i_{d1},i_{q1},\omega_1,i_{d2},i_{q2},\omega_2)$ are bounded functions on $[0,T_{max})$ which contradict \cite[ Corollary II.3]{JayWeissBS:09}. Therefore  $T_{max} = \infty$.
+\end{proof}
+
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 \section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
@@ -778,7 +862,7 @@ $$
 \begin{aligned}
 &A_e\left(x,e\right)  = \\ & \left[\begin{array}{cccc}
 -R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mif & 0\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mi_f & 0\\
 0 & mi_{f} & -D_{p} & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]
@@ -853,7 +937,7 @@ where
 $$
 A_x \left(x,e \right)=\left[\begin{array}{ccc}
 -R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mif\\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mi_f\\
 0 & mi_{f} & -D_{p}
 \end{array}\right]
 $$
@@ -884,7 +968,7 @@ $$
 A\left( \tilde{x}_\omega \right)=A_x\left(0, \tilde{x}_\omega \right) =  
  \left[\begin{array}{ccc}
 -R_T & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
--\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_T & -mif\\
+-\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_T & -mi_f\\
 0 & mi_{f} & -D_{p}
 \end{array}\right]
 $$
@@ -965,7 +1049,7 @@ $$
 $$
 J\coloneqq\left[\begin{array}{ccc}
 0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
--\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mif\\
+-\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mi_f\\
 0 & mi_{f} & 0
 \end{array}\right]
 $$
@@ -1152,7 +1236,7 @@ $$
 \begin{aligned}
 &\frac{\partial F_\zeta}{\partial e_\zeta}(0,x)=\varLambda^{-1}A_{e_z}(x,0) \\&=\left[\begin{array}{ccc}
 -R_{tot}+R_{L} & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} \\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L} & -\frac{L_{s}}{2}x_{d}-mif \\
+-\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L} & -\frac{L_{s}}{2}x_{d}-mi_f \\
 0 & mi_{f} & -D_{p} 
 \end{array}\right],
 \end{aligned}
@@ -1174,7 +1258,7 @@ Finally
 \begin{equation}
 \frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
 -\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
--\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}-\frac{mif}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
+-\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}-\frac{mi_f}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
 0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
 0 & 0 & 1 & 0
 \end{array}\right]\label{eq:div_of_F}
@@ -1282,9 +1366,13 @@ References are important to the reader; therefore, each citation must be complet
  based suppression of torque ripple in brushless DC motor drives,
  {\em Systems Science \& Control Engineering}, vol.~5, 2015, 
  pp.~162-176.
-
+ 
 \bibitem{Khalil} H.K.~Khalil, \m \emph{Nonlinear Systems} (third 
  edition), Prentice Hall, New Jersey, 2002.
+ 
+ \bibitem{JayWeissBS:09}
+B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems with an $L^2$ input,  {\em IEEE Trans. Automatic Control}, 54 (2009), pp. 1723-1727.
+
 
 \bibitem{ZhWe:11} Q.-C.~Zhong and G.~Weiss, \m Synchronverters: 
  Inverters that mimic synchronous generators, {\em IEEE Trans. 
