@@ -1173,7 +1173,7 @@ satisfies, for all $\left(e_0,x_0,t\right)$,
  $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
 
 \begin{theorem}
-If a  system  has form \eqref{eq:systemForm}, and it satisfies the following conditions: 
+If a  system  has form \eqref{eq:systemForm}, and it forward complete, and it satisfies the following conditions in an invariant  compact sets that contains the initial conditions : 
 \begin{enumerate}
 \item
 There exist a positive real number $\mu$, such that: 
@@ -1191,12 +1191,13 @@ there exist positive real numbers $\eta$ and $c$ such that, for all $(e,x)$ in $
 $$\left| \frac{\partial P}{\partial x}(x)\right| \le c,$$
 $$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$
 \end{enumerate}
-
 then the UES-TL property implies the TULES-NL property for this system.
 \end{theorem}
 
-This theorem is one of the main results of \cite{AndrieuJayawardhanaPraly}. 
- 
+This theorem is one of the main results of \cite{AndrieuJayawardhanaPraly}. See \cite[Comment 2, p.3]{AndrieuJayawardhanaPraly}.
+
+Now, we use this theorem in order to show that the TICSG has the TULES-NL property.
+
 \begin{theorem}
 If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
 $$A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$$
@@ -1229,7 +1230,7 @@ $$
  \frac{\partial F_\zeta}{\partial e_\zeta} & \frac{\partial F_\zeta}{\partial \delta} \\
 \frac{\partial F_\delta}{\partial e_\zeta}  & \frac{\partial F_\delta}{\partial \delta}
 
-\end{array}\right]
+\end{array}\right].
 $$
 We have 
 $$
@@ -1263,6 +1264,34 @@ Finally
 0 & 0 & 1 & 0
 \end{array}\right]\label{eq:div_of_F}
 \end{equation}
+
+Note, that the linearization of $F$ with respect to $e$, has the same structure of the linearization of a system of a single generator connected to an infinite bus around it equilibrium point  (see \cite[equation 3.4]{NaWe:15}). 
+
+The linearization of a single generator connected to an infinite bus around an equilibrium point $(i^e_d, i^e_q, \omega_g, \delta^e)$ is
+$$
+\left[\begin{array}{c}
+\dot{x_1} \\
+\dot{x_2 }\\
+\dot{x_3} \\
+\dot{x_4}
+\end{array}\right]=\left[\begin{array}{cccc}
+-\frac{R_{s}}{L_{s}} & \omega_g & i_q^e & \frac{V\cos(\tilde{\delta}^e)}{L_{s}}\\
+-\omega_g & -\frac{R_{s}}{L_{s}} & -i_d^e-\frac{mi_f}{L_{s}} & -\frac{V\sin(\tilde{\delta}^e)}{L_{s}}\\
+0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]  
+\left[\begin{array}{c}
+x_1 \\
+x_2 \\
+x_3 \\
+x_4
+\end{array}\right]
+$$
+where $x_1 = i_d-i^e_d$, $x_2 = i_q-i_q^e$, $x_3=\omega-\omega_g$ and $x_4= \tilde{\delta} - \tilde{\delta}^e$ ($\tilde{\delta}$ is the phase between the infinite bus and the generator).
+
+
+For $x_\omega = 2 \omega_g$, $x_q = 2 i_q^e$, $x_d = i_d^e$, $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ and $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ we get the same dynamics, so the linearization of the F with respect to $e$ behaves like the linearization of a single generator connect to an infinte bus, with doubled currents and angular velocity, and with voltage that is equal to the load resistor with phase difference of $\tan^{-1}\left(\frac{i_q^e}{i_d^e}\right)$ between the voltage and this virtual single generator. 
+
 
 Condition \eqref{eq:assumption1} requires that matrix \eqref{eq:div_of_F} should by uniformly bounded is not satisfied, because of the presences of $x_{w},x_{q},x_{d}$ as elements in the matrix. However, it can be shown by energy considerations  that regardless
 of the initial state, the state of TICSG system is always contained in a certain bounded set (that depends on the initial state).
