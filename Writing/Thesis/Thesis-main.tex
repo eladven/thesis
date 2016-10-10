@@ -715,7 +715,8 @@ e_{3}\\
 
 We refer this seventh order nonlinear dynamic system as the TICSG model.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{lemma}
+
+\begin{lemma}\label{lemma:forewordComplete}
 The TICSG system is foreword complete, i.e. for any initial state $\left[ z_1^{0\top} \ z_2^{0\top}  \ \delta^{0}  \right]^\top \in \mathbb{R}^7 $, the (unique) solution of the TICSG system is defined for all $t>0$.
 \end{lemma}
 \begin{proof}
@@ -1275,7 +1276,7 @@ some conditions, the TICSG is globally exponentially
 stable in the subspce  $\mathscr{E}$. Finally, we use the main result from  \cite{AndrieuJayawardhanaPraly},
 to show the stability of the system near the synchronization subspace.
 
-\section{Modeling the synchronization problem:}
+\section{Modeling the synchronization problem:}\label{sec:SyncProbModel}
 The TICSG system has the following structure:
 $$ \tilde{\Lambda}\frac{d}{dt}\left[z_1\ z_2\ \delta\right]^{\top}= f\left( \left[z_1\ z_2\ \delta\right]^{\top} \right)$$
 where $\tilde{\Lambda} = diag \left( \Lambda,\Lambda,1 \right) $.
@@ -1656,25 +1657,28 @@ $$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,
 satisfies, for all $\left(e_0,x_0,t\right)$,   
  $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
 
- 
-\begin{theorem}
+\begin{theorem}\label{therem:TULESNL2UESTL}
 If a  system  has form \eqref{eq:systemForm}, and it forward complete, and it satisfies the following conditions in an invariant  compact sets that contains the initial conditions : 
 \begin{enumerate}
-\item
+\item 
 There exist a positive real number $\mu$, such that: 
-\begin{equation}
-\frac{\partial F(e,x)}{\partial e}(0,x)\le \mu \quad\forall x. \label{eq:assumption1}
-\end{equation}
-\item
+$$
+\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \le \mu. 
+$$
+\label{condition1}
+\item 
 The manifold $\mathscr{E}$ is invariant.
+\label{condition2}
 \item
 If there exist positive definite matrix $Q$, such the function $P:\mathbb{R}^{n_x}\to\mathbb{R}^{n_e \times n_e}$ given by
 $$P\left(\tilde{x}\right)=\lim_{T \to+\infty} \int_0^T \left( \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right)\right)^\top Q \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right) ds$$
 exist (\cite{AndrieuJayawardhanaPraly} sows that $P$ always exist for UES-TL systems that satisfies conditions 1 and 2).
-\item
+ \label{condition3}
+\item 
 there exist positive real numbers $\eta$ and $c$ such that, for all $(e,x)$ in $B_e(\eta)\times \mathbb{R}^n_x$,
 $$\left| \frac{\partial P}{\partial x}(x)\right| \le c,$$
 $$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$
+\label{condition4}
 \end{enumerate}
 then the UES-TL property implies the TULES-NL property for this system.
 \end{theorem}
@@ -1683,14 +1687,7 @@ This theorem is one of the main results of \cite{AndrieuJayawardhanaPraly}. See 
 
 Now, we use this theorem in order to show that the TICSG has the TULES-NL property.
 
-\begin{theorem}
-If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
-$$A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$$
-Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
-\end{theorem}
- 
-\begin{proof}
-We start by calculating $\frac{\partial F(e,x)}{\partial e}(0,x)$ for the TICSG system. 
+We start with calculating $\frac{\partial F(e,x)}{\partial e}(0,x)$. We can express $F$ as composed of two functions $F_\zeta$ and $F_\delta$:
 $$
 \begin{aligned}
  F = \left[\begin{array}{cc} F_\zeta \\ F_\delta \end{array}\right] &= \left[\begin{array}{cc}
@@ -1747,12 +1744,70 @@ Finally
 -\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}-\frac{mi_f}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
 0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
 0 & 0 & 1 & 0
-\end{array}\right]\label{eq:div_of_F}
+\end{array}\right]
+\label{eq:AOft}
 \end{equation}
 
-Note, that the linearization of $F$ with respect to $e$, has the same structure of the linearization of a system of a single generator connected to an infinite bus around it equilibrium point  (see \cite[equation 3.4]{NaWe:15}). 
+\begin{theorem}\label{theorem:TICSGSync}
+If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
+\begin{equation}
+A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)
+\label{eq:eLinearizationLimit}
+\end{equation}
+Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+\end{theorem}
+ 
+\begin{proof}
 
-The linearization of a single generator connected to an infinite bus around an equilibrium point $(i^e_d, i^e_q, \omega_g, \delta^e)$ is
+We will show TICSG system has the UES-TL property, and then by applying theorem \ref{therem:TULESNL2UESTL}, we will show that it has the TULES-NL property.
+
+As we showed at \ref{lemma:forewordComplete}, the TICSG system is foreword complete. We need to show that the system  
+$$
+\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
+$$
+is globally exponentially stable. Note, that this is a linear time varying system.
+
+We use the following result from \cite[theorem 4.2.7]{SchovanecGilliam1999}:
+\begin{proposition}\label{proposition:LTVStability}
+Let $A$ be a constant matrix with $Re\{\sigma(A)\}<0$ and let $P(t)$ be a continuous matrix valued function on the interval $[0,\infty)$. Suppose that 
+$$
+\intop_{0}^{\infty}\left|P(t)\right|dt=M<\infty
+$$
+Then, the solution of $\dot{x}(t)=[A+P(t)]x(t)$ is globally asymptotically stable.
+ \end{proposition}
+ 
+Because theorem \ref{theorem:TICSGSync} requires  condition \eqref{eq:condition_for_stable_G},  then the system $
+\tilde{x}=\tilde{G}(\tilde{x})$ is exponentially stable and hence  $A = \lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$ exists.  It imply that the matrix $\frac{\partial F}{\partial e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial e}(0,\tilde{x}^e) = \left(A+P(t)\right)$ where $P(t)$  converges exponentially to zero. The limit matrix is 
+$$
+A=\left[\begin{array}{cccc}
+-\frac{R_{s}}{L_{s}} & \frac{x^e_{\omega}}{2} & \frac{x^e_{q}}{2} & -\frac{R_{L}}{L_{s}}x^e_{q}\\
+-\frac{x^e_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x^e_{d}}{2}-\frac{mi_f}{L_{s}} & \frac{R_{L}}{L_{s}}x^e_{d}\\
+0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]
+$$
+and this should be stable, according to condition \eqref{eq:eLinearizationLimit}.
+That show that proposition \ref{proposition:LTVStability} holds and  the system
+ $$
+\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
+$$
+is globally exponentially stable.  That proves that the TICSG system is UES-TL. 
+
+ Both $F$ and $G$ are $C^\infty$. In addition, as shown at the proof of \ref{lemma:forewordComplete}, $\left(z_1(t),z_2(t)\right)$ are bounded for any initial condition, it implies that for any initial state of the TICSG system there is a compact set that contains the trajectory of $(z_1(t),z_2(t)$ for all $t \geq 0$, and there are $\mu>0$ and $c>0$ such 
+ $$\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \le \mu,$$
+$$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$.
+
+As we note at section \ref{sec:SyncProbModel},  $\mathscr{E}$ is an invariant manifold.
+
+Assuming that condition \ref{condition4} holds, then theorem \ref{theorem:TICSGSync} implies that the TICSG system has the  TULES-NL property. Therefore there exist strictly positive real numbers $r$, $k$
+and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right| \le r $
+, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0 \right|exp(-\lambda t)$.
+Namely the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
+\end{proof}
+
+Note, that the linearization of $F$ \eqref{eq:AOft} with respect to $e$, has the same structure of the linearization of a system of a single generator connected to an infinite bus around it equilibrium point. 
+
+The linearization of a single generator connected to an infinite bus around an equilibrium point $(i^e_d, i^e_q, \omega_g, \delta^e)$ is (see \cite[equation 3.4]{NaWe:15})
 $$
 \left[\begin{array}{c}
 \dot{x_1} \\
@@ -1775,41 +1830,8 @@ $$
 where $x_1 = i_d-i^e_d$, $x_2 = i_q-i_q^e$, $x_3=\omega-\omega_g$ and $x_4= \tilde{\delta} - \tilde{\delta}^e$ ($\tilde{\delta}$ is the phase between the infinite bus and the generator).
 
 
-For $x_\omega = 2 \omega_g$, $x_q = 2 i_q^e$, $x_d = i_d^e$, $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ and $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ we get the same dynamics, so the linearization of the F with respect to $e$ behaves like the linearization of a single generator connect to an infinte bus, with doubled currents and angular velocity, and with voltage that is equal to the load resistor with phase difference of $\tan^{-1}\left(\frac{i_q^e}{i_d^e}\right)$ between the voltage and this virtual single generator. 
+For $x_\omega = 2 \omega_g$, $x_q = 2 i_q^e$, $x_d = i_d^e$, $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ and $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ we get the same dynamics, so the linearization of the F with respect to $e$ behaves like the linearization of a single generator connect to an infinte bus, with doubled currents and angular velocity, and with voltage that is equal to the load resistor with phase difference of $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this virtual single generator. 
 
-
-Condition \eqref{eq:assumption1} requires that matrix \eqref{eq:div_of_F} should by uniformly bounded is not satisfied, because of the presences of $x_{w},x_{q},x_{d}$ as elements in the matrix. However, it can be shown by energy considerations  that regardless
-of the initial state, the state of TICSG system is always contained in a certain bounded set (that depends on the initial state).
-It implies that $\frac{\partial F(}{\partial e}(0,x)$ is clearly bounded in this bounded subset of the state space.
-
-As showed at the previous section, $\mathscr{E}$ is an invariant manifold. In addition, as showed in the previous subsection, if  condition \eqref{eq:condition_for_stable_G} hold, then the system $
-\tilde{x}=\tilde{G}(\tilde{x})$ is exponentially stable and hence the limit $\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x})$ exists and according to the second condition this matrix is Hurwitz.
-
-In order to use the main result of \cite{AndrieuJayawardhanaPraly}, we need to show that the system  
-$$
-\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
-$$
-is globally exponentially stable. Note, that this system is linear time varying system.
-
-We use the known theorem that for system with the form: 
-$$
-\dot{x}(t)=[A+C(t)]x(t)
-$$
-Where $A$ is a constant matrix with $Re\{\sigma(A)\}<0$ and  $C$
-is a continuous matrix valued function on the function on the interval
-$[0,\infty)$ that satisfies: 
-\[
-\intop_{0}^{\infty}\left|C(t)\right|dt=M<\infty
-\]
-Then, this system is a globally exponentialy stable (see for instance \cite{SchovanecGilliam1999}).
-
-Because the system $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$ is exponentially stable, then the matrix $\frac{\partial F}{\partial e}(0,\tilde{x})$ converges exponentially and the condition of the previous theorem holds.  That proves that the TICSG system is UES-TL. By applying
-the main result of \cite{AndrieuJayawardhanaPraly}, it proves that the TICSG system is TULES-NL.
-Therefore there exist strictly positive real numbers $r$, $k$
-and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right| \le r $
-, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0 \right|exp(-\lambda t)$.
-Namely the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
-\end{proof}
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
 \begin{thebibliography}{10}
