@@ -563,8 +563,13 @@ B^* & A_1
 \right].
 \end{aligned}$$
 
-According to Schur's Inequality if the therm $A_1-B^*A_1^{-1}B$ is a positive definite matrix, then it implies that  the matrix $A$ is a positive definite matrix. 
-
+According to Schur complement condition for positive definiteness, a symmetric matrix $X = \left[
+\begin{array}{c|c}
+M & N \\
+\hline
+N^* & Y
+\end{array}
+\right]$  is positive definite if and only if $M$ and  $\Delta=Y-N^*M^{-1}N$ are both positive definite. it means that in order to show that $A$ is a positive definite we need to show that both $A_1$ and  $A_1-B^*A_1^{-1}B$ are positive definite. $A_1$ is clearly positive definite (it is diagonal matrix with navigate value on the main diagonal). 
 $$
 A_1-B^*A_1^-1B= \left[\begin{array}{cc}
 R_{tot}-\frac{R_L^2}{R_{tot}} & 0  \\ 
