@@ -111,7 +111,11 @@ In the first part of this work we discuss the stability of a single generator co
 to an infinite bus, and show that certain reduced models fail to predict
 the behavior of this system.
 
-In the second part of this work, we investigate the stability of a micro grid composed of two identical synchronous generators, inductive lines and resistive loads. We derive sufficient conditions for local exponential stability, with region of attraction that included any initial state of the generators that are sufficiently close to each other. 
+In the second part of this work, we investigate the stability of a microgrid composed of two identical
+synchronous generators, inductive lines and resistive loads. We 
+derive sufficient conditions for local exponential stability, with 
+a region of attraction that includes any initial state such that the 
+states of the generators are sufficiently close to each other. 
 
 \tableofcontents{}
 
@@ -182,23 +186,29 @@ reliable for stability analysis, because it can't predict an unstable
 behavior that is predicted by a more faithful model of the same
 system.
 
-In the second part of this work,  we discus  two SGs connected to a resistive load as shown in Figure \ref{fig:TICSGThreePhase}. These generators are driven by identical prime movers, that have frequency droop control. We show that if the difference between the two initial states of the SGs are sufficiently close to each other, then they synchronized exponentially and the system converges to a stable equilibrium point.
+n the second part of this work, we study the configuration of a two identical SGs
+connected to a resistive load, as shown in Figure
+\ref{fig:TICSGThreePhase}. These generators are driven by identical
+prime movers, that have frequency droop control. Our main result is
+that if the difference between the initial states of the SGs is
+sufficiently small, then the state of the entire system converges at
+an exponential rate to a stable equilibrium point.
 
-%%%% Figure Tree phase TICSG system.
-\begin{figure}[!htb]
-\begin{circuitikz}[american voltages,scale=1, transform shape]
-\begin{scope}[shift={(-5,0)}]     \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{}; \node (0,0) [align=left,text width=4cm] {SG1}; \end{scope}
-   \draw (0,0) node[anchor=east] {0} to [R=$R_L$, *-o] (90 :2.5) node[anchor=south]{\Large $V_a$}; \draw (0,0) to [R=$R_L$] (210 :2.5); \draw (0,0) to [R=$R_L$] (330 :2.5);
-\begin{scope}[shift={(5,0)}]    \draw (0,0) node[anchor=east] {0} to [L=Z, *-o] (90 :2.5) node[anchor=west] {}; \draw (0,0) to [L=Z, *-o] (210 :2.5) node[anchor=east]{}; \draw (0,0) to [L=Z, *-o] (330 :2.5) node[anchor=east]{}; \node (0,0) [align=left,text width=4cm] {SG2}; \end{scope}
-\draw (5,2.5) to [R, l=$Z_l$,*-*, i>=$i_{a2}$] (0,2.5) to [R, l=$Z_l$,*-*, i<=$i_{a1}$]  (-5,2.5); \draw (-2.165 +5,-1.25) to [short] (-2.165 +5,-1.25 -1) to [R, l=$Z_l$,*-*, i>=$i_{b2}$]   (-2.165 ,-1.25-1)  node[anchor=north]{\Large $V_b$} to [short, o-] (-2.165 ,-1.25 ); \draw (-2.165 -5,-1.25) to [short] (-2.165 -5,-1.25 -1) to [R, l_=$Z_l$,i>=$i_{b1}$, *-*]   (-2.165 ,-1.25-1); \draw (2.165 +5,-1.25) to [short] (2.165 +5,-1.25 -2)  to  [R, l=$Z_l$,*-*, i>=$i_{c2}$]  (2.165 ,-1.25-2)node[anchor=north]{\Large $V_c$}  to [short, o-] (2.165 ,-1.25 ); \draw (2.165 -5,-1.25) to [short] (2.165 -5,-1.25 -2) to [R, l_=$Z_l$,*-*, i>=$i_{c1}$]  (2.165 ,-1.25-2);
-\end{circuitikz}\caption{{\em The two identical coupled SGs} (TICSG) model - three phase diagram, not showing the rotor windings and the prime movers.}
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure} % Figure 1: tree phase TICSG system
+\centering \includegraphics[width=16cm]{full_circuit_with_2_SGs}
+\caption{The two identical coupled SGs (TICSG) model, showing the 
+stator windings, the line impedances $Z_l$ and the load resistors 
+$R_L$, but not showing the rotor windings or the prime movers.}
 \label{fig:TICSGThreePhase}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-The thesis has the following structure: in chapter   \ref{cha:microgrid_dynamics} fourth order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
-discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system. The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. Stability analysis for the TICSG is given in Chapter \ref{cha:Synchronization}.
 
+This work has the following structure: in chapter   \ref{cha:microgrid_dynamics} third order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
+discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system. The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. Stability analysis for the TICSG model (in particular, 
+results about the region of attraction of the stable equilibrium 
+point) is in Chapter \ref{cha:Synchronization}.
 
 \chapter{The microgrid dynamics\label{cha:microgrid_dynamics}}
 
@@ -236,14 +246,12 @@ We denote the stator fluxes by $\Phi=\left[\Phi_a\ \Phi_b\ \Phi_c
 ^\top$ and the rotor current by $i_f$. 
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}
-\begin{centering}
-\includegraphics[scale=0.5]{SGStucture}
-\par\end{centering} \label{fig:structOfSG}
-
+\begin{figure} % Figure 2: single generator
+\centering \includegraphics[width=14cm]{SGStructure.eps}
 \caption[Structure of an idealized three-phase round rotor synchronous
 generator]{Structure of an idealized three-phase round rotor
 synchronous generator, modified from \cite[Figure 3.4]{GrSt2014}.}
+\label{fig:structOfSG} \vspace{-3mm}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
@@ -251,8 +259,8 @@ The mutual inductance between the rotor coil and each of the stator
 coils varies with the rotor angle $\theta$ as follows:
 $$ \left[\begin{array}{c} M_{a,f}\\ M_{b,f}\\ M_{c,f}\end{array}
    \right] \m=\m M_{f}\widetilde{\cos}\theta \m,$$
-where $M_f>0$ is a constant. The vector of flux linkages of the stator
-windings is
+where $M_f>0$ is a constant. Hence, the vector of flux linkages of the
+stator windings is
 $$ \Phi \m=\m \left[\begin{array}{ccc} L & -M & -M\\ -M & L & -M\\
    -M & -M & L \end{array}\right]i + M_f i_f\widetilde{\cos}\theta
    \m.$$
@@ -395,11 +403,13 @@ The rotational dynamics of the rotor is given by
 where $J$ is the moment of inertia of the rotor, $T_m-D_p\o$ is is the
 mechanical torque coming from the prime mover, $T_e$ is the
 electromagnetic torque developed by the generator, and $D_p$ is a the
-frequency droop coefficient employed in the prime movers connected to the generators. If any viscous friction is present, it can be absorbed into the term $D_p\omega$. The feedback term $D_p\o$ is used in
-order to control the frequency of the grid, see \cite{Kundur},
-\cite{PoDoBu:13}, \cite{CaTa:14}, \cite{ZhWe:11}. $T_e$ can be found
-using energy consideration. It is easy to see that the magnetic 
-energy stored in the generator is
+frequency droop coefficient employed in the prime movers connected to
+the generators. If any viscous friction is present, it can be absorbed
+into the term $D_p\o$. All the parameters $J,T_m,D_p$ are positive.
+The feedback term $D_p\o$ is used in order to control the frequency of
+the grid, see \cite{Kundur}, \cite{PoDoBu:13}, \cite{CaTa:14},
+\cite{ZhWe:11}. $T_e$ can be found using energy consideration. The 
+magnetic energy stored in the generator is
 $$ E_{mag} \m=\m \half \left(\langle i,L_s i \rangle + L_f i_f^2
    \right) + M_f i_f \langle i,\widetilde{\cos}\theta \rangle \m.$$
 The electromagnetic torque can be calculated as follows:
@@ -556,258 +566,183 @@ fourth order model} (FOM).
 
 \section{TICSG modeling}
 
-In this section we develop the TICSG model that represent a microgid composed of two identical SGs connected connected to a resistive load, assuming constant field currents (see Figure \ref{fig:TICSGThreePhase}).
+In this section we develop the TICSG model that represent two 
+identical SGs connected to a common resistive load, as shown in
+Figure \ref{fig:TICSGThreePhase}, assuming constant field currents.
+The model of each SG is as in Section 2.
 
-%%%%%%%%%%%%%
-We denote the SG rotor angles  by  $\theta_{1}$ and  $\theta_{2}$. We assume that identical prime movers act on  the generators, producing the torques  $T_{m}-D_p \omega_i$ where $T_m>0$, $D_p>0$ and $i \in \{1,2\}$. By symmetry,
-we assume that the voltages at the (non-connected) midpoints of the
-generators and the load are zero.
+We denote the SG rotor angles by $\theta_1$ and $\theta_2$ and
+$\o_1=\dot\theta_1$, $\o_2=\dot\theta_2$. We assume that identical
+prime movers act on the generators, producing the torques
+$T_{m}-D_p\o_i$, $i\in\{1,2\}$. By symmetry, we assume that the
+voltages at the (non-connected) midpoints of the generators and the
+load are zero. We denoted the phase voltages on the load by
+$v=\left[v_a\ v_b\ v_c \right]^\top$, the currents of the first
+generator by $i_1=\left[i_{a1} \ i_{b1}\ i_{c1}\right]^\top$ and 
+similarly for the currents of the second generator.
+%by $i_2=\left[i_{a2}\ i_{b2}\ i_{c2}\right]^\top$.
 
-We denoted the phase voltages and currents of the first generator by $v_{1}=\left[v_{a1}\  v_{b1}\  v_{c1}
-\right]^\top$ and $i_{1}=\left[i_{a1}\  i_{b1}\  i_{c1}
-\right]^\top$  respectively.
-Similarly, we denoted the phase voltages and currents of the second generator as: $v_{2}=\left[v_{a2}\  v_{b2}\  v_{c2}
-\right]^\top$ and $i_{2}=\left[i_{a2}\  i_{b2}\  i_{c2}
-\right]^\top$ respectively.
+In Figure \ref{fig:TICSGThreePhase} we have indicated by $Z$ the
+equivalent impedance of each SG stator, $Z=sL_s+R_s$. The line that
+connects the SG to the load has its impedance $Z_l$ that can be
+modeled as a resistance and an inductance in series, but these values
+can simply be added to the parameters $R_s$ and $L_s$ of the SG. After
+this simplification, each phase of the circuit from Figure
+\ref{fig:TICSGThreePhase} is as in Figure \ref{fig:TICSGOnePhase}.
 
-We denote by $Z$ the impedance of each SG stator. This impedance is comprised by the resistive impedance of the stator coil $R_s$ and the inductive impedance of the stator, namely $Z\left(s\right)=R_{s} + sL_{s}$. The line that connects the SG to the load has its impedance $Z_l$ that can be modeled as a resistance and an inductance in series, but these values can simply be added to the parameters $R_s$ and $L_s$ of the SG.
-After this simplification, each phase of the circuit from Figure \ref{fig:TICSGThreePhase} is presented at Figure \ref{fig:TICSGOnePhase}.
-
-
-%%%% Figure Tree phase TICSG system.
-\begin{figure}[!htb]
-\begin{circuitikz}[american voltages,scale=1, transform shape]
-\draw   (0,0) node[sground] {}   to [V,v^<=$e_{j1}$] (0,3) {}   to [R=$R_s$,i>=$i_{j1}$] (3,3){}   to [L=$L_s$] (5,3){}   to [R=$R_L$, *-] (5,0){}    to  (5,0) node[sground] {};   
-\draw    (4.5, 2.5) to [open,v=$v_L$] (4.5,0);
-\draw   (10,0) node[sground] {}   to [V,v^<=$e_{j2}$] (10,3) {}   to [R=$R_s$,i>=$i_{j2}$,mirror] (7,3){}   to [L=$L_s$, mirror] (5,3){};  
- \node[draw] at (-1,4) {$j \in \{a,b,c\}$}; \end{circuitikz} 
-
-\caption{ A microgrid comprising two identical SGs and a resistive load - equivalent circuit diagram for one phase, $j \in \{a,b,c\}$.}
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure} % Figure 3: Tree phase TICSG system
+\centering \includegraphics[width=12cm]{one_phase.eps}
+\vspace{-3mm}
+\caption{The TICSG model - equivalent circuit for one phase, 
+$j\in\{a,b,c\}.$} \vspace{-6mm}
 \label{fig:TICSGOnePhase}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-%%%%%%%%%
-
-In order to use the fourth order model of a single SG \eqref{eq:SGDynamics} in the two SGs system, we apply  the Park transformation \eqref{eq:ParkTransformation}, on each SG  terminal voltages: $\left[ v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  and currents $\left[v_{di}\ v_{qi}\  v_{0i} \right]^\top=U(\theta_{i})\left[v_{ai}\ v_{bi}\ v_{ci}  \right]^\top$,  ($i \in \{1,2\}$).
-
-An expression of the voltage at each SG terminal is:
-$$v_1=v_2=v_L=R_{L}(i_{1}+i_{2})$$
-
-Rewriting this equation for the first SG after applying the Park transformation yields:
-
-$$
-\left[\begin{array}{c}
-v_{d1}\\
-v_{q1}\\
-v_{01}
-\end{array}\right]=R_{L}\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}\\
-i_{01}
-\end{array}\right]+R_{L}U(\theta_{1})\left[\begin{array}{c}
-i_{a2}\\
-i_{b2}\\
-i_{c2}
-\end{array}\right]
-$$
-
-Because Park transformations argument is  $\theta_1$,  the second SG current can't be transformed directly to the d-q coordinates:   $U(\theta_{1})\left[ i_{a2}\ i_{b2}\ i_{c2}\right]^\top \neq \left[ i_{d2}\ i_{q2}\ i_{02}\right]$. 
-
-We express  the currents of the second SG in the d-q coordinates by using the inverse Park transformation: 
+In order to use the model \eqref{eq:SGDynamics} for each SG, we
+apply the Park transformation (defined in the previous section) to the
+load voltages, $\left[ v_{d1}\ v_{q1}\ v_{01}\right]^\top=U(\theta_1)
+\left[v_a\ v_b\ v_c\right] ^\top$, and to the currents $\left[i_{d1}\
+i_{q1}\ i_{01} \right]^\top=U(\theta_1)\left[i_{a1}\ i_{b1}\
+i_{c1}\right]^\top$, and similarly for $i_2$ and $\theta_2$. From
+$v=R_L(i_1+i_2)$ we get, after applying the Park transformation with
+respect to $\theta_1$,
+$$ \left[\begin{array}{c} v_{d1}\\ v_{q1}\\ v_{01} \end{array}
+   \right] \m=\m R_L\left[\begin{array}{c} i_{d1}\\ i_{q1}\\
+   i_{01} \end{array}\right] + R_L U(\theta_1)\left[\begin{array}{c}
+   i_{a2}\\ i_{b2}\\ i_{c2} \end{array}\right] \m.$$
+Here we express the currents of the second SG by using the inverse 
+Park transformation: 
 \BEQ{eq:TICSGVolAndCurr}
- \left[\begin{array}{c}
-v_{d1}\\
-v_{q1}\\
-v_{01}
-\end{array}\right]=R_{L}\left[\begin{array}{c}
-i_{d1}\\
-i_{q1}\\
-i_{01}
-\end{array}\right]+R_{L}U(\theta_{1})U(\theta_{2})^{-1}\left[\begin{array}{c}
-i_{d2}\\
-i_{q2}\\
-i_{02}
-\end{array}\right].
+   \left[\begin{array}{c} v_{d1}\\ v_{q1}\\ v_{01} \end{array}\right]
+   \m=\m R_{L}\left[\begin{array}{c} i_{d1}\\ i_{q1}\\ i_{01}
+   \end{array}\right] + R_L U(\theta_1)U(\theta_2)^{-1}\left[
+   \begin{array}{c} i_{d2}\\ i_{q2}\\ i_{02} \end{array}\right].
 \end{equation}
 
-We denote $$\delta=\theta_{2}-\theta_{1}.$$
+We denote \vspace{-3mm}
+$$\delta \m=\m \theta_2 - \theta_1 \m.$$
 
 A simple computation shows that 
 \BEQ{eq:ParkChangeAngle}
-  U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
-\cos(\delta) & -\sin(\delta) & 0\\
-\sin(\delta) & \cos(\delta) & 0\\
-0 & 0 & 1
-\end{array}\right].
+   U(\theta_{1})U(\theta_{2})^{-1}=\left[\begin{array}{ccc}
+   \cos(\delta) & -\sin(\delta) & 0\\ \sin(\delta) & \cos(\delta) 
+   & 0\\ 0 & 0 & 1 \end{array}\right].
 \end{equation}
 
-Since the SGs don't have a neutral connection, and using Kirchhoff's laws we obtain that $i_{01}=i_{02}=0$.  Substituting this into \eqref{eq:TICSGVolAndCurr} and \eqref{eq:ParkChangeAngle} shows that $v_{01} = 0$.
+Since the SGs don't have a neutral connection, from Kirchhoff's
+laws we obtain that $i_{01}=i_{02}=0$. Substituting this into
+\eqref{eq:TICSGVolAndCurr} and \eqref{eq:ParkChangeAngle} shows that
+$v_{01}=0$.
 
-Substitute \eqref{eq:SGDynamics} and \eqref{eq:ParkChangeAngle} into \eqref{eq:TICSGVolAndCurr}  gives:
-
-\[
-\varLambda\dot{z}_{1}=\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}
-\]
+Substituting \eqref{eq:ParkChangeAngle} and \eqref{eq:TICSGVolAndCurr}
+into \eqref{eq:SGDynamics} gives:
+$$ \varLambda\dot{z}_1 \m=\m \mathcal{A}(\o_1)z_1+T_m e_3 - 
+   \mathcal{B}(\delta)z_2 \m,$$
 where we have denoted
- $$z_{i}=\left[i_{di}\ i_{qi}\  \omega_{i}\right]^\top, \quad i\in\{1,2\},$$
-
-\[
-\varLambda=\left[\begin{array}{ccc}
-L_{s} & 0 & 0\\
-0 & L_{s} & 0\\
-0 & 0 & J
-\end{array}\right],
-\]
-
-\[
-\mathcal{A}(\omega)=\left[\begin{array}{ccc}
--R_{tot} & \omega L_{s} & 0\\
--\omega L_{s} & -R_{tot} & -mi_{f}\\
-0 & mi_{f} & -D_{p}
-\end{array}\right],
-\]
-\[\mathcal{B}(\delta)=\left[\begin{array}{ccc}
-R_{L}\cos(\delta) & -R_{L}\sin(\delta) & 0\\
-R_{L}\sin(\delta) & R_{L}\cos(\delta) & 0\\
-0 & 0 & 0
-\end{array}\right],
-\]
+ $$ z_i \m=\m \left[i_{di}\ i_{qi}\ \o_i\right]^\top,\quad 
+   i\in\{1,2\},$$
+$$ \varLambda \m=\m \left[\begin{array}{ccc} L_s & 0 & 0\\
+   0 & L_{s} & 0\\ 0 & 0 & J \end{array}\right],$$
+$$ \mathcal{A}(\o) \m=\m \left[\begin{array}{ccc}
+   -R_{tot} & \o L_s & 0\\ -\o L_s & -R_{tot} & -mi_{f}\\
+   0 & mi_{f} & -D_{p} \end{array}\right],$$
+$$ \mathcal{B}(\delta) \m=\m \left[\begin{array}{ccc}
+   R_L\cos(\delta) & -R_{L}\sin(\delta) & 0\\ R_L\sin(\delta) & 
+   R_L\cos(\delta) & 0\\ 0 & 0 & 0 \end{array}\right],$$
 $$e_{3}=\left[0\ 0\ 1\right]^\top, \quad R_{tot}=R_{s}+R_{L} .$$
-
-Of course a symmetric equation holds for the second generator:
-
-\[
-\varLambda\dot{z}_{2}=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}
-\]
-
-We denote the angular velocities  of the SG rotors by $\omega_i = \dot{\theta_i}$ where $i \in \{1,2\}$. 
+A symmetric equation holds for the second generator:
+$$ \varLambda\dot{z}_2 \m=\m \mathcal{A}(\o_{2})z_{2}+T_{m}e_{3} -
+   \mathcal{B}(-\delta)z_{1} \m.$$
 An additional ODE for $\delta$ is:
+$$\dot{\delta} \m=\m \o_2-\o_1 \m.$$
 
-\[
-\dot{\delta}=\omega_{2}-\omega_{1}.
-\]
-
-Rewriting the entire system dynamics gives:
-
-\begin{equation}
-\begin{array}{ccc}
-\frac{d}{dt}\left[\begin{array}{c}
-\varLambda z_{1}\\
-\varLambda z_{2}\\
-\delta
-\end{array}\right] & = & \left[\begin{array}{c|c|c}
-\mathcal{A}(\omega_{1}) & -\mathcal{B}(\delta) & 0\\
-\hline -\mathcal{B}(-\delta) & \mathcal{A}(\omega_{2}) & 0\\
-\hline -e_{3}^{T} & e_{3}^{T} & 0
-\end{array}\right]\left[\begin{array}{c}
-z_{1}\\
-z_{2}\\
-\delta
-\end{array}\right]\\
- &  & +T_{m}\left[\begin{array}{c}
-e_{3}\\
-e_{3}\\
-0
-\end{array}\right]
-\end{array}\label{eq:TICSGDynamics}
+Rewriting the entire TICSG system dynamics gives:
+\begin{equation} \label{eq:TICSGDynamics}
+   \frac{\dd}{\dd t}\left[\nm\nm\begin{array}{c} \varLambda z_{1}\\
+   \varLambda z_{2}\\ \delta \end{array}\nm\nm\right] = \left[\nm
+   \nm\begin{array}{c|c|c} \mathcal{A}(\o_1) & -\mathcal{B}(\delta)
+   & 0\\ -\mathcal{B}(-\delta) & \mathcal{A}(\o_2) & 0\\ -e_{3}^T
+   & e_3^T & 0 \end{array}\nm\right] \left[\nm\begin{array}{c} z_1
+   \\ z_2\\ \delta \end{array}\nm\right] + T_m \left[\nm 
+   \begin{array}{c} e_{3}\\ e_{3}\\ 0 \end{array} \nm\right].
 \end{equation}
-
-We refer this seventh order nonlinear dynamic system as the TICSG model.
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 \begin{lemma}\label{lemma:forewordComplete}
-The TICSG system is foreword complete, i.e. for any initial state $\left[ z_1^{0\top} \ z_2^{0\top}  \ \delta^{0}  \right]^\top \in \mathbb{R}^7 $, the (unique) solution of the TICSG system is defined for all $t>0$.
+The TICSG system is forward complete, i.e. for any initial state
+$\left[ z_1^{0\top} \ z_2^{0\top} \ \delta^{0} \right]^\top \in
+\mathbb{R}^7 $, the (unique) solution of the TICSG system is defined
+for all $t>0$.
 \end{lemma}
-\begin{proof}
-(This proof is in the spirit of \cite[p.7]{NaWe:15}).
 
-The right hand side of the TICSG model \eqref{eq:TICSGDynamics} is a locally Lipschitz function on its state space. For any initial state it follows from standard well posedness results (see for instance \cite[Ch. 3]{Khalil}) that there exists a unique solution $( z_1 \ z_2  \ \delta  )$ for \eqref{eq:TICSGDynamics} defined on a maximal time interval $[0,T_{max})$, with $T_{max} > 0$. We will show via contradiction that $T_{max}=\infty$. Suppose that $T_{max}$  is finite. For each $t\in [0,T_m)$ define 
-$$V\left(\left[\begin{array}{c}
-z_1\\ z_2
-\end{array}\right]\right) =  \left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
-\varLambda & 0\\ 0 & \varLambda
-\end{array}\right]\left[\begin{array}{c}
-z_1\\ z_2
-\end{array}\right].$$
-Then 
-$$\dot{V}(t) = 2\left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
-\varLambda & 0\\ 0 & \varLambda
-\end{array}\right]\left[\begin{array}{c}
-\dot{z_1}\\ \dot{z_2}
-\end{array}\right].$$ 
+\begin{proof} The right hand side of the TICSG model 
+\eqref{eq:TICSGDynamics} is a locally Lipschitz function on its state
+space. For any initial state it follows from standard well posedness
+results (see for instance \cite[Ch. 3]{Khalil}) that there exists a
+unique solution $( z_1 \ z_2 \ \delta )$ for \eqref{eq:TICSGDynamics}
+defined on a maximal time interval $[0,T_{max})$, with $T_{max} >
+0$. We will show via contradiction that $T_{max}=\infty$. Suppose that
+$T_{max}$ is finite. For each $t\in [0,T_m)$ define
+$$ V\left(\left[\nm\begin{array}{c} z_1\\ z_2\end{array}\nm\right]
+   \right) \m=\m \left[z_1^\top\ z_2^\top\right]\left[\begin{array}
+   {cc} \varLambda & 0\\ 0 & \varLambda \end{array}\right]\left[
+   \begin{array}{c} z_1\\ z_2 \end{array}\right].$$
+Then
+$$ \dot{V}(t) \m=\m 2\left[z_1^\top\ z_2^\top\right]\left[
+   \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
+   \right]\left[\begin{array}{c} \dot{z_1}\\ \dot{z_2}
+   \end{array}\right].$$ 
 After substitute \eqref{eq:TICSGDynamics} we get
-$$\dot{V}(t) = 2\left[z_1^\top\ z_2^\top\right]\left[\begin{array}{cc}
-\varLambda & 0\\ 0 & \varLambda
-\end{array}\right]\left[\begin{array}{c}
-\varLambda^{-1}\left(\mathcal{A}(\omega_1)z_1- \mathcal{B}(\delta)z_2+T_me_3\right)
-\\ 
-\varLambda^{-1}\left(- \mathcal{B}(-\delta)z_1+\mathcal{A}(\omega_2)z_2+T_me_3\right)
-\end{array}\right].$$ 
-Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$ then 
-$$\dot{V}(t) = 2\left(z_1^\top\mathcal{A}(\omega_1)z_1+z_2^\top\mathcal{A}(\omega_2)z_2 -2z_1^\top\mathcal{B}(\delta)z_2 + T_mz_1^\top e_3+ T_mz_2^\top e_3\right)$$ 
+$$ \begin{aligned} V(t) &= 2\left[z_1^\top\ z_2^\top\right]\left[
+   \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
+   \right] \\ & \left[\begin{array}{c} \varLambda^{-1}\left(
+   \mathcal{A}(\omega_1)z_1-\mathcal{B}(\delta)z_2+T_me_3\right)
+   \\ \varLambda^{-1}\left(-\mathcal{B}(-\delta)z_1+\mathcal{A}
+   (\o_2)z_2+T_m e_3\right) \end{array}\right]. \end{aligned}$$ 
+Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$, we get 
+$$ \begin{aligned} \dot{V}(t) =& 2\left(z_1^\top\mathcal{A}(\o_1)
+   z_1+z_2^\top\mathcal{A}(\o_2)z_2\right) \\ +& 2\left(-2z_1^\top
+   \mathcal{B}(\delta)z_2 + T_mz_1^\top e_3+ T_mz_2^\top e_3\right)
+   \end{aligned}$$ 
 explicitly,
-$$
-\begin{aligned}
-\dot{V}(t) &= 2\left(-R_{tot}\left(i_{d1}^2+i_{q1}^2+i_{d2}^2+i_{q2}^2 \right) -D_p\left( \omega_1^2+\omega_2^2\right)\right) \\
-& +4R_L\left( -\cos(\delta)i_{d1}i_{d2}-\cos(\delta)i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}+\sin(\delta)i_{q2}i_{d1}\right)
-\\ & +2T_m(\omega_1+\omega2).
-\end{aligned}
-$$ 
-This equation can be described in a matrix form
-
-$$
-\begin{aligned}
-\dot{V(t)} &= -2D_p\left( \omega_1^2+\omega_2^2\right) +2T_m(\omega_1+\omega2)-2\vec{i}^\top A\vec{i}
-\end{aligned}
-$$ 
+$$ \begin{aligned} \dot{V}(t) &= 2\left(-R_{tot}\left(i_{d1}^2+
+   i_{q1}^2+i_{d2}^2+i_{q2}^2 \right) -D_p \left(\o_1^2+\o_2^2\right)
+   \right) \\ & +4 R_L \left(-\cos(\delta)i_{d1}i_{d2}-\cos(\delta)
+   i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}\right)\\ &+4 R_L\left(
+   \sin(\delta)i_{q2}i_{d1}\right) + 2T_m(\o_1+\o_2).\end{aligned}$$
+This equation can be rewritten as
+$$ \dot{V}(t) \m=\m -2D_p\left( \o_1^2+\o_2^2\right) + 2T_m(\o_1+\o_2)
+   -2\langle A\vec{i},\vec{i} \rangle \m,$$ 
 where $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ i_{q2}]^\top$ and 
-$$A=\left[\begin{array}{cc|cc}
-R_{tot} & 0 & R_L \cos(\delta) & -R_L \sin(\delta) \\ 
-0 & R_{tot} & R_L R_L \sin(\delta) & R_L\cos(\delta) \\ 
-\hline
-R_L\cos(\delta) & R_L \sin(\delta) & R_{tot} & 0 \\ 
--R_L \sin(\delta) & R_L\cos(\delta) & 0 & R_{tot} 
-\end{array}\right]=\left[
-\begin{array}{c|c}
-A_1 & B \\
-\hline
-B^* & A_1
-\end{array}
-\right].$$
+$$ \begin{aligned} A &=\left[\begin{array}{cc|cc} R_{tot} & 0 & R_L 
+   \cos(\delta) & -R_L \sin(\delta) \\ 0 & R_{tot} & R_L R_L 
+   \sin(\delta) & R_L\cos(\delta) \\ \hline R_L\cos(\delta) & R_L 
+   \sin(\delta) & R_{tot} & 0 \\ -R_L \sin(\delta) & R_L\cos(\delta) 
+   & 0 & R_{tot} \end{array}\right]\\ &= \left[ \begin{array}{c|c}
+   A_1 & B \\ \hline B^* & A_1 \end{array} \right].\end{aligned}$$
 
-According to Schur complement condition for positive definiteness, a symmetric matrix $X = \left[
-\begin{array}{c|c}
-M & N \\
-\hline
-N^* & Y
-\end{array}
-\right]$  is positive definite if and only if $M$ and  $\Delta=Y-N^*M^{-1}N$ are both positive definite. it means that in order to show that $A$ is a positive definite we need to show that both $A_1$ and  $A_1-B^*A_1^{-1}B$ are positive definite. $A_1$ is clearly positive definite (it is diagonal matrix with navigate value on the main diagonal). 
-$$
-\begin{aligned}
-&A_1-B^*A_1^-1B= \left[\begin{array}{cc}
-R_{tot} & 0  \\ 
-0 & R_{tot}  
-\end{array}\right]\\&-\left[\begin{array}{cc}
-R_L\cos(\delta) & R_L \sin(\delta)  \\ 
--R_L \sin(\delta) & R_L\cos(\delta)  
-\end{array}\right]\left[\begin{array}{cc}
-R_{tot}^{-1} & 0  \\ 
-0 & R_{tot} ^{-1} 
-\end{array}\right]\left[\begin{array}{cc}
-R_L\cos(\delta) & -R_L \sin(\delta)  \\ 
-R_L \sin(\delta) & R_L\cos(\delta)  
-\end{array}\right],
-\end{aligned}$$
+According to the well known Schur complement condition for positive
+definiteness, a symmetric matrix $X = \left[ \begin{array}{c|c} P_1 &
+N \\ \hline N^* & P_2 \end{array}\right]$ is positive definite if and
+only if $P_1>0$ and $\Delta=P_2-N^*P_1^{-1}N>0$. In our case clearly
+$A_1>0$. Thus, in order to show that $A>0$ we only need to show that 
+$A_1-B^*A_1^{-1}B>0$. By a simple computation,
+$$ A_1-B^*A_1^{-1}B \m=\m \left[\begin{array}{cc}
+   R_{tot}-\frac{R_L^2}{R_{tot}} & 0  \\ 
+   0 & R_{tot}-\frac{R_L^2}{R_{tot}} \end{array}\right].$$
+Since $R_{tot}>R_L$, we have indeed $A_1-B^*A_1^{-1}B>0$. 
 
-$$
-A_1-B^*A_1^-1B= \left[\begin{array}{cc}
-R_{tot}-\frac{R_L^2}{R_{tot}} & 0  \\ 
-0 & R_{tot}-\frac{R_L^2}{R_{tot}}  
-\end{array}\right].$$
-Because the term $R_{tot}$ is bigger then $R_L$ then $A_1-B^*A_1^-1B$ is positive definite matrix, which implies that A is a positive definite matrix.
-Which shows that if either $|i_{d1}|$, $|i_{q1}|$, $|\omega_{1}|$, $|i_{d2}|$, $|i_{q2}|$ or $|\omega_{2}|$ is sufficiently large, then $\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\omega_{1}$, $i_{d2}$, $i_{q2}$ and $\omega_{2}$ are bounded on $[0,T_{max})$ Since $T_{max}$ is bounded then $\delta$ must also be bounded. Hence $(i_{d1},i_{q1},\omega_1,i_{d2},i_{q2},\omega_2)$ are bounded functions on $[0,T_{max})$ which contradict \cite[ Corollary II.3]{JayWeissBS:09}. Therefore  $T_{max} = \infty$.
+From $A>0$, if either $|i_{d1}|$, $|i_{q1}|$, $|\o_1|$, $|i_{d2}|$,
+$|i_{q2}|$ or $|\o_2|$ is sufficiently large, then
+$\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\o_1$,
+$i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on $[0,T_{max})$ Since
+$T_{max}$ is bounded then $\delta$ must also be bounded. Hence
+$(i_{d1},i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded functions on
+$[0,T_{max})$ which contradict \cite[Corollary II.3]{JayWeissBS:09}. 
+Therefore $T_{max} = \infty$.
 \end{proof}
+
 \chapter{Equilibrium points \label{cha:equivalence_pont}}
 
 In this chapter, we study the equilibrium points for both the infinite
@@ -979,99 +914,81 @@ $$
 This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
 \subsection{The TICSG system has at least one equilibrium point on the synchronization subspace}
 Here, we show that the TICSG system has at least one equilibrium point on the three dimensional subspace
-\begin{equation}
-\mathscr{E}=\{ \left[z_1 \ z_2 \ \delta  \right]^\top   |  z_1=z_2,\delta= 0\}\label{eq:SyncSubspace}
+\begin{equation} \label{eq:SyncSubspace}
+   \mathscr{E} \m=\m \left\{ \left[z_1 \ z_2 \ \delta \right]^\top
+   \ |\ z_1=z_2,\ \delta = 0 \right\} \m,
 \end{equation}
-Which we call the \textit{synchronization subspace}.
+which we call the \textit{synchronization subspace}.
 
-After substituting condition \eqref{eq:SyncSubspace} into  \eqref{eq:algebricEquation} ,we get:
-
-\begin{equation}
-\left[\begin{array}{ccc}
--R_{s}-2R_{L} & \omega^{e}L_{s} & 0\\
--\omega^{e}L_{s} & -R_{s}-2R_{L} & -mi_{f}\\
-0 & mi_{f} & -D_{p}
-\end{array}\right]\left[\begin{array}{c}
-i_{d}^{e}\\
-i_{q}^{e}\\
-\omega^{e}
-\end{array}\right]=\left[\begin{array}{c}
-0\\
-0\\
--T_{m}
-\end{array}\right]\label{eq:equilbrium_algebric_eq}
+After substituting condition \eqref{eq:SyncSubspace} into 
+\eqref{eq:algebricEquation}, we get:
+\begin{equation} \label{eq:equilbrium_algebric_eq}
+   \left[\nm\nm\begin{array}{ccc} -R_s-2R_L & \o^e L_s & 0\\
+   -\o^e L_s & -R_s-2R_L & -m i_f\\ 0 & m i_f & -D_p
+   \end{array} \nm\right] \left[\nm\begin{array}{c} i_d^e\\
+   i_q^e\\ \o^e \end{array} \nm\right] = \left[\nm\nm 
+   \begin{array}{c} 0\\ 0\\ -T_m\end{array} \nm\nm\right]\nm\m.
 \end{equation}
-
-We take scalar products on both sides with $z^{e}$:
-
-\[
-\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}
-\]
-
+We take scalar products on both sides with $z^e$:
+$$ \left(R_{tot}+R_L\right)\left((i_d^e)^2+(i_q^e)^2\right) \m=\m
+   \left(T_m-D_p\o^e\right)\o^e \m.$$
 This equation makes perfect physical sense. Indeed, assume that there
 is no actual friction in the machine, $D_{p}$ is created by feedback,
-so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied
-to one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
-is the mechanical power entering one generator. On the other hand,
-it is easy to see that $\left(R_{tot}+R_{L}\right)\left((i_{d}^{e})^{2}+(i_{q}^{e})^{2}\right)=\left(R_{s}+2R_{L}\right)\left(i_{a}^{2}+i_{b}^{2}+i_{c}^{2}\right)$
+so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied to
+one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
+is the mechanical power entering one generator. On the other hand, it
+is easy to see that $\left(R_{tot}+R_L\right)\left((i_d^e)^2+
+(i_q^e)^2\right)=\left(R_s+2R_L\right)\left(i_a^2+i_b^2+i_c^2\right)$
 which is exactly half of the power dissipated in all the resistors,
 hence it is the electric power leaving one generator.
 
-From \eqref{eq:equilbrium_algebric_eq} we derive a scalar
-equation to determine the equilibrium velocity $\omega^{e}$.
-From the last line of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
-
-\begin{equation}
-T_{m}-D_{p}\omega^{e}=-mi_{f}i_{q}^{e}\label{eq:eq_0_first_eq}
+From \eqref{eq:equilbrium_algebric_eq} we derive a scalar equation to
+determine the equilibrium velocity $\omega^{e}$.  From the last line
+of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
+\begin{equation} \label{eq:eq_0_first_eq}
+   T_m-D_p\o^e \m=\m -mi_f i_q^e 
 \end{equation}
-
 The left side of this equation is the mechanical torque acting on each
 generator at equilibrium.
 
 The first line of  \eqref{eq:equilbrium_algebric_eq}
 is $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$,
 \quad hence
-
-\[
-i_{d}^{e}=\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}i_{q}^{e}.
-\]
-
+$$i_{d}^{e} \m=\m \frac{\o^eL_s}{R_{tot}+R_L}i_q^e.$$
 From \eqref{eq:eq_0_first_eq} 
 \begin{equation}
 i_{q}^{e}=\frac{T_{m}-D_{p}\omega^{e}}{-mi_{f}}\label{eq:iq_0_}
 \end{equation}
-
 Combining the last two formulas,
-
-\begin{equation}
-i_{d}^{e}=-\frac{\omega^{e}L_{s}}{R_{tot}+R_{L}}\frac{T_{m}-D_{p}\omega^{e}}{mi_{f}}\label{eq:id_0_}
+\begin{equation} \label{eq:id_0_}
+   i_{d}^{e} \m=\m -\frac{\o^e L_s}{R_{tot}+R_L} \cdot \frac{T_m-D_p
+   \o^e}{mi_f} \m.
 \end{equation}
 
-The second line of the matrix equation on \eqref{eq:eq_0_first_eq}
-is 
-$$\omega^{e}L_{s}i_{d}^{e}+\left(R_{tot}+R_{L}\right)i_{q}^{e}+mi_{f}\omega^{e}=0.$$
-Substituting in this equation the expressions for $i_{q}^{e}$ and $i_{d}^{e}$ yields the following cubic equation in $\omega^e$, where we denote $R_T = R_L+R_{tot}$:
+The second line of the matrix equation on \eqref{eq:eq_0_first_eq} is
+$$ \o^{e}L_s i_d^e + \left(R_{tot} + R_L\right) i_q^e + mi_f\o^e 
+   \m=\m 0 \m.$$
+Substituting in this equation the expressions for $i_q^e$ and
+$i_d^e$ yields the following cubic equation in $\o^e$, where
+we denote $R_T=R_L+R_{tot}$:
+$$ D_p L_s^2\o^{e3}-T_m L_s^2 \o^{e2} +\left(D_p R_T^2+m^2 i_f^2 
+   R_T\right) \o^e - T_m R_T^2 \m=\m 0 \m.$$
 
-\begin{equation}
-\begin{split}
-D_{p}L_{s}^{2}\left(\omega^{e}\right)^{3}-T_{m}L_{s}^{2}\left(\omega^{e}\right)^{2} +\left(D_{p}R_T^{2}+m^{2}i_{f}^{2}R_T\right) \omega^{e}  -T_{m}R_T^{2}=0
-\end{split}\label{eq:cuibi_eq}
-\end{equation}
-
-Let us denote the polynomial of order 3 in \eqref{eq:cuibi_eq} by
-$p(\omega^{e})$. 
-Clearly 
-$$p(0)=-T_{m}R_T^{2}<0.$$
+Let us denote the polynomial of order 3 appearing above by $p$. 
+Clearly \vspace{-2mm}
+$$p(0) \m=\m -T_m R_T^2 \m<\m 0 \m.$$
 On the other hand, we note that 
-$$
-p(\frac{T_{m}}{D_{p}}) =m^{2}i_{f}^{2}R_T\frac{T_{m}}{D_{p}}>0.
-$$
+$$ p\left(\frac{T_m}{D_p}\right) \m=\m m^2 i_f^2 R_T\frac{T_m}{D_p} 
+   \m>\m 0 \m.$$
+Hence, $p$ has at least one zero in the interval $\left(0,
+\frac{T_m}{D_p}\right)$. This shows that the TICSG system has at least
+one equilibrium point located on the synchronization subspace 
+\eqref{eq:SyncSubspace}.
 
-Hence, \eqref{eq:cuibi_eq} has at least one solution in the interval $\omega^{e}\in\left(0,\frac{T_{m}}{D_{p}}\right)$.
+Note that the anti-synchronization manifold $\mathscr{E}'=\{ \left[z
+\ z \ \delta\right]^\top |\ \delta=\pi \}$ may also have equilibrium
+points.
 
-This shows that the TICSG system has at least one equilibrium point  that located on the synchronization subspace \eqref{eq:SyncSubspace}.
-
-Note, that the anti-synchronization manifold  $\mathscr{E} '=\{ \left[z \ z \ \delta  \right]^\top   |  \delta=\pi \}$ may also have equilibrium points.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \chapter{Model Reduction\label{cha:Model_reduction}}
 In this chapter, we show model reduction for the FOM.
@@ -1270,21 +1187,26 @@ while the ISE converges to the equilibrium point.
 
 \chapter{Synchronization \label{cha:Synchronization}}
 
-In this chapter, we show that the synchronization subspace $\mathscr{E}$ from \eqref{eq:SyncSubspace}, is invariant and locally exponentially stable for the TICSG model \eqref{eq:TICSGDynamics}.
-We start by rewriting the TICSG model in new coordinates. Then, we  prove that under
-some conditions, the TICSG is globally exponentially
-stable in the subspce  $\mathscr{E}$. Finally, we use the main result from  \cite{AndrieuJayawardhanaPraly},
-to show the stability of the system near the synchronization subspace.
+In this chapter, we show that the synchronization subspace
+$\mathscr{E}$ from \eqref{eq:SyncSubspace}, is invariant and locally
+exponentially stable for the TICSG model \eqref{eq:TICSGDynamics}.  We
+start by rewriting the TICSG model in new coordinates. Then, we prove
+that under some conditions, the TICSG is globally exponentially stable
+in the subspce $\mathscr{E}$. Finally, we use the main result from
+\cite{AndrieuJayawardhanaPraly}, to show the stability of the system
+near the synchronization subspace.
 
-\section{Modeling the synchronization problem:}\label{sec:SyncProbModel}
+\section{Modeling the synchronization problem:} 
+\label{sec:SyncProbModel}
+
 The TICSG system has the following structure:
-$$ \tilde{\Lambda}\frac{d}{dt}\left[z_1\ z_2\ \delta\right]^{\top}= f\left( \left[z_1\ z_2\ \delta\right]^{\top} \right)$$
-where $\tilde{\Lambda} = diag \left( \Lambda,\Lambda,1 \right) $.
-In order to show synchronization, it is convenient to introduce new state variables $e \in \mathbb{R}^4$ and $x \in \mathbb{R}^3$ by
-$$e =  \left[ \begin{array}{c}
-z_2 - z_1\\
-\delta
-\end{array} \right] = \left[e_d\ e_q\ e_{\omega}\ \delta \right]^\top $$
+$$ \tilde{\Lambda}\frac{d}{dt}\left[z_1\ z_2\ \delta\right]^{\top}
+   \m=\m f\left( \left[z_1\ z_2\ \delta\right]^{\top} \right) \m,$$
+where $\tilde{\Lambda}={\rm diag}\left(\Lambda,\Lambda,1\right)$.
+In order to show synchronization, it is convenient to introduce new 
+state variables $e\in\rline^4$ and $x\in\rline^3$ by
+$$ e \m=\m \left[ \begin{array}{c} z_2 - z_1\\ \delta \end{array} 
+   \right] \m=\m \left[e_d\ e_q\ e_\o\ \delta \right]^\top$$
 and 
 $$x =z_1+z_2 = \left[ x_d\ x_q\ x_\omega\right]^\top.$$  
 
@@ -1293,7 +1215,7 @@ Then the TICSG model \eqref{eq:TICSGDynamics} can be rewritten as
 \begin{equation}
 \dot{e}=F(e,x) , \quad \dot{x}=G(e,x),\label{eq:sync_sestem}
 \end{equation}
-for some functions $F$ and $G$.  From \eqref{eq:TICSGDynamics}: 
+for some functions $F$ and $G$.  From \eqref{eq:TICSGDynamics}:
 $$
 \begin{aligned}
 \Lambda(\dot{z}_{2}-\dot{z}_{1})&=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\\&-\left(\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\right)
@@ -1330,10 +1252,10 @@ $$(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$$
 holds for any $x$, $y$, $a$ and $b$, it implies that:
 $$
 \begin{aligned}
-\omega_{2}i_{q2}-\omega_{1}i_{q1}= &\frac{1}{2}\left[(\omega_{2}+\omega_{1})(i_{q2}-i_{q1})+(\omega_{2}-\omega_{1})(i_{q2}+i_{q1})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
+\omega_{2}i_{q2}-\omega_{1}i_{q1}= &\frac{1}{2}\left[(\omega_{1}+\omega_{1})(i_{q2}-i_{q1})+(\omega_{2}-\omega_{1})(i_{q2}+i_{q1})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
 \end{aligned}
 $$
-
+ 
 and the previous equation can be rewritten as:
 $$
 \dot{e}  = F(e,x) =\left[\begin{array}{cc}
@@ -1379,45 +1301,27 @@ $$
 \end{aligned}
 $$
 
-$$
-\begin{aligned}
-&\Lambda\frac{d}{dt}\left[\begin{array}{c}
-x_{d}\\
-x_{q}\\
-x_{\omega}
-\end{array}\right]  = \\
- & \left[\begin{array}{c}
--R_{tot}(i_{d1}+i_{d2})+L_{s}(\omega_{1}i_{q1}+\omega_{2}i_{q2})\\
--L_{s}(\omega_{1}i_{d1}+\omega_{2}i_{d2})-R_{tot}(i_{q1}+i_{q2})-mi_{f}(\omega_{1}+\omega_{2})\\
-mi_{f}(i_{q1}+i_{q2})-D_{p}(\omega_{1}+\omega_{2})+2T_{m}
-\end{array}\right]\\
- +& \left[\begin{array}{c}
--R_{L}\cos(\delta)(i_{d1}+i_{d2})-R_{L}\sin(\delta)(i_{q1}-i_{q2})\\
--R_{L}\cos(\delta)(i_{q1}+i_{q2})+R_{L}\sin(\delta)(i_{d1}-i_{d2})\\
-0
-\end{array}\right]
-\end{aligned}
-$$
+$$ \begin{aligned} &\Lambda\frac{\dd}{\dd t}\left[\begin{array}{c}
+   x_{d}\\ x_{q}\\ x_{\o} \end{array}\right] = \\
+   & \left[\begin{array}{c} - R_{tot}(i_{d1}+i_{d2})+L_s(\o_1 i_{q1}
+   +\o_2 i_{q2})\\ -L_s(\o_1 i_{d1}+\o_2 i_{d2})-R_{tot}(i_{q1} +
+   i_{q2})-m i_f(\o_1+\o_2)\\ m i_f(i_{q1}+i_{q2})-D_p(\o_1+\o_2) +
+   2T_m \end{array}\right]\\ +& \left[ \begin{array}{c}
+   -R_L\cos(\delta)(i_{d1}+i_{d2})-R_L\sin(\delta)(i_{q1}-i_{q2})\\
+   -R_L\cos(\delta)(i_{q1}+i_{q2})+R_L\sin(\delta)(i_{d1}-i_{d2})\\
+   0 \end{array}\right] \end{aligned}$$
 
-Since the identity 
-$$
-(a+b)(x+y)+(a-b)(x-y)=2(ax+by)
-$$
-holds for any $x$, $y$, $a$ and $b$, it follows that
-$$
-\begin{aligned}
-\omega_{1}i_{q1}+\omega_{2}i_{q2} &=\frac{1}{2}\left[(\omega_{1}+\omega_{2})(i_{q1}+i_{q2})+(\omega_{1}-\omega_{2})(i_{q1}-i_{q2})\right]\\ & =\frac{x_{w}x_{q}+e_{w}e_{q}}{2}
-\end{aligned}
-$$
-
-and similarly
-
-$$
-\omega_{1}i_{d1}-\omega_{2}i_{d2}=\frac{x_{w}x_{d}+e_{w}e_{d}}{2}
-$$ 
+From the trivial identity $(a+b)(x+y)+(a-b)(x-y)=2(ax+by)$ it 
+follows that
+$$ \begin{aligned} \o_1 i_{q1}+\o_2 i_{q2} &= \half\left[(\o_1+\o_2)
+   (i_{q1}+i_{q2})+(\o_1-\o_2)(i_{q1}-i_{q2})\right]\\ & =\frac{x_{w}
+   x_{q}+e_{w}e_{q}}{2} \end{aligned} $$
+and similarly \vspace{-3mm}
+$$ \o_1 i_{d1}-\o_2 i_{d2} \m=\m \frac{x_{w}x_{d}+e_{w}e_d}{2} \m.$$
 
 The $x$ dynamics can be rewritten as:
-$$ \dot{x}=G \left( x,e\right)= \Lambda^{-1}\left(A_x \left(x,e \right) x + B_x \left( x,e\right) \right), $$
+$$ \dot{x}=G \left( x,e\right) \m=\m \Lambda^{-1}\left(A_x \left(x,e 
+   \right) x + B_x \left( x,e\right) \right),$$
 where
 $$
 A_x \left(x,e \right)=\left[\begin{array}{ccc}
@@ -1435,42 +1339,39 @@ B_x \left(x,e \right)=\left[\begin{array}{c}
 \end{array}\right]
 $$
 
-\section{Globally exponentially stability of the TICSG system on the synchronization subspace }
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{Global exponential stability of the TICSG system on the
+synchronization subspace }
 
-In this section, we provide sufficient conditions for the equilibrium
-point which located on the synchronization subspace $\mathscr{E}=\left\{ \left[ e\ x \right]^\top \in\mathbb{R}^{7}|e=0\right\} $,  to be a globally exponential stable equilibrium point, for trajectories with initial condition that lies on the $\mathscr{E}$ subspace.  Because we showed that  $\mathscr{E}$ is invariant subspace, it means that any trajectory that starts within this subspace, remains inside it.
+In this section, we provide sufficient conditions for the
+equilibrium point which located on the synchronization subspace
+$\mathscr{E}=\left\{ \left[ e\ x \right]^\top\in\mathbb{R}^{7}|e=0
+\right\}$ to be a globally exponential stable equilibrium point, for
+trajectories with initial condition that lies in $\mathscr{E}$.
+(Recall that $\mathscr{E}$ is an invariant subspace.)
 
-We denote the state variables of of these trajectories as $\tilde{x} = \left[x_d \ x_q\ x_\omega \right]^\top$. 
-
-The dynamics of these trajectories is (denoted as $\tilde{G}$):
-$$
-\dot{\tilde{x}}=\tilde{G}(\tilde{x})=G(0,\tilde{x})=
- \Lambda^{-1} A\left( \tilde{x}_\omega \right) \tilde{x}+\Lambda^{-1} B 
-$$
-
-Where we denote:
-$$
-A\left( \tilde{x}_\omega \right)=A_x\left(0, \tilde{x}_\omega \right) =  
- \left[\begin{array}{ccc}
--R_T & \frac{L_{s}}{2}\tilde{x}_{\omega} & 0\\
--\frac{L_{s}}{2}\tilde{x}_{\omega} & -R_T & -mi_f\\
-0 & mi_{f} & -D_{p}
-\end{array}\right]
-$$
+We denote the state variables of this system by $\tilde{x}=
+\left[x_d\ x_q\ x_\o\right]^\top$. The dynamics of these trajectories
+is (denoted as $\tilde{G}$):
+$$ \dot{\tilde{x}} \m=\m \tilde{G}(\tilde{x}) = G(0,\tilde{x}) =
+   \Lambda^{-1} A\left( \tilde{x}_\omega \right) \tilde{x}+
+   \Lambda^{-1} B \m,$$
+where we denote
+$$ A\left( \tilde{x}_\o \right) \m=\m A_x\left(0, \tilde{x}_\o
+   \right) \m=\m \left[\begin{array}{ccc} - R_T & \frac{L_s}{2}
+   \tilde{x}_\o & 0\\ -\frac{L_{s}}{2}\tilde{x}_\o & -R_T & -mi_f\\
+   0 & mi_{f} & -D_{p} \end{array}\right]$$
 and
-$$
-B = B_x\left(0, \tilde{x}_\omega \right)  =  
- \left[\begin{array}{c}
-0\\
-0\\
-2T_{m}
-\end{array}\right].
-$$
+$$ B \m=\m B_x\left(0, \tilde{x}_\o \right) \m=\m \left[\begin{array}
+   {c} 0\\ 0\\ 2T_m \end{array}\right].$$
+This system describes the two SGs with perfect synchronization between
+each other.
 
-This system describes the two SGs with perfect synchronization between each other.
-
-Because the TICSG system has at list one equilibrium point on the $\mathscr{E}$ subspace, it means that $\tilde{G}(\tilde{x})$ has at list one equilibrium point 
-$\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\ \tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall that by definition $x = z_1 + z_2$).
+Because the TICSG system has at list one equilibrium point on the
+$\mathscr{E}$ subspace, it means that $\tilde{G}(\tilde{x})$ has at
+list one equilibrium point $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\
+\tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall
+that by definition $x = z_1 + z_2$).
 
 \begin{equation}
 \tilde{G}(\tilde{x}^{e})=0\rightarrow\varLambda^{-1}A(\tilde{x}_{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
@@ -1546,9 +1447,6 @@ $$
 0 & 0 & 0
 \end{array}\right]
 $$
- 
-
-
 Combining the previous equation with \eqref{eq:G_at_equilibrium} and \eqref{eq:x_hat_dynamic}
 obtains: 
 $$
@@ -1561,7 +1459,7 @@ $$
 $$
 
 Because $\Lambda$ is diagonal matrix, then $\Lambda^{T}\Lambda^{-1}=I$
-  
+
 $$
 \dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}
 $$
@@ -1569,7 +1467,7 @@ $$
 Because $J(\tilde{\omega}^{e})$ and $\Delta(\hat{\omega})$ are skew
 symmetric matrices, it implies that $\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}=0$
 and $\hat{x}^{T}\Delta(\hat{\omega})\hat{x}=0$ .
- 
+
 $$
 \begin{aligned}
 \hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}  = &\left[\begin{array}{c}
@@ -1599,59 +1497,55 @@ x_{q}^{e}\\
 \hat{x}_{\omega}
 \end{array}\right]
 \\= & \hat{x}^{\top}P\hat{x}
-\end{aligned}
+\end{aligned} \m,
 $$
-Where we denote:
-$$
-P=\left[\begin{array}{ccc}
-0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
-0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
-\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & 0
-\end{array}\right]
-$$
-Combining all this together, obtains: 
- 
-\[
-\dot{V}(\hat{x})=\hat{x}^{T}\left[P+R\right]\hat{x}
-\]
-
+where we have denoted
+$$ P \m=\m \left[\begin{array}{ccc} 0 & 0 & \frac{L_{s}}{4}
+   x_{q}^{e}\\ 0 & 0 & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
+   & -\frac{L_s}{4} x_d^e & 0 \end{array}\right] \m.$$
+Combining all this together, we obtain 
+$$\dot{V}(\hat{x}) \m=\m \hat{x}^{T}\left[P+R\right]\hat{x} \m,$$
 Where 
-$$P+R=\left[\begin{array}{ccc}
--R_T & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
-0 & -R_T & -\frac{L_{s}}{4}x_{d}^{e}\\
-\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & -D_{p}
-\end{array}\right].$$
- Calculating the eigenvalues of $P+R$ gives:
- $\lambda_{1}=-R_T$
-which is always negative,
-$$
-\lambda_{2,3}=-\frac{R_T+D_{p}}{2} \pm\frac{\sqrt{4\left(R_T-D_{p}\right)^{2}+L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)}}{4}
-$$
-
-All eigenvalues are real numbers. The condition which guarantees that all the three eigenvalues are negative is:
-
-\begin{equation}
-16 R_TD_{p}>L_{s}^{2}\left(\left(x_{q}^{e}\right)^{2}+\left(x_{d}^{e}\right)^{2}\right)\label{eq:condition_for_stable_G}
+$$ P+R \m=\m \left[\begin{array}{ccc} -R_T & 0 & \frac{L_s}{4}
+   x_q^e\\ 0 & -R_T & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
+   & -\frac{L_s}{4} x_d^e & -D_p \end{array}\right].$$
+Calculating the eigenvalues of $P+R$ gives \m $\l_{1}=-R_T<0$,
+$$ \l_{2,3} \m=\m -\frac{R_T+D_p}{2} \pm\frac{\sqrt{4\left(R_T-D_p
+   \right)^2+L_s^2\left(\left(x_q^e\right)^2 + \left(x_d^e
+   \right)^2\right)}}{4} \m.$$
+All the eigenvalues are real. The condition which guarantees that
+all the three eigenvalues are negative is:
+\begin{equation} \label{eq:condition_for_stable_G}
+   16 R_T D_p \m>\m L_s^2 \left( \left(x_q^e\right)^2+\left( x_d^e
+   \right)^2\right) \m.
 \end{equation}
- 
-When  condition \eqref{eq:condition_for_stable_G} holds, then $\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|\hat{x}|^{2},\quad i\in\{1,2,3\}$,
-and this system is globally exponentially stable. Note that because it proves global stability in $\mathscr{E}$, it  means that $\tilde{x}^{e}$ is the only equilibrium point of $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$,
-hence the TICSG system has exactly one equilibrium point on the the synchronization subspace $\mathscr{E}$.
+When condition \eqref{eq:condition_for_stable_G} holds, then
+$\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|
+\hat{x}|^{2},\quad i\in\{1,2,3\}$, and this system is globally
+exponentially stable. Note that because it proves global stability in
+$\mathscr{E}$, it means that $\tilde{x}^{e}$ is the only equilibrium
+point of $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$, hence the TICSG
+system has exactly one equilibrium point on the the synchronization
+subspace $\mathscr{E}$.
 
 \section{Synchronization theorem:}
-
-In this subsection, we prove that if the initial state of the two generators
+ 
+In this section, we prove that if the initial state of the two generators
 are sufficiently close to each other, i.e $|e(0)|$ is small enough, then, under some conditions, the two generators will synchronize, meaning that $lim_{t\to\infty}e(t)=0$.
 
-In order to show that, we use the main result of \cite{AndrieuJayawardhanaPraly}. Consider a system of the form 
-\begin{equation}
- \dot{e} = F\left(e,x\right),\quad \dot{x} = G\left(e,x\right) \label{eq:systemForm}
- \end{equation}
- where $e$ and $x$ are finite-dimensional real vector valued functions and $F, G \in C^2$ with $F(0,x)=0$. \cite{AndrieuJayawardhanaPraly} defines the following  properties:
+In order to show that, we use the main result of 
+\cite{AndrieuJayawardhanaPraly}. Consider a system of the form 
+\begin{equation} \label{eq:systemForm}
+   \dot{e} \m=\m F\left(e,x\right),\quad \dot{x} \m=\m
+   G\left(e,x\right) \m,
+\end{equation}
+where $e$ and $x$ are finite-dimensional real vector valued functions
+and $F, G \in C^2$ with $F(0,x)=0$. \cite{AndrieuJayawardhanaPraly}
+defines the following properties:
 
-\subsection{TULES-NL (Transversal uniform local exponential stability)}
-There exist strictly positive real numbers r, k and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in $e$, uniformly in $x$.
-\subsection{UES-TL (Uniform exponential stability for the transversally linear system)}
+\subsubsection{TULES-NL (Transversal uniform local exponential stability)}
+There exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in $e$, uniformly in $x$.
+\subsubsection{UES-TL (Uniform exponential stability for the transversally linear system)}
 there exist strictly positive real numbers $\tilde{ k}$ and $\tilde{\lambda}$  such that any solution $\left(e \left(e_0, x_0, t\right), x \left(x_0, t\right)\right)$ of the transversally linear system
 $$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,\quad \dot{\tilde{x}} = \tilde{G}  \left( \tilde{x}  \right) =G\left(0,x\right)$$
 satisfies, for all $\left(e_0,x_0,t\right)$,   
@@ -1754,30 +1648,40 @@ If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in a
 A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)
 \label{eq:eLinearizationLimit}
 \end{equation}
-Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
 \end{theorem}
  
 \begin{proof}
 
 We will show TICSG system has the UES-TL property, and then by applying theorem \ref{therem:TULESNL2UESTL}, we will show that it has the TULES-NL property.
 
-As we showed at \ref{lemma:forewordComplete}, the TICSG system is foreword complete. We need to show that the system  
-$$
-\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
-$$
-is globally exponentially stable. Note, that this is a linear time varying system.
+As we showed in Lemma \ref{lemma:forewordComplete}, the TICSG system
+is forward complete. We need to show that the system
+$$ \dot{\tilde{e}} \m=\m \frac{\partial F}{\partial e}(0,\tilde{x})
+   \tilde{e}$$
+is globally exponentially stable. Note that this is a linear time
+varying system.
 
-We use the following result from \cite[theorem 4.2.7]{SchovanecGilliam1999}:
+We use the following result from \cite[theorem 4.2.7]
+{SchovanecGilliam1999}:
+
 \begin{proposition}\label{proposition:LTVStability}
-Let $A$ be a constant matrix with $Re\{\sigma(A)\}<0$ and let $P(t)$ be a continuous matrix valued function on the interval $[0,\infty)$. Suppose that 
-$$
-\intop_{0}^{\infty}\left|P(t)\right|dt=M<\infty
-$$
-Then, the solution of $\dot{x}(t)=[A+P(t)]x(t)$ is globally asymptotically stable.
- \end{proposition}
+Let $A$ be a constant matrix with $Re\{\sigma(A)\}<0$ and let $P(t)$
+be a continuous matrix valued function on the interval
+$[0,\infty)$. Suppose that
+$$\intop_0^\infty \left|P(t)\right| \dd t \m<\m \infty \m.$$
+Then the solution of $\dot{x}(t)=[A+P(t)]x(t)$ is globally 
+asymptotically stable.
+\end{proposition}
  
-Because theorem \ref{theorem:TICSGSync} requires  condition \eqref{eq:condition_for_stable_G},  then the system $
-\tilde{x}=\tilde{G}(\tilde{x})$ is exponentially stable and hence  $A = \lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$ exists.  It imply that the matrix $\frac{\partial F}{\partial e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial e}(0,\tilde{x}^e) = \left(A+P(t)\right)$ where $P(t)$  converges exponentially to zero. The limit matrix is 
+Because Theorem \ref{theorem:TICSGSync} requires condition
+\eqref{eq:condition_for_stable_G}, then the system $\tilde{x}=
+\tilde{G}(\tilde{x})$ is exponentially stable and hence $A =
+\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$
+exists.  It imply that the matrix $\frac{\partial F}{\partial
+e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial
+e}(0,\tilde{x}^e) = \left(A+P(t)\right)$ where $P(t)$ converges
+exponentially to zero. The limit matrix is
 $$
 A=\left[\begin{array}{cccc}
 -\frac{R_{s}}{L_{s}} & \frac{x^e_{\omega}}{2} & \frac{x^e_{q}}{2} & -\frac{R_{L}}{L_{s}}x^e_{q}\\
@@ -1786,55 +1690,68 @@ A=\left[\begin{array}{cccc}
 0 & 0 & 1 & 0
 \end{array}\right]
 $$
-and this should be stable, according to condition \eqref{eq:eLinearizationLimit}.
-That show that proposition \ref{proposition:LTVStability} holds and  the system
- $$
-\dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})\tilde{e}
-$$
-is globally exponentially stable.  That proves that the TICSG system is UES-TL. 
+and this should be stable, according to condition
+\eqref{eq:eLinearizationLimit}.  That show that proposition
+\ref{proposition:LTVStability} holds and the system
+$$ \dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})
+   \tilde{e}$$
+is globally exponentially stable. This proves that the TICSG system
+is UES-TL. 
 
- Both $F$ and $G$ are $C^\infty$. In addition, as shown at the proof of \ref{lemma:forewordComplete}, $\left(z_1(t),z_2(t)\right)$ are bounded for any initial condition, it implies that for any initial state of the TICSG system there is a compact set that contains the trajectory of $(z_1(t),z_2(t)$ for all $t \geq 0$, and there are $\mu>0$ and $c>0$ such 
- $$\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \le \mu,$$
-$$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$.
+Both $F$ and $G$ are $C^\infty$. In addition, as shown at the proof of
+Lemma \ref{lemma:forewordComplete}, $\left(z_1(t),z_2(t)\right)$ are
+bounded for any initial condition, it implies that for any initial
+state of the TICSG system there is a compact set that contains the
+trajectory of $(z_1(t),z_2(t)$ for all $t \geq 0$, and there are
+$\mu>0$ and $c>0$ such that
+$$\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \m\leq\m \mu,$$
+$$ \quad \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right|
+   \m\leq\m c, \quad \left| \frac{\partial^2 F}{\partial x \partial e}
+   (e,x)\right| \m\leq\m c,\quad\left| \frac{\partial G}{\partial e}
+   (e,x) \right| \m\leq\m c.$$
+As we noted in Section \ref{sec:SyncProbModel}, $\mathscr{E}$ is an 
+invariant manifold.
 
-As we note at section \ref{sec:SyncProbModel},  $\mathscr{E}$ is an invariant manifold.
-
-Assuming that condition \ref{condition4} holds, then theorem \ref{theorem:TICSGSync} implies that the TICSG system has the  TULES-NL property. Therefore there exist strictly positive real numbers $r$, $k$
-and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right| \le r $
-, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0 \right|exp(-\lambda t)$.
-Namely the subspace $\mathscr{E}$ is exponentially stable for the TICSG system, locally in $e$, uniformly in $x$.
+Assuming that condition \ref{condition4} holds, then theorem
+\ref{theorem:TICSGSync} implies that the TICSG system has the TULES-NL
+property. Therefore there exist strictly positive real numbers $r$,
+$k$ and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right|
+\le r $ , $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0
+\right|exp(-\lambda t)$. Thus, $\mathscr{E}$ is exponentially stable
+for the TICSG system, locally in $e$, uniformly in $x$.
 \end{proof}
 
-Note, that the linearization of $F$ \eqref{eq:AOft} with respect to $e$, has the same structure of the linearization of a system of a single generator connected to an infinite bus around it equilibrium point. 
+Note, that the linearization of $F$ with respect to $e$ (see
+\eqref{eq:AOft}) has the same structure of the linearization of a
+system of a single generator connected to an infinite bus around it
+equilibrium point. Indeed, the linearization of a single generator
+connected to an infinite bus, around an equilibrium point
+$(i^e_d,i^e_q,\o_g, \delta^e)$ is (see \cite[formula (3.4)]{NaWe:15})
+$$ \left[\nm\begin{array}{c} \dot{x_1} \\ \dot{x_2 }\\ \dot{x_3} \\
+   \dot{x_4} \end{array}\nm\right]=\left[\nm\begin{array}{cccc}
+   -\frac{R_s}{L_s} & \omega_g & i_q^e & \frac{V\cos(\tilde
+   {\delta}^e)}{L_s}\\ -\o_g & -\frac{R_s}{L_s} & -i_d^e-\frac{mi_f}
+   {L_s} & -\frac{V\sin(\tilde{\delta}^e)}{L_s}\\ 0 & \frac{mi_{f}}
+   {J} & -\frac{D_{p}}{J} & 0\\ 0 & 0 & 1 & 0 \end{array}\nm\right]  
+   \left[\nm\begin{array}{c} x_1 \\ x_2 \\ x_3 \\ x_4
+   \end{array}\nm\right]$$
+where $x_1 = i_d-i^e_d$, $x_2 = i_q-i_q^e$, $x_3=\o-\o_g$ and
+$x_4= \tilde{\delta} - \tilde{\delta}^e$ ($\tilde{\delta}$ is the
+phase between the infinite bus and the generator).
 
-The linearization of a single generator connected to an infinite bus around an equilibrium point $(i^e_d, i^e_q, \omega_g, \delta^e)$ is (see \cite[equation 3.4]{NaWe:15})
-$$
-\left[\begin{array}{c}
-\dot{x_1} \\
-\dot{x_2 }\\
-\dot{x_3} \\
-\dot{x_4}
-\end{array}\right]=\left[\begin{array}{cccc}
--\frac{R_{s}}{L_{s}} & \omega_g & i_q^e & \frac{V\cos(\tilde{\delta}^e)}{L_{s}}\\
--\omega_g & -\frac{R_{s}}{L_{s}} & -i_d^e-\frac{mi_f}{L_{s}} & -\frac{V\sin(\tilde{\delta}^e)}{L_{s}}\\
-0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]  
-\left[\begin{array}{c}
-x_1 \\
-x_2 \\
-x_3 \\
-x_4
-\end{array}\right]
-$$
-where $x_1 = i_d-i^e_d$, $x_2 = i_q-i_q^e$, $x_3=\omega-\omega_g$ and $x_4= \tilde{\delta} - \tilde{\delta}^e$ ($\tilde{\delta}$ is the phase between the infinite bus and the generator).
+For $x_\o=2\o_g$, $x_q=2 i_q^e$, $x_d=i_d^e$, $V\cos(\tilde{\delta}^e)
+= -R_L 2 i_q^e$ and $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ we get
+the same dynamics, so the linearization of $F$ with respect to $e$
+behaves like the linearization of a single generator connect to an
+infinte bus, with doubled currents and angular velocity, and with
+voltage that is equal to the load resistor with phase difference of
+$\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this
+virtual single generator.
 
-
-For $x_\omega = 2 \omega_g$, $x_q = 2 i_q^e$, $x_d = i_d^e$, $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ and $V \cos(\tilde{\delta}^e) = -R_L 2 i_q^e$ we get the same dynamics, so the linearization of the F with respect to $e$ behaves like the linearization of a single generator connect to an infinte bus, with doubled currents and angular velocity, and with voltage that is equal to the load resistor with phase difference of $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this virtual single generator. 
+WRITE THE EXAMPLE that is not globally stable ???
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
-
-\begin{thebibliography}{10}
+\begin{thebibliography}{99}
 
 \bibitem{AndrieuJayawardhanaPraly} V.~Andrieu, B.~Jayawardhana and L.~Praly, \m On the transverse exponential stability and its use in incremental stability, observer and synchronization. In {\em Proc. of the 52nd IEEE Conference on Decision and Control,
 } \m  2013.
@@ -1866,7 +1783,7 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
  {\em Power Systems Analysis}, \m McGraw-Hill, New York, 1994.
  
 \bibitem{JayWeissBS:09}
-B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems with an $L^2$ input,  {\em IEEE Trans. Automatic Control}, 54 (2009), pp. 1723-1727.
+B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems with an $L^2$ input,  {\em IEEE Trans. Automatic Control}, 54 (2009), pp.~1723-1727.
 
 \bibitem{Khalil} H.K.~Khalil, \m \emph{Nonlinear Systems} (third 
  edition), Prentice Hall, New Jersey, 2002.
@@ -1881,7 +1798,7 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
  
  \bibitem{DePersiSchaft:16} P.~Monshizadeh, C.~De Persis,
  N.~Monshizadeh and A.~van der Schaft, \m Nonlinear Analysis
- of an improved wwing equation, \m submitted in 2016.
+ of an improved swing equation, \m subm.~2016.
  
 \bibitem{NaWe:14} V.~Natarajan and G.~Weiss, \m Almost global 
  asymptotic stability of a constant field current synchronous 
@@ -1894,19 +1811,19 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
  submitted in 2015.
  
  \bibitem{Sastry} S.~Sastry, \emph{Nonlinear Systems}.
- \hskip 1em plus 0.5em minus 0.4em\relax Springer, New York, 1999.
+ \hskip 1em plus 0.5em minus 0.4em\relax Springer-Verlag, New York, 1999.
 
 \bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \m {\em Power 
  Systems Dynamics and Stability}, Stipes Publishing, Champaign,
  IL, 1997.
 
-\bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University.
+\bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University. Available at  \url{http://texas.math.ttu.edu/~gilliam/ttu/ode_pde_pdf/Ch4.pdf} 
 } \m  1999.
 
 \bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
  droop-controlled inverters in islanded microgrids, {\em 
- Automatica}, vol. 49, 2013, pp.~2603-2611.
+ Automatica}, vol.~49, 2013, pp.~2603-2611.
 
 \bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
  Design, Manufacture and Operation}, \m Oxford University Press, 
