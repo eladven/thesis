@@ -3,17 +3,16 @@ w = warning ('off','all');
 rmpath('folderthatisnotonpath')
 warning(w)
 
-global Ltot J Dp mif Rl Rtot Tm
-initValuesEitan;
-%initValuesVivek;
-%initValuesNonStableExample;
+global Ltot J Dp mif Rl Rtot Tm T x0
+initValues5KWSG
+initValuesLIMITCaseInROA
+initValuesLIMITCaseOutROA
+initValuesNonStableExample
+
 displayParameters(Ltot,J,Dp,mif,Rl,Rtot,Tm);
 
-T = 5;
-x0 = [19;-35;0;19;-32;0;0.5];
-
-
 [t,x] = ode15s(@modelDynamics,[0 T],x0);
+
 plotXGraphs(x,t);
 
 [id0, iq0, w0, d0] = calculateEquilibrium(Ltot,J,Dp,mif,Rl,Rtot,Tm);
@@ -39,6 +38,5 @@ if (max(real(eig)) >0)
 else
     display('Hurwitz');
 end
-
-searchStabilityOnTmMif(10,4000,-1,-15,15);
+%searchStabilityOnTmMif(10,4000,-1,-15,15);
 

@@ -2,7 +2,7 @@
 % -- LIMIT CASE -- 
 %%%%%%%%%%%%%%%%%%%%
 
-Ls = 0.35*10^-3; %[H] - Eitan  %% The value for getting unstability 0.1*10^-3;
+Ls = 0.41*10^-3; %[H] - Eitan  %% The value for getting unstability 0.1*10^-3;
 Lg = 0;
 Ltot = Lg+Ls;
 J = 0.19; % [kg*Sec]  - Eitan
@@ -17,5 +17,5 @@ RT = Rl + Rtot;
 w0 =  50*2*pi; % [rad/sec]
 Tm =  w0*(Dp*(Ltot^2*w0^2+RT^2)+mif^2*RT)/(Ltot^2*w0^2+RT^2);
 
-T=5;
-x0 = [-40;20;90;-40;20;90.01;0];
+T=10
+x0 = [-400;-200;10;700;-20;400;pi/2];
