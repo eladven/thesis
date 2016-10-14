@@ -464,7 +464,7 @@ T_{m}
 This fourth order nonlinear dynamical system represents the dynamics
 of single SG, if we ignore the dynamics of the rotor the rotor angle $\theta$.
 
-\section{Single generator with constant field current dynamics}
+\section{Single generator with constant field current dynamics}\label{sec:singleSGFixIf}
 
 At this sections, we assume that the rotor current is constant (which
 means that the field dynamics is very fast, or equivalently, the rotor
@@ -574,7 +574,7 @@ fourth order model} (FOM).
 In this section we develop the TICSG model that represent two 
 identical SGs connected to a common resistive load, as shown in
 Figure \ref{fig:TICSGThreePhase}, assuming constant field currents.
-The model of each SG is as in Section 2.
+The model of each SG is as in Section \ref{sec:singleSGFixIf}.
 
 We denote the SG rotor angles by $\theta_1$ and $\theta_2$ and
 $\o_1=\dot\theta_1$, $\o_2=\dot\theta_2$. We assume that identical
@@ -681,44 +681,43 @@ $\left[ z_1^{0\top} \ z_2^{0\top} \ \delta^{0} \right]^\top \in
 for all $t>0$.
 \end{lemma}
 
-\begin{proof} The right hand side of the TICSG model 
-\eqref{eq:TICSGDynamics} is a locally Lipschitz function on its state
-space. For any initial state it follows from standard well posedness
-results (see for instance \cite[Ch. 3]{Khalil}) that there exists a
-unique solution $( z_1 \ z_2 \ \delta )$ for \eqref{eq:TICSGDynamics}
-defined on a maximal time interval $[0,T_{max})$, with $T_{max} >
-0$. We will show via contradiction that $T_{max}=\infty$. Suppose that
-$T_{max}$ is finite. For each $t\in [0,T_m)$ define
+\begin{proof} The right hand-side of the TICSG model 
+\eqref{eq:TICSGDynamics} is a locally Lipschitz function on the state
+space $\rline^7$. For any initial state it follows from standard well
+posedness results (see for instance \cite[Ch.~3]{Khalil}) that there
+exists a unique solution $(z_1,z_2,\delta)$ for
+\eqref{eq:TICSGDynamics} defined on a maximal time interval
+$[0,{T_{\max}})$, with ${T_{\max}}>0$. We will show via contradiction that
+${T_{\max}}=\infty$. Suppose that $T_{\max}$ is finite. For each $t\in
+[0,{T_{\max}})$ define
 $$ V\left(\left[\nm\begin{array}{c} z_1\\ z_2\end{array}\nm\right]
-   \right) \m=\m \left[z_1^\top\ z_2^\top\right]\left[\begin{array}
-   {cc} \varLambda & 0\\ 0 & \varLambda \end{array}\right]\left[
-   \begin{array}{c} z_1\\ z_2 \end{array}\right].$$
-Then
-$$ \dot{V}(t) \m=\m 2\left[z_1^\top\ z_2^\top\right]\left[
+   \right) \m=\m \half \left[z_1^\top\ z_2^\top\right]\left[
    \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
-   \right]\left[\begin{array}{c} \dot{z_1}\\ \dot{z_2}
-   \end{array}\right].$$ 
-After substitute \eqref{eq:TICSGDynamics} we get
-$$ \begin{aligned} V(t) &= 2\left[z_1^\top\ z_2^\top\right]\left[
+   \right]\left[ \begin{array}{c} z_1\\ z_2 \end{array}\right].$$
+Then, using \eqref{eq:TICSGDynamics},
+$$ \dot{V}(t) \m=\m \left[ z_1^\top\ z_2^\top\right]\left[\nm
    \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
-   \right] \\ & \left[\begin{array}{c} \varLambda^{-1}\left(
-   \mathcal{A}(\omega_1)z_1-\mathcal{B}(\delta)z_2+T_me_3\right)
+   \nm\right]\left[\begin{array}{c} \dot{z_1}\\ \dot{z_2}
+   \end{array}\right]$$ 
+$$ = \left[z_1^\top\ z_2^\top\right]\left[\nm\nm
+   \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
+   \nm\nm\right] \left[\nm\nm\begin{array}{c} \varLambda^{-1}
+   \left( \Amscr(\o_1)z_1-\Bmscr(\delta)z_2+T_me_3\right)
    \\ \varLambda^{-1}\left(-\mathcal{B}(-\delta)z_1+\mathcal{A}
-   (\o_2)z_2+T_m e_3\right) \end{array}\right]. \end{aligned}$$ 
+   (\o_2)z_2+T_m e_3\right) \end{array}\nm\right].$$
 Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$, we get 
-$$ \begin{aligned} \dot{V}(t) =& 2\left(z_1^\top\mathcal{A}(\o_1)
-   z_1+z_2^\top\mathcal{A}(\o_2)z_2\right) \\ +& 2\left(-2z_1^\top
+$$ \begin{aligned} \dot{V}(t) =& \left(z_1^\top\mathcal{A}(\o_1)
+   z_1+z_2^\top\mathcal{A}(\o_2)z_2\right) \\ &+ \left(-2z_1^\top
    \mathcal{B}(\delta)z_2 + T_mz_1^\top e_3+ T_mz_2^\top e_3\right)
-   \end{aligned}$$ 
-explicitly,
-$$ \begin{aligned} \dot{V}(t) &= 2\left(-R_{tot}\left(i_{d1}^2+
-   i_{q1}^2+i_{d2}^2+i_{q2}^2 \right) -D_p \left(\o_1^2+\o_2^2\right)
-   \right) \\ & +4 R_L \left(-\cos(\delta)i_{d1}i_{d2}-\cos(\delta)
-   i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}\right)\\ &+4 R_L\left(
-   \sin(\delta)i_{q2}i_{d1}\right) + 2T_m(\o_1+\o_2).\end{aligned}$$
+   \end{aligned}$$
+$$ \begin{aligned} =& \left(-R_{tot}\left(i_{d1}^2 +
+   i_{q1}^2+i_{d2}^2+i_{q2}^2 \right)-D_p \left(\o_1^2+\o_2^2\right)
+   \right) \\ & +2 R_L \left(-\cos(\delta)i_{d1}i_{d2}-\cos(\delta)
+   i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}\right)\\ &+2 R_L
+   \sin(\delta)i_{q2}i_{d1} + T_m(\o_1+\o_2).\end{aligned}$$
 This equation can be rewritten as
-$$ \dot{V}(t) \m=\m -2D_p\left( \o_1^2+\o_2^2\right) + 2T_m(\o_1+\o_2)
-   -2\langle A\vec{i},\vec{i} \rangle \m,$$ 
+$$ \dot{V}(t) \m=\m -D_p\left( \o_1^2+\o_2^2\right) + T_m(\o_1+\o_2)
+   -\langle A\vec{i},\vec{i} \rangle \m,$$ 
 where $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ i_{q2}]^\top$ and 
 $$ \begin{aligned} A &=\left[\begin{array}{cc|cc} R_{tot} & 0 & R_L 
    \cos(\delta) & -R_L \sin(\delta) \\ 0 & R_{tot} & R_L R_L 
@@ -741,11 +740,11 @@ Since $R_{tot}>R_L$, we have indeed $A_1-B^*A_1^{-1}B>0$.
 From $A>0$, if either $|i_{d1}|$, $|i_{q1}|$, $|\o_1|$, $|i_{d2}|$,
 $|i_{q2}|$ or $|\o_2|$ is sufficiently large, then
 $\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\o_1$,
-$i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on $[0,T_{max})$ Since
-$T_{max}$ is bounded then $\delta$ must also be bounded. Hence
-$(i_{d1},i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded functions on
-$[0,T_{max})$ which contradict \cite[Corollary II.3]{JayWeissBS:09}. 
-Therefore $T_{max} = \infty$.
+$i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on $[0,{T_{\max}})$. Clearly
+$\delta$ must also be bounded on $[0,{T_{\max}})$. Hence $(i_{d1},
+i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded on $[0,{T_{\max}})$, which
+contradicts \cite[Corollary II.3]{JayWeissBS:09}. Therefore 
+${T_{\max}}=\infty$.
 \end{proof}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
@@ -1542,17 +1541,26 @@ Finally
 \end{equation}
 
 \begin{theorem}\label{theorem:TICSGSync}
-If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in addition 
-\begin{equation}
-A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)
-\label{eq:eLinearizationLimit}
+If TICSG system satisfies condition \eqref{eq:condition_for_stable_G},
+and in addition
+\begin{equation} \label{eq:eLinearizationLimit}
+   A \m=\m \lim_{t\to\infty} \frac{\partial F}{\partial e}(0,
+   \tilde{x}^e)
 \end{equation}
-Where $A$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+where $\tilde{x}$ is a stable (Hurwitz) matrix, then (condition
+\eqref{eq:condition_for_stable_G} implies that the limit exists). Then
+there exist strictly positive real numbers $r$, $k$ add $\lambda$ such
+that we have for all , for all $\left(e_0, x_0, t\right)$ where
+$\left| e_0\right| \le r$ and the solution satisfies $\left| e\left(
+e_0,x_0,t\right)\right|\leq k\left|e_0\right|e^{-\l t}$. Namely the 
+manifold $\Emscr$ is exponentially stable locally in $e$, uniformly
+in $x$.
 \end{theorem}
  
 \begin{proof}
-
-We will show TICSG system has the UES-TL property, and then by applying theorem \ref{therem:TULESNL2UESTL}, we will show that it has the TULES-NL property.
+We show that the TICSG system has the UES-TL property, and then by
+applying theorem \ref{therem:TULESNL2UESTL}, we will show that it has
+the TULES-NL property.
 
 As we showed in Lemma \ref{lemma:forewordComplete}, the TICSG system
 is forward complete. We need to show that the system
@@ -1561,7 +1569,7 @@ $$ \dot{\tilde{e}} \m=\m \frac{\partial F}{\partial e}(0,\tilde{x})
 is globally exponentially stable. Note that this is a linear time
 varying system.
 
-We use the following result from \cite[theorem 4.2.7]
+We use the following result from \cite[Theorem 4.2.7]
 {SchovanecGilliam1999}:
 
 \begin{proposition}\label{proposition:LTVStability}
@@ -1581,16 +1589,13 @@ exists.  It imply that the matrix $\frac{\partial F}{\partial
 e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial
 e}(0,\tilde{x}^e) = \left(A+P(t)\right)$ where $P(t)$ converges
 exponentially to zero. The limit matrix is
-$$
-A=\left[\begin{array}{cccc}
--\frac{R_{s}}{L_{s}} & \frac{x^e_{\omega}}{2} & \frac{x^e_{q}}{2} & -\frac{R_{L}}{L_{s}}x^e_{q}\\
--\frac{x^e_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x^e_{d}}{2}-\frac{mi_f}{L_{s}} & \frac{R_{L}}{L_{s}}x^e_{d}\\
-0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]
-$$
+$$ A \m=\m \left[\begin{array}{cccc} -\frac{R_{s}}{L_s} & 
+   \frac{x^e_\o}{2} & \frac{x^e_q}{2} & -\frac{R_L}{L_s} x^e_q\\
+   -\frac{x^e_\o}{2} & -\frac{R_s}{L_s} & -\frac{x^e_d}{2}-\frac
+   {mi_f}{L_s} & \frac{R_L}{L_s} x^e_d\\ 0 & \frac{mi_f}{J} & 
+   -\frac{D_p}{J} & 0\\ 0 & 0 & 1 & 0 \end{array}\right]$$
 and this should be stable, according to condition
-\eqref{eq:eLinearizationLimit}.  That show that proposition
+\eqref{eq:eLinearizationLimit}. This shows that proposition
 \ref{proposition:LTVStability} holds and the system
 $$ \dot{\tilde{e}}=\frac{\partial F}{\partial e}(0,\tilde{x})
    \tilde{e}$$
@@ -1601,23 +1606,23 @@ Both $F$ and $G$ are $C^\infty$. In addition, as shown at the proof of
 Lemma \ref{lemma:forewordComplete}, $\left(z_1(t),z_2(t)\right)$ are
 bounded for any initial condition, it implies that for any initial
 state of the TICSG system there is a compact set that contains the
-trajectory of $(z_1(t),z_2(t)$ for all $t \geq 0$, and there are
+trajectory of $(z_1(t),z_2(t)$ for all $t\geq 0$, and there are
 $\mu>0$ and $c>0$ such that
 $$\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \m\leq\m \mu,$$
 $$ \quad \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right|
    \m\leq\m c, \quad \left| \frac{\partial^2 F}{\partial x \partial e}
    (e,x)\right| \m\leq\m c,\quad\left| \frac{\partial G}{\partial e}
    (e,x) \right| \m\leq\m c.$$
-As we noted in Section \ref{sec:SyncProbModel}, $\mathscr{E}$ is an 
+As we noted in Subsection \ref{sec:SyncProbModel}, $\Emscr$ is an 
 invariant manifold.
 
 Assuming that condition \ref{condition4} holds, then theorem
 \ref{theorem:TICSGSync} implies that the TICSG system has the TULES-NL
 property. Therefore there exist strictly positive real numbers $r$,
-$k$ and $\lambda$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right|
-\le r $ , $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0
-\right|exp(-\lambda t)$. Thus, $\mathscr{E}$ is exponentially stable
-for the TICSG system, locally in $e$, uniformly in $x$.
+$k$ and $\l$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right|
+\leq r$, $e(t)$ satisfies $\left|e(t)\right|\leq k\left|e_0\right|
+exp(-\l t)$. Thus, $\Emscr$ is exponentially stable for the TICSG 
+system, locally in $e$, uniformly in $x$.
 \end{proof}
 
 Note, that the linearization of $F$ with respect to $e$ (see
