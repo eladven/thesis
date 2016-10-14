@@ -971,8 +971,11 @@ $$ \o^{e}L_s i_d^e + \left(R_{tot} + R_L\right) i_q^e + mi_f\o^e
 Substituting in this equation the expressions for $i_q^e$ and
 $i_d^e$ yields the following cubic equation in $\o^e$, where
 we denote $R_T=R_L+R_{tot}$:
-$$ D_p L_s^2\o^{e3}-T_m L_s^2 \o^{e2} +\left(D_p R_T^2+m^2 i_f^2 
-   R_T\right) \o^e - T_m R_T^2 \m=\m 0 \m.$$
+\begin{equation}
+ D_p L_s^2\o^{e3}-T_m L_s^2 \o^{e2} +\left(D_p R_T^2+m^2 i_f^2 
+   R_T\right) \o^e - T_m R_T^2 \m=\m 0 \m.
+\label{eq:cubicEqation}
+\end{equation}
 
 Let us denote the polynomial of order 3 appearing above by $p$. 
 Clearly \vspace{-2mm}
@@ -1341,7 +1344,7 @@ $$
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Global exponential stability of the TICSG system on the
-synchronization subspace }
+synchronization subspace }\label{se:stabilityOnSyncSub}
 
 In this section, we provide sufficient conditions for the
 equilibrium point which located on the synchronization subspace
@@ -1648,7 +1651,7 @@ If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in a
 A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)
 \label{eq:eLinearizationLimit}
 \end{equation}
-Where $\tilde{x}$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+Where $A$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
 \end{theorem}
  
 \begin{proof}
@@ -1748,7 +1751,60 @@ voltage that is equal to the load resistor with phase difference of
 $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this
 virtual single generator.
 
-WRITE THE EXAMPLE that is not globally stable ???
+\section{Simulations}
+
+In this section we present simulations which demonstrate the behavior of the TICSG system. We start by showing simulation of two 5KW generators where the generators parameters satisfy the conditions of theorem  \ref{theorem:TICSGSync}. Later we show case  where although the generators parameters satisfy  the conditions of theorem  \ref{theorem:TICSGSync}, the manifold $\mathscr{E}$ is only locally stable.  For this case we show simulation that start inside the region of attraction and therefore the two generators synchronized, and another simulation with different initial  state outside the region of attraction. Finally, we show example where  the conditions of theorem  \ref{theorem:TICSGSync} do not hold, and the  manifold $\mathscr{E}$ is not stable.   
+
+In each simulation result, the behavior of $i_d$ and $i_q$ over time is described for both SGs. We
+plot the frequency $\o$ and the phase difference between the two SGs $\delta$ as functions of
+time. In all simulations, the value of   $T_m$ calculated according to the cubic equation \eqref{eq:cubicEqation}, with $\omega^e = 50\cdotp2\cdotp\pi$.
+
+\subsection{5KW SG}
+\vspace{-5mm}
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht] 
+\includegraphics[scale=0.9]{5KWTICSGSimulation}
+\caption{Simulations for TICSG system with 5KW SGs} \label{fig:5KWSGTICSGSimulation}
+\end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+As shown in Figure \ref{fig:5KWSGTICSGSimulation}, Two SGs that starts form the arbitrary initial condition 
+$\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, \  400, \ 1.5708 \right]^\top$
+, synchronized to each other, and converged to some fixed $\left[z^e\ z^e \ \delta^e \right]^\top$. (The parameters for this simulation can be found at the appendix, table \ref{table:5KWSG}). 
+
+\subsection{Stable  but non global manifold $\mathscr{E}$}
+Note, that theorem \ref{theorem:TICSGSync} guarantee only local stability of $\mathscr{E}$. Figure \ref{fig:InROATICSGSimulation} shows an example which demonstrates that for initial state which is close enough to $\mathscr{E}$ ($\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ 40, \  -20, \  70, \   400, \ -20, \  65, \ 0 \right]^\top$), the SGs synchronized, and converged to some fixed $\left[z^e\ z^e \ \delta^e \right]^\top$. While Figure \ref{fig:OutROATICSGSimulation} shows that for the same system, with other initial state which is outside the region of attraction of  $\mathscr{E}$ ($\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, \  400, \ 1.5708 \right]^\top$), the SGs do not synchronized. (The parameters for this simulation can be found at the appendix, table \ref{table:TICSGWithLocalE}). 
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{InROATICSGSimulation}
+
+\caption{Simulation for a TICSG system which satisfy the conditions of theorem \ref{theorem:TICSGSync}, with initial state inside the region of attraction of $\mathscr{E}$}
+\label{fig:InROATICSGSimulation}
+\end{figure}
+
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{OutROATICSGSimulation}
+
+\caption{Simulation for a TICSG system which satisfy the conditions of theorem \ref{theorem:TICSGSync}, with initial state outside the region of attraction of $\mathscr{E}$}
+\label{fig:OutROATICSGSimulation}
+\end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+
+\subsection{Non stable $\mathscr{E}$ manifold}
+\vspace{-4mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\begin{figure}[ht]
+\includegraphics[scale=0.9]{NonStableTICSGSimulation}
+
+\caption{A simulation example showing non stable $\mathscr{E}$ manifold}
+\label{fig:NonStableTICSGSimulation}
+\end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+Figure \ref{fig:NonStableTICSGSimulation}, shows an example where the  manifold $\mathscr{E}$ is not locally stable. Simulation of TICSG system starting form the  initial condition $\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -40, \  20, \  90, \   -40, \ 20, \  90.01, \ 0 \right]^\top$ do not synchronized. Note that condition \eqref{eq:eLinearizationLimit} of theorem \ref{theorem:TICSGSync} do not hold. (The parameters for this simulation can be found at the appendix, table \ref{table:TICSGWithNonStableE}). 
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \begin{thebibliography}{99}
@@ -1908,7 +1964,7 @@ $P_{m}$ & $1\qquad\left[MW\right]$\tabularnewline
 \subsection*{Example for SG parameters which leads to different behavior for the
 reduced model}
 
-This set of parameters shows different behavior of the whole model
+This set of parameters shows different behavior of the FOM model
 and for the improved swing equation model. This set of parameters
 is basically the 5KW SG parameters set which connected to grid with
 lower voltage and fed by $50$ {[}KW{]} prime mover. 
@@ -1945,7 +2001,7 @@ model}
 reduced model}
 
 This set of parameters shows different region of attraction of the
-whole model and for the improved swing equation model. This set of
+FOM model and for the improved swing equation model. This set of
 parameters is basically the 5KW SG parameters set with stronger $i_{f}$
 (or stronger permanent magnet).
 
@@ -1973,6 +2029,60 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 \hline 
 \end{tabular}\caption{Parameters for SG which leads to different region of attraction}
 \label{table:DifferentRegionOfAttraction}
+\end{table}
+
+\subsection*{Parameters for TICSG system with local  $\mathcal{E}$ manifold}
+
+\begin{table}[H]
+\begin{tabular}{|c|c|}
+\hline 
+Variable & Value\tabularnewline
+\hline 
+\hline 
+$J$ & $0.19\qquad[kgm^{2}]$\tabularnewline
+\hline 
+$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+\hline 
+$R_{s}$ & $11\qquad\left[m\Omega\right]$\tabularnewline
+\hline 
+$L_{s}$ & $0.4\qquad\left[mH\right]$\tabularnewline
+\hline 
+$mi_{f}$ & $-1.38\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+$R_L$ & $18.86\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+$T_m$ & $549.9254\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+
+\end{tabular}\caption{Parameters TICSG system with local  $\mathcal{E}$}
+\label{table:TICSGWithLocalE}
+\end{table}
+
+\subsection*{Parameters for TICSG system with non stable  $\mathcal{E}$ manifold}
+
+\begin{table}[H]
+\begin{tabular}{|c|c|}
+\hline 
+Variable & Value\tabularnewline
+\hline 
+\hline 
+$J$ & $0.19\qquad[kgm^{2}]$\tabularnewline
+\hline 
+$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+\hline 
+$R_{s}$ & $11\qquad\left[m\Omega\right]$\tabularnewline
+\hline 
+$L_{s}$ & $0.35\qquad\left[mH\right]$\tabularnewline
+\hline 
+$mi_{f}$ & $-1.38\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+$R_L$ & $18.86\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+$T_m$ & $549.9254\qquad\left[Vsec\right]$\tabularnewline
+\hline 
+
+\end{tabular}\caption{Parameters for TICSG system with non stable  $\mathcal{E}$ manifold}
+\label{table:TICSGWithNonStableE}
 \end{table}
 
 \section{Proof that for the TICSG, rank$\left[M|n\right]=3$, assuming that  $\sin\delta_{0}=0$ \label{chap:AppendixProof}}
