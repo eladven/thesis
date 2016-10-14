@@ -42,6 +42,10 @@
 \newcommand{\m}      {{\hbox{\hskip 1pt}}}
 \newcommand{\nm}     {{\hbox{\hskip -3pt}}}
 \newcommand{\dd}     {{\rm d\hbox{\hskip 0.5pt}}}
+\newcommand{\Amscr}  {{\mathcal{A}}}
+\newcommand{\Bmscr}  {{\mathcal{B}}}
+\newcommand{\Emscr}  {{\mathcal{E}}}
+\newcommand{\Xmscr}  {{\mathcal{X}}}
 
 \makeatother
 
@@ -447,7 +451,7 @@ After substitute \eqref{eq:TICSGDynamics} we get
 $$ \begin{aligned} V(t) &= 2\left[z_1^\top\ z_2^\top\right]\left[
    \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
    \right] \\ & \left[\begin{array}{c} \varLambda^{-1}\left(
-   \mathcal{A}(\omega_1)z_1-\mathcal{B}(\delta)z_2+T_me_3\right)
+   \mathcal{A}(\o_1)z_1-\mathcal{B}(\delta)z_2+T_me_3\right)
    \\ \varLambda^{-1}\left(-\mathcal{B}(-\delta)z_1+\mathcal{A}
    (\o_2)z_2+T_m e_3\right) \end{array}\right]. \end{aligned}$$ 
 Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$, we get 
@@ -492,170 +496,134 @@ $(i_{d1},i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded functions on
 $[0,T_{max})$ which contradict \cite[Corollary II.3]{JayWeissBS:09}. 
 Therefore $T_{max} = \infty$.
 \end{proof}
-
+ 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{Analysis of the equilibrium points of the TICSG model 
+\label{sec:equivalence_pont}}
 
-\section{Analysis of the equilibrium points of the TICSG model \label{sec:equivalence_pont}}
-
-In this section, we study the equilibrium points of the TICSG system. First, we show that  if there exist equilibrium points, they must located on the synchronization subspace or on the anti-synchronization subspace i.e. any equilibrium point $\left[z_1^e \ z_2^e \ \delta^e \right]^\top$ must satisfy $z_1^e=z_2^e$ and $\delta^e=0$ or $\delta^e = \pi$   (modulo $2\pi$). Second, we show that the TICSG system has at least one equilibrium point on the synchronization subspace (i.e with $\delta^e=0$).
-
-\subsection{An equilibrium point must satisfy synchronization condition.}
-We  start by investigate the solution of the algebraic equation:  
-
-\begin{equation}
-\left[\begin{array}{c|c|c}
-\mathcal{A}(\omega_{1}^{e}) & -\mathcal{B}(\delta^{e}) & 0\\
-\hline -\mathcal{B}(-\delta^{e}) & \mathcal{A}(\omega_{2}^{e}) & 0\\
-\hline -e_{3}^{T} & e_{3}^{T} & 0
-\end{array}\right]\left[\begin{array}{c}
-z_{1}^{e}\\
-z_{2}^{e}\\
-\delta^{e}
-\end{array}\right]+T_{m}\left[\begin{array}{c}
-e_{3}\\
-e_{3}\\
-0
-\end{array}\right]=0
-\label{eq:algebricEquation}
-\end{equation}
-
-It easy to see that according to the seventh line $$\omega_{1}^{e}=\omega_{2}^{e}=\omega^{e}$$.
-
-From the third and the sixth lines we have: 
-
-$$
-\left\{ \begin{array}{c}
-mi_{f}i_{q1}^{e}-D_{p}\omega_{1}^{e}+T_{m}=0\\
-mi_{f}i_{q2}^{e}-D_{p}\omega_{2}^{e}+T_{m}=0
-\end{array}\right.\longrightarrow i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e}
-$$
-
-From the first, second, fourth and fifth lines:
-
-$$
- \begin{array}{c}
--R_{tot}i_{d1}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d2}^{e}+R_{L}\sin\delta^{e}i_{q}^{e}=0\\
--\omega^{e}L_{s}i_{d1}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}-R_{L}\sin\delta^{e}i_{d2}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0\\
--R_{tot}i_{d2}^{e}+\omega^{e}L_{s}i_{q}^{e}-R_{L}\cos\delta^{e}i_{d1}^{e}-R_{L}\sin\delta^{e}i_{q}^{e}=0\\
--\omega^{e}L_{s}i_{d2}^{e}-R_{tot}i_{q}^{e}-mi_{f}\omega^{e}+R_{L}\sin\delta^{e}i_{d1}^{e}-R_{L}\cos\delta^{e}i_{q}^{e}=0
-\end{array}
-$$
-By denoting:
-\[
-M=\left[\begin{array}{cc}
--R_{tot} & -R_{L}\cos\delta^{e}\\
--\omega^{e}L_{s} & -R_{L}\sin\delta^{e}\\
--R_{L}\cos\delta^{e} & -R_{tot}\\
-R_{L}\sin\delta^{e} & -\omega^{e}L_{s}
-\end{array}\right]
-\]
-
-and 
-
-\[
-n=\left[\begin{array}{c}
-i_{q}^{e}\left(\omega^{e}L_{s}+R_{L}\sin\delta^{e}\right)\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)\\
-i_{q}^{e}\left(\omega^{e}L_{s}-R_{L}\sin\delta^{e}\right)\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot}+R_{L}\cos\delta^{e}\right)
-\end{array}\right]
-\]
-we rewrite these lines in the following way:
-
-\begin{equation}
-M\left[\begin{array}{c}
-i_{d1}^{e}\\
-i_{d2}^{e}
-\end{array}\right]=n.\label{eq:equilibrium_system}
-\end{equation}
-
-Now, we  show by contradiction that any equilibrium point must satisfy: $\sin\delta^e=0$.
-We use the Rouch\'e Capelli theorem:  Any liner equations system with the form  $Mx=n$ has a  solution if and only if rank$\left[M|n\right]=$rank$\left[M\right].$
-
-If we negated to assume that $\sin\delta^{e}\ne0$, then a simple calculation shows that under this assumption  rank$\left[M|n\right]=3$ must hold.
-
-Obviously, rank$\left[M\right]\le2$.  The Rouch\'e Capelli theorem implies that under the
-previous assumption the linear equations system \eqref{eq:equilibrium_system} does not have any solution. It proves that  if the TICSG system has an equilibrium point, it must satisfied: $\sin\delta^{e}=0$ means that : $\delta^{e}=0$ or $\delta^e = \pi$ (modulo $2\pi$).
-
-After subtitling $\sin\delta^{e}=0$
-and $\cos\delta^{e}=\pm 1$, the linear equations system  \eqref{eq:equilibrium_system} becomes:
-
-$$
-M=\left[\begin{array}{cc}
--R_{tot} & \mp R_{L}\\
--\omega^{e}L_{s} & 0\\
-  \mp R_{L} & -R_{tot}\\
-0 & -\omega^{e}L_{s}
-\end{array}\right]
-$$
-
-and 
-
-$$
-n=\left[\begin{array}{c}
-i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)\\
-i_{q}^{e}\omega^{e}L_{s}\\
--mi_{f}\omega^{e}-i_{q}^{e}\left(R_{tot} \pm R_{L}\right)
-\end{array}\right]
-$$
-
-This solution of this system is: $i_{d1}^{e}=i_{d2}^{e}$.
-
-
-
-\subsection{The TICSG system has at least one equilibrium point on the synchronization subspace}
-Here, we show that the TICSG system has at least one equilibrium point on the three dimensional subspace
+In this section we study the equilibrium points of the TICSG
+system \eqref{eq:TICSGDynamics}. We introduce the {\em synchronization 
+subspace} of the state space $\rline^7$ by
 \begin{equation} \label{eq:SyncSubspace}
-   \mathscr{E} \m=\m \left\{ \left[z_1 \ z_2 \ \delta \right]^\top
-   \ |\ z_1=z_2,\ \delta = 0 \right\} \m,
+   \Emscr \m=\m \left\{ \left[z_1 \ z_2 \ \delta \right]^\top\in
+   \rline^7 \ |\ z_1=z_2,\ \delta = 0 \right\} \m.
 \end{equation}
-which we call the \textit{synchronization subspace}.
+Clearly this is a 3-dimensional vector subspace. Similarly, we
+introduce the {\em anti-synchronization space}
+\begin{equation} \label{eq:AntiSyncSubspace}
+   \Emscr' \m=\m \left\{ \left[z_1 \ z_2 \ \delta \right]^\top
+   \ |\ z_1=z_2,\ \delta = \pi \right\} \m,
+\end{equation}
+which is an affine space (shifted vector subspace). Sometimes we find
+it more convenient to consider the angle $\delta$ modulo $2\pi$, so
+that the seventh coordinate of the state is no longer in $\rline$, but
+instead in the unit circle. This new state space $\Xmscr$ is a 7
+dimensional manifold, with a natural mapping from $\rline^7$ to
+$\Xmscr$ (which leaves the first 6 coordinates unchanged), and the
+images of $\Emscr$ and $\Emscr'$ via this mapping are 3 dimensional
+submanifolds of $\Xmscr$ that we denote by $\Emscr_\Xmscr$ and
+$\Emscr'_\Xmscr$, respectively. We call $\Emscr_\Xmscr$ the 
+{\em symchronization manifold}.
 
-After substituting condition \eqref{eq:SyncSubspace} into 
-\eqref{eq:algebricEquation}, we get:
+\begin{proposition} \label{EqPointsProp1}
+Any equilibrium point for the TICS system in $\Xmscr$ is either in
+$\Emscr_\Xmscr$ or in $\Emscr'_\Xmscr$.
+\end{proposition}
+
+\begin{proof}
+The equilibrium points are the solutions of the algebraic equation
+\begin{equation} \label{eq:algebricEquation}
+   \left[\nm\begin{array}{c|c|c} \Amscr(\o_1^e) & -\Bmscr(\delta^e) &
+   0\\ \hline -\Bmscr(-\delta^e) & \Amscr(\o_2^e) & 0\\ \hline -e_3^T 
+   & e_3^T & 0\end{array} \nm\right] \left[\nm\begin{array}{c} z_1^e
+   \\ z_2^e\\ \delta^e\end{array}\nm\right] + T_m\left[\nm
+   \begin{array}{c} e_{3}\\ e_{3}\\ 0 \end{array}\nm\right] = 0.
+\end{equation}
+It easy to see that according to the seventh line above,
+$$\o_1^e \m=\m \o_2^e \m=\m \o^e \m.$$
+From the third and the sixth lines we have: 
+$$ \left\{ \begin{array}{c} m i_f i_{q1}^e-D_p\o_1^e+T_m=0\\
+   mi_f i_{q2}^e-D_p\o_2^e+T_m=0 \end{array}\right.\Longrightarrow
+   i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e} \m.$$
+From the first, second, fourth and fifth lines:
+$$ \begin{array}{c} -R_{tot}i_{d1}^e+\o^e L_s i_q^e-R_L\cos\delta^e
+   i_{d2}^e+R_L\sin\delta^e i_q^e=0,\\ -\o^e L_s i_{d1}^e-R_{tot} 
+   i_q^e-mi_f\o^e-R_L\sin\delta^e i_{d2}^e-R_L\cos\delta^e i_q^e=0,\\
+   -R_{tot}i_{d2}^e+\o^e L_s i_q^e-R_L\cos\delta^e i_{d1}^e-R_L
+   \sin\delta^e i_q^e=0,\\ -\o^e L_s i_{d2}^e-R_{tot}i_q^e-mi_f
+   \o^e+R_L\sin\delta^e i_{d1}^e-R_L\cos\delta^e i_q^e=0.\end{array}$$
+By denoting \vspace{-2mm}
+$$ M \m=\m \left[\begin{array}{cc} -R_{tot} & -R_{L}\cos\delta^{e}\\
+   -\o^e L_s & -R_L\sin\delta^e\\ -R_L\cos\delta^e & -R_{tot}\\
+   R_L\sin\delta^e & -\o^e L_s \end{array}\right]$$
+and 
+$$ n \m=\m \left[\begin{array}{c} i_q^e\left(\o^e L_s+R_L\sin\delta^e
+   \right)\\ -mi_f\o^e-i_q^e\left(R_{tot}+R_L\cos\delta^e\right)\\
+   i_q^e\left(\o^e L_s-R_L\sin\delta^e\right)\\ -mi_f\o^e-i_q^e\left(
+   R_{tot}+R_L\cos\delta^e\right) \end{array}\right]$$
+we rewrite these lines in the following way:
+\begin{equation} \label{eq:equilibrium_system}
+   M\left[\begin{array}{c} i_{d1}^e\\ i_{d2}^e \end{array}\right]
+   \m=\m n \m.
+\end{equation}
+
+Now, we show by contradiction that any equilibrium point must satisfy
+$\sin\delta^e=0$. We use the Rouch\'e Capelli theorem: Any liner
+equations system with the form $Mx=n$ has a solution if and only if
+rank$\left[M|n\right]=$rank$\left[M\right]$. If we would have
+$\sin\delta^e\neq 0$, then a simple calculation shows that 
+rank$\left[M|n\right]=3$ must hold.
+
+Obviously, rank$\left[M\right]\leq 2$. The Rouch\'e Capelli theorem
+implies that under the previous assumption the linear equations system
+\eqref{eq:equilibrium_system} does not have any solution. It proves
+that if the TICSG system has an equilibrium point, it must satisfy
+$\sin\delta^{e}=0$, whence $\delta^{e}=0$ or $\delta^e=\pi$
+(modulo $2\pi$).
+
+After substituting $\sin\delta^{e}=0$ and $\cos\delta^{e}=\pm 1$, the 
+matrices in the equation \eqref{eq:equilibrium_system} become
+$$ M \m=\m \left[\begin{array}{cc} -R_{tot} & \mp R_L\\ -\o^e L_s & 
+   0\\ \mp R_L & -R_{tot}\\ 0 & -\o^e L_s \end{array}\right] \m,$$
+$$ n \m=\m \left[\begin{array}{c} i_q^e\o^e L_s\\ -mi_f\o^e-i_q^e
+   \left(R_{tot} \pm R_L\right)\\ i_q^e\o^e L_s\\ -mi_f\o^e-i_q^e
+   \left(R_{tot} \pm R_L\right) \end{array}\right] \m.$$
+Now the only solution of \eqref{eq:equilibrium_system} is
+$i_{d1}^{e}=i_{d2}^{e}$.
+\end{proof}
+
+\begin{proposition} \label{EqPointsProp2}
+The TICSG system has at least one equilibrium point on
+synchronization subspace $\Emscr$ from \eqref{eq:SyncSubspace}.
+\end{proposition}
+
+\begin{proof}
+For a point in $\Emscr$ we obtain from \eqref{eq:SyncSubspace} that
 \begin{equation} \label{eq:equilbrium_algebric_eq}
    \left[\nm\nm\begin{array}{ccc} -R_s-2R_L & \o^e L_s & 0\\
    -\o^e L_s & -R_s-2R_L & -m i_f\\ 0 & m i_f & -D_p
    \end{array} \nm\right] \left[\nm\begin{array}{c} i_d^e\\
    i_q^e\\ \o^e \end{array} \nm\right] = \left[\nm\nm 
-   \begin{array}{c} 0\\ 0\\ -T_m\end{array} \nm\nm\right]\nm\m.
+   \begin{array}{c} 0\\ 0\\ -T_m\end{array} \nm\nm\right]\nm\m,
 \end{equation}
-We take scalar products on both sides with $z^e$:
-$$ \left(R_{tot}+R_L\right)\left((i_d^e)^2+(i_q^e)^2\right) \m=\m
-   \left(T_m-D_p\o^e\right)\o^e \m.$$
-This equation makes perfect physical sense. Indeed, assume that there
-is no actual friction in the machine, $D_{p}$ is created by feedback,
-so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied to
-one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
-is the mechanical power entering one generator. On the other hand, it
-is easy to see that $\left(R_{tot}+R_L\right)\left((i_d^e)^2+
-(i_q^e)^2\right)=\left(R_s+2R_L\right)\left(i_a^2+i_b^2+i_c^2\right)$
-which is exactly half of the power dissipated in all the resistors,
-hence it is the electric power leaving one generator.
-
+where $i_d^e,i_q^e,\o^e$ are the coordinates of $z_1^e=z_2^e=z^e$.
 From \eqref{eq:equilbrium_algebric_eq} we derive a scalar equation to
-determine the equilibrium velocity $\omega^{e}$.  From the last line
-of the matrix equation\eqref{eq:equilbrium_algebric_eq} we have
+determine the equilibrium velocity $\omega^{e}$. From the last line of
+the equation we have
 \begin{equation} \label{eq:eq_0_first_eq}
    T_m-D_p\o^e \m=\m -mi_f i_q^e 
 \end{equation}
 The left side of this equation is the mechanical torque acting on each
 generator at equilibrium.
 
-The first line of  \eqref{eq:equilbrium_algebric_eq}
-is $-\left(R_{tot}+R_{L}\right)i_{d}^{e}+\omega^{e}L_{tot}i_{q}^{e}=0$,
-\quad hence
-$$i_{d}^{e} \m=\m \frac{\o^eL_s}{R_{tot}+R_L}i_q^e.$$
-From \eqref{eq:eq_0_first_eq} 
-\begin{equation}
-i_{q}^{e}=\frac{T_{m}-D_{p}\omega^{e}}{-mi_{f}}\label{eq:iq_0_}
-\end{equation}
+The first line of \eqref{eq:equilbrium_algebric_eq}
+is $-\left(R_{tot}+R_L\right)i_d^e+\o^e L_{tot}i_q^e=0$, \quad hence
+$$i_d^e \m=\m \frac{\o^e L_s}{R_{tot}+R_L} i_q^e \m.$$
+From \eqref{eq:eq_0_first_eq} we have
+$$i_q^e \m=\m \frac{T_m-D_p\o^e}{-mi_f} \m.$$
 Combining the last two formulas,
-\begin{equation} \label{eq:id_0_}
-   i_{d}^{e} \m=\m -\frac{\o^e L_s}{R_{tot}+R_L} \cdot \frac{T_m-D_p
-   \o^e}{mi_f} \m.
-\end{equation}
+$$ i_{d}^{e} \m=\m -\frac{\o^e L_s}{R_{tot}+R_L} \cdot \frac{T_m-D_p
+   \o^e}{mi_f} \m.$$
 
 The second line of the matrix equation on \eqref{eq:eq_0_first_eq} is
 $$ \o^{e}L_s i_d^e + \left(R_{tot} + R_L\right) i_q^e + mi_f\o^e 
@@ -676,16 +644,31 @@ Hence, $p$ has at least one zero in the interval $\left(0,
 \frac{T_m}{D_p}\right)$. This shows that the TICSG system has at least
 one equilibrium point located on the synchronization subspace 
 \eqref{eq:SyncSubspace}.
+\end{proof}
 
-Note that the anti-synchronization manifold $\mathscr{E}'=\{ \left[z
-\ z \ \delta\right]^\top |\ \delta=\pi \}$ may also have equilibrium
-points.
+Note that $\Emscr'_\Xmscr$ may also contain equilibrium points.
+
+\begin{remark}
+If we take scalar products on both sides of 
+\eqref{eq:equilbrium_algebric_eq} with $z^e$, we obtain
+$$ \left(R_{tot}+R_L\right)\left((i_d^e)^2+(i_q^e)^2\right) \m=\m
+   \left(T_m-D_p\o^e\right)\o^e \m.$$
+This equation makes perfect physical sense. Indeed, assume that there
+is no actual friction in the machine, $D_{p}$ is created by feedback,
+so that $T_{m}-D_{p}\omega^{e}$ is the mechanical torque applied to
+one generator, and then $\left(T_{m}-D_{p}\omega^{e}\right)\omega^{e}$
+is the mechanical power entering one generator. On the other hand, it
+is easy to see that $\left(R_{tot}+R_L\right)\left((i_d^e)^2+
+(i_q^e)^2\right)=\left(R_s+2R_L\right)\left(i_a^2+i_b^2+i_c^2\right)$
+which is exactly half of the power dissipated in all the resistors,
+hence it is the electric power leaving one generator.
+\end{remark}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Synchronization} \label{sec5} % Section 5
 
 In this section, we show that the synchronization subspace
-$\mathscr{E}$ from \eqref{eq:SyncSubspace}, is invariant and locally
+$\mathscr{E}$ from \eqref{eq:SyncSubspace} is invariant and locally
 exponentially stable for the TICSG model \eqref{eq:TICSGDynamics}.  We
 start by rewriting the TICSG model in new coordinates. Then, we prove
 that under some conditions, the TICSG is globally exponentially stable
@@ -713,58 +696,32 @@ Then the TICSG model \eqref{eq:TICSGDynamics} can be rewritten as
 \begin{equation}
 \dot{e}=F(e,x) , \quad \dot{x}=G(e,x),\label{eq:sync_sestem}
 \end{equation}
-for some functions $F$ and $G$.  From \eqref{eq:TICSGDynamics}:
-$$
-\begin{aligned}
-\Lambda(\dot{z}_{2}-\dot{z}_{1})&=\mathcal{A}(\omega_{2})z_{2}+T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}\\&-\left(\mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\right)
-\end{aligned}
-$$
-Calculating  $F$:
-$$
-\begin{aligned}
-&  \left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right] \frac{d}{dt}\left[\begin{array}{c}
-e_{d}\\
-e_{q}\\
-e_{\omega}\\
-\delta
-\end{array}\right]  =  \\ & \left[\begin{array}{c}
--R_{tot}(i_{d2}-i_{d1})+L_{s}(\omega_{2}i_{q2}-\omega_{1}i_{q1})\\
--L_{s}(\omega_{2}i_{d2}-\omega_{1}i_{d1})-R_{tot}(i_{q2}-i_{q1})-mi_{f}(\omega_{2}-\omega_{1})\\
-mi_{f}(i_{q2}-i_{q1})-D_{p}(\omega_{2}-\omega_{1})\\
--(\omega_{2}-\omega_{1})
-\end{array}\right]\\
- + & \left[\begin{array}{c}
-R_{L}\cos(\delta)(i_{d2}-i_{d1})-R_{L}\sin(\delta)(i_{q2}+i_{q1})\\
-R_{L}\cos(\delta)(i_{q2}-i_{q1})+R_{L}\sin(\delta)(i_{d2}+i_{d1})\\
-0\\
-0
-\end{array}\right].
-\end{aligned}
-$$
-
-Because the following equation   
-$$(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$$
-holds for any $x$, $y$, $a$ and $b$, it implies that:
-$$
-\begin{aligned}
-\omega_{2}i_{q2}-\omega_{1}i_{q1}= &\frac{1}{2}\left[(\omega_{1}+\omega_{1})(i_{q2}-i_{q1})+(\omega_{2}-\omega_{1})(i_{q2}+i_{q1})\right] \\ =&\frac{x_{w}e_{q}+e_{w}x_{q}}{2}
-\end{aligned}
-$$
- 
+for some functions $F$ and $G$. From \eqref{eq:TICSGDynamics},
+$$ \begin{aligned} \Lambda(\dot{z}_2-\dot{z}_1) &= \Amscr(\o_2)
+   z_2+T_m e_3-\Bmscr(-\delta)z_1\\ &-\left(\Amscr(\o_1)z_1+T_m 
+   e_3-\Bmscr(\delta)z_2\right) \end{aligned} \m.$$
+The detailed form of the equation $\dot e=F(e,x)$ is
+$$ \begin{aligned} & \left[\begin{array}{cc} \varLambda & 0\\ 0 & 
+   1 \end{array}\right] \frac{\dd}{\dd t}\left[\begin{array}{c}
+   e_d\\ e_q\\ e_\o\\ \delta\end{array}\right] \m= \\ & \left[\nm
+   \begin{array}{c} -R_{tot}(i_{d2}-i_{d1})+L_s(\o_2 i_{q2}-
+   \o_1 i_{q1})\\ -L_s(\o_2 i_{d2}-\o_1 i_{d1})-R_{tot} (i_{q2}
+   -i_{q1})-mi_f(\o_2-\o_1)\\ mi_f(i_{q2}-i_{q1})-D_p(\o_2-\o_1)
+   \\ -(\o_2-\o_1) \end{array}\nm\right]\\ + & \left[\begin{array}
+   {c} R_L\cos(\delta)(i_{d2}-i_{d1})-R_L\sin(\delta)(i_{q2}
+   +i_{q1})\\ R_L\cos(\delta)(i_{q2}-i_{q1})+R_L\sin(\delta)(i_{d2}
+   +i_{d1})\\ 0\\ 0 \end{array}\right]. \end{aligned}$$
+From the trivial identity \m $(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$ we
+get that \vspace{-2mm}
+$$ \begin{aligned} \o_2 i_{q2} -& \o_1 i_{q1} \m=\m \half\left[
+   (\o_1+\o_1)(i_{q2}-i_{q1}) \right.\\ &+ \left. (\o_2-\o_1)(i_{q2}
+   +i_{q1})\right] = \frac{x_{w} e_q+e_w x_q}{2} \end{aligned}$$
 and the previous equation can be rewritten as:
-$$
-\dot{e}  = F(e,x) =\left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right]^{-1}\left(A_e\left(x,e\right) e +B_e\left(x,e\right)  \right)
-$$
-Where 
-
-$$
-\begin{aligned}
+$$ \dot{e} \m=\m F(e,x) \m=\m \left[\nm\begin{array}{cc} \varLambda 
+   & 0\\ 0 & 1 \end{array}\nm\right]^{-1} \left[A_e\left(x,e\right) 
+   e + B_e \left(x,e\right) \right]$$
+where 
+$$ \begin{aligned}
 &A_e\left(x,e\right)  = \\ & \left[\begin{array}{cccc}
 -R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
 -\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mi_f & 0\\
@@ -791,14 +748,10 @@ e
 We note that $F(0,x)=0$, which shows that 
 $\mathscr{E} $ is invariant.
 
-For the $x$ dynamics we have:
-
-$$
-\begin{aligned}
-\Lambda\dot{x}= & \mathcal{A}(\omega_{1})z_{1}+T_{m}e_{3}-\mathcal{B}(\delta)z_{2}\\+&\mathcal{A}(\omega_{2})z_{2}  +T_{m}e_{3}-\mathcal{B}(-\delta)z_{1}.
-\end{aligned}
-$$
-
+For the $x$ dynamics we have
+$$ \begin{aligned} \Lambda\dot{x} \m=\m & \Amscr(\o_1) z_1 + T_m e_3
+   -\Bmscr(\delta) z_2\\ +& \Amscr(\o_2) z_2 + T_m e_3-\Bmscr
+   (-\delta) z_1, \end{aligned}$$
 $$ \begin{aligned} &\Lambda\frac{\dd}{\dd t}\left[\begin{array}{c}
    x_{d}\\ x_{q}\\ x_{\o} \end{array}\right] = \\
    & \left[\begin{array}{c} - R_{tot}(i_{d1}+i_{d2})+L_s(\o_1 i_{q1}
@@ -865,12 +818,11 @@ $$ B \m=\m B_x\left(0, \tilde{x}_\o \right) \m=\m \left[\begin{array}
 This system describes the two SGs with perfect synchronization between
 each other.
 
-Because the TICSG system has at list one equilibrium point on the
-$\mathscr{E}$ subspace, it means that $\tilde{G}(\tilde{x})$ has at
-list one equilibrium point $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\
+Because the TICSG system has at least one equilibrium point on
+$\Emscr$, it means that $\tilde{G}(\tilde{x})$ has at least one
+equilibrium point $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\
 \tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall
-that by definition $x = z_1 + z_2$).
-
+that by definition $x = z_1 + z_2$). We have
 \begin{equation}
 \tilde{G}(\tilde{x}^{e})=0\rightarrow\varLambda^{-1}A(\tilde{x}_{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
 0\\
@@ -1146,7 +1098,7 @@ If TICSG system satisfies  condition \eqref{eq:condition_for_stable_G}, and in a
 A=\lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)
 \label{eq:eLinearizationLimit}
 \end{equation}
-Where $A$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
+Where $A$ is a stable (Hurwitz) matrix (condition \eqref{eq:condition_for_stable_G} implies that the limit exists). Then there exist strictly positive real numbers $r$, $k$ add $\lambda$ such that we have for all , for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in e, uniformly in x.
 \end{theorem}
  
 \begin{proof}
