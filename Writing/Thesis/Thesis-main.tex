@@ -1625,6 +1625,7 @@ voltage that is equal to the load resistor with phase difference of
 $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this
 virtual single generator.
 
+
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Simulations} \label{sec6} % Section 6
 
@@ -1655,33 +1656,17 @@ As shown in Figure \ref{fig:5KWSGTICSGSimulation}, the TICSG system
 that starts form the initial condition $\left[z_1(0)\ z_2(0) \ 
 \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, 
 \  400, \ 1.5708 \right]^\top$ synchronizes and converges to the 
-equilibrium point $\left[z^e\ z^e \ \delta^e \right]^\top$. The 
-parameters for this simulation are $J=0.2$ {[}$kg\cdot m^{2}${]}, 
-$D_p=1.7$ {[}$J\cdot sec${]}, $R_s=0.152$ {[}$\Omega]$, $R_L=18.862$ 
-{[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$V\cdot sec]$, 
-$T_m=543.2031$ {[}$N\cdot m${]}.
-
-ELAD, check the units above, some were given wrong, correct all the 
-later ones ???
+equilibrium point $\left[z^e\ z^e \ \delta^e \right]^\top$. (The parameters for this simulations can be found at the appendix,
+table \ref{table:5KWSG}).
 
 Our further simulations of this system suggest that this TICSG system 
 is globally asymptotically stable (GAS).
 
-ELAD, is this true ???
-
-ELAD, please write current, not Current.
-
-ELAD, in the second plot below, could you write $\omega$ in place
-      of w ???
-
-ELAD, in the third plot below, could you change scale so that we 
-see more of the currents ??? Increase the scale by about 2 times.
-
 \vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht] 
-\includegraphics[scale=0.9]{5KWTICSGSimulation} \vspace{-8mm}
-\caption{Simulations for TICSG system with 5KW SGs}
+\includegraphics[scale=0.65]{5KWTICSGSimulation} \vspace{-8mm}
+\caption{Simulations for TICSG system with 5KW SGs} 
 \label{fig:5KWSGTICSGSimulation}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
@@ -1704,31 +1689,25 @@ the same system, with the initial state $\left[z_1(0)\ z_2(0) \
 1.5708\right]^\top$. \m The simu\-lation indicates that this initial
 state is outside the region of attraction, the SGs do not
 synchronize. The parameters for the two simulations in this subsection
-are $J=0.19$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
-{[}$\Omega]$, $R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.41$ {[}$mH${]},
-$mi_{f}=1.05$ {[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
-
-ELAD, corrections are needed above ???
-
-ELAD, why is J here slightly less than in the previous simulation ??? 
-Could they not be equal? It makes the reader suspect that we are doing
-something strange by playing with J.
-
+are (he parameters for the two simulations in this subsection can be found at the appendix,
+table \ref{table:TICSGWithLocalE}). 
 
 \vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
-\includegraphics[scale=0.9]{InROATICSGSimulation}
+\includegraphics[scale=0.65]{InROATICSGSimulation}
 \caption{Simulation for a TICSG system that satisfies the conditions
 of Theorem \ref{theorem:TICSGSync}, with initial state inside the 
 region of attraction of the stable equilibrium point.}
 \label{fig:InROATICSGSimulation}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 \vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
-\includegraphics[scale=0.9]{OutROATICSGSimulation}
+\includegraphics[scale=0.65]{OutROATICSGSimulation}
+
 \caption{Simulation for a TICSG system which satisfy the conditions of
 Theorem \ref{theorem:TICSGSync}, with initial state outside the region
 of attraction of the stable equilibrium point.}
@@ -1736,12 +1715,13 @@ of attraction of the stable equilibrium point.}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Non stable $\mathscr{E}$ manifold}
-\vspace{-4mm}
+
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
-\includegraphics[scale=0.9]{NonStableTICSGSimulation}
+\includegraphics[scale=0.65]{NonStableTICSGSimulation}
+
 \caption{A simulation example with unstable $\Emscr$ manifold}
 \label{fig:NonStableTICSGSimulation}
 \end{figure}
@@ -1753,10 +1733,8 @@ system starting form the initial condition $\left[z_1(0)\ z_2(0) \
 \delta(0) \right]^\top = \left[ -40, \ 20, \ 90, \ -40, \ 20, \ 90.01,
 \ 0 \right]^\top$ do not synchronized. Note that condition
 \eqref{eq:eLinearizationLimit} of Theorem \ref{theorem:TICSGSync} does
-not hold. The parameters for this simulation are $J=0.19$
-{[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
-{[}$\Omega]$, $R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.35$ {[}$mH${]},
-$mi_{f}=1.05$ {[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
+not hold. (The parameters for this simulations can be found at the appendix,
+table \ref{table:TICSGWithNonStableE}).
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 \begin{thebibliography}{99}
@@ -1861,15 +1839,15 @@ The parameters of 5KW SG are taken from \cite{Eitan}
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $0.2\qquad[kgm^{2}]$\tabularnewline
+$J$ & $0.2\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $1.7\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $0.152\qquad\left[\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $4.4\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $1.05\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $1.05\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
 $\omega_{g}$ & $60\cdotp2\cdotp\pi\qquad\left[\frac{rad}{sec}\right]$\tabularnewline
 \hline 
@@ -1892,15 +1870,15 @@ The parameters of 1MW SG are taken from \cite{Eitan}
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $40.05\qquad[kgm^{2}]$\tabularnewline
+$J$ & $40.05\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $337\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $337\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $0.4\qquad\left[m\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $18\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $1.79\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $1.79\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
 $\omega_{g}$ & $60\cdotp2\cdotp\pi\qquad\left[\frac{rad}{sec}\right]$\tabularnewline
 \hline 
@@ -1927,15 +1905,15 @@ lower voltage and fed by $50$ {[}KW{]} prime mover.
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $0.2\qquad[kgm^{2}]$\tabularnewline
+$J$ & $0.2\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $1.7\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $0.152\qquad\left[\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $4.4\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $1.05\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $1.05\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
 $\omega_{g}$ & $60\cdotp2\cdotp\pi\qquad\left[\frac{rad}{sec}\right]$\tabularnewline
 \hline 
@@ -1963,15 +1941,15 @@ parameters is basically the 5KW SG parameters set with stronger $i_{f}$
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $0.2\qquad[kgm^{2}]$\tabularnewline
+$J$ & $0.2\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $1.7\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $0.152\qquad\left[\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $1.05\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $3.5\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $3.5\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
 $\omega_{g}$ & $60\cdotp2\cdotp\pi\qquad\left[\frac{rad}{sec}\right]$\tabularnewline
 \hline 
@@ -1991,19 +1969,19 @@ $P_{m}$ & $5\qquad\left[kW\right]$\tabularnewline
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $0.19\qquad[kgm^{2}]$\tabularnewline
+$J$ & $0.2\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $1.7\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $11\qquad\left[m\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $0.4\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $-1.38\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $-1.38\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
-$R_L$ & $18.86\qquad\left[Vsec\right]$\tabularnewline
+$R_L$ & $18.86\qquad\left[\Omega\right]$\tabularnewline
 \hline 
-$T_m$ & $549.9254\qquad\left[N/m\right]$\tabularnewline
+$T_m$ & $549.9254\qquad\left[N\cdot m\right]$\tabularnewline
 \hline 
 
 \end{tabular}\caption{Parameters TICSG system with local  $\mathcal{E}$}
@@ -2018,19 +1996,19 @@ $T_m$ & $549.9254\qquad\left[N/m\right]$\tabularnewline
 Variable & Value\tabularnewline
 \hline 
 \hline 
-$J$ & $0.19\qquad[kgm^{2}]$\tabularnewline
+$J$ & $0.2\qquad[kg\cdot m^{2}]$\tabularnewline
 \hline 
-$D_{p}$ & $1.7\qquad\left[\frac{Joule}{sec}\right]$\tabularnewline
+$D_{p}$ & $1.7\qquad\left[J\cdot sec\right]$\tabularnewline
 \hline 
 $R_{s}$ & $11\qquad\left[m\Omega\right]$\tabularnewline
 \hline 
 $L_{s}$ & $0.35\qquad\left[mH\right]$\tabularnewline
 \hline 
-$mi_{f}$ & $-1.38\qquad\left[Vsec\right]$\tabularnewline
+$mi_{f}$ & $-1.38\qquad\left[V\cdot sec\right]$\tabularnewline
 \hline 
-$R_L$ & $18.86\qquad\left[Vsec\right]$\tabularnewline
+$R_L$ & $18.86\qquad\left[\Omega\right]$\tabularnewline
 \hline 
-$T_m$ & $549.9254\qquad\left[N/m\right]$\tabularnewline
+$T_m$ & $549.9254\qquad\left[N\cdot m\right]$\tabularnewline
 \hline 
 
 \end{tabular}\caption{Parameters for TICSG system with non stable  $\mathcal{E}$ manifold}
