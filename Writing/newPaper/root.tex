@@ -33,6 +33,7 @@
 \renewcommand{\cline}{{\mathbb C}}
 \newcommand{\rline}  {{\mathbb R}}
 \renewcommand{\l}    {{\lambda}}
+\renewcommand{\L}    {{\Lambda}}
 \renewcommand{\o}    {{\omega}}
 \newcommand{\e}      {{\varepsilon}}
 \newcommand{\half}   {{\frac{1}{2}}}
@@ -128,7 +129,8 @@ connected to a resistive load, as shown in Figure
 prime movers, that have frequency droop control. Our main result is
 that if the difference between the initial states of the SGs is
 sufficiently small, then the state of the entire system converges at
-an exponential rate to a stable equilibrium point.
+an exponential rate to a unique stable equilibrium point in the state
+space $\Xmscr$, a 7-dimensional manifold.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure} % Figure 1: tree phase TICSG system
@@ -146,7 +148,12 @@ presented. The model of {\em two identical coupled SGs} (TICSG) is
 described in Section \ref{sec3}. In Section \ref{sec4} we discuss the 
 equilibrium points of the TICSG system. Stability analysis for the
 TICSG model (in particular, results about the region of attraction of
-the stable equilibrium point) is in Section \ref{sec5}.
+the stable equilibrium point) is in Section \ref{sec5}. We illustrate
+our results by simulations in Section \ref{sec6}. In particular, we 
+show an example of two SGs where the region of attraction of the 
+stable equilibrium point contains the submanifold where the 
+generators have equal states (as it always does), but it does not 
+contain all $\Xmscr$.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Modeling a single SG} \label{sec2} % Section 2
@@ -773,21 +780,14 @@ The $x$ dynamics can be rewritten as:
 $$ \dot{x}=G \left( x,e\right) \m=\m \Lambda^{-1}\left(A_x \left(x,e 
    \right) x + B_x \left( x,e\right) \right),$$
 where
-$$
-A_x \left(x,e \right)=\left[\begin{array}{ccc}
--R_{tot}-R_{L}\cos(\delta) & \frac{L_{s}}{2}x_{\omega} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}-R_{L}\cos(\delta) & -mi_f\\
-0 & mi_{f} & -D_{p}
-\end{array}\right]
-$$
-
-$$
-B_x \left(x,e \right)=\left[\begin{array}{c}
-\frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
--\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
-2T_{m}
-\end{array}\right]
-$$
+$$ A_x \left(x,e \right) = \left[\nm\nm\begin{array}{ccc}
+   -R_{tot}-R_L\cos(\delta) & \frac{L_s}{2} x_\o & 0\\
+   -\frac{L_s}{2} x_\o & -R_{tot}-R_L\cos(\delta) & -mi_f\\
+   0 & mi_f & -D_p\end{array} \nm\right]$$
+$$ B_x \left(x,e \right)=\left[\begin{array}{c}
+   \frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
+   -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
+   2T_{m} \end{array}\right] \m.$$
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Global exponential stability of the TICSG system on the
@@ -851,8 +851,9 @@ $$
 
 We calculate $\dot{V}(\hat{x})$ in order to show that under some
 conditions, $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$, for some
-$\alpha.$ This  proves that $\tilde{G}(\tilde{x})$ is globally
-exponentially stable (see for instance theorum 5.17, p195 at \cite{Sastry}).
+$\alpha$. This proves that $\tilde{G}(\tilde{x})$ is globally
+exponentially stable (see for instance Theorum 5.17, p.~195 in
+\cite{Sastry}).
 
 $$
 \dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
@@ -870,91 +871,54 @@ We rewrite  $A(\tilde{x}_{\omega})$ as a sum of a constant symmetric
 matrix, constant skew symmetric matrix and a skew symmetric matrix
 which depends on $\hat{x}_{\omega}$:
 $$ 
-A(\tilde{x}_{\omega})\tilde{x}=\left[R+J(\tilde{x}_{\omega}^{e})+\Delta(\hat{x}_{\omega})\right](\hat{x}+\tilde{x}^{e})
+A(\tilde{x}_{\omega})\tilde{x}=\left[R+J(\tilde{x}_{\omega}^{e})+\Delta(\hat{x}_{\omega})\right](\hat{x}+\tilde{x}^{e}) \m,
 $$
-While
-$$
-R\coloneqq\left[\begin{array}{ccc}
--R_T & 0 & 0\\
-0 & -R_T & 0\\
-0 & 0 & -D_{p}
-\end{array}\right]
-$$
+where
+$$ R \m=\m \left[\begin{array}{ccc} -R_T & 0 & 0\\
+   0 & -R_T & 0\\ 0 & 0 & -D_{p}
+\end{array}\right] \m,$$
+$$ J \m=\m \left[\begin{array}{ccc} 0 & \frac{L_s}{2}\tilde{\o}^e
+   & 0\\ -\frac{L_s}{2}\tilde{\o}^e & 0 & -mi_f\\ 0 & mi_f & 0
+   \end{array}\right] \m,$$
+$$ \Delta(\hat{x}_\o)\coloneqq\left[\begin{array}{ccc}
+   0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
+   -\frac{L_{s}}{2}\hat{x}_\o & 0 & 0\\
+   0 & 0 & 0 \end{array}\right] \m.$$
+Combining the previous equation with \eqref{eq:G_at_equilibrium} and
+\eqref{eq:x_hat_dynamic} gives
+$$ \dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\o})
+   \right]\hat{x}+\Delta(\hat{\o})\tilde{x}^{e}\right) \m.$$
 
-$$
-J\coloneqq\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\tilde{\omega}^{e} & 0\\
--\frac{L_{s}}{2}\tilde{\omega}^{e} & 0 & -mi_f\\
-0 & mi_{f} & 0
-\end{array}\right]
-$$
-
-$$
-\Delta(\hat{x}_{\omega})\coloneqq\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
--\frac{L_{s}}{2}\hat{x}_{\omega} & 0 & 0\\
-0 & 0 & 0
-\end{array}\right]
-$$
-Combining the previous equation with \eqref{eq:G_at_equilibrium} and \eqref{eq:x_hat_dynamic}
-obtains: 
-$$
-\dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\omega})\right]\hat{x}+\Delta(\hat{\omega})\tilde{x}^{e}\right) 
-$$
-
-We calculate the derivative of the Lyapunov function over  time: 
-$$
-\dot{V}(\hat{x})=\left(\Lambda\hat{x}\right)^{T}\dot{\hat{x}}=\hat{x}^{T}\Lambda^{T}\Lambda^{-1}\left( \left[R+J+\Delta(\hat{x}_{\omega})\right]\hat{x}+\Delta(\hat{x}_{\omega})\tilde{x}^{e}\right)
-$$
-
-Because $\Lambda$ is diagonal matrix, then $\Lambda^{T}\Lambda^{-1}=I$
-
-$$
-\dot{V}(\hat{x})=\hat{x}^{T}R\hat{x}+\hat{x}^{T}J\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\hat{x}+\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}
-$$
-
-Because $J(\tilde{\omega}^{e})$ and $\Delta(\hat{\omega})$ are skew
-symmetric matrices, it implies that $\hat{x}^{T}J(\tilde{\omega}^{e})\hat{x}=0$
-and $\hat{x}^{T}\Delta(\hat{\omega})\hat{x}=0$ .
-
-$$
-\begin{aligned}
-\hat{x}^{T}\Delta(\hat{x}_{\omega})\tilde{x}^{e}  = &\left[\begin{array}{c}
-\hat{x}_{d}\\
-\hat{x}_{q}\\
-\hat{x}_{\omega}
-\end{array}\right]^{T}\left[\begin{array}{ccc}
-0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
--\frac{L_{s}}{2}\hat{x}_{\omega} & 0 & 0\\
-0 & 0 & 0
-\end{array}\right]\left[\begin{array}{c}
-x_{d}^{e}\\
-x_{q}^{e}\\
-\tilde{x}_{\omega}^{e}
-\end{array}\right]\\
-  =&  \left[\begin{array}{c}
-\hat{x}_{d}\\
-\hat{x}_{q}\\
-\hat{x}_{\omega}
-\end{array}\right]^{T}\left[\begin{array}{ccc}
-0 & 0 & \frac{L_{s}}{4}x_{q}^{e}\\
-0 & 0 & -\frac{L_{s}}{4}x_{d}^{e}\\
-\frac{L_{s}}{4}x_{q}^{e} & -\frac{L_{s}}{4}x_{d}^{e} & 0
-\end{array}\right]\left[\begin{array}{c}
-\hat{x}_{d}\\
-\hat{x}_{q}\\
-\hat{x}_{\omega}
-\end{array}\right]
-\\= & \hat{x}^{\top}P\hat{x}
-\end{aligned} \m,
-$$
+We calculate the derivative of $V$ over time: 
+$$ \dot{V}(\hat{x}) \m=\m \left(\L\hat{x}\right)^T\dot{\hat{x}}
+   \m=\m \hat{x}^T\L^T\L^{-1}\left( \left[R+J+\Delta(\hat{x}_\o)
+   \right]\hat{x}+\Delta(\hat{x}_{\omega})\tilde{x}^{e}\right).$$
+Because $\L$ is a diagonal matrix, $\L^T\L^{-1}=I$. Thus, 
+$$ \dot{V}(\hat{x}) \m=\m \hat{x}^{T}R\hat{x}+\hat{x}^T J\hat{x}
+   +\hat{x}^T\Delta(\hat{x}_\o)\hat{x}+\hat{x}^T\Delta(\hat{x}_\o)
+   \tilde{x}^e \m.$$
+Because $J(\tilde{\o}^e)$ and $\Delta(\hat{\o})$ are 
+skew-symmetric matrices, $\hat{x}^{T}J(\tilde{\o}^e)\hat{x}=0$
+and $\hat{x}^T\Delta(\hat{\o})\hat{x}=0$. We have
+$$ \begin{aligned} \hat{x}^{T}\Delta(\hat{x}_\o)\tilde{x}^{e} 
+   \m=\m &\left[\begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o
+   \end{array}\right]^T\left[\begin{array}{ccc} 0 & \frac{L_s}{2}
+   \hat{x}_\o & 0\\ -\frac{L_s}{2}\hat{x}_\o & 0 & 0\\ 0 & 0 & 0
+   \end{array}\right]\left[\begin{array}{c} x_d^e\\ x_q^e\\
+   \tilde{x}_\o^e \end{array}\right]\\ =& \left[\begin{array}{c}
+   \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o \end{array}\right]^T\left[\nm
+   \begin{array}{ccc} 0 & 0 & \frac{L_s}{4}x_q^e\\ 0 & 0 & 
+   -\frac{L_s}{4}x_d^e\\ \frac{L_s}{4}x_q^e & -\frac{L_s}{4}x_d^e
+   & 0 \end{array}\nm\right] \left[\nm\begin{array}{c} \hat{x}_d\\
+   \hat{x}_q\\ \hat{x}_\o \end{array}\nm\right] \\ =\m & 
+   \hat{x}^{\top} P\hat{x} \m,\end{aligned}$$
 where we have denoted
 $$ P \m=\m \left[\begin{array}{ccc} 0 & 0 & \frac{L_{s}}{4}
    x_{q}^{e}\\ 0 & 0 & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
    & -\frac{L_s}{4} x_d^e & 0 \end{array}\right] \m.$$
 Combining all this together, we obtain 
 $$\dot{V}(\hat{x}) \m=\m \hat{x}^{T}\left[P+R\right]\hat{x} \m,$$
-Where 
+where 
 $$ P+R \m=\m \left[\begin{array}{ccc} -R_T & 0 & \frac{L_s}{4}
    x_q^e\\ 0 & -R_T & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
    & -\frac{L_s}{4} x_d^e & -D_p \end{array}\right].$$
@@ -975,12 +939,15 @@ exponentially stable. Note that because it proves global stability in
 $\mathscr{E}$, it means that $\tilde{x}^{e}$ is the only equilibrium
 point of $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$, hence the TICSG
 system has exactly one equilibrium point on the the synchronization
-subspace $\mathscr{E}$.
+subspace $\Emscr$.
 
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Synchronization theorem:}
  
-In this subsection, we prove that if the initial state of the two generators
-are sufficiently close to each other, i.e $|e(0)|$ is small enough, then, under some conditions, the two generators will synchronize, meaning that $lim_{t\to\infty}e(t)=0$.
+In this subsection, we prove that if the initial state of the two
+generators are sufficiently close to each other, i.e $|e(0)|$ is small
+enough, then, under some conditions, the two generators will
+synchronize, meaning that $\lim_{t\to\infty}e(t)=0$.
 
 In order to show that, we use the main result of 
 \cite{AndrieuJayawardhanaPraly}. Consider a system of the form 
@@ -992,13 +959,27 @@ where $e$ and $x$ are finite-dimensional real vector valued functions
 and $F, G \in C^2$ with $F(0,x)=0$. \cite{AndrieuJayawardhanaPraly}
 defines the following properties:
 
-\subsubsection{TULES-NL (Transversal uniform local exponential stability)}
-There exist strictly positive real numbers $r$, $k$ and $\lambda$ such that we have, for all $\left(e_0, x_0, t\right)$  where $\left| e_0\right| \le r$ and the solution satisfies $\left|e\left(e_0, x_0, t\right)\right| \le k\left|e_0\right| e^{-\lambda t}$. Namely the manifold $\mathscr{E}$ is exponentially stable locally in $e$, uniformly in $x$.
-\subsubsection{UES-TL (Uniform exponential stability for the transversally linear system)}
-there exist strictly positive real numbers $\tilde{ k}$ and $\tilde{\lambda}$  such that any solution $\left(e \left(e_0, x_0, t\right), x \left(x_0, t\right)\right)$ of the transversally linear system
-$$\dot{\tilde{e}} = \frac{\partial F(e,x)}{\partial e}\left(0,\tilde{x}\right) ,\quad \dot{\tilde{x}} = \tilde{G}  \left( \tilde{x}  \right) =G\left(0,x\right)$$
-satisfies, for all $\left(e_0,x_0,t\right)$,   
- $ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| \le \tilde{k} e^{-\lambda t} \left| \tilde{e}_0\right|$. Namely the manifold $\tilde{\mathscr{E}}=\left\{\left(\tilde{e},\tilde{x} \right)| \tilde{e} = 0 \right\}$  is exponentially stable for this system uniformly in $\tilde{x}$ .
+\subsubsection{TULES-NL (transversal uniform local exponential 
+stability)} There exist positive numbers $r$, $k$ and $\l$ such that
+we have, for all $\left(e_0, x_0, t\right)$ where $\left| e_0\right|
+\le r$ and the solution satisfies $\left|e\left(e_0, x_0,
+t\right)\right| \le k\left|e_0\right| e^{-\l t}$. Namely the
+manifold $\mathscr{E}$ is exponentially stable locally in $e$,
+uniformly in $x$.
+\subsubsection{UES-TL (uniform exponential stability for the 
+transversally linear system)} There exist strictly positive real 
+numbers $\tilde{k}$ and $\tilde{\l}$ such that any solution $\left(e 
+\left(e_0,x_0,t\right),x\left(x_0, t\right)\right)$ of the 
+transversally linear system
+$$ \dot{\tilde{e}} \m=\m \frac{\partial F(e,x)}{\partial e}
+   \left(0,\tilde{x}\right),\quad\ \dot{\tilde{x}} \m=\m \tilde{G}
+   \left(\tilde{x}\right) \m=\m G\left(0,x\right)$$
+satisfies, for all initial states $e_0$ and $x_0$ and for all $t>0$,
+$$ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| 
+   \m\leq\m \tilde{k} e^{-\l t} \left| \tilde{e}_0\right| \m.$$ 
+In other words, the manifold $\tilde{\Emscr}=\left\{\left(\tilde{e},
+\tilde{x} \right)| \tilde{e} = 0 \right\}$ is exponentially stable 
+for this system, uniformly in $\tilde{x}$.
 
 \begin{theorem}\label{therem:TULESNL2UESTL}
 If a  system  has form \eqref{eq:systemForm}, and it forward complete, and it satisfies the following conditions in an invariant  compact sets that contains the initial conditions : 
@@ -1203,69 +1184,141 @@ voltage that is equal to the load resistor with phase difference of
 $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this
 virtual single generator.
 
-\section{Simulations}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{Simulations} \label{sec6} % Section 6
 
-In this section we present simulations which demonstrate the behavior of the TICSG system. We start by showing simulation of two 5KW generators where the generators parameters satisfy the conditions of theorem  \ref{theorem:TICSGSync}. Later we show case  where although the generators parameters satisfy  the conditions of theorem  \ref{theorem:TICSGSync}, the manifold $\mathscr{E}$ is only locally stable.  For this case we show simulation that start inside the region of attraction and therefore the two generators synchronized, and another simulation with different initial  state outside the region of attraction. Finally, we show example where  the conditions of theorem  \ref{theorem:TICSGSync} do not hold, and the  manifold $\mathscr{E}$ is not stable.   
+In this section we present simulations that demonstrate the behavior
+of the TICSG system. Our first simulation concerns two 5KW SGs where
+the parameters satisfy the conditions of Theorem
+\ref{theorem:TICSGSync}. The second example is such that the
+generators parameters again satisfy the conditions of Theorem
+\ref{theorem:TICSGSync}, but the manifold $\Emscr_\Xmscr$ is only
+locally stable. Most parameters are the same as in the first
+simulation, but $L_s$ is much smaller here. For this example we show
+a simulation that start inside the region of attraction and therefore
+the two generators synchronise, and another simulation with the 
+initial state outside the region of attraction. Finally, we give an
+example where the conditions of Theorem \ref{theorem:TICSGSync} do 
+not hold, and the manifold $\Emscr_\Xmscr$ is not stable.
 
-In each simulation result, the behavior of $i_d$ and $i_q$ over time is described for both SGs. We
-plot the frequency $\o$ and the phase difference between the two SGs $\delta$ as functions of
-time. In all simulations, the value of   $T_m$ calculated according to the cubic equation \eqref{eq:cubicEqation}, with $\omega^e = 50\cdotp2\cdotp\pi$.
+In each simulation result, the behavior of $i_d$ and $i_q$ over time
+is described for both SGs. We plot the frequency $\o$ and the phase 
+difference between the two SGs $\delta$ as functions of the time. In 
+all simulations, the value of $T_m$ is chosen such that the 
+equilibrium frequency is $\o^e=2\pi\cdot 50$.
 
-\subsection{5KW SG}
-%\vspace{-5mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\subsection{Two SGs of 5KW each, stable}
+
+As shown in Figure \ref{fig:5KWSGTICSGSimulation}, the TICSG system
+that starts form the initial condition $\left[z_1(0)\ z_2(0) \ 
+\delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, 
+\  400, \ 1.5708 \right]^\top$ synchronizes and converges to the 
+equilibrium point $\left[z^e\ z^e \ \delta^e \right]^\top$. The 
+parameters for this simulation are $J=0.2$ {[}$kg\cdot m^{2}${]}, 
+$D_p=1.7$ {[}$J\cdot sec${]}, $R_s=0.152$ {[}$\Omega]$, $R_L=18.862$ 
+{[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$V\cdot sec]$, 
+$T_m=543.2031$ {[}$N\cdot m${]}.
+
+ELAD, check the units above, some were given wrong, correct all the 
+later ones ???
+
+Our further simulations of this system suggest that this TICSG system 
+is globally asymptotically stable (GAS).
+
+ELAD, is this true ???
+
+ELAD, please write current, not Current.
+
+ELAD, in the second plot below, could you write $\omega$ in place
+      of w ???
+
+ELAD, in the third plot below, could you change scale so that we 
+see more of the currents ??? Increase the scale by about 2 times.
+
+\vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht] 
-\includegraphics[scale=0.65]{5KWTICSGSimulation}
-\caption{Simulations for TICSG system with 5KW SGs} \label{fig:5KWSGTICSGSimulation}
+\includegraphics[scale=0.65]{5KWTICSGSimulation} \vspace{-8mm}
+\caption{Simulations for TICSG system with 5KW SGs} 
+\label{fig:5KWSGTICSGSimulation}
 \end{figure}
-
-As shown in Figure \ref{fig:5KWSGTICSGSimulation}, Two SGs that starts form the arbitrary initial condition 
-$\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, \  400, \ 1.5708 \right]^\top$
-, synchronized to each other, and converged to some fixed $\left[z^e\ z^e \ \delta^e \right]^\top$. The parameters for this
-simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
-$R_{s}=0.152$ {[}$\Omega]$,
-$R_{L}=18.862$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
-{[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{Stable  but non global manifold $\mathscr{E}$}
-Note, that theorem \ref{theorem:TICSGSync} guarantee only local stability of $\mathscr{E}$. Figure \ref{fig:InROATICSGSimulation} shows an example which demonstrates that for initial state which is close enough to $\mathscr{E}$ ($\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ 40, \  -20, \  70, \   400, \ -20, \  65, \ 0 \right]^\top$), the SGs synchronized, and converged to some fixed $\left[z^e\ z^e \ \delta^e \right]^\top$. While Figure \ref{fig:OutROATICSGSimulation} shows that for the same system, with other initial state which is outside the region of attraction of  $\mathscr{E}$ ($\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, \  400, \ 1.5708 \right]^\top$), the SGs do not synchronized. The parameters for this
-simulation are $J=0.19$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
-$R_{s}=0.152$ {[}$\Omega]$,
-$R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.41$ {[}$mH${]}, $mi_{f}=1.05$
-{[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\subsection{A stable but non globally stable equilibrium}
+
+Note that Theorem \ref{theorem:TICSGSync} guarantee only local
+stability, with $\Emscr$ contained in the region of attraction. 
+Figure \ref{fig:InROATICSGSimulation} shows a simulation of a TICSG 
+system similar to the previous one, but with smaller $L_s$, for an
+initial state which is close enough to $\Emscr$, $\left[z_1(0)\ z_2(0)
+\ \delta(0)\right]^\top=\left[40,\ -20,\ 70,\ 400,\ -20,\ 65,\ 0
+\right]^\top$, such that the system stabilizes (in particular, the SGs
+synchronize). 
+
+Figure \ref{fig:OutROATICSGSimulation} shows another simulation for
+the same system, with the initial state $\left[z_1(0)\ z_2(0) \
+\delta(0) \right]^\top=\left[-400,\ -200,\ 10,\ 700,\ -20,\ 400,\
+1.5708\right]^\top$. \m The simu\-lation indicates that this initial
+state is outside the region of attraction, the SGs do not
+synchronize. The parameters for the two simulations in this subsection
+are $J=0.19$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
+{[}$\Omega]$, $R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.41$ {[}$mH${]},
+$mi_{f}=1.05$ {[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
+
+ELAD, corrections are needed above ???
+
+ELAD, why is J here slightly less than in the previous simulation ??? 
+Could they not be equal? It makes the reader suspect that we are doing
+something strange by playing with J.
+
+
+\vspace{-4mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
 \includegraphics[scale=0.65]{InROATICSGSimulation}
-
-\caption{Simulation for a TICSG system which satisfy the conditions of theorem \ref{theorem:TICSGSync}, with initial state inside the region of attraction of $\mathscr{E}$}
+\caption{Simulation for a TICSG system that satisfies the conditions
+of Theorem \ref{theorem:TICSGSync}, with initial state inside the 
+region of attraction of the stable equilibrium point.}
 \label{fig:InROATICSGSimulation}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
+\vspace{-4mm}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
 \includegraphics[scale=0.65]{OutROATICSGSimulation}
 
-\caption{Simulation for a TICSG system which satisfy the conditions of theorem \ref{theorem:TICSGSync}, with initial state outside the region of attraction of $\mathscr{E}$}
+\caption{Simulation for a TICSG system which satisfy the conditions of
+Theorem \ref{theorem:TICSGSync}, with initial state outside the region
+of attraction of the stable equilibrium point.}
 \label{fig:OutROATICSGSimulation}
 \end{figure}
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-%
-%%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-
-%%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-%
-%
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Non stable $\mathscr{E}$ manifold}
-%%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
 \includegraphics[scale=0.65]{NonStableTICSGSimulation}
 
-\caption{A simulation example showing non stable $\mathscr{E}$ manifold}
+\caption{A simulation example with unstable $\Emscr$ manifold}
 \label{fig:NonStableTICSGSimulation}
 \end{figure}
-Figure \ref{fig:NonStableTICSGSimulation}, shows an example where the  manifold $\mathscr{E}$ is not locally stable. Simulation of TICSG system starting form the  initial condition $\left[z_1(0)\ z_2(0) \ \delta(0) \right]^\top = \left[ -40, \  20, \  90, \   -40, \ 20, \  90.01, \ 0 \right]^\top$ do not synchronized. Note that condition \eqref{eq:eLinearizationLimit} of theorem \ref{theorem:TICSGSync} do not hold. The parameters for this
-simulation are $J=0.19$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
-$R_{s}=0.152$ {[}$\Omega]$,
-$R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.35$ {[}$mH${]}, $mi_{f}=1.05$
-{[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+
+Figure \ref{fig:NonStableTICSGSimulation}, shows an example where the
+manifold $\mathscr{E}$ is not locally stable. Simulation of TICSG
+system starting form the initial condition $\left[z_1(0)\ z_2(0) \
+\delta(0) \right]^\top = \left[ -40, \ 20, \ 90, \ -40, \ 20, \ 90.01,
+\ 0 \right]^\top$ do not synchronized. Note that condition
+\eqref{eq:eLinearizationLimit} of Theorem \ref{theorem:TICSGSync} does
+not hold. The parameters for this simulation are $J=0.19$
+{[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
+{[}$\Omega]$, $R_{L}=18.862$ {[}$\Omega]$, $L_{s}=0.35$ {[}$mH${]},
+$mi_{f}=1.05$ {[}$Vsec]$, $T_{m}=543.2031$ {[}$N/m${]}.
 %
 %%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
