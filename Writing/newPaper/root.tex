@@ -724,11 +724,11 @@ $$ \begin{aligned} \o_2 i_{q2} -& \o_1 i_{q1} \m=\m \half\left[
    +i_{q1})\right] = \frac{x_{w} e_q+e_w x_q}{2} \end{aligned}$$
 and the previous equation can be rewritten as:
 $$ \dot{e} \m=\m F(e,x) \m=\m \left[\nm\begin{array}{cc} \varLambda 
-   & 0\\ 0 & 1 \end{array}\nm\right]^{-1} \left[A_e\left(x,e\right) 
-   e + B_e \left(x,e\right) \right]$$
+   & 0\\ 0 & 1 \end{array}\nm\right]^{-1} \left[A_e\left(e,x\right) 
+   e + B_e \left(e,x\right) \right]$$
 where 
 $$ \begin{aligned}
-&A_e\left(x,e\right)  = \\ & \left[\begin{array}{cccc}
+&A_e\left(e,x\right)  = \\ & \left[\begin{array}{cccc}
 -R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
 -\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mi_f & 0\\
 0 & mi_{f} & -D_{p} & 0\\
@@ -738,7 +738,7 @@ $$ \begin{aligned}
 $$ 
 and
 $$
-B_e\left(x,e\right) = 
+B_e\left(e,x\right) = 
 \left[\begin{array}{c}
 -R_{L}\sin(\delta)x_{q}\\
 R_{L}\sin(\delta)x_{d}\\
@@ -777,14 +777,14 @@ and similarly \vspace{-3mm}
 $$ \o_1 i_{d1}-\o_2 i_{d2} \m=\m \frac{x_{w}x_{d}+e_{w}e_d}{2} \m.$$
 
 The $x$ dynamics can be rewritten as:
-$$ \dot{x}=G \left( x,e\right) \m=\m \Lambda^{-1}\left(A_x \left(x,e 
-   \right) x + B_x \left( x,e\right) \right),$$
+$$ \dot{x}=G \left( e,x\right) \m=\m \Lambda^{-1}\left(A_x \left(e,x 
+   \right) x + B_x \left( e,x\right) \right),$$
 where
-$$ A_x \left(x,e \right) = \left[\nm\nm\begin{array}{ccc}
+$$ A_x \left(e,x \right) = \left[\nm\nm\begin{array}{ccc}
    -R_{tot}-R_L\cos(\delta) & \frac{L_s}{2} x_\o & 0\\
    -\frac{L_s}{2} x_\o & -R_{tot}-R_L\cos(\delta) & -mi_f\\
    0 & mi_f & -D_p\end{array} \nm\right]$$
-$$ B_x \left(x,e \right)=\left[\begin{array}{c}
+$$ B_x \left(e,x \right)=\left[\begin{array}{c}
    \frac{L_{s}}{2}e_{\omega}e_{q}-R_{L}\sin(\delta)e_{q}\\
    -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
    2T_{m} \end{array}\right] \m.$$
