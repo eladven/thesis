@@ -154,6 +154,8 @@ fundamental mathematical models and stability analysis for the grid,
 see for instance \cite{DoBull:12}, \cite{PoDoBu:13}, \cite{CaTa:14},
 \cite{NaWe:14}, \cite{NaWe:15}, \cite{DePersiSchaft:16}.
 
+An important concept that facilitate the integration of the renewable energy resources into the electricity grid is the microgrid concept \cite{GreenProdanovic:07}. Microgrid is a localized group that gathers a combination of generation units, loads and energy storage elements. It can possess a single point of connection to the remaining electrical power system (grid connected mode) or as an independent isolated network (islanded mode) . It behaves as a single controllable generator or load from the  viewpoint of the remaining electrical system at the grid connected mode. In islanded mode, the frequency voltage and power are actively controlled within the microgrid  \cite{schiffer2016survey}.  Controlling the frequency and voltage regulation and balance the active/reactive load demand, is one of the main challenges of the microgrid system \cite{shafiee2016multi}.
+
 The {\em synchronous generator} (SG) is the main power source of the
 electricity grid. The mathematical model of a SG (see the earlier
 references and in addition \cite{Walker:94}, \cite{Fitzgerald:03},
@@ -202,8 +204,8 @@ an exponential rate to a unique stable equilibrium point in the state
 space $\Xmscr$, a 7-dimensional manifold.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure} % Figure 1: tree phase TICSG system
-\centering \includegraphics[width=16cm]{full_circuit_with_2_SGs}
+\begin{figure} [H]% Figure 1: tree phase TICSG system
+\centering \includegraphics[width=12cm]{full_circuit_with_2_SGs}
 \caption{The two identical coupled SGs (TICSG) model, showing the 
 stator windings, the line impedances $Z_l$ and the load resistors 
 $R_L$, but not showing the rotor windings or the prime movers.}
@@ -1768,6 +1770,9 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 \bibitem{GrSt2014} J.J.~Grainger and W.D.~Stevenson,
  {\em Power Systems Analysis}, \m McGraw-Hill, New York, 1994.
  
+\bibitem{GreenProdanovic:07}
+T.~Green and M.~Prodanovic, \m Control of inverter-based micro-grids,  {\em Electric Power Systems Research}, vol.~77, 2007, pp.~1204-1213.
+ 
 \bibitem{JayWeissBS:09}
 B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems with an $L^2$ input,  {\em IEEE Trans. Automatic Control}, 54 (2009), pp.~1723-1727.
 
@@ -1805,6 +1810,12 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
 
 \bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University. Available at  \url{http://texas.math.ttu.edu/~gilliam/ttu/ode_pde_pdf/Ch4.pdf} 
 } \m  1999.
+
+\bibitem{shafiee2016multi} Q.~Shafiee,  V.~Nasirian,  J.C.~Vasquez, J.M.~Guerrero and A.~Davoudi. \m A Multi-Functional Fully Distributed Control Framework for AC Microgrids, {\em 
+ IEEE Transactions on Smart Grid}, 2016.
+
+ \bibitem{schiffer2016survey} J.~Schiffer, D.~Zonetti, R.~Ortega, A.~Stankovi{\'c},  T.~Sezi  and J.~Raisch. \m A survey on modeling of microgrids-From fundamental physics to phasors and voltage sources, {\em 
+ Automatica}, vol.~74, 2016, pp.~135-150.
 
 \bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
