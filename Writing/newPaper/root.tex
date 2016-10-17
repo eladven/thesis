@@ -548,8 +548,12 @@ It easy to see that according to the seventh line above,
 $$\o_1^e \m=\m \o_2^e \m=\m \o^e \m.$$
 From the third and the sixth lines we have: 
 $$ \left\{ \begin{array}{c} m i_f i_{q1}^e-D_p\o_1^e+T_m=0\\
-   mi_f i_{q2}^e-D_p\o_2^e+T_m=0 \end{array}\right.\Longrightarrow
-   i_{q1}^{e}=i_{q2}^{e}=i_{q}^{e} \m.$$
+   mi_f i_{q2}^e-D_p\o_2^e+T_m=0 \end{array}\right.$$
+which implies
+\BEQ{UNESCO}
+    i_{q1}^{e} \m=\m i_{q2}^{e} \m=\m -\frac{T_m-D_p\o^e}{mi_f} 
+    \m=:\m i_q^e \m.
+\end{equation}
 From the first, second, fourth and fifth lines:
 $$ \begin{array}{c} -R_{tot}i_{d1}^e+\o^e L_s i_q^e-R_L\cos\delta^e
    i_{d2}^e+R_L\sin\delta^e i_q^e=0,\\ -\o^e L_s i_{d1}^e-R_{tot} 
@@ -588,13 +592,15 @@ $\sin\delta^{e}=0$, whence $\delta^{e}=0$ or $\delta^e=\pi$
 
 After substituting $\sin\delta^{e}=0$ and $\cos\delta^{e}=\pm 1$, the 
 matrices in the equation \eqref{eq:equilibrium_system} become
-$$ M \m=\m \left[\begin{array}{cc} -R_{tot} & \mp R_L\\ -\o^e L_s & 
-   0\\ \mp R_L & -R_{tot}\\ 0 & -\o^e L_s \end{array}\right] \m,$$
-$$ n \m=\m \left[\begin{array}{c} i_q^e\o^e L_s\\ -mi_f\o^e-i_q^e
-   \left(R_{tot} \pm R_L\right)\\ i_q^e\o^e L_s\\ -mi_f\o^e-i_q^e
-   \left(R_{tot} \pm R_L\right) \end{array}\right] \m.$$
-Now the only solution of \eqref{eq:equilibrium_system} is
-$i_{d1}^{e}=i_{d2}^{e}$.
+$$ M = \left[\nm\nm\begin{array}{cc} -R_{tot} & \mp R_L\\ -\o^e L_s 
+   & 0\\ \mp R_L & -R_{tot}\\ 0 & -\o^e L_s \end{array}\nm\nm\right],
+   \ n = \left[\nm\begin{array}{c} i_q^e\o^e L_s\\ -mi_f\o^e-
+   i_q^e\left(R_{tot} \pm R_L\right)\\ i_q^e\o^e L_s\\ -mi_f\o^e-
+   i_q^e\left(R_{tot} \pm R_L\right) \end{array}\nm\right] \m.$$
+From the first and third line above we see that $i_{d1}^e=i_{d2}^e$
+must hold. Now the proposition follows from \eqref{Mitzpe_Ramon}, 
+\eqref{UNESCO} and the facts that $i_{d1}^e=i_{d2}^e$ and
+either $\delta^e=0$ or $\delta^e=\pi$ (modulo $2\pi$). 
 \end{proof}
 
 \begin{proposition} \label{EqPointsProp2}
@@ -603,44 +609,40 @@ synchronization subspace $\Emscr$ from \eqref{eq:SyncSubspace}.
 \end{proposition}
 
 \begin{proof}
-For a point in $\Emscr$ we obtain from \eqref{eq:SyncSubspace} that
+We have to show that there exists $z^e=[i_d^e\ i_q^e\ \o^e]^\top\in
+\rline^3$ such that the point $[{z^e}^\top\ {z^e}^\top\ 0]^\top\in
+\Emscr$ is an equilibrium point of the TICSG system, i.e., it
+satisfies \eqref{eq:algebricEquation}. It is easy to see that this 
+happens if and only if
 \begin{equation} \label{eq:equilbrium_algebric_eq}
    \left[\nm\nm\begin{array}{ccc} -R_s-2R_L & \o^e L_s & 0\\
    -\o^e L_s & -R_s-2R_L & -m i_f\\ 0 & m i_f & -D_p
    \end{array} \nm\right] \left[\nm\begin{array}{c} i_d^e\\
    i_q^e\\ \o^e \end{array} \nm\right] = \left[\nm\nm 
-   \begin{array}{c} 0\\ 0\\ -T_m\end{array} \nm\nm\right]\nm\m,
+   \begin{array}{c} 0\\ 0\\ -T_m\end{array} \nm\nm\right]\nm\m.
 \end{equation}
-where $i_d^e,i_q^e,\o^e$ are the coordinates of $z_1^e=z_2^e=z^e$.
 From \eqref{eq:equilbrium_algebric_eq} we derive a scalar equation to
-determine the equilibrium velocity $\omega^{e}$. From the last line of
-the equation we have
-\begin{equation} \label{eq:eq_0_first_eq}
-   T_m-D_p\o^e \m=\m -mi_f i_q^e 
-\end{equation}
-The left side of this equation is the mechanical torque acting on each
-generator at equilibrium.
+determine the equilibrium velocity $\o^e$.
 
 The first line of \eqref{eq:equilbrium_algebric_eq}
-is $-\left(R_{tot}+R_L\right)i_d^e+\o^e L_{tot}i_q^e=0$, \quad hence
+is $-\left(R_{tot}+R_L\right)i_d^e+\o^e L_{tot}i_q^e=0$, \ whence
+\vspace{-1mm}
 $$i_d^e \m=\m \frac{\o^e L_s}{R_{tot}+R_L} i_q^e \m.$$
-From \eqref{eq:eq_0_first_eq} we have
-$$i_q^e \m=\m \frac{T_m-D_p\o^e}{-mi_f} \m.$$
-Combining the last two formulas,
-$$ i_{d}^{e} \m=\m -\frac{\o^e L_s}{R_{tot}+R_L} \cdot \frac{T_m-D_p
-   \o^e}{mi_f} \m.$$
+Combining this with \eqref{UNESCO}, we get
+\BEQ{Mosul}
+   i_{d}^{e} \m=\m -\frac{\o^e L_s}{R_{tot}+R_L} \cdot \frac{T_m-D_p
+   \o^e}{mi_f} \m.
+\end{equation}
 
-The second line of the matrix equation on \eqref{eq:eq_0_first_eq} is
+The second line of the matrix equation 
+\eqref{eq:equilbrium_algebric_eq} is
 $$ \o^{e}L_s i_d^e + \left(R_{tot} + R_L\right) i_q^e + mi_f\o^e 
    \m=\m 0 \m.$$
-Substituting in this equation the expressions for $i_q^e$ and
-$i_d^e$ yields the following cubic equation in $\o^e$, where
-we denote $R_T=R_L+R_{tot}$:
-\begin{equation}
- D_p L_s^2\o^{e3}-T_m L_s^2 \o^{e2} +\left(D_p R_T^2+m^2 i_f^2 
-   R_T\right) \o^e - T_m R_T^2 \m=\m 0 \m.
-\label{eq:cubicEqation}   
-\end{equation}
+Substituting in this equation the expressions for $i_q^e$ 
+\eqref{UNESCO} and $i_d^e$ \eqref{Mosul} yields the following cubic
+equation in $\o^e$, where we denote $R_T=R_L+R_{tot}$:
+$$ D_p L_s^2\o^{e3}-T_m L_s^2 \o^{e2} +\left(D_p R_T^2+m^2 i_f^2 
+   R_T\right) \o^e - T_m R_T^2 \m=\m 0 \m.$$
 
 Let us denote the polynomial of order 3 appearing above by $p$. 
 Clearly \vspace{-2mm}
@@ -675,39 +677,39 @@ hence it is the electric power leaving one generator.
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{Synchronization} \label{sec5} % Section 5
 
-In this section, we show that the synchronization subspace
-$\mathscr{E}$ from \eqref{eq:SyncSubspace} is invariant and locally
-exponentially stable for the TICSG model \eqref{eq:TICSGDynamics}.  We
-start by rewriting the TICSG model in new coordinates. Then, we prove
-that under some conditions, the TICSG is globally exponentially stable
-in the subspce $\mathscr{E}$. Finally, we use the main result from
-\cite{AndrieuJayawardhanaPraly}, to show the stability of the system
-near the synchronization subspace.
+In this section, we show that the synchronization subspace $\Emscr$ 
+from \eqref{eq:SyncSubspace} is invariant and any trajectory that 
+starts inside $\Emscr$ converges exponentially to a unique stable 
+equilibrium point within $\Emscr$. Afterwards, we show that $\Emscr$
+is locally exponentially attractive for the TICSG model 
+\eqref{eq:TICSGDynamics}, which means that any state trajectory that 
+starts sufficiently close to $\Emscr$ converges to $\Emscr$. 
 
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{Modeling the synchronization problem:} 
-\label{sec:SyncProbModel}
+We also want to show later ??? WITH BAYU's help ??? that the 
+facts just stated imply that the region of attraction of the stable 
+equilibrium in $\Emscr$ contains a neighborhood of positive thickness
+of $\Emscr$.
 
-The TICSG system has the following structure:
-$$ \tilde{\Lambda}\frac{d}{dt}\left[z_1\ z_2\ \delta\right]^{\top}
+The TICSG system has the following structure: \vspace{-1mm}
+$$ \tilde{\L}\m\frac{\dd}{\dd t}\left[z_1\ z_2\ \delta\right]^{\top}
    \m=\m f\left( \left[z_1\ z_2\ \delta\right]^{\top} \right) \m,$$
-where $\tilde{\Lambda}={\rm diag}\left(\Lambda,\Lambda,1\right)$.
-In order to show synchronization, it is convenient to introduce new 
-state variables $e\in\rline^4$ and $x\in\rline^3$ by
+where $\tilde{\L}={\rm diag}\left(\L,\L,1\right)$. In order to show 
+synchronization, it is convenient to introduce new 
+state variables $e\in\rline^4$ and $x\in\rline^3$ by \vspace{-2mm}
 $$ e \m=\m \left[ \begin{array}{c} z_2 - z_1\\ \delta \end{array} 
    \right] \m=\m \left[e_d\ e_q\ e_\o\ \delta \right]^\top$$
-and 
-$$x =z_1+z_2 = \left[ x_d\ x_q\ x_\omega\right]^\top.$$  
+and \vspace{-2mm}
+$$x \m=\m z_1+z_2 \m=\m \left[ x_d\ x_q\ x_\o\right]^\top .$$  
 
 Then the TICSG model \eqref{eq:TICSGDynamics} can be rewritten as
-
-\begin{equation}
-\dot{e}=F(e,x) , \quad \dot{x}=G(e,x),\label{eq:sync_sestem}
+\begin{equation} \label{eq:sync_sestem}
+   \dot{e} \m=\m F(e,x) \m,\qquad \dot{x} \m=\m G(e,x) \m,
 \end{equation}
-for some functions $F$ and $G$. From \eqref{eq:TICSGDynamics},
-$$ \begin{aligned} \Lambda(\dot{z}_2-\dot{z}_1) &= \Amscr(\o_2)
-   z_2+T_m e_3-\Bmscr(-\delta)z_1\\ &-\left(\Amscr(\o_1)z_1+T_m 
-   e_3-\Bmscr(\delta)z_2\right) \end{aligned} \m.$$
+for some smooth functions $F$ and $G$. From 
+\eqref{eq:TICSGDynamics}, 
+$$ \begin{aligned} \L(\dot{z}_2-\dot{z}_1) &=\m \Amscr(\o_2) z_2 + 
+   T_m e_3-\Bmscr(-\delta)z_1\\ &\ \ -\left(\Amscr(\o_1)z_1+T_m 
+   e_3-\Bmscr(\delta)z_2\right) \m.\end{aligned}$$
 The detailed form of the equation $\dot e=F(e,x)$ is
 $$ \begin{aligned} & \left[\begin{array}{cc} \varLambda & 0\\ 0 & 
    1 \end{array}\right] \frac{\dd}{\dd t}\left[\begin{array}{c}
@@ -729,37 +731,26 @@ $$ \dot{e} \m=\m F(e,x) \m=\m \left[\nm\begin{array}{cc} \varLambda
    & 0\\ 0 & 1 \end{array}\nm\right]^{-1} \left[A_e\left(e,x\right) 
    e + B_e \left(e,x\right) \right]$$
 where 
-$$ \begin{aligned}
-&A_e\left(e,x\right)  = \\ & \left[\begin{array}{cccc}
--R_{tot}+R_{L}\cos\delta & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} & 0\\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L}\cos\delta & -\frac{L_{s}}{2}x_{d}-mi_f & 0\\
-0 & mi_{f} & -D_{p} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]
-\end{aligned}
-$$ 
+$$ A_e\left(e,x\right) \m=\qquad\m$$
+$$ \left[\nm\begin{array}{cccc}
+   -R_{tot}+R_L\cos\delta & \frac{L_s}{2} x_{\o} & \frac{L_s}{2}
+   x_q & 0\\ -\frac{L_s}{2} x_{\o} & -R_{tot} + R_L\cos\delta & 
+   -\frac{L_s}{2} x_d - mi_f & 0\\ 0 & mi_f & -D_p & 0\\
+   0 & 0 & 1 & 0 \end{array} \nm\right]$$ 
 and
-$$
-B_e\left(e,x\right) = 
-\left[\begin{array}{c}
--R_{L}\sin(\delta)x_{q}\\
-R_{L}\sin(\delta)x_{d}\\
-0\\
-0
-\end{array}\right].
-$$
-
-Note that the synchronization subspace $\mathscr{E}$ from \eqref{eq:SyncSubspace}, in the new coordinates, becomes $\mathscr{E}=\left\{\left[ \begin{array}{c}
-x \\
-e
-\end{array}\right] \in\mathbb{R}^{7}|e=0 \right\}$.
-We note that $F(0,x)=0$, which shows that 
-$\mathscr{E} $ is invariant.
+$$ B_e\left(e,x\right) \m=\m \left[\begin{array}{c} -R_L\sin(\delta)
+   x_q\\ R_L\sin(\delta) x_d\\ 0\\ 0 \end{array}\right].$$
+Note that the synchronization subspace $\Emscr$ from 
+\eqref{eq:SyncSubspace}, in the new coordinates, becomes
+$\Emscr=\left\{\left[\nm\begin{array}{c}x\\ e\end{array}\nm\right] 
+\in\rline^7|\ e=0 \right\}$. We note that $F(0,x)=0$, which shows 
+that $\Emscr$ is invariant.
 
 For the $x$ dynamics we have
 $$ \begin{aligned} \Lambda\dot{x} \m=\m & \Amscr(\o_1) z_1 + T_m e_3
    -\Bmscr(\delta) z_2\\ +& \Amscr(\o_2) z_2 + T_m e_3-\Bmscr
    (-\delta) z_1, \end{aligned}$$
+\vspace{-2mm}
 $$ \begin{aligned} &\Lambda\frac{\dd}{\dd t}\left[\begin{array}{c}
    x_{d}\\ x_{q}\\ x_{\o} \end{array}\right] = \\
    & \left[\begin{array}{c} - R_{tot}(i_{d1}+i_{d2})+L_s(\o_1 i_{q1}
@@ -791,45 +782,36 @@ $$ B_x \left(e,x \right)=\left[\begin{array}{c}
    -\frac{L_{s}}{2}e_{\omega}e_{d}-R_{L}\sin(\delta)e_{d}\\
    2T_{m} \end{array}\right] \m.$$
 
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\subsection{Global exponential stability of the TICSG system on the
-synchronization subspace }
+\begin{proposition} \label{megyek_Sde_Bokerbe}
+The system $\dot x=G(0,x)$, with state space $\rline^3$, is 
+globally exponentially stable if 
+\begin{equation} \label{eq:condition_for_stable_G}
+   16 R_T D_p \m>\m L_s^2 \left( \left(x_q^e\right)^2+\left( x_d^e
+   \right)^2\right) \m.
+\end{equation}
+\end{proposition}
 
-In this subsection, we provide sufficient conditions for the
-equilibrium point which located on the synchronization subspace
-$\mathscr{E}=\left\{ \left[ e\ x \right]^\top\in\mathbb{R}^{7}|e=0
-\right\}$ to be a globally exponential stable equilibrium point, for
-trajectories with initial condition that lies in $\mathscr{E}$.
-(Recall that $\mathscr{E}$ is an invariant subspace.)
-
-We denote the state variables of this system by $\tilde{x}=
-\left[x_d\ x_q\ x_\o\right]^\top$. The dynamics of these trajectories
-is (denoted as $\tilde{G}$):
-$$ \dot{\tilde{x}} \m=\m \tilde{G}(\tilde{x}) = G(0,\tilde{x}) =
-   \Lambda^{-1} A\left( \tilde{x}_\omega \right) \tilde{x}+
-   \Lambda^{-1} B \m,$$
+\medskip
+\begin{proof}
+We denote the state variables of this system by $x=\left[x_d\ x_q\ 
+x_\o\right]^\top$. We denote $\tilde G(x)=G(0,x)$. Then
+$$ \dot{x} \m=\m \tilde{G}(x) \m=\m \L^{-1} A\left( x_\o \right)x +
+   \L^{-1} B \m,$$
 where we denote
-$$ A\left( \tilde{x}_\o \right) \m=\m A_x\left(0, \tilde{x}_\o
-   \right) \m=\m \left[\begin{array}{ccc} - R_T & \frac{L_s}{2}
-   \tilde{x}_\o & 0\\ -\frac{L_{s}}{2}\tilde{x}_\o & -R_T & -mi_f\\
-   0 & mi_{f} & -D_{p} \end{array}\right]$$
+$$ A\left( x_\o \right) \m=\m A_x\left(0,x\right) \m=\m \left[\nm
+   \begin{array}{ccc} - R_T & \frac{L_s}{2} x_\o & 0\\ -\frac{L_s}{2}
+   x_\o & -R_T & -mi_f\\ 0 & mi_f & -D_p \end{array}\right]$$
 and
-$$ B \m=\m B_x\left(0, \tilde{x}_\o \right) \m=\m \left[\begin{array}
-   {c} 0\\ 0\\ 2T_m \end{array}\right].$$
-This system describes the two SGs with perfect synchronization between
-each other.
+$$ B \m=\m B_x\left(0,x \right) \m=\m \left[\begin{array}{c} 
+   0\\ 0\\ 2T_m \end{array}\right].$$
 
-Because the TICSG system has at least one equilibrium point on
-$\Emscr$, it means that $\tilde{G}(\tilde{x})$ has at least one
-equilibrium point $\tilde{x}^{e}=\left[\tilde{x}_{d}^{e}\
-\tilde{x}_{q}^{e}\ \tilde{x}_{\omega}^{e} \right]^\top = 2z^e$ (recall
-that by definition $x = z_1 + z_2$). We have
-\begin{equation}
-\tilde{G}(\tilde{x}^{e})=0\rightarrow\varLambda^{-1}A(\tilde{x}_{\omega}^{e})\tilde{x}^{e}+\varLambda^{-1}\left[\begin{array}{c}
-0\\
-0\\
-2T_{m}
-\end{array}\right]=0\label{eq:G_at_equilibrium}
+Because the TICSG system has at least one equilibrium point in
+$\Emscr$ (see Proposition \ref{EqPointsProp2}), using the new
+coordinates there exists at least one $x^e=\left[x_d^e\ x_q^e\ 
+x_\o^e\right]^\top\in\rline^3$ such that $\tilde{G}(x^e)=0$, 
+in other words, 
+\begin{equation} \label{eq:G_at_equilibrium}
+   A(x_\o^e) x^e + B \m=\m 0 \m.
 \end{equation}
 
 In order to shift the equilibrium point into the origin, we introduce the new  coordinates
@@ -838,49 +820,39 @@ $$
 $$
 
 A natural Lyapunov function candidate for this system is 
-$$
-V(\hat{x})\coloneqq\frac{1}{2}L_{s}\left(\hat{x}_{d}^{2}+\hat{x}_{q}^{2}\right)+\frac{1}{2}J\tilde{\omega}^{2}=\frac{1}{2}\hat{x}^{T}\varLambda\hat{x}.
-$$
-
+$$ V(\hat{x}) \m\coloneqq\m \half L_s\left(\hat{x}_d^2+\hat{x}_q^2
+   \right)+\half J\hat{\o}^2 \m=\m \half\hat{x}^T\L\hat{x} \m.$$
 It is easy to see that:
-$$
-\frac{1}{2} min\left\{L_{s},J\right\}|\hat{x}|{}^{2}\leq V(\hat{x})\leq \frac{1}{2} max\left\{L_{s},J\right\}|\hat{x}|{}^{2}
-$$
-
-$$
-\left|\frac{\partial V}{\partial\hat{x}}\right|=\left|\varLambda\hat{x}\right|\leq max\left\{L_{s},J\right\}\left|\hat{x}\right|
-$$
+$$ \half \min\left\{L_{s},J\right\}|\hat{x}|{}^{2}\leq V(\hat{x})
+   \m\leq\m \frac{1}{2} \max\left\{L_{s},J\right\}|\hat{x}\m
+   |^{2} \m,$$
+$$ \left|\frac{\partial V}{\partial\hat{x}}\right| \m=\m \left|
+   \L\hat{x}\right| \m\leq\m max\left\{L_s,J\right\}\left|
+   \hat{x}\right| \m.$$
 
 We calculate $\dot{V}(\hat{x})$ in order to show that under some
 conditions, $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$, for some
-$\alpha$. This proves that $\tilde{G}(\tilde{x})$ is globally
-exponentially stable (see for instance Theorum 5.17, p.~195 in
-\cite{Sastry}).
-
-$$
-\dot{V}(\hat{x})=\left(\frac{\partial V}{\partial\hat{x}}\right)^{T}\dot{\hat{x}}
-$$
-
-\begin{equation}
-\dot{\hat{x}}=\dot{\tilde{x}}=\varLambda^{-1}A(\tilde{x}_\omega)\tilde{x}+\varLambda^{-1}\left[\begin{array}{c}
-0\\
-0\\
-2T_{m}
-\end{array}\right]\label{eq:x_hat_dynamic}
+$\alpha$. This proves that $\dot x=\tilde{G}(x)$ is globally
+exponentially stable (see for instance Theorem 5.17, p.~195 in
+\cite{Sastry}). We have
+$$ \dot{V}(\hat{x}) \m=\m \left(\frac{\partial V}{\partial
+   \hat{x}}\right)^{T}\dot{\hat{x}} \m,$$
+\begin{equation} \label{eq:x_hat_dynamic}
+   \dot{\hat{x}} \m=\m \dot{x} \m=\m \L^{-1} A(x_\o) x+\L^{-1}
+   \left[\begin{array}{c} 0\\ 0\\ 2T_m \end{array}\right] \m.
 \end{equation}
  
-We rewrite  $A(\tilde{x}_{\omega})$ as a sum of a constant symmetric
-matrix, constant skew symmetric matrix and a skew symmetric matrix
-which depends on $\hat{x}_{\omega}$:
-$$ 
-A(\tilde{x}_{\omega})\tilde{x}=\left[R+J(\tilde{x}_{\omega}^{e})+\Delta(\hat{x}_{\omega})\right](\hat{x}+\tilde{x}^{e}) \m,
-$$
+We rewrite $A(x_\o)$ as a sum of a constant symmetric matrix, constant
+skew symmetric matrix and a skew symmetric matrix which depends on
+$\hat{x}_\o$:
+$$ A(x_\o)x \m=\m \left[R+J(x_\o^e)+\Delta(\hat{x}_\o)\right]
+   (\hat{x}+x^e) \m,$$
 where
 $$ R \m=\m \left[\begin{array}{ccc} -R_T & 0 & 0\\
    0 & -R_T & 0\\ 0 & 0 & -D_{p}
 \end{array}\right] \m,$$
-$$ J \m=\m \left[\begin{array}{ccc} 0 & \frac{L_s}{2}\tilde{\o}^e
-   & 0\\ -\frac{L_s}{2}\tilde{\o}^e & 0 & -mi_f\\ 0 & mi_f & 0
+$$ J \m=\m \left[\begin{array}{ccc} 0 & \frac{L_s}{2}\o^e
+   & 0\\ -\frac{L_s}{2}\o^e & 0 & -mi_f\\ 0 & mi_f & 0
    \end{array}\right] \m,$$
 $$ \Delta(\hat{x}_\o)\coloneqq\left[\begin{array}{ccc}
    0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
@@ -889,25 +861,25 @@ $$ \Delta(\hat{x}_\o)\coloneqq\left[\begin{array}{ccc}
 Combining the previous equation with \eqref{eq:G_at_equilibrium} and
 \eqref{eq:x_hat_dynamic} gives
 $$ \dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\o})
-   \right]\hat{x}+\Delta(\hat{\o})\tilde{x}^{e}\right) \m.$$
+   \right]\hat{x}+\Delta(\hat{\o})x^e\right) \m.$$
 
 We calculate the derivative of $V$ over time: 
 $$ \dot{V}(\hat{x}) \m=\m \left(\L\hat{x}\right)^T\dot{\hat{x}}
    \m=\m \hat{x}^T\L^T\L^{-1}\left( \left[R+J+\Delta(\hat{x}_\o)
-   \right]\hat{x}+\Delta(\hat{x}_{\omega})\tilde{x}^{e}\right).$$
+   \right]\hat{x}+\Delta(\hat{x}_\o)x^e\right).$$
 Because $\L$ is a diagonal matrix, $\L^T\L^{-1}=I$. Thus, 
 $$ \dot{V}(\hat{x}) \m=\m \hat{x}^{T}R\hat{x}+\hat{x}^T J\hat{x}
    +\hat{x}^T\Delta(\hat{x}_\o)\hat{x}+\hat{x}^T\Delta(\hat{x}_\o)
-   \tilde{x}^e \m.$$
-Because $J(\tilde{\o}^e)$ and $\Delta(\hat{\o})$ are 
-skew-symmetric matrices, $\hat{x}^{T}J(\tilde{\o}^e)\hat{x}=0$
-and $\hat{x}^T\Delta(\hat{\o})\hat{x}=0$. We have
-$$ \begin{aligned} \hat{x}^{T}\Delta(\hat{x}_\o)\tilde{x}^{e} 
-   \m=\m &\left[\begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o
+   x^e \m.$$
+Because $J(\o^e)$ and $\Delta(\hat{\o})$ are skew-symmetric 
+matrices, $\hat{x}^{T}J(\o^e)\hat{x}=0$ and $\hat{x}^T\Delta
+(\hat{\o})\hat{x}=0$. We have
+$$ \begin{aligned} \hat{x}^{T}\Delta(\hat{x}_\o)x^e \m=\m &\left[
+   \begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o
    \end{array}\right]^T\left[\begin{array}{ccc} 0 & \frac{L_s}{2}
    \hat{x}_\o & 0\\ -\frac{L_s}{2}\hat{x}_\o & 0 & 0\\ 0 & 0 & 0
    \end{array}\right]\left[\begin{array}{c} x_d^e\\ x_q^e\\
-   \tilde{x}_\o^e \end{array}\right]\\ =& \left[\begin{array}{c}
+   x_\o^e \end{array}\right]\\ =& \left[\begin{array}{c}
    \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o \end{array}\right]^T\left[\nm
    \begin{array}{ccc} 0 & 0 & \frac{L_s}{4}x_q^e\\ 0 & 0 & 
    -\frac{L_s}{4}x_d^e\\ \frac{L_s}{4}x_q^e & -\frac{L_s}{4}x_d^e
@@ -928,20 +900,18 @@ Calculating the eigenvalues of $P+R$ gives \m $\l_{1}=-R_T<0$,
 $$ \l_{2,3} \m=\m -\frac{R_T+D_p}{2} \pm\frac{\sqrt{4\left(R_T-D_p
    \right)^2+L_s^2\left(\left(x_q^e\right)^2 + \left(x_d^e
    \right)^2\right)}}{4} \m.$$
-All the eigenvalues are real. The condition which guarantees that
-all the three eigenvalues are negative is:
-\begin{equation} \label{eq:condition_for_stable_G}
-   16 R_T D_p \m>\m L_s^2 \left( \left(x_q^e\right)^2+\left( x_d^e
-   \right)^2\right) \m.
-\end{equation}
-When condition \eqref{eq:condition_for_stable_G} holds, then
+All the eigenvalues are real. It is easy to see that the condition 
+which guarantees that all the three eigenvalues are negative is
+\eqref{eq:condition_for_stable_G}. When this condition holds, then
 $\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|
 \hat{x}|^{2},\quad i\in\{1,2,3\}$, and this system is globally
-exponentially stable. Note that because it proves global stability in
-$\mathscr{E}$, it means that $\tilde{x}^{e}$ is the only equilibrium
-point of $\dot{\tilde{x}}=\tilde{G}(\tilde{x})$, hence the TICSG
-system has exactly one equilibrium point on the the synchronization
-subspace $\Emscr$.
+exponentially stable. 
+\end{proof}
+
+Note that because it proves global stability in $\Emscr$, it means
+that $x^e$ is the only equilibrium point of $\dot{x}=\tilde{G}(x)$,
+hence the TICSG system has exactly one equilibrium point on the the
+synchronization subspace $\Emscr$.
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \subsection{Synchronization theorem:}
@@ -1147,8 +1117,7 @@ $$ \quad \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right|
    \m\leq\m c, \quad \left| \frac{\partial^2 F}{\partial x \partial e}
    (e,x)\right| \m\leq\m c,\quad\left| \frac{\partial G}{\partial e}
    (e,x) \right| \m\leq\m c.$$
-As we noted in Subsection \ref{sec:SyncProbModel}, $\Emscr$ is an 
-invariant manifold.
+As we noted in Section \ref{sec5}, $\Emscr$ is an invariant manifold.
 
 Assuming that condition \ref{condition4} holds, then theorem
 \ref{theorem:TICSGSync} implies that the TICSG system has the TULES-NL
