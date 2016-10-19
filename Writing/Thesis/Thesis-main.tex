@@ -188,13 +188,13 @@ The most common reduced model, which is known as the classical model,
 is a second order non linear model. The reference
 \cite{DePersiSchaft:16} argues that this model is not realistic enough
 and that a more complicated (but still reduced) model, which they call
-{\em improved swing equation} (ISE), should be used. In this paper we
+{\em improved swing equation} (ISE), should be used. In this work we
 show that even the model proposed in \cite{DePersiSchaft:16} is not
 reliable for stability analysis, because it can't predict an unstable
 behavior that is predicted by a more faithful model of the same
 system.
 
-n the second part of this work, we study the configuration of a two identical SGs
+In the second part of this work, we study the configuration of a two identical SGs
 connected to a resistive load, as shown in Figure
 \ref{fig:TICSGThreePhase}. These generators are driven by identical
 prime movers, that have frequency droop control. Our main result is
@@ -794,7 +794,10 @@ The equilibrium points are the solutions of the algebraic equation
    \begin{array}{c} e_{3}\\ e_{3}\\ 0 \end{array}\nm\right] = 0.
 \end{equation}
 It easy to see that according to the seventh line above,
-$$\o_1^e \m=\m \o_2^e \m=\m \o^e \m.$$
+\begin{equation} 
+\o_1^e \m=\m \o_2^e \m=\m \o^e \m.
+\label{Mitzpe_Ramon}
+\end{equation}
 From the third and the sixth lines we have: 
 $$ \left\{ \begin{array}{c} m i_f i_{q1}^e-D_p\o_1^e+T_m=0\\
    mi_f i_{q2}^e-D_p\o_2^e+T_m=0 \end{array}\right.$$
@@ -830,7 +833,7 @@ $\sin\delta^e=0$. We use the Rouch\'e Capelli theorem: Any liner
 equations system with the form $Mx=n$ has a solution if and only if
 rank$\left[M|n\right]=$rank$\left[M\right]$. If we would have
 $\sin\delta^e\neq 0$, then a simple calculation shows that 
-rank$\left[M|n\right]=3$ must hold.
+rank$\left[M|n\right]=3$ must hold (see the proof at Appendix \ref{chap:AppendixProof}).
 
 Obviously, rank$\left[M\right]\leq 2$. The Rouch\'e Capelli theorem
 implies that under the previous assumption the linear equations system
@@ -1059,7 +1062,7 @@ As shown in Figure \ref{fig:InfBusOne5KWSG}, simulations indicates
 that for the 5KW SG, the behavior of the FOM and the ISE is almost the
 same. Although the currents for the ISE have less ripple than for
 the FOM, both models converge at the same rate with the same
-oscillations to the same equilibrium point. (The parameters for this simulation can be found at the appendix,
+oscillations to the same equilibrium point. (The parameters for this simulation can be found in the appendix,
 table \ref{table:5KWSG}). 
 
 \subsection{1MW SG}
@@ -1077,7 +1080,7 @@ As shown in Figure \ref{fig:InfBusOne1MWSG}, simulations show that for
 the 1MW SG, the behavior of the FOM and the ISE are still very
 similar. Although the FOM currents are much more rippled than the ISE
 currents, both models converge at the same rate with the same
-oscillations to the same equilibrium point. (The parameters for this simulation can be found at the appendix,
+oscillations to the same equilibrium point. (The parameters for this simulation can be found in the appendix,
 table \ref{table:1MWSG}). 
 
 \subsection{Non stable behavior of the reduced model}
@@ -1093,7 +1096,7 @@ table \ref{table:1MWSG}).
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations show
-that for other parameters set (The parameters for this simulation can be found at the appendix,
+that for other parameters set (The parameters for this simulation can be found in the appendix,
 table \ref{table:DifferentBehaviorParamsSetSG}).  the behavior of the FOM and the ISE is significantly
 different. The FOM is locally stable, since the eigenvalues of the
 Jacobian around the equilibrium point are $-11.41\pm 376.9i,\ 
@@ -1112,7 +1115,7 @@ full and the reduced models, for a 5 KW SG.}
 \end{figure}
 
 As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
-simulations show that for some parameters set (The parameters for this simulation can be found at the appendix,
+simulations show that for some parameters set (The parameters for this simulation can be found in the appendix,
 table \ref{table:DifferentRegionOfAttraction}).  the initial condition of this simulation
 is within the region of attraction of the reduced model, but outside
 the region of attraction of the FOM. This causes the FOM to diverge
@@ -1257,7 +1260,7 @@ in other words,
 
 In order to shift the equilibrium point into the origin, we introduce the new  coordinates
 $$
-\hat{x}\coloneqq\tilde{x}-\tilde{x}^{e}
+\hat{x}\coloneqq x-x^{e}
 $$
 
 A natural Lyapunov function candidate for this system is 
@@ -1625,7 +1628,7 @@ As shown in Figure \ref{fig:5KWSGTICSGSimulation}, the TICSG system
 that starts form the initial condition $\left[z_1(0)\ z_2(0) \ 
 \delta(0) \right]^\top = \left[ -400, \  -200,  \  10, \   700, \ -20, 
 \  400, \ 1.5708 \right]^\top$ synchronizes and converges to the 
-equilibrium point $\left[z^e\ z^e \ \delta^e \right]^\top$. (The parameters for this simulations can be found at the appendix,
+equilibrium point $\left[z^e\ z^e \ \delta^e \right]^\top$. (The parameters for these simulations can be found in the appendix,
 table \ref{table:5KWSG}).
 
 Our further simulations of this system suggest that this TICSG system 
@@ -1658,7 +1661,7 @@ the same system, with the initial state $\left[z_1(0)\ z_2(0) \
 1.5708\right]^\top$. \m The simu\-lation indicates that this initial
 state is outside the region of attraction, the SGs do not
 synchronize. The parameters for the two simulations in this subsection
-are (he parameters for the two simulations in this subsection can be found at the appendix,
+are (The parameters for the two simulations in this subsection can be found in the appendix,
 table \ref{table:TICSGWithLocalE}). 
 
 \vspace{-4mm}
@@ -1702,7 +1705,7 @@ system starting form the initial condition $\left[z_1(0)\ z_2(0) \
 \delta(0) \right]^\top = \left[ -40, \ 20, \ 90, \ -40, \ 20, \ 90.01,
 \ 0 \right]^\top$ do not synchronized. Note that condition
 \eqref{eq:eLinearizationLimit} of Theorem \ref{theorem:TICSGSync} does
-not hold. (The parameters for this simulations can be found at the appendix,
+not hold. (The parameters for these simulations can be found in the appendix,
 table \ref{table:TICSGWithNonStableE}).
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
