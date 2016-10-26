@@ -93,7 +93,12 @@
 \newcommand{\Amscr}  {{\mathcal{A}}}
 \newcommand{\Bmscr}  {{\mathcal{B}}}
 \newcommand{\Emscr}  {{\mathcal{E}}}
+\newcommand{\Kmscr}  {{\mathcal{K}}}
+\newcommand{\Mmscr}  {{\mathcal{M}}}
+\newcommand{\Nmscr}  {{\mathcal{N}}}
 \newcommand{\Xmscr}  {{\mathcal{X}}}
+\newcommand{\FORALL} {{\hbox{$\hskip 11mm \forall \;$}}}
+\newcommand{\rarrow} {{\rightarrow}}
 
 \makeatother
 
@@ -154,7 +159,19 @@ fundamental mathematical models and stability analysis for the grid,
 see for instance \cite{DoBull:12}, \cite{PoDoBu:13}, \cite{CaTa:14},
 \cite{NaWe:14}, \cite{NaWe:15}, \cite{DePersiSchaft:16}.
 
-An important concept that facilitate the integration of the renewable energy resources into the electricity grid is the microgrid concept \cite{GreenProdanovic:07}. Microgrid is a localized group that gathers a combination of generation units, loads and energy storage elements. It can possess a single point of connection to the remaining electrical power system (grid connected mode) or as an independent isolated network (islanded mode) . It behaves as a single controllable generator or load from the  viewpoint of the remaining electrical system at the grid connected mode. In islanded mode, the frequency voltage and power are actively controlled within the microgrid  \cite{schiffer2016survey}.  Controlling the frequency and voltage regulation and balance the active/reactive load demand, is one of the main challenges of the microgrid system \cite{shafiee2016multi}.
+An important concept that facilitate the integration of the renewable
+energy resources into the electricity grid is the microgrid concept
+\cite{GreenProdanovic:07,Schiffer_2016_survey}. A microgrid is a
+localized group comprised of generation units, loads and energy
+storage elements. It can possess a single point of connection to the
+remaining electrical power system (grid connected mode) or work as an
+independent isolated network (islanded mode). It behaves as a single
+controllable generator or load from the viewpoint of the remaining
+electrical system in grid connected mode. In islanded mode, the
+frequency, voltage and power sharing are actively controlled within
+the microgrid. Controlling the frequency and voltage and balance the
+active/reactive load demand, is one of the main challenges of the
+microgrid system \cite{Shafiee_2016,Zhong:13}.
 
 The {\em synchronous generator} (SG) is the main power source of the
 electricity grid. The mathematical model of a SG (see the earlier
@@ -201,7 +218,11 @@ prime movers, that have frequency droop control. Our main result is
 that if the difference between the initial states of the SGs is
 sufficiently small, then the state of the entire system converges at
 an exponential rate to a unique stable equilibrium point in the state
-space $\Xmscr$, a 7-dimensional manifold.
+space $\Xmscr$, a 7-dimensional manifold. In the manifold $\Xmscr$,
+the angle difference $\delta$ between the generators is counted modulo 
+$2\pi$. In some arguments we use $\rline^7$ as a state space, and then 
+$\delta$ can take any real value.
+
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure} [H]% Figure 1: tree phase TICSG system
@@ -215,9 +236,23 @@ $R_L$, but not showing the rotor windings or the prime movers.}
 
 
 This work has the following structure: in chapter   \ref{cha:microgrid_dynamics} third order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
-discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system. The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. Stability analysis for the TICSG model (in particular, 
-results about the region of attraction of the stable equilibrium 
-point) is in Chapter \ref{cha:Synchronization}.
+discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system - in particular, the existence of at last one equilibrium point
+where the SGs are synchronnized (meaning that they have equal angular
+velocities, angles and currents). The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. In Chapter \ref{cha:Synchronization} we analyze the stability of the TICSG system. In Section \ref{sec5} we show that 
+if the SGs are synchronized, then they remain synchronized and the
+system state converges to the unique equilibrium point where they are
+synchronized. Section \ref{sec6} contains stability analysis for the
+TICSG model. First we show that the subspace $\Emscr$ of the state
+space $\rline^7$ where the generators are synchronized is locally
+exponentially attractive, which means that any state trajectory that
+starts sufficiently close to $\Emscr$ converges to $\Emscr$ at an
+exponential rate. Then we derive results about the region of
+attraction of the stable equilibrium point. We illustrate our results
+by simulations in Section \ref{sec7}. In particular, we show an
+example of two SGs where the region of attraction of the stable
+equilibrium point contains the submanifold where the generators have
+equal states (as it always does), but it does not contain all
+$\Xmscr$.
 
 \chapter{The microgrid dynamics\label{cha:microgrid_dynamics}}
 
@@ -335,11 +370,10 @@ $$ \frac{\dd i_{dq0}}{\dd\theta} \m=\m U(\theta)\frac{\dd i}
 This implies that \vspace{-2mm}
 $$ \dot{i}_{dq0} \m=\m \frac{\dd i_{dq0}}{\dd\theta} \cdot \frac
    {\dd\theta}{\dd t} \m=\m U(\theta)\dot{i} + \o\left[\begin{array}
-   {c} i_q\\ -i_d\\ 0 \end{array}\right] \m,$$
-where 
-$$\o=\dot{\theta}.$$
+       {c} i_q\\ -i_d\\ 0 \end{array}\right] \m,$$
+where \vspace{-2mm}
+$$\o \m=\m \dot{\theta}.$$
 We rewrite \rfb{aPark} as follows:
-
 \BEQ{eq:idiqDynamics}
    L_s\frac{\dd}{\dd t}\nm\left[\nm\begin{array}{c} i_d\\ i_q\\ i_0
    \end{array}\nm\right] - L_s \o \left[\nm\begin{array}{c} i_q\\ -i_d
@@ -747,13 +781,12 @@ $\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\o_1$,
 $i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on $[0,{T_{\max}})$. Clearly
 $\delta$ must also be bounded on $[0,{T_{\max}})$. Hence $(i_{d1},
 i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded on $[0,{T_{\max}})$, which
-contradicts \cite[Corollary II.3]{JayWeissBS:09}. Therefore 
-${T_{\max}}=\infty$.
+contradicts Theorem 3.3 (p. 94) in \cite{Khalil} (see also Corollary 
+II.3 in \cite{JayWeissBS:09}). Therefore ${T_{\max}}=\infty$.
 \end{proof}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\chapter{Analysis of the equilibrium points of the TICSG model 
-\label{cha:equivalence_pont}}
+\chapter{The equilibrium points of the TICSG model \label{cha:equivalence_pont}}
 
 In this chapter we study the equilibrium points of the TICSG
 system \eqref{eq:TICSGDynamics}. We introduce the {\em synchronization 
@@ -794,9 +827,8 @@ The equilibrium points are the solutions of the algebraic equation
    \begin{array}{c} e_{3}\\ e_{3}\\ 0 \end{array}\nm\right] = 0.
 \end{equation}
 It easy to see that according to the seventh line above,
-\begin{equation} 
-\o_1^e \m=\m \o_2^e \m=\m \o^e \m.
-\label{Mitzpe_Ramon}
+\BEQ{Mitzpe_Ramon}
+   \o_1^e \m=\m \o_2^e \m=\m \o^e \m.
 \end{equation}
 From the third and the sixth lines we have: 
 $$ \left\{ \begin{array}{c} m i_f i_{q1}^e-D_p\o_1^e+T_m=0\\
@@ -1123,15 +1155,16 @@ while the ISE converges to the equilibrium point.
 
 %%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%++++++++++%%%%%%%%%%
 
-\chapter{Synchronization \label{cha:Synchronization}}
+\chapter{The stability of the TICSG system \label{cha:Synchronization}}
 
-In this chapter, we show that the synchronization subspace $\Emscr$ 
-from \eqref{eq:SyncSubspace} is invariant and any trajectory that 
-starts inside $\Emscr$ converges exponentially to a unique stable 
-equilibrium point within $\Emscr$. Afterwards, we show that $\Emscr$
-is locally exponentially attractive for the TICSG model 
-\eqref{eq:TICSGDynamics}, which means that any state trajectory that 
-starts sufficiently close to $\Emscr$ converges to $\Emscr$. 
+\section{The synchronized system} \label{sec5} % Section 5
+
+If the state of the TICSG system \eqref{eq:TICSGDynamics} is in the
+synchronization subspace $\Emscr$ from \eqref{eq:SyncSubspace}, it
+means that the two generators are perfectly synchronized. We show that
+$\Emscr$ is invariant under the flow of the system
+\eqref{eq:TICSGDynamics} and the restriction of this flow to $\Emscr$
+is globally asymptotically stable.
 
 The TICSG system has the following structure: \vspace{-1mm}
 $$ \tilde{\L}\m\frac{\dd}{\dd t}\left[z_1\ z_2\ \delta\right]^{\top}
@@ -1167,12 +1200,14 @@ $$ \begin{aligned} & \left[\begin{array}{cc} \varLambda & 0\\ 0 &
 From the trivial identity \m $(a+b)(x-y)+(a-b)(x+y)=2(ax-by)$ we
 get that \vspace{-2mm}
 $$ \begin{aligned} \o_2 i_{q2} -& \o_1 i_{q1} \m=\m \half\left[
-   (\o_1+\o_1)(i_{q2}-i_{q1}) \right.\\ &+ \left. (\o_2-\o_1)(i_{q2}
-   +i_{q1})\right] = \frac{x_{w} e_q+e_w x_q}{2} \end{aligned}$$
-and the previous equation can be rewritten as:
-$$ \dot{e} \m=\m F(e,x) \m=\m \left[\nm\begin{array}{cc} \varLambda 
+   (\o_1+\o_2)(i_{q2}-i_{q1}) \right.\\ &+ \left. (\o_2-\o_1)(i_{q2}
+   +i_{q1})\right] = \frac{x_\o e_q+e_\o x_q}{2} \end{aligned}$$
+and the previous equation can be rewritten as \vspace{-1mm}
+\BEQ{Hariri}
+   \dot{e} \m=\m F(e,x) \m=\m \left[\nm\begin{array}{cc} \varLambda 
    & 0\\ 0 & 1 \end{array}\nm\right]^{-1} \left[A_e\left(e,x\right) 
-   e + B_e \left(e,x\right) \right]$$
+   e + B_e \left(e,x\right) \right] \m,
+\end{equation}
 where 
 $$ A_e\left(e,x\right) \m=\qquad\m$$
 $$ \left[\nm\begin{array}{cccc}
@@ -1207,10 +1242,10 @@ $$ \begin{aligned} &\Lambda\frac{\dd}{\dd t}\left[\begin{array}{c}
 From the trivial identity $(a+b)(x+y)+(a-b)(x-y)=2(ax+by)$ it 
 follows that
 $$ \begin{aligned} \o_1 i_{q1}+\o_2 i_{q2} &= \half\left[(\o_1+\o_2)
-   (i_{q1}+i_{q2})+(\o_1-\o_2)(i_{q1}-i_{q2})\right]\\ & =\frac{x_{w}
-   x_{q}+e_{w}e_{q}}{2} \end{aligned} $$
+   (i_{q1}+i_{q2})+(\o_2-\o_1)(i_{q2}-i_{q1})\right]\\ & =\frac{x_o
+   x_q+e_o e_q}{2} \end{aligned} $$
 and similarly \vspace{-3mm}
-$$ \o_1 i_{d1}-\o_2 i_{d2} \m=\m \frac{x_{w}x_{d}+e_{w}e_d}{2} \m.$$
+$$ \o_1 i_{d1}+\o_2 i_{d2} \m=\m \frac{x_\o x_d+e_\o e_d}{2} \m.$$
 
 The $x$ dynamics can be rewritten as:
 $$ \dot{x}=G \left( e,x\right) \m=\m \Lambda^{-1}\left(A_x \left(e,x 
@@ -1258,253 +1293,291 @@ in other words,
    A(x_\o^e) x^e + B \m=\m 0 \m.
 \end{equation}
 
-In order to shift the equilibrium point into the origin, we introduce the new  coordinates
-$$
-\hat{x}\coloneqq x-x^{e}
-$$
+In order to shift the equilibrium point into the origin, we introduce
+the new coordinates
+$$\hat{x} \m\coloneqq\m x-x^e \m.$$
 
 A natural Lyapunov function candidate for this system is 
 $$ V(\hat{x}) \m\coloneqq\m \half L_s\left(\hat{x}_d^2+\hat{x}_q^2
    \right)+\half J\hat{\o}^2 \m=\m \half\hat{x}^T\L\hat{x} \m.$$
-It is easy to see that:
+It is easy to see that
 $$ \half \min\left\{L_{s},J\right\}|\hat{x}|{}^{2}\leq V(\hat{x})
    \m\leq\m \frac{1}{2} \max\left\{L_{s},J\right\}|\hat{x}\m
    |^{2} \m,$$
-$$ \left|\frac{\partial V}{\partial\hat{x}}\right| \m=\m \left|
-   \L\hat{x}\right| \m\leq\m max\left\{L_s,J\right\}\left|
-   \hat{x}\right| \m.$$
-
-We calculate $\dot{V}(\hat{x})$ in order to show that under some
-conditions, $\dot{V}(\hat{x})\leq\alpha|\hat{x}|{}^{2}$, for some
-$\alpha$. This proves that $\dot x=\tilde{G}(x)$ is globally
-exponentially stable (see for instance Theorem 5.17, p.~195 in
-\cite{Sastry}). We have
-$$ \dot{V}(\hat{x}) \m=\m \left(\frac{\partial V}{\partial
-   \hat{x}}\right)^{T}\dot{\hat{x}} \m,$$
 \begin{equation} \label{eq:x_hat_dynamic}
-   \dot{\hat{x}} \m=\m \dot{x} \m=\m \L^{-1} A(x_\o) x+\L^{-1}
-   \left[\begin{array}{c} 0\\ 0\\ 2T_m \end{array}\right] \m.
+   \dot{\hat{x}} \m=\m \dot{x} \m=\m \L^{-1} \left[ A(x_\o) x+
+   B \right] \m.
 \end{equation}
  
-We rewrite $A(x_\o)$ as a sum of a constant symmetric matrix, constant
-skew symmetric matrix and a skew symmetric matrix which depends on
-$\hat{x}_\o$:
-$$ A(x_\o)x \m=\m \left[R+J(x_\o^e)+\Delta(\hat{x}_\o)\right]
-   (\hat{x}+x^e) \m,$$
+We rewrite $A(x_\o)$ as a sum of a constant symmetric matrix $R$, a
+constant skew-symmetric matrix $\Delta(x_{\o}^e)$ and a 
+skew-symmetric matrix $\Delta_0(\hat{x}_{\o})$:
+\BEQ{EynAkev_spring}
+   A(x_\o)x \m=\m \left[R+\Delta(x_\o^e)+\Delta_0(\hat{x}_\o)
+   \right](\hat{x}+x^e) \m,
+\end{equation}
 where
 $$ R \m=\m \left[\begin{array}{ccc} -R_T & 0 & 0\\
    0 & -R_T & 0\\ 0 & 0 & -D_{p}
 \end{array}\right] \m,$$
-$$ J \m=\m \left[\begin{array}{ccc} 0 & \frac{L_s}{2}\o^e
-   & 0\\ -\frac{L_s}{2}\o^e & 0 & -mi_f\\ 0 & mi_f & 0
-   \end{array}\right] \m,$$
-$$ \Delta(\hat{x}_\o)\coloneqq\left[\begin{array}{ccc}
-   0 & \frac{L_{s}}{2}\hat{x}_{\omega} & 0\\
-   -\frac{L_{s}}{2}\hat{x}_\o & 0 & 0\\
-   0 & 0 & 0 \end{array}\right] \m.$$
-Combining the previous equation with \eqref{eq:G_at_equilibrium} and
-\eqref{eq:x_hat_dynamic} gives
-$$ \dot{\hat{x}}=\Lambda^{-1}\left( \left[R+J+\Delta(\hat{\o})
-   \right]\hat{x}+\Delta(\hat{\o})x^e\right) \m.$$
-
-We calculate the derivative of $V$ over time: 
-$$ \dot{V}(\hat{x}) \m=\m \left(\L\hat{x}\right)^T\dot{\hat{x}}
-   \m=\m \hat{x}^T\L^T\L^{-1}\left( \left[R+J+\Delta(\hat{x}_\o)
-   \right]\hat{x}+\Delta(\hat{x}_\o)x^e\right).$$
-Because $\L$ is a diagonal matrix, $\L^T\L^{-1}=I$. Thus, 
-$$ \dot{V}(\hat{x}) \m=\m \hat{x}^{T}R\hat{x}+\hat{x}^T J\hat{x}
-   +\hat{x}^T\Delta(\hat{x}_\o)\hat{x}+\hat{x}^T\Delta(\hat{x}_\o)
-   x^e \m.$$
-Because $J(\o^e)$ and $\Delta(\hat{\o})$ are skew-symmetric 
-matrices, $\hat{x}^{T}J(\o^e)\hat{x}=0$ and $\hat{x}^T\Delta
-(\hat{\o})\hat{x}=0$. We have
-$$ \begin{aligned} \hat{x}^{T}\Delta(\hat{x}_\o)x^e \m=\m &\left[
-   \begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o
-   \end{array}\right]^T\left[\begin{array}{ccc} 0 & \frac{L_s}{2}
-   \hat{x}_\o & 0\\ -\frac{L_s}{2}\hat{x}_\o & 0 & 0\\ 0 & 0 & 0
-   \end{array}\right]\left[\begin{array}{c} x_d^e\\ x_q^e\\
-   x_\o^e \end{array}\right]\\ =& \left[\begin{array}{c}
-   \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o \end{array}\right]^T\left[\nm
-   \begin{array}{ccc} 0 & 0 & \frac{L_s}{4}x_q^e\\ 0 & 0 & 
-   -\frac{L_s}{4}x_d^e\\ \frac{L_s}{4}x_q^e & -\frac{L_s}{4}x_d^e
-   & 0 \end{array}\nm\right] \left[\nm\begin{array}{c} \hat{x}_d\\
-   \hat{x}_q\\ \hat{x}_\o \end{array}\nm\right] \\ =\m & 
-   \hat{x}^{\top} P\hat{x} \m,\end{aligned}$$
-where we have denoted
-$$ P \m=\m \left[\begin{array}{ccc} 0 & 0 & \frac{L_{s}}{4}
-   x_{q}^{e}\\ 0 & 0 & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
-   & -\frac{L_s}{4} x_d^e & 0 \end{array}\right] \m.$$
-Combining all this together, we obtain 
-$$\dot{V}(\hat{x}) \m=\m \hat{x}^{T}\left[P+R\right]\hat{x} \m,$$
+$$ \Delta(\alpha) \m=\m \left[\begin{array}{ccc} 0 & \frac{L_s}{2}
+   \alpha & 0\\ -\frac{L_s}{2}\alpha & 0 & -mi_f\\ 0 & mi_f & 0
+   \end{array}\right] \quad (\alpha\in\rline)$$
+and $\Delta_0(\alpha)$ is defined like $\Delta(\alpha)$, but with
+$i_f=0$. Combining \eqref{eq:G_at_equilibrium}, 
+\eqref{eq:x_hat_dynamic} and \eqref{EynAkev_spring} gives
+$$ \dot{\hat{x}} \m=\m \L^{-1}\big( \left[R+\Delta(x_{\o}^e)+\Delta_0
+   (\hat{x}_{\o})\right]\hat{x}+\Delta_0(\hat{x}_{\o})x^e\big)\m.$$
+Using this formula, we compute the derivative of $V$ over time:
+\vspace{-1mm}
+$$ \dot{V}(\hat{x}) \m=\m \left\langle \frac{\partial V}{\partial
+   \hat{x}},\dot{\hat{x}} \right\rangle \m=\m \left\langle \L
+   \hat{x},\dot{\hat{x}} \right\rangle$$
+$$ =\m \left\langle \L\hat{x},\L^{-1}\left( \left[R+\Delta(x_{\o}^e)
+   +\Delta_0(\hat{x}_\o) \right]\hat{x}+\Delta_0(\hat{x}_\o)x^e
+   \right) \right\rangle \m.$$
+Because $\L$ is diagonal and $\Delta(\alpha),\Delta_0(\alpha)$ are
+skew-symmetric, this simplifies to \vspace{-2mm}
+\BEQ{Ibex}
+   \dot{V}(\hat{x}) \m=\m \left\langle\hat{x},R\hat{x}+\Delta_0
+   (\hat{x}_\o)x^e \right\rangle \m.
+\end{equation}
+It is easy to verify that
+$$ \langle\hat{x},\Delta_0(\hat{x}_\o)x^e\rangle \m=\m \left[\nm 
+   \begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o \end{array}\nm
+   \right]^\top\left[\nm \begin{array}{ccc} 0 & \frac{L_s}{2} 
+   \hat{x}_\o & 0\\ -\frac{L_s}{2}\hat{x}_\o & 0 & 0\\ 0 & 0 & 0 
+   \end{array} \nm\right] \left[\nm \begin{array}{c} x_d^e\\ x_q^e\\ 
+   x_\o^e \end{array} \nm\right]$$
+$$ =\m \left[\nm\begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o 
+   \end{array}\nm\right]^\top\left[\nm \begin{array}{ccc} 0 & 0 & 
+   \frac{L_s}{4}x_q^e\\ 0 & 0 & -\frac{L_s}{4}x_d^e\\ \frac{L_s}{4}
+   x_q^e & -\frac{L_s}{4}x_d^e & 0 \end{array}\nm\right] \left[\nm
+   \begin{array}{c} \hat{x}_d\\ \hat{x}_q\\ \hat{x}_\o \end{array}\nm
+   \right] \m=\m \hat{x}^{\top} S\hat{x} \m,$$
+where $S$ is the symmetric $3\times 3$ matrix appearing above.
+Combining this with \eqref{Ibex} we obtain 
+$$\dot{V}(\hat{x}) \m=\m \hat{x}^{T}\left[R+S\right]\hat{x} \m,$$
 where 
-$$ P+R \m=\m \left[\begin{array}{ccc} -R_T & 0 & \frac{L_s}{4}
+$$ R+S \m=\m \left[\begin{array}{ccc} -R_T & 0 & \frac{L_s}{4}
    x_q^e\\ 0 & -R_T & -\frac{L_s}{4} x_d^e\\ \frac{L_s}{4} x_q^e 
    & -\frac{L_s}{4} x_d^e & -D_p \end{array}\right].$$
-Calculating the eigenvalues of $P+R$ gives \m $\l_{1}=-R_T<0$,
+Computing the eigenvalues of $R+S$ gives \m $\l_{1}=-R_T<0$,
 $$ \l_{2,3} \m=\m -\frac{R_T+D_p}{2} \pm\frac{\sqrt{4\left(R_T-D_p
    \right)^2+L_s^2\left(\left(x_q^e\right)^2 + \left(x_d^e
    \right)^2\right)}}{4} \m.$$
 All the eigenvalues are real. It is easy to see that the condition 
 which guarantees that all the three eigenvalues are negative is
 \eqref{eq:condition_for_stable_G}. When this condition holds, then
-$\dot{V}(\hat{x})<-min\left(\left|\lambda_{i}\right|\right)|
-\hat{x}|^{2},\quad i\in\{1,2,3\}$, and this system is globally
-exponentially stable. 
+denoting $\l_{\max}=\max\left\{\l_i,\ i\in\{1,2,3\}\right\}$, we 
+have $\dot{V}(\hat{x})<\l_{\max}|\hat{x}|^2$. It now follows from a
+classical stability result, see for instance Theorem 4.10 (p.~154) in
+\cite{Khalil}, that this system is globally exponentially stable. 
 \end{proof}
 
-Note that because it proves global stability in $\Emscr$, it means
-that $x^e$ is the only equilibrium point of $\dot{x}=\tilde{G}(x)$,
-hence the TICSG system has exactly one equilibrium point on the the
-synchronization subspace $\Emscr$.
-%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\section{Synchronization theorem:}
- 
-In this section, we prove that if the initial state of the two generators
-are sufficiently close to each other, i.e $|e(0)|$ is small enough, then, under some conditions, the two generators will synchronize, meaning that $\lim_{t\to\infty}e(t)=0$.
+Note that the last proposition implies that $x^e$ is the only 
+equilibrium point of $\dot{x}=\tilde{G}(x)$, hence the TICSG system 
+has exactly one equilibrium point in $\Emscr$.
 
-In order to show that, we use the main result of 
-\cite{AndrieuJayawardhanaPraly}. Consider a system of the form 
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{The synchronization theorem} \label{sec6} % Section 6
+ 
+First we prove that if the initial state of the TICSG model
+\eqref{eq:TICSGDynamics} is such that $|e(0)|$ is small enough, then,
+under some conditions, the two generators will synchronize, meaning
+that $\lim_{t\to\infty}e(t)=0$. Then we show that the region of
+attraction of the stable equilibrium in $\Emscr$ contains a
+neighborhood of positive thickness of a large compact subset of 
+$\Emscr$.
+
+We recall a result from \cite{AndrieuJayawardhanaPraly,AJP_2016}. 
+Consider a system of the form
 \begin{equation} \label{eq:systemForm}
    \dot{e} \m=\m F\left(e,x\right),\quad \dot{x} \m=\m
    G\left(e,x\right) \m,
 \end{equation}
-where $e$ and $x$ are finite-dimensional real vector valued functions
-and $F, G \in C^2$ with $F(0,x)=0$. \cite{AndrieuJayawardhanaPraly}
-defines the following properties:
+where $e$ and $x$ are real vector valued functions of dimensions $n_e$ 
+and $n_x$, respectively and $F,G\in C^2$ with $F(0,x)=0$. Let $\Kmscr$
+be an invariant compact subset of $\rline^{n_e}\times\rline^{n_x}$. We
+assume that the system is {\em forward complete on} $\Kmscr$, meaning
+that for every $(e_0,x_0)\in\Kmscr$, the solution $e(e_0,x_0,t),\m 
+x(e_0,x_0,t)$ of \eqref{eq:systemForm} exists for all $t\geq 0$. We 
+denote 
+$$ \Kmscr_x \m=\m \left\{x\in\rline^{n_x}\ |\ (0,x)\in\Kmscr \right\}
+   \m.$$
+The following properties of the system \eqref{eq:systemForm} have been
+introduced in \cite{AndrieuJayawardhanaPraly} (see also 
+\cite{AJP_2016}):
 
-\subsubsection{TULES-NL (transversal uniform local exponential 
-stability)} There exist positive numbers $r$, $k$ and $\l$ such that
-we have, for all $\left(e_0, x_0, t\right)$ where $\left| e_0\right|
-\le r$ and the solution satisfies $\left|e\left(e_0, x_0,
-t\right)\right| \le k\left|e_0\right| e^{-\l t}$. Namely the
-manifold $\mathscr{E}$ is exponentially stable locally in $e$,
-uniformly in $x$.
+\subsubsection{TULES-NL (transversal uniform local exponential
+stability on $\Kmscr$)} There exist positive numbers $r$, $k$ and $\l$
+such that for all $(e_0,x_0)\in\Kmscr$ with $\left|e_0\right|\leq r$
+and $t>0$, the solution satisfies
+$$ \left|e\left(e_0,x_0,t\right)\right| \m\leq\m k\left|e_0\right| 
+   e^{-\l t} \m.$$ 
+
 \subsubsection{UES-TL (uniform exponential stability for the 
-transversally linear system)} There exist strictly positive real 
-numbers $\tilde{k}$ and $\tilde{\l}$ such that any solution $\left(e 
-\left(e_0,x_0,t\right),x\left(x_0, t\right)\right)$ of the 
-transversally linear system
-$$ \dot{\tilde{e}} \m=\m \frac{\partial F(e,x)}{\partial e}
-   \left(0,\tilde{x}\right),\quad\ \dot{\tilde{x}} \m=\m \tilde{G}
-   \left(\tilde{x}\right) \m=\m G\left(0,x\right)$$
-satisfies, for all initial states $e_0$ and $x_0$ and for all $t>0$,
+transversally linear system on $\Kmscr$)} There exist positive real 
+numbers $\tilde{k}$ and $\tilde{\l}$ such that any solution $\tilde e
+(e_0,x_0,t),\m\tilde x(x_0,t)$ of the transversally linear system
+$$ \dot{\tilde{e}} \m=\m \frac{\partial F(e,x)}{\partial e} \left(0,
+   \tilde{x}\right)\tilde e,\quad\ \dot{\tilde{x}} \m=\m \tilde{G}
+   \left(\tilde{x}\right) \m=\m G\left(0,\tilde x\right)$$
+satisfies, for all $e_0\in\rline^{n_e}$, $x_0\in\Kmscr_x$ and $t>0$,
 $$ \left| \tilde{e}\right(\tilde{e}_0,\tilde{x}_0,t \left) \right| 
-   \m\leq\m \tilde{k} e^{-\l t} \left| \tilde{e}_0\right| \m.$$ 
-In other words, the manifold $\tilde{\Emscr}=\left\{\left(\tilde{e},
-\tilde{x} \right)| \tilde{e} = 0 \right\}$ is exponentially stable 
-for this system, uniformly in $\tilde{x}$.
+   \m\leq\m \tilde{k} e^{-\tilde\l t}\left| \tilde{e}_0\right| \m.$$ 
 
-\begin{theorem}\label{therem:TULESNL2UESTL}
-If a  system  has form \eqref{eq:systemForm}, and it forward complete, and it satisfies the following conditions in an invariant  compact sets that contains the initial conditions : 
+Notice that the solution of the transversally linear system is of the 
+form \vspace{-3mm}
+\BEQ{Kirkuk}
+   \tilde e(\tilde e_0,\tilde x_0,t) \m=\m \Phi(\tilde x_0,t) 
+   \tilde e_0 \m,
+\end{equation}
+where $\Phi:\rline^{n_x}\times[0,\infty)\rarrow\rline^{n_e\times 
+n_e}$ is of class $C^2$.
+
+\begin{theorem} \label{thm:TULESNL2UESTL}
+Suppose that the system \eqref{eq:systemForm} satisfies the following
+conditions:
 \begin{enumerate}
-\item 
+\item \label{condition1}
 There exist a positive real number $\mu$, such that: 
-$$
-\left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \le \mu. 
-$$
-\label{condition1}
-\item 
-The manifold $\mathscr{E}$ is invariant.
-\label{condition2}
-\item
-If there exist positive definite matrix $Q$, such the function $P:\mathbb{R}^{n_x}\to\mathbb{R}^{n_e \times n_e}$ given by
-$$P\left(\tilde{x}\right)=\lim_{T \to+\infty} \int_0^T \left( \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right)\right)^\top Q \frac{\partial \tilde{E}}{\partial \tilde{e}}\left(0,\tilde{x},s\right) ds$$
-exist (\cite{AndrieuJayawardhanaPraly} sows that $P$ always exist for UES-TL systems that satisfies conditions 1 and 2).
- \label{condition3}
-\item 
-there exist positive real numbers $\eta$ and $c$ such that, for all $(e,x)$ in $B_e(\eta)\times \mathbb{R}^n_x$,
-$$\left| \frac{\partial P}{\partial x}(x)\right| \le c,$$
-$$\quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x \partial e}(e,x)\right| \le c,\quad\left| \frac{\partial G}{\partial e}(e,x)\right| \le c$$
-\label{condition4}
+$$ \left|\frac{\partial F(e,x)}{\partial e}(0,x)\right| \m\leq\m \mu
+   \FORALL x\in\Kmscr_x \m.$$
+
+\item \label{ugly_integral}
+There exists a matrix $Q>0$, such that the function 
+$P:\Kmscr_x\to\rline^{n_e\times n_e}$ given by
+\BEQ{simhat_tora}
+   P\left(\tilde{x}_0\right) \m=\m \lim_{T\to\infty} \int_0^T 
+   \Phi(\tilde{x}_0,s)^\top Q \m\Phi(\tilde{x}_0,s) \dd s
+\end{equation}
+exists, where $\Phi$ is as in \eqref{Kirkuk} 
+(\cite{AndrieuJayawardhanaPraly} shows that $P$ always exists for 
+UES-TL systems that satisfy condition 1).
+
+\item \label{many_bounds}
+There exist positive numbers $\eta$ and $c$ such that, for all 
+$(e,x)\in\Kmscr$ with $|e|<\eta$,
+$$ \left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,
+   \quad\left| \frac{\partial G}{\partial e}(e,x)\right| 
+   \m\leq\m c \m,$$
+$$ \quad  \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)
+   \right| \le c, \quad  \left| \frac{\partial^2 F}{\partial x 
+   \partial e}(e,x)\right| \m\leq\m c\m.$$
 \end{enumerate}
-then the UES-TL property implies the TULES-NL property for this system.
+
+Then the UES-TL property implies the TULES-NL property for this 
+system.
 \end{theorem}
 
-This theorem is one of the main results of \cite{AndrieuJayawardhanaPraly}. See \cite[Comment 2, p.3]{AndrieuJayawardhanaPraly}.
+\medskip
+This theorem follows from Propositions 2, 3 and Comment 2 in
+\cite{AndrieuJayawardhanaPraly}. [check] ??? Still at the general
+level of \eqref{eq:systemForm}, we have:
 
-Now, we use this theorem in order to show that the TICSG has the TULES-NL property.
+\begin{proposition} \label{Nahal_Zin}
+Suppose that the system \eqref{eq:systemForm} is such that $\dot{
+\tilde x}=\tilde{G}(\tilde{x})$ is globally exponentially stable
+on $\Kmscr_x$, with the equilibrium point $x^e\in\Kmscr_x$. Moreover,
+we assume that the matrix $\frac{\partial F}{\partial e}(0,x^e)$ 
+is stable (Hurwitz). Then for every compact set $K_x$ contained in the
+interior of $\Kmscr_x$ there exists $\e>0$ such that the set
+$$ K(\e) \m=\m \left\{ (e,x)\in\rline^{n_e}\times\rline^{N_x}\ |\
+   |e|\leq\e\m,\ x\in K_x \right\}$$
+is contained in the region of attraction of the equilibrium point
+$(0,x^e)$ of \eqref{eq:systemForm}.
+\end{proposition}
 
-We start with calculating $\frac{\partial F(e,x)}{\partial e}(0,x)$. We can express $F$ as composed of two functions $F_\zeta$ and $F_\delta$:
-$$
-\begin{aligned}
- F = \left[\begin{array}{cc} F_\zeta \\ F_\delta \end{array}\right] &= \left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right]^{-1} \left[\begin{array}{cc}
-A_{e_z}(x,\delta) & 0\\
-e_3^\top & 0
-\end{array}\right]   \left[\begin{array}{cc} e_\zeta \\ \delta \end{array}\right]    \\ &+ \left[\begin{array}{cc}
-\varLambda & 0\\
-0 & 1
-\end{array}\right]^{-1}B_e\left(x,\delta\right)
-\end{aligned}
-$$
-where $A_e(x,\delta) = \left[\begin{array}{cc}
-A_{e_z}(x,\delta) & 0\\
-e_3^\top & 0
-\end{array}\right] $ and $e_\zeta = \left[e_d \ e_q \ e_\omega \right]^\top$.
+\begin{proof} It is easy to see that $(0,x^e)$ is an exponentially 
+stable equilibrium point for the system \eqref{eq:systemForm} (because
+its linearization is Hurwitz). Let $\Nmscr$ be an open neighborhood of
+$(0,x^e)$ contained in its region of attraction. For each $x_0\in K_x$
+there exists $t>0$ such that $x(0,x_0,t)\in\Nmscr$. Taking preimage
+through the flow, it follows that there exists an open neighborhood
+$\Mmscr(x_0)$ of $(0,x_0)$ contained in the region of attraction of
+$(0,x^e)$. We can find an open neighborhood $\tilde {\Mmscr}(x_0)$ of
+$x_0$ and a number $\e(x_0)>0$ such that \vspace{-2mm}
+$$ \m\ \{e\in\rline^{n_e}\m|\ |e|<\e(x_0)\}\times\tilde{\Mmscr}(x_0) 
+   \m\subset\m \Mmscr(x_0) \m.$$
+All the sets $\tilde\Mmscr(x_0)$ (for all $x_0\in K_x$) are an open 
+covering of the compact set $K_x$. We extract a finite covering 
+$\tilde\Mmscr(\xi_1),\ldots\ \tilde\Mmscr(\xi_n)$ of $K_x$, and we 
+take
+$$\e \m=\m \min\{\e(\xi_j)\ |\ j\in\{1,\ldots n\} \m,$$
+then clearly the statement in the proposition holds.
+\end{proof} 
 
-$$
-\frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
- \frac{\partial F_\zeta}{\partial e_\zeta} & \frac{\partial F_\zeta}{\partial \delta} \\
-\frac{\partial F_\delta}{\partial e_\zeta}  & \frac{\partial F_\delta}{\partial \delta}
+Now we return to our TICSG model. We will use Theorem
+\ref{thm:TULESNL2UESTL} to show that the TICSG system has the TULES-NL
+property.
 
-\end{array}\right].
-$$
+We start with computing $\frac{\partial F(e,x)}{\partial e}(0,
+x)$. Using \eqref{Hariri} we can express $F$ as composed of two 
+functions $F_\zeta$ and $F_\delta$:
+$$ \begin{aligned} F \m=\m \left[\begin{array}{cc} F_\zeta \\ 
+   F_\delta \end{array}\right] &= \left[\begin{array}{cc}
+   \L & 0\\ 0 & 1 \end{array}\right]^{-1} \left[\begin{array}{cc}
+   A_{e_z}(x,\delta) & 0\\ e_3^\top & 0 \end{array}\right] \left[
+   \begin{array}{cc} e_\zeta \\ \delta \end{array}\right]\\ &+ 
+   \left[\begin{array}{cc} \L & 0\\ 0 & 1 \end{array}\right]^{-1}
+   B_e\left(x,\delta\right) \m,\end{aligned}$$
+where $A_e(x,\delta)=\left[\nm\begin{array}{cc} A_{e_z}(x,\delta) 
+& 0\\ e_3^\top & 0\end{array}\nm\right]$ and $e_\zeta=\left[e_d \ 
+e_q \ e_\o \right]^\top$,
+$$ \frac{\partial F(e,x)}{\partial e}(0,x) \m=\m \left[
+   \begin{array}{cccc} \frac{\partial F_\zeta}{\partial e_\zeta} 
+   & \frac{\partial F_\zeta}{\partial \delta} \\ \frac{\partial
+   F_\delta}{\partial e_\zeta}  & \frac{\partial F_\delta}
+   {\partial \delta} \end{array}\right].$$
 We have 
-$$
-\begin{aligned}
-&\frac{\partial F_\zeta}{\partial e_\zeta}(0,x)=\varLambda^{-1}A_{e_z}(x,0) \\&=\left[\begin{array}{ccc}
--R_{tot}+R_{L} & \frac{L_{s}}{2}x_{\omega} & \frac{L_{s}}{2}x_{q} \\
--\frac{L_{s}}{2}x_{\omega} & -R_{tot}+R_{L} & -\frac{L_{s}}{2}x_{d}-mi_f \\
-0 & mi_{f} & -D_{p} 
-\end{array}\right],
-\end{aligned}
-$$
-
-$$
-\begin{aligned}
- \frac{\partial F_\zeta}{\partial \delta} & =  \varLambda^{-1} \frac{\partial F_\zeta}{\partial \delta}\left( A_{e_\zeta}(x,\delta) \right)e_\zeta+ \frac{\partial F_\zeta}{\partial \delta}\left(B_e(x,\delta)\right)
- \end{aligned}
-$$
-$$
- \frac{\partial F_\zeta}{\partial \delta}(0,x)  =  \left[\begin{array}{ccc}
- -R_L x_q\\
-R_Lx_d\\
-0
-\end{array}\right],\quad \frac{\partial F_\delta}{\partial e_\zeta}=e_3^\top,\quad \frac{\partial F_\delta}{\partial \delta}
-=0$$
-Finally
-\begin{equation}
-\frac{\partial F(e,x)}{\partial e}(0,x)=\left[\begin{array}{cccc}
--\frac{R_{s}}{L_{s}} & \frac{x_{\omega}}{2} & \frac{x_{q}}{2} & -\frac{R_{L}}{L_{s}}x_{q}\\
--\frac{x_{\omega}}{2} & -\frac{R_{s}}{L_{s}} & -\frac{x_{d}}{2}-\frac{mi_f}{L_{s}} & \frac{R_{L}}{L_{s}}x_{d}\\
-0 & \frac{mi_{f}}{J} & -\frac{D_{p}}{J} & 0\\
-0 & 0 & 1 & 0
-\end{array}\right]
-\label{eq:AOft}
+$$ \begin{aligned} &\frac{\partial F_\zeta}{\partial e_\zeta}(0,x)
+   \m=\m \L^{-1}A_{e_z}(x,0)\\ &=\L^{-1}\left[\begin{array}{ccc} 
+   -R_{tot}+R_L & \frac{L_s}{2}x_{\o} & \frac{L_s}{2} x_q \\ 
+   -\frac{L_s}{2}x_{\o} & -R_{tot} + R_L & -\frac{L_s}{2} x_d-mi_f
+   \\ 0 & mi_f & -D_p \end{array}\right],\end{aligned}$$
+$$ \begin{aligned} \frac{\partial F_\zeta}{\partial \delta} & =  
+   \L^{-1} \frac{\partial F_\zeta}{\partial \delta}\left( 
+   A_{e_\zeta}(x,\delta) \right)e_\zeta + \frac{\partial F_\zeta}
+   {\partial \delta}\left(B_e(x,\delta)\right) \end{aligned}$$
+$$ \frac{\partial F_\zeta}{\partial \delta}(0,x) \m=\m \left[
+   \begin{array}{ccc} -R_L x_q\\ R_L x_d\\ 0\end{array}\right],
+   \quad \frac{\partial F_\delta}{\partial e_\zeta} \m=\m 
+   e_3^\top,\quad \frac{\partial F_\delta}{\partial \delta}
+   \m=\m 0 \m.$$
+Putting it all together,
+\begin{equation} \label{eq:AOft}
+   \frac{\partial F(e,x)}{\partial e}(0,x) = \left[\nm
+   \begin{array}{cccc} -\frac{R_s}{L_s} & \frac{x_{\o}}{2} & 
+   \frac{x_q}{2} & -\frac{R_L}{L_s} x_q\\ -\frac{x_{\o}}{2} &
+   -\frac{R_s}{L_s} & -\frac{x_d}{2}-\frac{mi_f}{L_s} & 
+   \frac{R_L}{L_s} x_d\\ 0 & \frac{mi_f}{J} & -\frac{D_p}{J} 
+   & 0\\ 0 & 0 & 1 & 0 \end{array} \nm\right].
 \end{equation}
 
-\begin{theorem}\label{theorem:TICSGSync}
-If TICSG system satisfies condition \eqref{eq:condition_for_stable_G},
-and in addition
+\begin{theorem} \label{theorem:TICSGSync}
+Assume that the TICSG system satisfies condition 
+\eqref{eq:condition_for_stable_G}, \vspace{-3mm}
 \begin{equation} \label{eq:eLinearizationLimit}
-   A \m=\m \lim_{t\to\infty} \frac{\partial F}{\partial e}(0,
-   \tilde{x}^e)
+   A \m=\m \frac{\partial F}{\partial e}(0,x^e)
 \end{equation}
-where $\tilde{x}$ is a stable (Hurwitz) matrix, then (condition
-\eqref{eq:condition_for_stable_G} implies that the limit exists). Then
-there exist strictly positive real numbers $r$, $k$ add $\lambda$ such
-that we have for all , for all $\left(e_0, x_0, t\right)$ where
-$\left| e_0\right| \le r$ and the solution satisfies $\left| e\left(
-e_0,x_0,t\right)\right|\leq k\left|e_0\right|e^{-\l t}$. Namely the 
-manifold $\Emscr$ is exponentially stable locally in $e$, uniformly
-in $x$.
+is a stable (Hurwitz) matrix (condition
+\eqref{eq:condition_for_stable_G} implies that the limit exists) and
+moreover, there exist positive numbers $\eta$ and $c$ such that for
+all $(e,x)\in\Kmscr$ with $|\e|<\eta$,
+$$\left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,$$
+where $P$ is defined by \eqref{simhat_tora}. 
+
+Then there exist strictly positive real numbers $r$, $k$ and $\l$ such
+that for all $\left(e_0, x_0, t\right)$ where $\left|e_0\right|\leq r$
+and the solution satisfies $\left| e\left( e_0,x_0,t\right)\right|\leq
+k\left|e_0\right|e^{-\l t}$. Namely the manifold $\Emscr$ is
+exponentially stable locally in $e$, uniformly in $x$.
 \end{theorem}
  
 \begin{proof}
 We show that the TICSG system has the UES-TL property, and then by
-applying theorem \ref{therem:TULESNL2UESTL}, we will show that it has
+applying theorem \ref{thm:TULESNL2UESTL}, we will show that it has
 the TULES-NL property.
 
 As we showed in Lemma \ref{lemma:forewordComplete}, the TICSG system
@@ -1518,11 +1591,11 @@ We use the following result from \cite[Theorem 4.2.7]
 {SchovanecGilliam1999}:
 
 \begin{proposition}\label{proposition:LTVStability}
-Let $A$ be a constant matrix with $Re\{\sigma(A)\}<0$ and let $P(t)$
-be a continuous matrix valued function on the interval
+Let $A$ be a stable (Hurwitz) matrix and let $\Pi$ be a
+continuous square matrix-valued function on the interval
 $[0,\infty)$. Suppose that
-$$\intop_0^\infty \left|P(t)\right| \dd t \m<\m \infty \m.$$
-Then the solution of $\dot{x}(t)=[A+P(t)]x(t)$ is globally 
+$$\intop_0^\infty \left|\Pi(t)\right| \dd t \m<\m \infty \m.$$
+Then the solution of $\dot{x}(t)=[A+\Pi(t)]x(t)$ is globally exponentially
 asymptotically stable.
 \end{proposition}
  
@@ -1558,10 +1631,9 @@ $$ \quad \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right|
    \m\leq\m c, \quad \left| \frac{\partial^2 F}{\partial x \partial e}
    (e,x)\right| \m\leq\m c,\quad\left| \frac{\partial G}{\partial e}
    (e,x) \right| \m\leq\m c.$$
-As we noted in Section \ref{cha:Synchronization}, $\Emscr$ is an 
-invariant manifold.
+As we noted in Section \ref{sec5}, $\Emscr$ is an invariant manifold.
 
-Assuming that condition \ref{condition4} holds, then theorem
+Assuming that condition \ref{many_bounds} holds, then theorem
 \ref{theorem:TICSGSync} implies that the TICSG system has the TULES-NL
 property. Therefore there exist strictly positive real numbers $r$,
 $k$ and $\l$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right|
@@ -1597,9 +1669,9 @@ voltage that is equal to the load resistor with phase difference of
 $\tan^{-1}\left(i_q^e / i_d^e\right)$ between the voltage and this
 virtual single generator.
 
-
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\section{Simulations} \label{sec6} % Section 6
+%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
+\section{Simulations} \label{sec7} % Section 6
 
 In this section we present simulations that demonstrate the behavior
 of the TICSG system. Our first simulation concerns two 5KW SGs where
@@ -1634,9 +1706,9 @@ table \ref{table:5KWSG}).
 Our further simulations of this system suggest that this TICSG system 
 is globally asymptotically stable (GAS).
 
-\vspace{-4mm}
+%\vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[ht] 
+\begin{figure}[ht] % Figure 4
 \includegraphics[scale=0.65]{5KWTICSGSimulation} \vspace{-8mm}
 \caption{Simulations for TICSG system with 5KW SGs} 
 \label{fig:5KWSGTICSGSimulation}
@@ -1664,7 +1736,7 @@ synchronize. The parameters for the two simulations in this subsection
 are (The parameters for the two simulations in this subsection can be found in the appendix,
 table \ref{table:TICSGWithLocalE}). 
 
-\vspace{-4mm}
+%\vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \begin{figure}[ht]
 \includegraphics[scale=0.65]{InROATICSGSimulation}
@@ -1675,9 +1747,9 @@ region of attraction of the stable equilibrium point.}
 \end{figure}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
-\vspace{-4mm}
+%\vspace{-4mm}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\begin{figure}[ht]sss
+\begin{figure}[ht]
 \includegraphics[scale=0.65]{OutROATICSGSimulation}
 
 \caption{Simulation for a TICSG system which satisfy the conditions of
@@ -1714,6 +1786,10 @@ table \ref{table:TICSGWithNonStableE}).
 \bibitem{AndrieuJayawardhanaPraly} V.~Andrieu, B.~Jayawardhana and L.~Praly, \m On the transverse exponential stability and its use in incremental stability, observer and synchronization. In {\em Proc. of the 52nd IEEE Conference on Decision and Control,
 } \m  2013.
 
+\bibitem{AJP_2016} V.~Andrieu, B.~Jayawardhana and L.~Praly, \m 
+ Transverse exponential stability and applications, {\em IEEE Trans.
+ Automatic Control}, to appear in 2016.
+
 \bibitem{Eitan} E.~Brown, \m {\em A study of the use of synchronverters for grid stabilization using
 simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 
@@ -1739,9 +1815,10 @@ simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 
 \bibitem{GrSt2014} J.J.~Grainger and W.D.~Stevenson,
  {\em Power Systems Analysis}, \m McGraw-Hill, New York, 1994.
- 
-\bibitem{GreenProdanovic:07}
-T.~Green and M.~Prodanovic, \m Control of inverter-based micro-grids,  {\em Electric Power Systems Research}, vol.~77, 2007, pp.~1204-1213.
+
+\bibitem{GreenProdanovic:07} T.~Green and M.~Prodanovic, \m Control
+ of inverter-based micro-grids, {\em Electric Power Systems 
+ Research}, vol.~77, 2007, pp.~1204-1213.
  
 \bibitem{JayWeissBS:09}
 B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems with an $L^2$ input,  {\em IEEE Trans. Automatic Control}, 54 (2009), pp.~1723-1727.
@@ -1771,8 +1848,8 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
  asymptotic stability of a grid-connected synchronous generator,
  submitted in 2015.
  
- \bibitem{Sastry} S.~Sastry, \emph{Nonlinear Systems}.
- \hskip 1em plus 0.5em minus 0.4em\relax Springer-Verlag, New York, 1999.
+ %\bibitem{Sastry} S.~Sastry, \emph{Nonlinear Systems}.
+ %\hskip 1em plus 0.5em minus 0.4em\relax Springer-Verlag, New York, 1999.
 
 \bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \m {\em Power 
  Systems Dynamics and Stability}, Stipes Publishing, Champaign,
@@ -1781,11 +1858,21 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
 \bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University. Available at  \url{http://texas.math.ttu.edu/~gilliam/ttu/ode_pde_pdf/Ch4.pdf} 
 } \m  1999.
 
-\bibitem{shafiee2016multi} Q.~Shafiee,  V.~Nasirian,  J.C.~Vasquez, J.M.~Guerrero and A.~Davoudi. \m A Multi-Functional Fully Distributed Control Framework for AC Microgrids, {\em 
- IEEE Transactions on Smart Grid}, 2016.
+\bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE
+ and PDE lecture notes, {\em The department to Mathematics and 
+ Statistics at Texas Tech University.} Available at
+ \url{http://texas.math.ttu.edu/~gilliam/ttu/ode_pde_pdf/Ch4.pdf}
+ \m 1999.
+  
+\bibitem{Shafiee_2016} Q.~Shafiee, V.~Nasirian, J.C.~Vasquez, 
+ J.M.~Guerrero and A.~Davoudi. \m A multi-functional fully 
+ distributed control framework for AC microgrids, {\em 
+ IEEE Trans. on Smart Grid}, to appear in 2016.
 
- \bibitem{schiffer2016survey} J.~Schiffer, D.~Zonetti, R.~Ortega, A.~Stankovi{\'c},  T.~Sezi  and J.~Raisch. \m A survey on modeling of microgrids-From fundamental physics to phasors and voltage sources, {\em 
- Automatica}, vol.~74, 2016, pp.~135-150.
+\bibitem{Schiffer_2016_survey} J.~Schiffer, D.~Zonetti, R.~Ortega,
+ A.~Stankovi{\'c}, T.~Sezi  and J.~Raisch, \m A survey on modeling
+ of microgrids - from fundamental physics to phasors and voltage 
+ sources, {\em Automatica}, vol.~74, 2016, pp.~135-150.
 
 \bibitem{PoDoBu:13} J.W.~Simpson-Porco, F.~D{\"o}rfler
  and F.~Bullo, \m Synchronization and power sharing for
@@ -1795,6 +1882,12 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
 \bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
  Design, Manufacture and Operation}, \m Oxford University Press, 
  Oxford, 1981.
+
+ \bibitem{Zhong:13} Q.-C.~Zhong, \m Robust droop controller for 
+ accurate proportional load sharing among inverters operated in 
+ parallel, {\em IEEE Trans. on Industrial Electronics}, vol.~60,
+ 2013, pp.~1281-1290.
+
 
 \bibitem{ZhWe:11} Q.-C.~Zhong and G.~Weiss, \m Synchronverters: 
  Inverters that mimic synchronous generators, {\em IEEE Trans. 
