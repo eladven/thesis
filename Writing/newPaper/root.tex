@@ -196,7 +196,7 @@ following the notation in \cite{ZhWe:11}, see also \cite{NaWe:15}.
 
 The rotor of a SG is a coil on a magnetic core that spins
 inside a circular cavity in the stator, having the angle $\theta$ with
-respect to a reference angle, see Figure 1. We denote its self
+respect to a reference angle, see Figure  \ref{fig:structOfSG}. We denote its self
 inductance by $L_f$, its resistance by $R_f$, the voltage across its
 terminals by $v_f$ and the current through it (called the field
 current) by $i_f$. We assume for simplicity that $L_f$ is independent
@@ -210,7 +210,7 @@ magnetic saturation effects in the iron core and no Eddy currents. The
 stator terminals are labeled with the letters $a,b,c$ and the vector
 of voltages on the stator terminals is denoted by $v=\left[v_a\ v_b\
 v_c\right]^\top$. We denote by $v_s$ the voltage at the unconnected 
-center of the star (see Figure 1) and $v^n=[v_s\ v_s\ v_s]^\top$.
+center of the star (see Figure \ref{fig:structOfSG}) and $v^n=[v_s\ v_s\ v_s]^\top$.
 We define the vectors
 $$ \widetilde{\cos}\m\theta \m=\m \left[\begin{array}{c} \cos\left(
    \theta\right)\\ \cos\left(\theta-\frac{2\pi}{3}\right)\\
@@ -1112,7 +1112,10 @@ is a stable (Hurwitz) matrix (condition
 \eqref{eq:condition_for_stable_G} implies that the limit exists) and
 moreover, there exist positive numbers $\eta$ and $c$ such that for
 all $(e,x)\in\Kmscr$ with $|\e|<\eta$,
-$$\left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,$$
+\begin{equation}
+\left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,
+\label{eq:PC1}
+\end{equation}
 where $P$ is defined by \eqref{simhat_tora}. 
 
 Then there exist strictly positive real numbers $r$, $k$ and $\l$ such
@@ -1152,7 +1155,7 @@ Because Theorem \ref{theorem:TICSGSync} requires condition
 \lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$
 exists.  It imply that the matrix $\frac{\partial F}{\partial
 e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial
-e}(0,\tilde{x}^e) = \left(A+P(t)\right)$ where $P(t)$ converges
+e}(0,\tilde{x}^e) = \left(A+\Pi(t)\right)$ where $\Pi(t)$ converges
 exponentially to zero. The limit matrix is
 $$ A \m=\m \left[\begin{array}{cccc} -\frac{R_{s}}{L_s} & 
    \frac{x^e_\o}{2} & \frac{x^e_q}{2} & -\frac{R_L}{L_s} x^e_q\\
@@ -1180,7 +1183,7 @@ $$ \quad \left| \frac{\partial^2 F}{\partial e \partial e}(e,x)\right|
    (e,x) \right| \m\leq\m c.$$
 As we noted in Section \ref{sec5}, $\Emscr$ is an invariant manifold.
 
-Assuming that condition \ref{many_bounds} holds, then theorem
+Combing these results with condition \eqref{eq:PC1}, then theorem
 \ref{theorem:TICSGSync} implies that the TICSG system has the TULES-NL
 property. Therefore there exist strictly positive real numbers $r$,
 $k$ and $\l$ such for all $(e_0,x_0,t)$ where $\left| e_0 \right|
