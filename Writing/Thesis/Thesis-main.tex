@@ -786,9 +786,73 @@ II.3 in \cite{JayWeissBS:09}). Therefore ${T_{\max}}=\infty$.
 \end{proof}
 
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
-\chapter{The equilibrium points of the TICSG model \label{cha:equivalence_pont}}
+\chapter{The equilibrium points  \label{cha:equivalence_pont}}
+In this chapter, we study the equilibrium points for both the FOM model and the TICSG system.
 
-In this chapter we study the equilibrium points of the TICSG
+\section{The Equilibrium points of FOM model.}
+
+This section follows \citep{NaWe:15}. In order to search
+
+The equilibrium points are the solutions of the algebraic equation
+
+\begin{equation}
+\left[\begin{array}{c}
+0\\
+0\\
+0\\
+0
+\end{array}\right]=\left[\begin{array}{cccc}
+-R_{s} & \omega^{e}L_{s} & 0 & 0\\
+-\omega^{e}L_{s} & -R_{s} & -mi_{f} & 0\\
+0 & mi_{f} & -D_{p} & 0\\
+0 & 0 & 1 & 0
+\end{array}\right]\left[\begin{array}{c}
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}\\
+\delta^{e}
+\end{array}\right]+\left[\begin{array}{c}
+V\sin\delta^{e}\\
+V\cos\delta^{e}\\
+T_{m}\\
+\omega_{g}
+\end{array}\right]\label{eq:SGDynamicsInfBusEqPoint}
+\end{equation}
+
+By taking the fourth, and the third lines, it shows that the equilibrium
+point $z_{e}=\left[\begin{array}{c}
+i_{d}^{e}\\
+i_{q}^{e}\\
+\omega^{e}\\
+\delta^{e}
+\end{array}\right]$ must satisfy:
+
+\[
+\omega^{e}=\omega_{g},\qquad i_{q}^{e}=\frac{D_{p}\omega_{g}-T_{m}}{mi_{f}}
+\]
+
+Using the value of $i_{q}^{e}$ at the first line yields:
+
+\[
+i_{d}^{e}=\frac{\omega_{g}L_{s}\left(D_{p}\omega_{g}-Tm\right)}{mi_{f}R_{s}}+\frac{V\sin\delta^{e}}{R_{s}}
+\]
+
+Using the second line, after substituting the values of $i_{d}^{e}$
+and $i_{q}^{e}$ gives:
+
+\[
+\delta^{e}=\cos^{-1}\left(\frac{mi_{f}\omega_{g}R_{s}}{|Z|V}-\frac{|z|\left(T_{m}D_{p}\omega_{g}\right)}{Vmi_{f}}\right)-\psi
+\]
+
+where $|z|$ and $\psi$ define by the impedance of the generator:
+$z=R_{s}+j\omega_{g}L_{s}=|z|e^{j\psi}$.
+
+Because the arccos function, SG which connected to an infinite bus
+can have one, two or zero solutions (modulo $2\pi$).
+
+\section{The equilibrium points of the TICSG model}
+
+In this section we study the equilibrium points of the TICSG
 system \eqref{eq:TICSGDynamics}. We introduce the {\em synchronization 
 subspace} of the state space $\rline^7$ by
 \begin{equation} \label{eq:SyncSubspace}
