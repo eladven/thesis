@@ -53,7 +53,7 @@
 \usepackage[europeanresistors,americaninductors]{circuitikz}
 \usepackage{amsthm}
  
-\Title{\textbf{Stability of Synchronous Generators}}
+\Title{\textbf{Stability of coupled synchronous generators}}
 \Author{\textbf{\large Elad Venezian}}
 \Year{May 2016}
 \Supervisor{Prof. George Weiss}
@@ -236,7 +236,7 @@ $R_L$, but not showing the rotor windings or the prime movers.}
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 
 
-This work has the following structure: in chapter   \ref{cha:microgrid_dynamics} third order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
+This work has the following structure: in Chapter   \ref{cha:microgrid_dynamics} third order model of a SG is presented. then, we discuss the model of a SG connected to infinite bus and having constant field current is presented. Finally, the model of {\em two identical coupled SGs} (TICSG) is described. Chapter \ref{cha:equivalence_pont}
 discusses the  equilibrium point for both single SG connected to infinite bus, and the TICSG system - in particular, the existence of at last one equilibrium point
 where the SGs are synchronnized (meaning that they have equal angular
 velocities, angles and currents). The reduction from the model of a single SG connected to infinite bus to the second order ISE is described in \ref{cha:Model_reduction}. Simulations and local stability analysis that shows different behavior of the models are given as well. In Chapter \ref{cha:Synchronization} we analyze the stability of the TICSG system. In Section \ref{sec5} we show that 
@@ -813,7 +813,7 @@ $$\dot{V} \m\leq\m -D_p\left( \o_1^2+\o_2^2\right) + T_m(\o_1+\o_2)
    -w_{\min}|\vec{i}|^2 \m=:\m E(z_1,z_2) \m.$$
 It is easy to see that the set $K_+$ of those $(z_1,z_2)\in\rline^6$ 
 where $E(z_1,z_2)\geq 0$ is compact. Let 
-$$ \mu_0 \m=\m \min \left\{ V(z_1,\m z_2)\ |\ (z_1,\m z_2)\in K_+
+$$ \mu_0 \m=\m \max \left\{ V(z_1,\m z_2)\ |\ (z_1,\m z_2)\in K_+
    \right\} \m.$$
 Then for any $\mu>\mu_0$ we have that $V(z_1,z_2)=\mu$ implies
 $\dot{V}<0$. Hence, the trajectories of the TICSG system cannot exit
@@ -1902,8 +1902,8 @@ table \ref{table:TICSGWithNonStableE}).
  Transverse exponential stability and applications, {\em IEEE Trans.
  Automatic Control}, to appear in 2016.
 
-\bibitem{Eitan} E.~Brown, \m {\em A study of the use of synchronverters for grid stabilization using
-simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
+\bibitem{Eitan} E.~Brown, \m {\em A Study of the Use of Synchronverters for Grid Stabilization Using
+Simulations in SimPower}, MSc thesis, Tel Aviv University, 2015.
 
 \bibitem{CaTa:14} S.Y.~Caliskan and P.~Tabuada, \m
  Compositional transient stability analysis of multimachine 
@@ -1966,10 +1966,7 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
 \bibitem{SauerPai1998} P.~W.~Sauer and M.~A.~Pai, \m {\em Power 
  Systems Dynamics and Stability}, Stipes Publishing, Champaign,
  IL, 1997.
-
-\bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE and PDE lecture notes. {\em The department to Mathematics and Statistics at Texas Tech University. Available at  \url{http://texas.math.ttu.edu/~gilliam/ttu/ode_pde_pdf/Ch4.pdf} 
-} \m  1999.
-
+ 
 \bibitem{SchovanecGilliam1999} L.~Schovanec and D.~Gilliam, \m ODE
  and PDE lecture notes, {\em The department to Mathematics and 
  Statistics at Texas Tech University.} Available at
@@ -1994,11 +1991,6 @@ B.~Jayawardhana and G.~Weiss, \m State convergence of passive nonlinear systems 
 \bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
  Design, Manufacture and Operation}, \m Oxford University Press, 
  Oxford, 1981.
-
- \bibitem{Zhong:13} Q.-C.~Zhong, \m Robust droop controller for 
- accurate proportional load sharing among inverters operated in 
- parallel, {\em IEEE Trans. on Industrial Electronics}, vol.~60,
- 2013, pp.~1281-1290.
 
  \bibitem{Zhong:13} Q.-C.~Zhong, \m Robust droop controller for 
  accurate proportional load sharing among inverters operated in 
