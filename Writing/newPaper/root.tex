@@ -17,6 +17,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{lemma}[theorem]{Lemma}
 
+
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
@@ -42,6 +43,7 @@
 \newcommand{\dd}     {{\rm d\hbox{\hskip 0.5pt}}}
 \newcommand{\Amscr}  {{\mathcal{A}}}
 \newcommand{\Bmscr}  {{\mathcal{B}}}
+\newcommand{\Cmscr}  {{\mathcal{C}}}
 \newcommand{\Emscr}  {{\mathcal{E}}}
 \newcommand{\Kmscr}  {{\mathcal{K}}}
 \newcommand{\Mmscr}  {{\mathcal{M}}}
@@ -194,24 +196,25 @@ In this section we derive the equations for a SG connected to an
 exernal voltage and having a constant field (or rotor) current,
 following the notation in \cite{ZhWe:11}, see also \cite{NaWe:15}.
 
-The rotor of a SG is a coil on a magnetic core that spins
-inside a circular cavity in the stator, having the angle $\theta$ with
-respect to a reference angle, see Figure  \ref{fig:structOfSG}. We denote its self
-inductance by $L_f$, its resistance by $R_f$, the voltage across its
-terminals by $v_f$ and the current through it (called the field
+The rotor of a SG is a coil on a magnetic core that spins inside a
+circular cavity in the stator, having the angle $\theta$ with respect
+to a reference angle, see Figure \ref{fig:structOfSG}. We denote its
+self inductance by $L_f$, its resistance by $R_f$, the voltage across
+its terminals by $v_f$ and the current through it (called the field
 current) by $i_f$. We assume for simplicity that $L_f$ is independent
 of $\theta$ and $i_f$. The stator consists of three identical windings
 that are connected in a star, with phase shifts of $120^0$ (see again
-Figure 1). We consider that there is no neutral connection and no
-damper windings. The stator windings can be regarded as connected
-coils with self inductance $L$, mutual inductance $-M$, and resistance
-$R_s$ (the parameters $L_f,R_f,L,M,R_s$ are positive). We assume no
-magnetic saturation effects in the iron core and no Eddy currents. The
-stator terminals are labeled with the letters $a,b,c$ and the vector
-of voltages on the stator terminals is denoted by $v=\left[v_a\ v_b\
-v_c\right]^\top$. We denote by $v_s$ the voltage at the unconnected 
-center of the star (see Figure \ref{fig:structOfSG}) and $v^n=[v_s\ v_s\ v_s]^\top$.
-We define the vectors
+Figure \ref{fig:structOfSG}). We consider that there is no neutral
+connection and no damper windings. The stator windings can be regarded
+as connected coils with self inductance $L$, mutual inductance $-M$,
+and resistance $R_s$ (the parameters $L_f,R_f,L,M,R_s$ are
+positive). We assume no magnetic saturation effects in the iron core
+and no Eddy currents. The stator terminals are labeled with the
+letters $a,b,c$ and the vector of voltages on the stator terminals is
+denoted by $v=\left[v_a\ v_b\ v_c\right]^\top$. We denote by $v_s$ the
+voltage at the unconnected center of the star (see Figure 
+\ref{fig:structOfSG}) and
+$v^n=[v_s\ v_s\ v_s]^\top$.  We define the vectors
 $$ \widetilde{\cos}\m\theta \m=\m \left[\begin{array}{c} \cos\left(
    \theta\right)\\ \cos\left(\theta-\frac{2\pi}{3}\right)\\
    \cos\left(\theta-\frac{4\pi}{3}\right) \end{array}\right] \m,\quad
@@ -268,11 +271,11 @@ $$ x_{dq0} \m=\m \left[\begin{array}{c} x_{d}\\ x_{q}\\ x_{0}
 where $x$ is a vector in $abc$ coordinates, $x_{dq0}$
 is the same vector in the $dq0$ coordinates, and $U(\theta)$ is the
 following unitary matrix:
-$$ U(\theta) \m=\m \sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
+$$ U(\theta) \m=\m \sqrt{\frac{3}{2}}\left[\nm\begin{array}{ccc}
    \cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-
    \frac{4\pi}{3})\\ -\sin(\theta) & -\sin(\theta-\frac{2\pi}{3})
    & -\sin(\theta-\frac{4\pi}{3})\\ \sqrt{1/2} & \sqrt{1/2} & 
-   \sqrt{1/2} \end{array}\right] \m.$$
+   \sqrt{1/2} \end{array}\nm\right] \m.$$
 
 Applying the Park transformation to \rfb{eq:SGTerminalVlotage} 
 leads to
@@ -428,20 +431,21 @@ $v_{01}=0$.
 
 Substituting \eqref{eq:ParkChangeAngle} and \eqref{eq:TICSGVolAndCurr}
 into \eqref{eq:SingleSGDynamics} gives:
-$$ \varLambda\dot{z}_1 \m=\m \mathcal{A}(\o_1)z_1+T_m e_3 - 
-   \mathcal{B}(\delta)z_2 \m,$$
+$$ \L\dot{z}_1 \m=\m \Amscr(\o_1)z_1+T_m e_3 - \Bmscr(\delta)z_2 \m,$$
 where we have denoted
-$$ z_i \m=\m \left[i_{di}\ i_{qi}\ \o_i\right]^\top,\quad 
-   i\in\{1,2\},$$
-$$ \varLambda \m=\m \left[\begin{array}{ccc} L_s & 0 & 0\\
-   0 & L_{s} & 0\\ 0 & 0 & J \end{array}\right],$$
-$$ \mathcal{A}(\o) \m=\m \left[\begin{array}{ccc}
+\BEQ{fiuk_szultesnapja}
+   z_i \m=\m \left[i_{di}\ i_{qi}\ \o_i\right]^\top,\quad 
+   i\in\{1,2\},
+\end{equation}
+$$ \L \m=\m \left[\begin{array}{ccc} L_s & 0 & 0\\
+   0 & L_s & 0\\ 0 & 0 & J \end{array}\right],$$
+$$ \Amscr(\o) \m=\m \left[\begin{array}{ccc}
    -R_{tot} & \o L_s & 0\\ -\o L_s & -R_{tot} & -mi_{f}\\
    0 & mi_{f} & -D_{p} \end{array}\right],$$
-$$ \mathcal{B}(\delta) \m=\m \left[\begin{array}{ccc}
+$$ \Bmscr(\delta) \m=\m \left[\begin{array}{ccc}
    R_L\cos(\delta) & -R_{L}\sin(\delta) & 0\\ R_L\sin(\delta) & 
    R_L\cos(\delta) & 0\\ 0 & 0 & 0 \end{array}\right],$$
-$$e_{3}=\left[0\ 0\ 1\right]^\top, \quad  R_{tot}=R_{s}+R_{L}.$$
+$$e_3 \m=\m \left[0\ 0\ 1\right]^\top, \quad  R_{tot}=R_{s}+R_{L}.$$
 A symmetric equation holds for the second generator:
 $$ \varLambda\dot{z}_2 \m=\m \mathcal{A}(\o_{2})z_{2}+T_{m}e_{3} -
    \mathcal{B}(-\delta)z_{1} \m.$$
@@ -459,78 +463,120 @@ Rewriting the entire TICSG system dynamics gives:
    \begin{array}{c} e_{3}\\ e_{3}\\ 0 \end{array} \nm\right].
 \end{equation}
 
-\begin{lemma}\label{lemma:forewordComplete}
+\begin{proposition} \label{forwardComplete}
 The TICSG system is forward complete, i.e. for any initial state
 $\left[ z_1^{0\top} \ z_2^{0\top} \ \delta^{0} \right]^\top \in
 \mathbb{R}^7 $, the (unique) solution of the TICSG system is defined
 for all $t>0$.
-\end{lemma}
+\end{proposition}
 
+\medskip
 \begin{proof} The right hand-side of the TICSG model 
 \eqref{eq:TICSGDynamics} is a locally Lipschitz function on the state
 space $\rline^7$. For any initial state it follows from standard well
 posedness results (see for instance \cite[Ch.~3]{Khalil}) that there
 exists a unique solution $(z_1,z_2,\delta)$ for
 \eqref{eq:TICSGDynamics} defined on a maximal time interval
-$[0,{T_{\max}})$, with ${T_{\max}}>0$. We will show via contradiction 
-that ${T_{\max}}=\infty$. Suppose that $T_{\max}$ is finite. For each 
-$t\in[0,{T_{\max}})$ define
-$$ V\left(\left[\nm\begin{array}{c} z_1\\ z_2\end{array}\nm\right]
-   \right) \m=\m \half \left[z_1^\top\ z_2^\top\right]\left[
-   \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
-   \right]\left[ \begin{array}{c} z_1\\ z_2 \end{array}\right].$$
-Then, using \eqref{eq:TICSGDynamics},
+$[0,{T_{\max}})$, with ${T_{\max}}>0$, possibly $T_{\max}=\infty$.
+For any $(z_1,z_2)\in\rline^6$ define \vspace{-2mm} 
+\BEQ{V} V\left(z_1,\m z_2\right)
+   \m=\m \half \left[z_1^\top\ z_2^\top \right]\left[ \begin{array}
+   {cc} \L & 0\\ 0 & \L\end{array} \right]\left[ \begin{array}{c}
+    z_1\\ z_2\end{array}\right].
+\end{equation}
+Then, using \eqref{eq:TICSGDynamics}, we have that along state 
+trajectories,
 $$ \dot{V}(t) \m=\m \left[ z_1^\top\ z_2^\top\right]\left[\nm
    \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
    \nm\right]\left[\begin{array}{c} \dot{z_1}\\ \dot{z_2}
    \end{array}\right]$$ 
-$$ = \left[z_1^\top\ z_2^\top\right]\left[\nm\nm
-   \begin{array}{cc} \varLambda & 0\\ 0 & \varLambda \end{array}
-   \nm\nm\right] \left[\nm\nm\begin{array}{c} \varLambda^{-1}
-   \left( \Amscr(\o_1)z_1-\Bmscr(\delta)z_2+T_me_3\right)
-   \\ \varLambda^{-1}\left(-\mathcal{B}(-\delta)z_1+\mathcal{A}
+$$ = \left[z_1^\top\ z_2^\top\right]\left[\nm\nm \begin{array}{cc}
+   \L & 0\\ 0 & \varLambda \end{array} \nm\nm\right] \left[\nm\nm
+   \begin{array}{c} \L^{-1} \left( \Amscr(\o_1)z_1-\Bmscr(\delta)
+   z_2+T_me_3\right)\\ \L^{-1}\left(-\Bmscr(-\delta)z_1+\Amscr
    (\o_2)z_2+T_m e_3\right) \end{array}\nm\right].$$
-Because $\mathcal{B}(-\delta) = \mathcal{B}^\top(\delta)$, we get 
-$$ \begin{aligned} \dot{V}(t) =& \left(z_1^\top\mathcal{A}(\o_1)
-   z_1+z_2^\top\mathcal{A}(\o_2)z_2\right) \\ &+ \left(-2z_1^\top
-   \mathcal{B}(\delta)z_2 + T_mz_1^\top e_3+ T_mz_2^\top e_3\right)
-   \end{aligned}$$
+Because $\Bmscr(-\delta)=\Bmscr^\top(\delta)$, we get 
+$$ \begin{aligned} \dot{V}(t) =& \left(z_1^\top\Amscr(\o_1)z_1+z_2
+   ^\top\Amscr(\o_2)z_2\right)\\ &+ \left(-2z_1^\top \Bmscr(\delta)
+   z_2 + T_m z_1^\top e_3 + T_m z_2^\top e_3\right) \end{aligned}$$
 $$ \begin{aligned} =& \left(-R_{tot}\left(i_{d1}^2 +
    i_{q1}^2+i_{d2}^2+i_{q2}^2 \right)-D_p \left(\o_1^2+\o_2^2\right)
    \right) \\ & +2 R_L \left(-\cos(\delta)i_{d1}i_{d2}-\cos(\delta)
    i_{q1}i_{q2}-\sin(\delta)i_{q1}i_{d2}\right)\\ &+2 R_L
-   \sin(\delta)i_{q2}i_{d1} + T_m(\o_1+\o_2).\end{aligned}$$
-This equation can be rewritten as
-$$ \dot{V}(t) \m=\m -D_p\left( \o_1^2+\o_2^2\right) + T_m(\o_1+\o_2)
-   -\langle A\vec{i},\vec{i} \rangle \m,$$ 
-where $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ i_{q2}]^\top$ and 
-$$ \begin{aligned} A &=\left[\begin{array}{cc|cc} R_{tot} & 0 & R_L 
-   \cos(\delta) & -R_L \sin(\delta) \\ 0 & R_{tot} & R_L R_L 
-   \sin(\delta) & R_L\cos(\delta) \\ \hline R_L\cos(\delta) & R_L 
-   \sin(\delta) & R_{tot} & 0 \\ -R_L \sin(\delta) & R_L\cos(\delta) 
-   & 0 & R_{tot} \end{array}\right]\\ &= \left[ \begin{array}{c|c}
-   A_1 & B \\ \hline B^* & A_1 \end{array} \right].\end{aligned}$$
+   \sin(\delta)i_{d1}i_{q2} + T_m(\o_1+\o_2).\end{aligned}$$
+This formula can be rewritten as
+\BEQ{Jyun_back_from_China}
+   \dot{V}(t) \m=\m -D_p\left( \o_1^2+\o_2^2\right) + T_m(\o_1+\o_2)
+   -\langle W\vec{i},\vec{i} \rangle \m,
+\end{equation}
+where $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ i_{q2}]^\top$ and
+$$ \begin{aligned} W &=\left[\begin{array}{cc|cc} R_{tot} & 0 & R_L 
+   \cos(\delta) & -R_L \sin(\delta) \\ 0 & R_{tot} & R_L \sin(\delta)
+   & R_L\cos(\delta) \\ \hline R_L\cos(\delta) & R_L\sin(\delta) & 
+   R_{tot} & 0 \\ -R_L \sin(\delta) & R_L\cos(\delta) & 0 & R_{tot} 
+   \end{array}\right]\\ &= \left[ \begin{array}{c|c} A_1 & B \\ 
+   \hline B^* & A_1 \end{array} \right].\end{aligned}$$
 
-According to the well known Schur complement condition for positive
-definiteness, a symmetric matrix $X = \left[ \begin{array}{c|c} P_1 &
-N \\ \hline N^* & P_2 \end{array}\right]$ is positive definite if and
-only if $P_1>0$ and $\Delta=P_2-N^*P_1^{-1}N>0$. In our case clearly
-$A_1>0$. Thus, in order to show that $A>0$ we only need to show that 
-$A_1-B^*A_1^{-1}B>0$. By a simple computation,
+We claim that $W>0$. According to the well known Schur complement
+condition for positive definiteness, a symmetric matrix $X = \left[
+\begin{array}{c|c} P_1 & N \\ \hline N^* & P_2 \end{array}\right]$ is
+positive definite if and only if $P_1>0$ and $\Delta=P_2-N^*P_1^{-1}
+N>0$. In our case clearly $A_1>0$. Thus, in order to show that $W>0$
+we only need to show that $A_1-B^*A_1^{-1}B>0$. By a simple 
+computation,
 $$ A_1-B^*A_1^{-1}B \m=\m \left[\begin{array}{cc}
    R_{tot}-\frac{R_L^2}{R_{tot}} & 0  \\ 
    0 & R_{tot}-\frac{R_L^2}{R_{tot}} \end{array}\right].$$
 Since $R_{tot}>R_L$, we have indeed $A_1-B^*A_1^{-1}B>0$. 
 
-From $A>0$, if either $|i_{d1}|$, $|i_{q1}|$, $|\o_1|$, $|i_{d2}|$,
-$|i_{q2}|$ or $|\o_2|$ is sufficiently large, then
-$\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$, $\o_1$,
-$i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on $[0,{T_{\max}})$. Clearly
-$\delta$ must also be bounded on $[0,{T_{\max}})$. Hence $(i_{d1},
-i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are bounded on $[0,{T_{\max}})$, which
-contradicts Theorem 3.3 (p. 94) in \cite{Khalil} (see also Corollary 
-II.3 in \cite{JayWeissBS:09}). Therefore ${T_{\max}}=\infty$.
+We will show via contradiction that ${T_{\max}}=\infty$.  Suppose that
+$T_{\max}$ is finite. From $W>0$, if either $|i_{d1}|$, $|i_{q1}|$,
+$|\o_1|$, $|i_{d2}|$, $|i_{q2}|$ or $|\o_2|$ is sufficiently large,
+then $\dot{V}(t)<0$. Therefore $V$ (and hence $i_{d1}$, $i_{q1}$,
+$\o_1$, $i_{d2}$, $i_{q2}$ and $\o_2$ are bounded on
+$[0,{T_{\max}})$. Clearly $\delta$ must also be bounded on
+$[0,{T_{\max}})$. Hence $(i_{d1}, i_{q1},\o_1,i_{d2},i_{q2},\o_2)$ are
+bounded on $[0,{T_{\max}})$, which contradicts Theorem 3.3 (p. 94) in
+\cite{Khalil} (see also Corollary II.3 in \cite{JayWeissBS:09}). 
+Therefore $T_{\max}=\infty$.
 \end{proof}
+
+\begin{proposition} \label{Superland}
+We work with the function $V$ from \eqref{V}. For all $\mu>0$ 
+sufficiently large, the set \vspace{-1mm}
+$$ \Kmscr^\mu \m=\m \left\{ [z_1^\top\ z_2^\top\ \delta]^\top\in
+   \rline^7\ |\ V\left(z_1,\m z_2\right)\leq\mu \right\}$$
+is invariant under the flow of the TICSG system 
+\eqref{eq:TICSGDynamics}.
+\end{proposition}
+
+\medskip
+\begin{proof} We know from the proof of Proposition 
+\ref{forwardComplete} that $\dot{V}$ can be expressed as in
+\eqref{Jyun_back_from_China}, where we use the notation from
+\eqref{fiuk_szultesnapja}, $\vec{i}=[i_{d1}\ i_{q1}\ i_{d2}\ 
+i_{q2}]^\top$ and $W>0$. Let $w_{\min}$ be the smallest eigenvalue of 
+$W$ (so that $w_{\min}>0$). Then 
+$$\dot{V} \m\leq\m -D_p\left( \o_1^2+\o_2^2\right) + T_m(\o_1+\o_2)
+   -w_{\min}|\vec{i}|^2 \m=:\m E(z_1,z_2) \m.$$
+It is easy to see that the set $K_+$ of those $(z_1,z_2)\in\rline^6$ 
+where $E(z_1,z_2)\geq 0$ is compact. Let 
+$$ \mu_0 \m=\m \min \left\{ V(z_1,\m z_2)\ |\ (z_1,\m z_2)\in K_+
+   \right\} \m.$$
+Then for any $\mu>\mu_0$ we have that $V(z_1,z_2)=\mu$ implies
+$\dot{V}<0$. Hence, the trajectories of the TICSG system cannot exit
+the set $\Kmscr^\mu$, so that this set is invariant.
+\end{proof}
+
+Sometimes we find it more convenient to consider the angle $\delta$
+modulo $2\pi$, so that the seventh coordinate of the state is no 
+longer in $\rline$, but instead in the unit circle $\Cmscr$. This 
+new state space $\Xmscr$ is a 7 dimensional manifold, with a natural
+mapping $\phi$ from $\rline^7$ to $\Xmscr$ (which leaves the first 6
+coordinates unchanged). If we define (for $\mu>\mu_0$)
+$$\Kmscr^\mu_{\Xmscr} \m=\m \phi \Kmscr^\mu \m,$$
+then $\Kmscr^\mu_{\Xmscr}$ is a compact invariant set for the 
+TICSG system in the state space $\Xmscr$.
  
 %%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%**********%%%%%%%%%%
 \section{The equilibrium points of the TICSG model} 
@@ -549,19 +595,17 @@ introduce the {\em anti-synchronization space}
    \Emscr' \m=\m \left\{ \left[z_1 \ z_2 \ \delta \right]^\top
    \ |\ z_1=z_2,\ \delta = \pi \right\} \m,
 \end{equation}
-which is an affine space (shifted vector subspace). Sometimes we find
-it more convenient to consider the angle $\delta$ modulo $2\pi$, so
-that the seventh coordinate of the state is no longer in $\rline$, but
-instead in the unit circle. This new state space $\Xmscr$ is a 7
-dimensional manifold, with a natural mapping from $\rline^7$ to
-$\Xmscr$ (which leaves the first 6 coordinates unchanged), and the
-images of $\Emscr$ and $\Emscr'$ via this mapping are 3 dimensional
-submanifolds of $\Xmscr$ that we denote by $\Emscr_\Xmscr$ and
-$\Emscr'_\Xmscr$, respectively. We call $\Emscr_\Xmscr$ the 
-{\em symchronization manifold}.
+which is an affine space (shifted vector subspace). Recall from
+Section \ref{sec3} that sometimes we prefer to consider the angle
+$\delta$ modulo $2\pi$, so that the state space $\Xmscr$ is a 7
+dimensional manifold, with a natural mapping $\phi$ from $\rline^7$
+onto $\Xmscr$. The images of $\Emscr$ and $\Emscr'$ via $\phi$ are 3
+dimensional submanifolds of $\Xmscr$ that we denote by $\Emscr_\Xmscr$
+and $\Emscr'_\Xmscr$, respectively. We call $\Emscr_\Xmscr$ the {\em
+symchronization manifold}.
 
 \begin{proposition} \label{EqPointsProp1}
-Any equilibrium point for the TICS system in $\Xmscr$ is either in
+Any equilibrium point for the TICSG system in $\Xmscr$ is either in
 $\Emscr_\Xmscr$ or in $\Emscr'_\Xmscr$.
 \end{proposition}
 
@@ -1112,9 +1156,8 @@ is a stable (Hurwitz) matrix (condition
 \eqref{eq:condition_for_stable_G} implies that the limit exists) and
 moreover, there exist positive numbers $\eta$ and $c$ such that for
 all $(e,x)\in\Kmscr$ with $|\e|<\eta$,
-\begin{equation}
-\left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,
-\label{eq:PC1}
+\BEQ{P_C1}
+   \left| \frac{\partial P}{\partial x}(x)\right| \m\leq\m c,
 \end{equation}
 where $P$ is defined by \eqref{simhat_tora}. 
 
@@ -1130,8 +1173,8 @@ We show that the TICSG system has the UES-TL property, and then by
 applying theorem \ref{thm:TULESNL2UESTL}, we will show that it has
 the TULES-NL property.
 
-As we showed in Lemma \ref{lemma:forewordComplete}, the TICSG system
-is forward complete. We need to show that the system
+As we showed in Proposition \ref{forwardComplete}, the TICSG 
+system is forward complete. We need to show that the system
 $$ \dot{\tilde{e}} \m=\m \frac{\partial F}{\partial e}(0,\tilde{x})
    \tilde{e}$$
 is globally exponentially stable. Note that this is a linear time
@@ -1145,8 +1188,8 @@ Let $A$ be a stable (Hurwitz) matrix and let $\Pi$ be a
 continuous square matrix-valued function on the interval
 $[0,\infty)$. Suppose that
 $$\intop_0^\infty \left|\Pi(t)\right| \dd t \m<\m \infty \m.$$
-Then the solution of $\dot{x}(t)=[A+\Pi(t)]x(t)$ is globally exponentially
-asymptotically stable.
+Then the solution of $\dot{x}(t)=[A+\Pi(t)]x(t)$ is globally 
+exponentially stable.
 \end{proposition}
  
 Because Theorem \ref{theorem:TICSGSync} requires condition
@@ -1155,7 +1198,7 @@ Because Theorem \ref{theorem:TICSGSync} requires condition
 \lim_{t \to \infty}\frac{\partial F}{\partial e}(0,\tilde{x}^e)$
 exists.  It imply that the matrix $\frac{\partial F}{\partial
 e}(0,\tilde{x}^e)$ can be represented as $\frac{\partial F}{\partial
-e}(0,\tilde{x}^e) = \left(A+\Pi(t)\right)$ where $\Pi(t)$ converges
+e}(0,\tilde{x}^e)=\left(A+\Pi(t)\right)$ where $\Pi(t)$ converges
 exponentially to zero. The limit matrix is
 $$ A \m=\m \left[\begin{array}{cccc} -\frac{R_{s}}{L_s} & 
    \frac{x^e_\o}{2} & \frac{x^e_q}{2} & -\frac{R_L}{L_s} x^e_q\\
@@ -1171,7 +1214,7 @@ is globally exponentially stable. This proves that the TICSG system
 is UES-TL. 
 
 Both $F$ and $G$ are $C^\infty$. In addition, as shown at the proof of
-Lemma \ref{lemma:forewordComplete}, $\left(z_1(t),z_2(t)\right)$ are
+Proposition \ref{forwardComplete}, $\left(z_1(t),z_2(t)\right)$ are
 bounded for any initial condition, it implies that for any initial
 state of the TICSG system there is a compact set that contains the
 trajectory of $(z_1(t),z_2(t)$ for all $t\geq 0$, and there are
@@ -1282,7 +1325,7 @@ synchronize).
 Figure \ref{fig:OutROATICSGSimulation} shows another simulation for
 the same system, with the initial state $\left[z_1(0)\ z_2(0) \
 \delta(0) \right]^\top=\left[-400,\ -200,\ 10,\ 700,\ -20,\ 400,\
-1.5708\right]^\top$. \m The simu\-lation indicates that this initial
+1.5708\right]^\top$.. \m The simu\-lation indicates that this initial
 state is outside the region of attraction, the SGs do not
 synchronize. The parameters for the two simulations in this subsection
 are $J=0.2$ {[}$kg\cdot m^{2}${]}, $D_{p}=1.7$ {[}$J\cdot sec${]}, 
@@ -1457,6 +1500,11 @@ is not the whole state space.
 \bibitem{Walker:94} J.H.~Walker, \m {\em Large Synchronous Machines: 
  Design, Manufacture and Operation}, \m Oxford University Press, 
  Oxford, 1981.
+
+\bibitem{Zhong:13} Q.-C.~Zhong, \m Robust droop controller for 
+ accurate proportional load sharing among inverters operated in 
+ parallel, {\em IEEE Trans. on Industrial Electronics}, vol.~60,
+ 2013, pp.~1281-1290.
 
 \bibitem{ZhWe:11} Q.-C.~Zhong and G.~Weiss, \m Synchronverters: 
  Inverters that mimic synchronous generators, {\em IEEE Trans. 
