@@ -256,8 +256,8 @@ is the same vector in the $dq0$ coordinates, and $U(\theta)$ is the
 following unitary matrix:
 $$ U(\theta) \m=\m \sqrt{\frac{3}{2}}\left[\begin{array}{ccc}
    \cos(\theta) & \cos(\theta-\frac{2\pi}{3}) & \cos(\theta-
-   \frac{4\pi}{3})\\ \sin(\theta) & \sin(\theta-\frac{2\pi}{3})
-   & \sin(\theta-\frac{4\pi}{3})\\ \sqrt{1/2} & \sqrt{1/2} & 
+   \frac{4\pi}{3})\\ -\sin(\theta) & -\sin(\theta-\frac{2\pi}{3})
+   & -\sin(\theta-\frac{4\pi}{3})\\ \sqrt{1/2} & \sqrt{1/2} & 
    \sqrt{1/2} \end{array}\right] \m.$$
 
 Applying the Park transformation to \rfb{eq:SGTerminalVlotage} 
@@ -522,9 +522,9 @@ that for the 5KW SG, the behavior of the FOM and the ISE is almost the
 same. Although the currents for the ISE have less ripple than for
 the FOM, both models converge at the same rate with the same
 oscillations to the same equilibrium point. The parameters for this
-simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
+simulation are $J=0.2$ {[}$kg \cdot m^{2}${]}, $D_{p}=1.7$ {[}$J \cdot sec${]},
 $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$
-{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
+{[}$V \cdot sec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
 {[}$V]$, $P_m=5$ {[}$kW${]}.
 
 \subsection{1MW SG}
@@ -543,9 +543,9 @@ the 1MW SG, the behavior of the FOM and the ISE are still very
 similar. Although the FOM currents are much more rippled than the ISE
 currents, both models converge at the same rate with the same
 oscillations to the same equilibrium point. The parameters for this
-simulation are $J=40.05$ {[}$kgm^{2}${]}, $D_{p}=337$ {[}$J/sec${]},
+simulation are $J=40.05$ {[}$kg \cdot m^{2}${]}, $D_{p}=337$ {[}$J \cdot sec${]},
 $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$ {[}$mH${]}, $mi_{f}=1.79$
-{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=563$
+{[}$V\cdot sec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=563$
 {[}$V]$, $P_m=1$ {[}$MW${]}.
 
 \subsection{Non stable behavior of the reduced model}
@@ -562,8 +562,8 @@ $R_{s}=0.4$ {[}$\Omega]$, $L_{s}=18$ {[}$mH${]}, $mi_{f}=1.79$
 
 As shown in Figure \ref{fig:InfBusOne1DiffBehavior1}, simulations show
 that for other parameters set (the parameters for this simulation are
-$J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]}, $R_{s}=0.152$
-{[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$Vsec]$,
+$J=0.2$ {[}$kg\cdot m^{2}${]}, $D_{p}=1.7$ {[}$J \cdot sec${]}, $R_{s}=0.152$
+{[}$\Omega]$, $L_{s}=4.4$ {[}$mH${]}, $mi_{f}=1.05$ {[}$V \cdot sec]$,
 $\o_g=60\cdotp2\pi$ {[}$rad/sec${]}, $V=200$ {[}$V]$, $P_m=50$
 {[}$KW${]}) the behavior of the FOM and the ISE is significantly
 different. The FOM is locally stable, since the eigenvalues of the
@@ -584,9 +584,9 @@ full and the reduced models, for a 5 KW SG.}
 
 As shown in Figure \ref{fig:InfBusOne1DiffRegionOfAttraction},
 simulations show that for some parameters set (the parameters for this
-simulation are $J=0.2$ {[}$kgm^{2}${]}, $D_{p}=1.7$ {[}$J/sec${]},
+simulation are $J=0.2$ {[}$kg\cdot m^{2}${]}, $D_{p}=1.7$ {[}$J \cdot sec${]},
 $R_{s}=0.152$ {[}$\Omega]$, $L_{s}=1.05$ {[}$mH${]}, $mi_{f}=3.5$
-{[}$Vsec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
+{[}$V\cdot sec]$, $\omega_{g}=60\cdotp2\pi$ {[}$rad/sec${]}, $V=330$
 {[}$V]$, $P_m=5$ {[}$KW${]}) the initial condition of this simulation
 is within the region of attraction of the reduced model, but outside
 the region of attraction of the FOM. This causes the FOM to diverge
